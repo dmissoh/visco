@@ -8,6 +8,7 @@ import 'package:visco/features/history/presentation/screens/history_screen.dart'
 import 'package:visco/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:visco/features/onboarding/providers/profile_provider.dart';
 import 'package:visco/features/result/presentation/screens/result_screen.dart';
+import 'package:visco/features/settings/presentation/screens/settings_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   final profile = ref.watch(profileNotifierProvider);
@@ -56,6 +57,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/help',
         name: 'help',
         builder: (context, state) => const HelpScreen(),
+      ),
+      GoRoute(
+        path: '/settings',
+        name: 'settings',
+        builder: (context, state) => const SettingsScreen(),
       ),
     ],
     errorBuilder: (context, state) => Scaffold(

@@ -81,6 +81,11 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
             onPressed: () => context.push('/history'),
             tooltip: 'History',
           ),
+          IconButton(
+            icon: const Icon(Icons.settings_outlined),
+            onPressed: () => context.push('/settings'),
+            tooltip: 'Settings',
+          ),
         ],
       ),
       body: SafeArea(
