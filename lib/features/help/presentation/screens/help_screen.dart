@@ -25,12 +25,6 @@ class HelpScreen extends StatelessWidget {
           children: [
             _buildSection(
               context,
-              title: 'How is Visceral Fat Calculated?',
-              child: _buildCalculationExplanation(context),
-            ),
-            const SizedBox(height: AppSpacing.xl),
-            _buildSection(
-              context,
               title: 'How to Measure Waist Circumference',
               child: _buildWaistMeasurementGuide(context),
             ),
@@ -39,6 +33,12 @@ class HelpScreen extends StatelessWidget {
               context,
               title: 'How to Measure Thigh Circumference',
               child: _buildThighMeasurementGuide(context),
+            ),
+            const SizedBox(height: AppSpacing.xl),
+            _buildSection(
+              context,
+              title: 'How is Visceral Fat Calculated?',
+              child: _buildCalculationExplanation(context),
             ),
             const SizedBox(height: AppSpacing.xl),
             _buildSection(
