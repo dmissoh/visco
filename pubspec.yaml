@@ -48,7 +48,9 @@ flutter_launcher_icons:
   image_path: "assets/icon.png"
   adaptive_icon_background: "#FFFFFF"
   adaptive_icon_foreground: "assets/icon.png"
+  adaptive_icon_foreground_inset: 16
   remove_alpha_ios: true
+  ios_content_mode: scaleAspectFit
 
 flutter:
   uses-material-design: true
