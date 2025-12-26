@@ -1,0 +1,105 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:uuid/uuid.dart';
+import 'package:visco/core/providers/database_provider.dart';
+import 'package:visco/features/calculator/data/repositories/measurement_repository.dart';
+import 'package:visco/features/calculator/domain/models/measurement.dart';
+import 'package:visco/features/calculator/domain/services/vat_calculator.dart';
+import 'package:visco/features/onboarding/domain/models/user_profile.dart';
+
+const _uuid = Uuid();
+
+final measurementRepositoryProvider = Provider<MeasurementRepository>((ref) {
+  final box = ref.watch(measurementsBoxProvider);
+  return MeasurementRepository(box);
+});
+
+final measurementsProvider = Provider<List<Measurement>>((ref) {
+  final repository = ref.watch(measurementRepositoryProvider);
+  return repository.getAllMeasurements();
+});
+
+final latestMeasurementProvider = Provider<Measurement?>((ref) {
+  final repository = ref.watch(measurementRepositoryProvider);
+  return repository.getLatestMeasurement();
+});
+
+final measurementNotifierProvider =
+    NotifierProvider<MeasurementNotifier, List<Measurement>>(
+        () => MeasurementNotifier());
+
+class MeasurementNotifier extends Notifier<List<Measurement>> {
+  @override
+  List<Measurement> build() {
+    final repository = ref.watch(measurementRepositoryProvider);
+    return repository.getAllMeasurements();
+  }
+
+  Future<Measurement> calculateAndSave({
+    required UserProfile profile,
+    required double waistCm,
+    required double thighCm,
+    required double weightKg,
+  }) async {
+    final repository = ref.read(measurementRepositoryProvider);
+
+    final result = VatCalculator.calculate(
+      sex: profile.sex,
+      waistCm: waistCm,
+      thighCm: thighCm,
+      age: profile.age,
+      weightKg: weightKg,
+      heightCm: profile.heightCm,
+    );
+
+    final measurement = Measurement(
+      id: _uuid.v4(),
+      timestamp: DateTime.now(),
+      waistCm: waistCm,
+      thighCm: thighCm,
+      weightKg: weightKg,
+      bmi: result.bmi,
+      vatCm2: result.vatCm2,
+      riskCategory: Measurement.calculateRiskCategory(result.vatCm2),
+    );
+
+    await repository.saveMeasurement(measurement);
+    ref.invalidateSelf();
+
+    return measurement;
+  }
+
+  Future<void> deleteMeasurement(String id) async {
+    final repository = ref.read(measurementRepositoryProvider);
+    await repository.deleteMeasurement(id);
+    ref.invalidateSelf();
+  }
+
+  String exportToCsv() {
+    final repository = ref.read(measurementRepositoryProvider);
+    return repository.exportToCsv();
+  }
+}
+
+enum TimeRange { oneMonth, threeMonths, sixMonths, oneYear, all }
+
+final timeRangeProvider = StateProvider<TimeRange>((ref) => TimeRange.threeMonths);
+
+final filteredMeasurementsProvider = Provider<List<Measurement>>((ref) {
+  final measurements = ref.watch(measurementsProvider);
+  final timeRange = ref.watch(timeRangeProvider);
+
+  if (timeRange == TimeRange.all) return measurements;
+
+  final now = DateTime.now();
+  final cutoff = switch (timeRange) {
+    TimeRange.oneMonth => now.subtract(const Duration(days: 30)),
+    TimeRange.threeMonths => now.subtract(const Duration(days: 90)),
+    TimeRange.sixMonths => now.subtract(const Duration(days: 180)),
+    TimeRange.oneYear => now.subtract(const Duration(days: 365)),
+    TimeRange.all => DateTime(1970),
+  };
+
+  return measurements
+      .where((m) => m.timestamp.isAfter(cutoff))
+      .toList();
+});
