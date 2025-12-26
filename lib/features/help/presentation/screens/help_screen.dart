@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
@@ -540,19 +541,28 @@ class HelpScreen extends StatelessWidget {
                   style: AppTypography.caption(color: colors.textSecondary),
                 ),
                 const SizedBox(height: 8),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.link,
-                      size: 14,
-                      color: colors.accent,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      'PMC3618381',
-                      style: AppTypography.caption(color: colors.accent),
-                    ),
-                  ],
+                GestureDetector(
+                  onTap: () async {
+                    final url = Uri.parse(
+                        'https://pmc.ncbi.nlm.nih.gov/articles/PMC3618381/');
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url, mode: LaunchMode.externalApplication);
+                    }
+                  },
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.link,
+                        size: 14,
+                        color: colors.accent,
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        'PMC3618381',
+                        style: AppTypography.caption(color: colors.accent),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
