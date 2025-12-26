@@ -34,6 +34,7 @@ dependencies:
 
   # Fonts
   google_fonts: ^6.2.1
+  flutter_native_splash: ^2.4.7
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +52,17 @@ flutter_launcher_icons:
   adaptive_icon_foreground_inset: 16
   remove_alpha_ios: true
   ios_content_mode: scaleAspectFit
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: "assets/icon.png"
+  color_dark: "#191919"
+  image_dark: "assets/icon.png"
+  android_12:
+    color: "#FFFFFF"
+    image: "assets/icon.png"
+    color_dark: "#191919"
+    image_dark: "assets/icon.png"
 
 flutter:
   uses-material-design: true
