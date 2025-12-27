@@ -11,23 +11,41 @@ import 'package:visco/features/onboarding/presentation/widgets/sex_selector.dart
 import 'package:visco/features/onboarding/providers/profile_provider.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
-  const OnboardingScreen({super.key});
+  final bool isAddingNewProfile;
+  
+  const OnboardingScreen({super.key, this.isAddingNewProfile = false});
 
   @override
   ConsumerState<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
 class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
+  final _nameController = TextEditingController();
   Sex _selectedSex = Sex.female;
   DateTime _birthDate = DateTime(1985, 1, 1);
   double _heightCm = 170;
   bool _isLoading = false;
 
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
+
   Future<void> _saveProfile() async {
+    final name = _nameController.text.trim();
+    if (name.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter a profile name')),
+      );
+      return;
+    }
+
     setState(() => _isLoading = true);
 
     try {
       await ref.read(profileNotifierProvider.notifier).saveProfile(
+            name: name,
             sex: _selectedSex,
             birthDate: _birthDate,
             heightCm: _heightCm,
@@ -48,28 +66,50 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     final colors = AppColors.of(context);
 
     return Scaffold(
+      appBar: widget.isAddingNewProfile
+          ? AppBar(
+              backgroundColor: colors.background,
+              foregroundColor: colors.textPrimary,
+              elevation: 0,
+              title: const Text('New Profile'),
+            )
+          : null,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(AppSpacing.lg),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: AppSpacing.xxl),
+              if (!widget.isAddingNewProfile) ...[
+                const SizedBox(height: AppSpacing.xxl),
+                Text(
+                  'Visco',
+                  style: AppTypography.display(color: colors.textPrimary),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: AppSpacing.sm),
+                Text(
+                  'Visceral Fat Calculator',
+                  style: AppTypography.body(color: colors.textSecondary),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: AppSpacing.xxl),
+              ],
               Text(
-                'Visco',
-                style: AppTypography.display(color: colors.textPrimary),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: AppSpacing.sm),
-              Text(
-                'Visceral Fat Calculator',
-                style: AppTypography.body(color: colors.textSecondary),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: AppSpacing.xxl),
-              Text(
-                "Let's set up your profile",
+                widget.isAddingNewProfile
+                    ? "Create a new profile"
+                    : "Let's set up your profile",
                 style: AppTypography.headline(color: colors.textPrimary),
+              ),
+              const SizedBox(height: AppSpacing.lg),
+              TextField(
+                controller: _nameController,
+                decoration: InputDecoration(
+                  labelText: 'Profile Name',
+                  hintText: 'e.g., John, Mom, Dad',
+                  labelStyle: AppTypography.caption(color: colors.textSecondary),
+                ),
+                style: AppTypography.body(color: colors.textPrimary),
               ),
               const SizedBox(height: AppSpacing.lg),
               SexSelector(
@@ -101,7 +141,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                             color: Colors.white,
                           ),
                         )
-                      : const Text('Continue'),
+                      : Text(widget.isAddingNewProfile ? 'Create Profile' : 'Continue'),
                 ),
               ),
             ],

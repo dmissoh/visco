@@ -16,6 +16,7 @@ class SettingsScreen extends ConsumerWidget {
     final colors = AppColors.of(context);
     final currentTheme = ref.watch(settingsProvider);
     final profile = ref.watch(profileNotifierProvider);
+    final allProfiles = ref.watch(allProfilesProvider);
 
     return Scaffold(
       backgroundColor: colors.background,
@@ -29,7 +30,7 @@ class SettingsScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(AppSpacing.lg),
         children: [
           Text(
-            'Profile',
+            'Profiles',
             style: AppTypography.title(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.md),
@@ -41,65 +42,106 @@ class SettingsScreen extends ConsumerWidget {
             ),
             child: Column(
               children: [
+                ...allProfiles.map((p) => _buildProfileItem(
+                      context,
+                      ref,
+                      profile: p,
+                      isActive: p.id == profile?.id,
+                      colors: colors,
+                    )),
+                if (allProfiles.isNotEmpty)
+                  Divider(height: 1, color: colors.border),
                 ListTile(
                   leading: Icon(
-                    Icons.person_outline,
-                    color: colors.textSecondary,
+                    Icons.add_circle_outline,
+                    color: colors.accent,
                   ),
                   title: Text(
-                    'Sex',
-                    style: AppTypography.body(color: colors.textPrimary),
+                    'Add Profile',
+                    style: AppTypography.body(color: colors.accent),
                   ),
-                  trailing: Text(
-                    profile?.sex == Sex.male ? 'Male' : 'Female',
-                    style: AppTypography.body(color: colors.textSecondary),
-                  ),
-                ),
-                Divider(height: 1, color: colors.border),
-                ListTile(
-                  leading: Icon(
-                    Icons.cake_outlined,
-                    color: colors.textSecondary,
-                  ),
-                  title: Text(
-                    'Age',
-                    style: AppTypography.body(color: colors.textPrimary),
-                  ),
-                  trailing: Text(
-                    '${profile?.age ?? 0} years',
-                    style: AppTypography.body(color: colors.textSecondary),
-                  ),
-                ),
-                Divider(height: 1, color: colors.border),
-                ListTile(
-                  leading: Icon(
-                    Icons.height,
-                    color: colors.textSecondary,
-                  ),
-                  title: Text(
-                    'Height',
-                    style: AppTypography.body(color: colors.textPrimary),
-                  ),
-                  trailing: Text(
-                    '${profile?.heightCm.toStringAsFixed(0) ?? 0} cm',
-                    style: AppTypography.body(color: colors.textSecondary),
-                  ),
-                ),
-                Divider(height: 1, color: colors.border),
-                ListTile(
-                  leading: Icon(
-                    Icons.refresh,
-                    color: colors.danger,
-                  ),
-                  title: Text(
-                    'Reset Profile',
-                    style: AppTypography.body(color: colors.danger),
-                  ),
-                  onTap: () => _showResetConfirmation(context, ref),
+                  onTap: () => context.push('/new-profile'),
                 ),
               ],
             ),
           ),
+          if (profile != null) ...[
+            const SizedBox(height: AppSpacing.xl),
+            Text(
+              'Current Profile',
+              style: AppTypography.title(color: colors.textPrimary),
+            ),
+            const SizedBox(height: AppSpacing.md),
+            Container(
+              decoration: BoxDecoration(
+                color: colors.surface,
+                borderRadius: BorderRadius.circular(AppRadius.md),
+                border: Border.all(color: colors.border),
+              ),
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Icon(
+                      Icons.person_outline,
+                      color: colors.textSecondary,
+                    ),
+                    title: Text(
+                      'Sex',
+                      style: AppTypography.body(color: colors.textPrimary),
+                    ),
+                    trailing: Text(
+                      profile.sex == Sex.male ? 'Male' : 'Female',
+                      style: AppTypography.body(color: colors.textSecondary),
+                    ),
+                  ),
+                  Divider(height: 1, color: colors.border),
+                  ListTile(
+                    leading: Icon(
+                      Icons.cake_outlined,
+                      color: colors.textSecondary,
+                    ),
+                    title: Text(
+                      'Age',
+                      style: AppTypography.body(color: colors.textPrimary),
+                    ),
+                    trailing: Text(
+                      '${profile.age} years',
+                      style: AppTypography.body(color: colors.textSecondary),
+                    ),
+                  ),
+                  Divider(height: 1, color: colors.border),
+                  ListTile(
+                    leading: Icon(
+                      Icons.height,
+                      color: colors.textSecondary,
+                    ),
+                    title: Text(
+                      'Height',
+                      style: AppTypography.body(color: colors.textPrimary),
+                    ),
+                    trailing: Text(
+                      '${profile.heightCm.toStringAsFixed(0)} cm',
+                      style: AppTypography.body(color: colors.textSecondary),
+                    ),
+                  ),
+                  if (allProfiles.length > 1) ...[
+                    Divider(height: 1, color: colors.border),
+                    ListTile(
+                      leading: Icon(
+                        Icons.delete_outline,
+                        color: colors.danger,
+                      ),
+                      title: Text(
+                        'Delete Profile',
+                        style: AppTypography.body(color: colors.danger),
+                      ),
+                      onTap: () => _showDeleteProfileConfirmation(context, ref, profile),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ],
           const SizedBox(height: AppSpacing.xl),
           Text(
             'Appearance',
@@ -146,24 +188,86 @@ class SettingsScreen extends ConsumerWidget {
               ],
             ),
           ),
+          const SizedBox(height: AppSpacing.xl),
+          Text(
+            'Data',
+            style: AppTypography.title(color: colors.textPrimary),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          Container(
+            decoration: BoxDecoration(
+              color: colors.surface,
+              borderRadius: BorderRadius.circular(AppRadius.md),
+              border: Border.all(color: colors.border),
+            ),
+            child: ListTile(
+              leading: Icon(
+                Icons.delete_forever,
+                color: colors.danger,
+              ),
+              title: Text(
+                'Reset All Data',
+                style: AppTypography.body(color: colors.danger),
+              ),
+              subtitle: Text(
+                'Delete all profiles and measurements',
+                style: AppTypography.caption(color: colors.textSecondary),
+              ),
+              onTap: () => _showResetAllConfirmation(context, ref),
+            ),
+          ),
         ],
       ),
     );
   }
 
-  void _showResetConfirmation(BuildContext context, WidgetRef ref) {
+  Widget _buildProfileItem(
+    BuildContext context,
+    WidgetRef ref, {
+    required UserProfile profile,
+    required bool isActive,
+    required AppColorScheme colors,
+  }) {
+    return ListTile(
+      leading: CircleAvatar(
+        backgroundColor: isActive ? colors.accent : colors.border,
+        child: Text(
+          profile.name.isNotEmpty ? profile.name[0].toUpperCase() : '?',
+          style: AppTypography.body(
+            color: isActive ? Colors.white : colors.textSecondary,
+          ),
+        ),
+      ),
+      title: Text(
+        profile.name,
+        style: AppTypography.body(color: colors.textPrimary),
+      ),
+      subtitle: Text(
+        '${profile.sex == Sex.male ? 'Male' : 'Female'}, ${profile.age} years',
+        style: AppTypography.caption(color: colors.textSecondary),
+      ),
+      trailing: isActive
+          ? Icon(Icons.check_circle, color: colors.accent)
+          : null,
+      onTap: isActive
+          ? null
+          : () => ref.read(profileNotifierProvider.notifier).switchProfile(profile.id),
+    );
+  }
+
+  void _showDeleteProfileConfirmation(BuildContext context, WidgetRef ref, UserProfile profile) {
     final colors = AppColors.of(context);
-    
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: colors.surface,
         title: Text(
-          'Reset Profile',
+          'Delete Profile',
           style: AppTypography.title(color: colors.textPrimary),
         ),
         content: Text(
-          'This will delete your profile and all measurement history. You will need to set up your profile again.',
+          'Delete "${profile.name}" and all their measurements? This cannot be undone.',
           style: AppTypography.body(color: colors.textSecondary),
         ),
         actions: [
@@ -176,7 +280,47 @@ class SettingsScreen extends ConsumerWidget {
           ),
           TextButton(
             onPressed: () async {
-              await ref.read(profileNotifierProvider.notifier).deleteProfile();
+              await ref.read(profileNotifierProvider.notifier).deleteProfile(profile.id);
+              if (context.mounted) {
+                Navigator.pop(context);
+              }
+            },
+            child: Text(
+              'Delete',
+              style: AppTypography.body(color: colors.danger),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showResetAllConfirmation(BuildContext context, WidgetRef ref) {
+    final colors = AppColors.of(context);
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: colors.surface,
+        title: Text(
+          'Reset All Data',
+          style: AppTypography.title(color: colors.textPrimary),
+        ),
+        content: Text(
+          'This will delete ALL profiles and measurements. You will need to set up a new profile. This cannot be undone.',
+          style: AppTypography.body(color: colors.textSecondary),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(
+              'Cancel',
+              style: AppTypography.body(color: colors.textSecondary),
+            ),
+          ),
+          TextButton(
+            onPressed: () async {
+              await ref.read(profileNotifierProvider.notifier).deleteAllProfiles();
               if (context.mounted) {
                 Navigator.pop(context);
                 context.go('/onboarding');

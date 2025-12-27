@@ -6,28 +6,48 @@ class ProfileRepository {
 
   ProfileRepository(this._box);
 
-  UserProfile? getProfile() {
+  List<UserProfile> getAllProfiles() {
+    return _box.values.toList();
+  }
+
+  UserProfile? getProfileById(String id) {
+    try {
+      return _box.values.firstWhere((p) => p.id == id);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  UserProfile? getFirstProfile() {
     if (_box.isEmpty) return null;
     return _box.getAt(0);
   }
 
   Future<void> saveProfile(UserProfile profile) async {
-    if (_box.isEmpty) {
-      await _box.add(profile);
+    // Check if profile with this ID already exists
+    final existingIndex = _box.values.toList().indexWhere((p) => p.id == profile.id);
+    
+    if (existingIndex >= 0) {
+      await _box.putAt(existingIndex, profile);
     } else {
-      await _box.putAt(0, profile);
+      await _box.add(profile);
     }
   }
 
-  Future<void> updateProfile(UserProfile profile) async {
-    await profile.save();
+  Future<void> deleteProfile(String id) async {
+    final index = _box.values.toList().indexWhere((p) => p.id == id);
+    if (index >= 0) {
+      await _box.deleteAt(index);
+    }
   }
 
-  Future<void> deleteProfile() async {
+  Future<void> deleteAllProfiles() async {
     await _box.clear();
   }
 
-  Stream<UserProfile?> watchProfile() {
-    return _box.watch().map((_) => getProfile());
+  int get profileCount => _box.length;
+
+  Stream<List<UserProfile>> watchProfiles() {
+    return _box.watch().map((_) => getAllProfiles());
   }
 }

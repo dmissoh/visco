@@ -63,6 +63,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         name: 'settings',
         builder: (context, state) => const SettingsScreen(),
       ),
+      GoRoute(
+        path: '/new-profile',
+        name: 'new-profile',
+        builder: (context, state) => const OnboardingScreen(isAddingNewProfile: true),
+      ),
     ],
     errorBuilder: (context, state) => Scaffold(
       body: Center(

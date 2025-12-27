@@ -12,9 +12,22 @@ class MeasurementRepository {
     return measurements;
   }
 
+  List<Measurement> getMeasurementsForProfile(String profileId) {
+    final measurements = _box.values
+        .where((m) => m.profileId == profileId || m.profileId.isEmpty)
+        .toList();
+    measurements.sort((a, b) => b.timestamp.compareTo(a.timestamp));
+    return measurements;
+  }
+
   Measurement? getLatestMeasurement() {
     if (_box.isEmpty) return null;
     final measurements = getAllMeasurements();
+    return measurements.isNotEmpty ? measurements.first : null;
+  }
+
+  Measurement? getLatestMeasurementForProfile(String profileId) {
+    final measurements = getMeasurementsForProfile(profileId);
     return measurements.isNotEmpty ? measurements.first : null;
   }
 
@@ -41,12 +54,31 @@ class MeasurementRepository {
     await _box.clear();
   }
 
+  Future<void> deleteAllMeasurementsForProfile(String profileId) async {
+    final toDelete = _box.values
+        .where((m) => m.profileId == profileId)
+        .map((m) => m.id)
+        .toList();
+    for (final id in toDelete) {
+      await _box.delete(id);
+    }
+  }
+
   Stream<List<Measurement>> watchMeasurements() {
     return _box.watch().map((_) => getAllMeasurements());
   }
 
   String exportToCsv() {
     final measurements = getAllMeasurements();
+    return _buildCsv(measurements);
+  }
+
+  String exportToCsvForProfile(String profileId) {
+    final measurements = getMeasurementsForProfile(profileId);
+    return _buildCsv(measurements);
+  }
+
+  String _buildCsv(List<Measurement> measurements) {
     final buffer = StringBuffer();
 
     buffer.writeln('Date,Waist (cm),Thigh (cm),Weight (kg),BMI,VAT (cm2),Risk');

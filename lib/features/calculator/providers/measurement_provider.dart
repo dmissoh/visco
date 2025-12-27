@@ -5,6 +5,7 @@ import 'package:visco/features/calculator/data/repositories/measurement_reposito
 import 'package:visco/features/calculator/domain/models/measurement.dart';
 import 'package:visco/features/calculator/domain/services/vat_calculator.dart';
 import 'package:visco/features/onboarding/domain/models/user_profile.dart';
+import 'package:visco/features/onboarding/providers/profile_provider.dart';
 
 const _uuid = Uuid();
 
@@ -13,14 +14,20 @@ final measurementRepositoryProvider = Provider<MeasurementRepository>((ref) {
   return MeasurementRepository(box);
 });
 
+// All measurements for current profile
 final measurementsProvider = Provider<List<Measurement>>((ref) {
   final repository = ref.watch(measurementRepositoryProvider);
-  return repository.getAllMeasurements();
+  final profile = ref.watch(profileNotifierProvider);
+  if (profile == null) return [];
+  return repository.getMeasurementsForProfile(profile.id);
 });
 
+// Latest measurement for current profile
 final latestMeasurementProvider = Provider<Measurement?>((ref) {
   final repository = ref.watch(measurementRepositoryProvider);
-  return repository.getLatestMeasurement();
+  final profile = ref.watch(profileNotifierProvider);
+  if (profile == null) return null;
+  return repository.getLatestMeasurementForProfile(profile.id);
 });
 
 final measurementNotifierProvider =
@@ -31,7 +38,9 @@ class MeasurementNotifier extends Notifier<List<Measurement>> {
   @override
   List<Measurement> build() {
     final repository = ref.watch(measurementRepositoryProvider);
-    return repository.getAllMeasurements();
+    final profile = ref.watch(profileNotifierProvider);
+    if (profile == null) return [];
+    return repository.getMeasurementsForProfile(profile.id);
   }
 
   Future<Measurement> calculateAndSave({
@@ -53,6 +62,7 @@ class MeasurementNotifier extends Notifier<List<Measurement>> {
 
     final measurement = Measurement(
       id: _uuid.v4(),
+      profileId: profile.id,
       timestamp: DateTime.now(),
       waistCm: waistCm,
       thighCm: thighCm,
@@ -74,9 +84,17 @@ class MeasurementNotifier extends Notifier<List<Measurement>> {
     ref.invalidateSelf();
   }
 
+  Future<void> deleteAllMeasurementsForProfile(String profileId) async {
+    final repository = ref.read(measurementRepositoryProvider);
+    await repository.deleteAllMeasurementsForProfile(profileId);
+    ref.invalidateSelf();
+  }
+
   String exportToCsv() {
     final repository = ref.read(measurementRepositoryProvider);
-    return repository.exportToCsv();
+    final profile = ref.read(profileNotifierProvider);
+    if (profile == null) return '';
+    return repository.exportToCsvForProfile(profile.id);
   }
 }
 
