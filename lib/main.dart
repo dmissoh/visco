@@ -19,10 +19,27 @@ void main() async {
   Hive.registerAdapter(RiskCategoryAdapter());
   Hive.registerAdapter(MeasurementAdapter());
 
-  // Open boxes
-  await Hive.openBox<UserProfile>(profileBoxName);
-  await Hive.openBox<Measurement>(measurementsBoxName);
-  await Hive.openBox(settingsBoxName);
+  // Open boxes with error handling for corrupted data
+  try {
+    await Hive.openBox<UserProfile>(profileBoxName);
+  } catch (e) {
+    await Hive.deleteBoxFromDisk(profileBoxName);
+    await Hive.openBox<UserProfile>(profileBoxName);
+  }
+
+  try {
+    await Hive.openBox<Measurement>(measurementsBoxName);
+  } catch (e) {
+    await Hive.deleteBoxFromDisk(measurementsBoxName);
+    await Hive.openBox<Measurement>(measurementsBoxName);
+  }
+
+  try {
+    await Hive.openBox(settingsBoxName);
+  } catch (e) {
+    await Hive.deleteBoxFromDisk(settingsBoxName);
+    await Hive.openBox(settingsBoxName);
+  }
 
   runApp(
     const ProviderScope(
