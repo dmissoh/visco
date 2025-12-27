@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 abstract class AppTheme {
@@ -34,7 +33,7 @@ abstract class AppTheme {
       brightness: brightness,
       colorScheme: colorScheme,
       scaffoldBackgroundColor: colors.background,
-      textTheme: GoogleFonts.interTextTheme().apply(
+      textTheme: const TextTheme().apply(
         bodyColor: colors.textPrimary,
         displayColor: colors.textPrimary,
       ),
@@ -43,7 +42,7 @@ abstract class AppTheme {
         foregroundColor: colors.textPrimary,
         elevation: 0,
         centerTitle: false,
-        titleTextStyle: GoogleFonts.inter(
+        titleTextStyle: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.w600,
           color: colors.textPrimary,
@@ -68,12 +67,12 @@ abstract class AppTheme {
           horizontal: 16,
           vertical: 12,
         ),
-        labelStyle: GoogleFonts.inter(
+        labelStyle: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w400,
           color: colors.textSecondary,
         ),
-        hintStyle: GoogleFonts.inter(
+        hintStyle: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w400,
           color: colors.textTertiary,
@@ -90,7 +89,7 @@ abstract class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
-          textStyle: GoogleFonts.inter(
+          textStyle: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
