@@ -10,8 +10,12 @@ final profileRepositoryProvider = Provider<ProfileRepository>((ref) {
   return ProfileRepository(box);
 });
 
+// Trigger to refresh profile list
+final _profileRefreshProvider = StateProvider<int>((ref) => 0);
+
 // All profiles
 final allProfilesProvider = Provider<List<UserProfile>>((ref) {
+  ref.watch(_profileRefreshProvider); // Watch for refresh triggers
   final repository = ref.watch(profileRepositoryProvider);
   return repository.getAllProfiles();
 });
@@ -29,6 +33,7 @@ final profileNotifierProvider =
 class ProfileNotifier extends Notifier<UserProfile?> {
   @override
   UserProfile? build() {
+    ref.watch(_profileRefreshProvider); // Watch for refresh triggers
     final repository = ref.watch(profileRepositoryProvider);
     final activeId = ref.watch(activeProfileIdProvider);
     
@@ -39,6 +44,10 @@ class ProfileNotifier extends Notifier<UserProfile?> {
     
     // Fall back to first profile if active not found
     return repository.getFirstProfile();
+  }
+
+  void _refreshProfiles() {
+    ref.read(_profileRefreshProvider.notifier).state++;
   }
 
   Future<void> saveProfile({
@@ -60,12 +69,12 @@ class ProfileNotifier extends Notifier<UserProfile?> {
 
     await repository.saveProfile(profile);
     await _setActiveProfile(profile.id);
-    ref.invalidateSelf();
+    _refreshProfiles();
   }
 
   Future<void> switchProfile(String profileId) async {
     await _setActiveProfile(profileId);
-    ref.invalidateSelf();
+    _refreshProfiles();
   }
 
   Future<void> _setActiveProfile(String profileId) async {
@@ -94,7 +103,7 @@ class ProfileNotifier extends Notifier<UserProfile?> {
     );
 
     await repository.saveProfile(updatedProfile);
-    ref.invalidateSelf();
+    _refreshProfiles();
   }
 
   Future<void> deleteProfile([String? id]) async {
@@ -117,7 +126,7 @@ class ProfileNotifier extends Notifier<UserProfile?> {
       }
     }
     
-    ref.invalidateSelf();
+    _refreshProfiles();
   }
 
   Future<void> deleteAllProfiles() async {
@@ -128,6 +137,6 @@ class ProfileNotifier extends Notifier<UserProfile?> {
     await box.delete('activeProfileId');
     ref.read(activeProfileIdProvider.notifier).state = null;
     
-    ref.invalidateSelf();
+    _refreshProfiles();
   }
 }
