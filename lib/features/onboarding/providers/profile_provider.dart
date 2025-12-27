@@ -59,4 +59,10 @@ class ProfileNotifier extends Notifier<UserProfile?> {
     await repository.saveProfile(updatedProfile);
     ref.invalidateSelf();
   }
+
+  Future<void> deleteProfile() async {
+    final repository = ref.read(profileRepositoryProvider);
+    await repository.deleteProfile();
+    ref.invalidateSelf();
+  }
 }
