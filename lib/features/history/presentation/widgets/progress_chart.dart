@@ -6,10 +6,12 @@ import 'package:visco/features/calculator/domain/models/measurement.dart';
 
 class ProgressChart extends StatelessWidget {
   final List<Measurement> measurements;
+  final double? goalValue;
 
   const ProgressChart({
     super.key,
     required this.measurements,
+    this.goalValue,
   });
 
   @override
@@ -38,8 +40,13 @@ class ProgressChart extends StatelessWidget {
     final vatValues = sortedMeasurements.map((m) => m.vatCm2).toList();
     final minVat = vatValues.reduce((a, b) => a < b ? a : b);
     final maxVat = vatValues.reduce((a, b) => a > b ? a : b);
-    final minY = (minVat - 20).clamp(0.0, double.infinity);
-    final maxY = maxVat + 20;
+    
+    // Include goal in range calculation if set
+    final effectiveMinVat = goalValue != null && goalValue! < minVat ? goalValue! : minVat;
+    final effectiveMaxVat = goalValue != null && goalValue! > maxVat ? goalValue! : maxVat;
+    
+    final minY = (effectiveMinVat - 20).clamp(0.0, double.infinity);
+    final maxY = effectiveMaxVat + 20;
 
     // Handle single data point - need at least maxX > 0 for chart to render
     final maxX = spots.length > 1 ? (spots.length - 1).toDouble() : 1.0;
@@ -155,6 +162,19 @@ class ProgressChart extends StatelessWidget {
               dashArray: [5, 5],
               dotData: const FlDotData(show: false),
             ),
+          // Goal line - only show if set and in range
+          if (goalValue != null && goalValue! >= minY && goalValue! <= maxY)
+            LineChartBarData(
+              spots: [
+                FlSpot(0, goalValue!),
+                FlSpot(maxX, goalValue!),
+              ],
+              isCurved: false,
+              color: colors.success,
+              barWidth: 2,
+              dashArray: [8, 4],
+              dotData: const FlDotData(show: false),
+            ),
         ],
         lineTouchData: LineTouchData(
           enabled: true,
@@ -163,7 +183,7 @@ class ProgressChart extends StatelessWidget {
             tooltipBorder: BorderSide(color: colors.border),
             getTooltipItems: (touchedSpots) {
               return touchedSpots.map((spot) {
-                if (spot.barIndex == 1) return null; // Skip threshold line
+                if (spot.barIndex != 0) return null; // Only show tooltip for VAT line
                 final index = spot.x.toInt();
                 if (index < 0 || index >= sortedMeasurements.length) {
                   return null;

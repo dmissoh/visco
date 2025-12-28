@@ -7,6 +7,7 @@ import 'package:visco/features/calculator/providers/measurement_provider.dart';
 import 'package:visco/features/history/presentation/widgets/measurement_list_item.dart';
 import 'package:visco/features/history/presentation/widgets/progress_chart.dart';
 import 'package:visco/features/history/presentation/widgets/time_range_selector.dart';
+import 'package:visco/features/settings/providers/settings_provider.dart';
 
 class HistoryScreen extends ConsumerWidget {
   const HistoryScreen({super.key});
@@ -15,6 +16,7 @@ class HistoryScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = AppColors.of(context);
     final measurements = ref.watch(filteredMeasurementsProvider);
+    final goalValue = ref.watch(vatGoalProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -60,7 +62,10 @@ class HistoryScreen extends ConsumerWidget {
                           const SizedBox(height: AppSpacing.md),
                           SizedBox(
                             height: 200,
-                            child: ProgressChart(measurements: measurements),
+                            child: ProgressChart(
+                              measurements: measurements,
+                              goalValue: goalValue,
+                            ),
                           ),
                           const SizedBox(height: AppSpacing.md),
                           const TimeRangeSelector(),

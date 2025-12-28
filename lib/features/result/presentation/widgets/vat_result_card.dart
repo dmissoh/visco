@@ -50,7 +50,7 @@ class VatResultCard extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            '${measurement.vatCm2.toStringAsFixed(2)} cm\u00B2',
+            measurement.vatCm2.toStringAsFixed(2),
             style: AppTypography.display(color: colors.textPrimary),
             textAlign: TextAlign.center,
           ),

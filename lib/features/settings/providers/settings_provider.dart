@@ -23,3 +23,28 @@ class SettingsNotifier extends Notifier<ThemeMode> {
     state = mode;
   }
 }
+
+// VAT Goal provider
+final vatGoalProvider = NotifierProvider<VatGoalNotifier, double?>(() {
+  return VatGoalNotifier();
+});
+
+class VatGoalNotifier extends Notifier<double?> {
+  late Box _box;
+
+  @override
+  double? build() {
+    _box = Hive.box(settingsBoxName);
+    final goal = _box.get('vatGoal') as double?;
+    return goal;
+  }
+
+  Future<void> setGoal(double? goal) async {
+    if (goal == null) {
+      await _box.delete('vatGoal');
+    } else {
+      await _box.put('vatGoal', goal);
+    }
+    state = goal;
+  }
+}

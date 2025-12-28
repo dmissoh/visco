@@ -144,6 +144,13 @@ class SettingsScreen extends ConsumerWidget {
           ],
           const SizedBox(height: AppSpacing.xl),
           Text(
+            'Goals',
+            style: AppTypography.title(color: colors.textPrimary),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          _buildGoalSection(context, ref, colors),
+          const SizedBox(height: AppSpacing.xl),
+          Text(
             'Appearance',
             style: AppTypography.title(color: colors.textPrimary),
           ),
@@ -214,6 +221,115 @@ class SettingsScreen extends ConsumerWidget {
                 style: AppTypography.caption(color: colors.textSecondary),
               ),
               onTap: () => _showResetAllConfirmation(context, ref),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildGoalSection(BuildContext context, WidgetRef ref, AppColorScheme colors) {
+    final goalValue = ref.watch(vatGoalProvider);
+
+    return Container(
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        border: Border.all(color: colors.border),
+      ),
+      child: ListTile(
+        leading: Icon(
+          Icons.flag_outlined,
+          color: colors.textSecondary,
+        ),
+        title: Text(
+          'VAT Goal',
+          style: AppTypography.body(color: colors.textPrimary),
+        ),
+        subtitle: Text(
+          goalValue != null ? '${goalValue.toStringAsFixed(0)} cm\u00B2' : 'Not set',
+          style: AppTypography.caption(color: colors.textSecondary),
+        ),
+        trailing: Icon(
+          Icons.chevron_right,
+          color: colors.textSecondary,
+        ),
+        onTap: () => _showGoalDialog(context, ref, goalValue),
+      ),
+    );
+  }
+
+  void _showGoalDialog(BuildContext context, WidgetRef ref, double? currentGoal) {
+    final colors = AppColors.of(context);
+    final controller = TextEditingController(
+      text: currentGoal?.toStringAsFixed(0) ?? '',
+    );
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: colors.surface,
+        title: Text(
+          'Set VAT Goal',
+          style: AppTypography.title(color: colors.textPrimary),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Set a target visceral fat area to track on your progress chart.',
+              style: AppTypography.caption(color: colors.textSecondary),
+            ),
+            const SizedBox(height: AppSpacing.md),
+            TextField(
+              controller: controller,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: 'Goal (cm\u00B2)',
+                hintText: 'e.g., 100',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(AppRadius.sm),
+                ),
+              ),
+            ),
+            const SizedBox(height: AppSpacing.sm),
+            Text(
+              'Tip: Below 100 cm\u00B2 is considered healthy',
+              style: AppTypography.caption(color: colors.success),
+            ),
+          ],
+        ),
+        actions: [
+          if (currentGoal != null)
+            TextButton(
+              onPressed: () {
+                ref.read(vatGoalProvider.notifier).setGoal(null);
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Clear',
+                style: AppTypography.body(color: colors.danger),
+              ),
+            ),
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(
+              'Cancel',
+              style: AppTypography.body(color: colors.textSecondary),
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              final value = double.tryParse(controller.text);
+              if (value != null && value > 0) {
+                ref.read(vatGoalProvider.notifier).setGoal(value);
+              }
+              Navigator.pop(context);
+            },
+            child: Text(
+              'Save',
+              style: AppTypography.body(color: colors.accent),
             ),
           ),
         ],
