@@ -3,12 +3,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:visco/core/services/revenuecat_service.dart';
 
+/// Check if we're in a testable build (debug or profile mode, or test flag set)
+/// Use: flutter run --dart-define=ENABLE_DEV_OPTIONS=true
+const bool _enableDevOptions = bool.fromEnvironment('ENABLE_DEV_OPTIONS', defaultValue: false);
+bool get isDevOptionsEnabled => kDebugMode || kProfileMode || _enableDevOptions;
+
 /// Debug override for premium status during development
 /// Set to true to simulate premium user, false for free user, null to use real status
 final debugPremiumOverrideProvider = StateProvider<bool?>((ref) {
-  // In debug mode, default to premium for easier testing
+  // In dev mode, default to premium for easier testing
   // Set to null to test real RevenueCat flow
-  return kDebugMode ? true : null;
+  return isDevOptionsEnabled ? true : null;
 });
 
 /// Provider for RevenueCat service singleton

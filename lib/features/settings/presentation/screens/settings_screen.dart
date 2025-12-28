@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -276,8 +275,8 @@ class SettingsScreen extends ConsumerWidget {
               onTap: () => _showResetAllConfirmation(context, ref),
             ),
           ),
-          // Debug section - only visible in debug mode
-          if (kDebugMode) ...[
+          // Debug section - only visible in dev mode (debug, profile, or ENABLE_DEV_OPTIONS flag)
+          if (isDevOptionsEnabled) ...[
             const SizedBox(height: AppSpacing.xl),
             Text(
               'Developer Options',
