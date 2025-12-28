@@ -99,6 +99,70 @@ class UnitConverter {
   static String lengthUnit(UnitSystem system) => system == UnitSystem.imperial ? 'in' : 'cm';
 }
 
+// Reminder frequency enum
+enum ReminderFrequency { off, daily, weekly }
+
+// Reminder settings provider
+final reminderSettingsProvider = NotifierProvider<ReminderSettingsNotifier, ReminderSettings>(() {
+  return ReminderSettingsNotifier();
+});
+
+class ReminderSettings {
+  final ReminderFrequency frequency;
+  final int hour;
+  final int minute;
+  final int dayOfWeek; // 1 = Monday, 7 = Sunday (for weekly)
+
+  const ReminderSettings({
+    this.frequency = ReminderFrequency.off,
+    this.hour = 9,
+    this.minute = 0,
+    this.dayOfWeek = 1,
+  });
+
+  ReminderSettings copyWith({
+    ReminderFrequency? frequency,
+    int? hour,
+    int? minute,
+    int? dayOfWeek,
+  }) {
+    return ReminderSettings(
+      frequency: frequency ?? this.frequency,
+      hour: hour ?? this.hour,
+      minute: minute ?? this.minute,
+      dayOfWeek: dayOfWeek ?? this.dayOfWeek,
+    );
+  }
+}
+
+class ReminderSettingsNotifier extends Notifier<ReminderSettings> {
+  late Box _box;
+
+  @override
+  ReminderSettings build() {
+    _box = Hive.box(settingsBoxName);
+    final frequencyIndex = _box.get('reminderFrequency', defaultValue: 0) as int;
+    final hour = _box.get('reminderHour', defaultValue: 9) as int;
+    final minute = _box.get('reminderMinute', defaultValue: 0) as int;
+    final dayOfWeek = _box.get('reminderDayOfWeek', defaultValue: 1) as int;
+    
+    return ReminderSettings(
+      frequency: ReminderFrequency.values[frequencyIndex],
+      hour: hour,
+      minute: minute,
+      dayOfWeek: dayOfWeek,
+    );
+  }
+
+  Future<void> updateSettings(ReminderSettings settings) async {
+    await _box.put('reminderFrequency', settings.frequency.index);
+    await _box.put('reminderHour', settings.hour);
+    await _box.put('reminderMinute', settings.minute);
+    await _box.put('reminderDayOfWeek', settings.dayOfWeek);
+    state = settings;
+  }
+}
+
 // VAT Goal provider (profile-specific)
 // Uses a family provider to store goals per profile
 final vatGoalFamilyProvider = NotifierProviderFamily<VatGoalNotifier, double?, String>(VatGoalNotifier.new);

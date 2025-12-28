@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:visco/core/constants/app_constants.dart';
+import 'package:visco/core/services/notification_service.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/onboarding/domain/models/user_profile.dart';
@@ -156,6 +157,13 @@ class SettingsScreen extends ConsumerWidget {
           ),
           const SizedBox(height: AppSpacing.md),
           _buildUnitsSection(context, ref, colors),
+          const SizedBox(height: AppSpacing.xl),
+          Text(
+            'Reminders',
+            style: AppTypography.title(color: colors.textPrimary),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          _buildRemindersSection(context, ref, colors),
           const SizedBox(height: AppSpacing.xl),
           Text(
             'Appearance',
@@ -337,6 +345,225 @@ class SettingsScreen extends ConsumerWidget {
       onTap: () {
         ref.read(unitSystemProvider.notifier).setUnitSystem(value);
       },
+    );
+  }
+
+  Widget _buildRemindersSection(BuildContext context, WidgetRef ref, AppColorScheme colors) {
+    final reminderSettings = ref.watch(reminderSettingsProvider);
+    
+    String frequencyText;
+    String subtitleText;
+    
+    switch (reminderSettings.frequency) {
+      case ReminderFrequency.off:
+        frequencyText = 'Off';
+        subtitleText = 'No reminders scheduled';
+      case ReminderFrequency.daily:
+        final time = TimeOfDay(hour: reminderSettings.hour, minute: reminderSettings.minute);
+        frequencyText = 'Daily';
+        subtitleText = 'Every day at ${time.format(context)}';
+      case ReminderFrequency.weekly:
+        final time = TimeOfDay(hour: reminderSettings.hour, minute: reminderSettings.minute);
+        final dayName = _getDayName(reminderSettings.dayOfWeek);
+        frequencyText = 'Weekly';
+        subtitleText = 'Every $dayName at ${time.format(context)}';
+    }
+
+    return Container(
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        border: Border.all(color: colors.border),
+      ),
+      child: ListTile(
+        leading: Icon(
+          Icons.notifications_outlined,
+          color: colors.textSecondary,
+        ),
+        title: Text(
+          frequencyText,
+          style: AppTypography.body(color: colors.textPrimary),
+        ),
+        subtitle: Text(
+          subtitleText,
+          style: AppTypography.caption(color: colors.textSecondary),
+        ),
+        trailing: Icon(
+          Icons.chevron_right,
+          color: colors.textSecondary,
+        ),
+        onTap: () => _showReminderDialog(context, ref, reminderSettings),
+      ),
+    );
+  }
+
+  String _getDayName(int dayOfWeek) {
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    return days[dayOfWeek - 1];
+  }
+
+  void _showReminderDialog(BuildContext context, WidgetRef ref, ReminderSettings currentSettings) {
+    final colors = AppColors.of(context);
+    var frequency = currentSettings.frequency;
+    var hour = currentSettings.hour;
+    var minute = currentSettings.minute;
+    var dayOfWeek = currentSettings.dayOfWeek;
+
+    showDialog(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) => AlertDialog(
+          backgroundColor: colors.surface,
+          title: Text(
+            'Measurement Reminder',
+            style: AppTypography.title(color: colors.textPrimary),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Frequency',
+                style: AppTypography.caption(color: colors.textSecondary),
+              ),
+              const SizedBox(height: AppSpacing.sm),
+              SegmentedButton<ReminderFrequency>(
+                segments: const [
+                  ButtonSegment(value: ReminderFrequency.off, label: Text('Off')),
+                  ButtonSegment(value: ReminderFrequency.daily, label: Text('Daily')),
+                  ButtonSegment(value: ReminderFrequency.weekly, label: Text('Weekly')),
+                ],
+                selected: {frequency},
+                onSelectionChanged: (selected) {
+                  setState(() => frequency = selected.first);
+                },
+              ),
+              if (frequency != ReminderFrequency.off) ...[
+                const SizedBox(height: AppSpacing.lg),
+                Text(
+                  'Time',
+                  style: AppTypography.caption(color: colors.textSecondary),
+                ),
+                const SizedBox(height: AppSpacing.sm),
+                InkWell(
+                  onTap: () async {
+                    final time = await showTimePicker(
+                      context: context,
+                      initialTime: TimeOfDay(hour: hour, minute: minute),
+                    );
+                    if (time != null) {
+                      setState(() {
+                        hour = time.hour;
+                        minute = time.minute;
+                      });
+                    }
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.md,
+                      vertical: AppSpacing.sm,
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: colors.border),
+                      borderRadius: BorderRadius.circular(AppRadius.sm),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          TimeOfDay(hour: hour, minute: minute).format(context),
+                          style: AppTypography.body(color: colors.textPrimary),
+                        ),
+                        Icon(Icons.access_time, color: colors.textSecondary),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+              if (frequency == ReminderFrequency.weekly) ...[
+                const SizedBox(height: AppSpacing.lg),
+                Text(
+                  'Day',
+                  style: AppTypography.caption(color: colors.textSecondary),
+                ),
+                const SizedBox(height: AppSpacing.sm),
+                DropdownButtonFormField<int>(
+                  initialValue: dayOfWeek,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(AppRadius.sm),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.md,
+                      vertical: AppSpacing.sm,
+                    ),
+                  ),
+                  items: List.generate(7, (index) {
+                    return DropdownMenuItem(
+                      value: index + 1,
+                      child: Text(_getDayName(index + 1)),
+                    );
+                  }),
+                  onChanged: (value) {
+                    if (value != null) {
+                      setState(() => dayOfWeek = value);
+                    }
+                  },
+                ),
+              ],
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(
+                'Cancel',
+                style: AppTypography.body(color: colors.textSecondary),
+              ),
+            ),
+            TextButton(
+              onPressed: () async {
+                final newSettings = ReminderSettings(
+                  frequency: frequency,
+                  hour: hour,
+                  minute: minute,
+                  dayOfWeek: dayOfWeek,
+                );
+                
+                await ref.read(reminderSettingsProvider.notifier).updateSettings(newSettings);
+                
+                final notificationService = NotificationService();
+                
+                switch (frequency) {
+                  case ReminderFrequency.off:
+                    await notificationService.cancelAllReminders();
+                  case ReminderFrequency.daily:
+                    await notificationService.requestPermissions();
+                    await notificationService.scheduleDailyReminder(
+                      hour: hour,
+                      minute: minute,
+                    );
+                  case ReminderFrequency.weekly:
+                    await notificationService.requestPermissions();
+                    await notificationService.scheduleWeeklyReminder(
+                      dayOfWeek: dayOfWeek,
+                      hour: hour,
+                      minute: minute,
+                    );
+                }
+                
+                if (context.mounted) {
+                  Navigator.pop(context);
+                }
+              },
+              child: Text(
+                'Save',
+                style: AppTypography.body(color: colors.accent),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
