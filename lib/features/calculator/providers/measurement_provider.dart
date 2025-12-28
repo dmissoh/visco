@@ -9,6 +9,9 @@ import 'package:visco/features/onboarding/providers/profile_provider.dart';
 
 const _uuid = Uuid();
 
+// Refresh trigger for measurements
+final measurementRefreshProvider = StateProvider<int>((ref) => 0);
+
 final measurementRepositoryProvider = Provider<MeasurementRepository>((ref) {
   final box = ref.watch(measurementsBoxProvider);
   return MeasurementRepository(box);
@@ -18,6 +21,7 @@ final measurementRepositoryProvider = Provider<MeasurementRepository>((ref) {
 final measurementsProvider = Provider<List<Measurement>>((ref) {
   final repository = ref.watch(measurementRepositoryProvider);
   ref.watch(activeProfileIdProvider); // Watch for profile switches
+  ref.watch(measurementRefreshProvider); // Watch for measurement changes
   final profile = ref.watch(profileNotifierProvider);
   if (profile == null) return [];
   return repository.getMeasurementsForProfile(profile.id);
@@ -27,6 +31,7 @@ final measurementsProvider = Provider<List<Measurement>>((ref) {
 final latestMeasurementProvider = Provider<Measurement?>((ref) {
   final repository = ref.watch(measurementRepositoryProvider);
   ref.watch(activeProfileIdProvider); // Watch for profile switches
+  ref.watch(measurementRefreshProvider); // Watch for measurement changes
   final profile = ref.watch(profileNotifierProvider);
   if (profile == null) return null;
   return repository.getLatestMeasurementForProfile(profile.id);
@@ -76,6 +81,7 @@ class MeasurementNotifier extends Notifier<List<Measurement>> {
     );
 
     await repository.saveMeasurement(measurement);
+    ref.read(measurementRefreshProvider.notifier).state++;
     ref.invalidateSelf();
 
     return measurement;
@@ -84,12 +90,14 @@ class MeasurementNotifier extends Notifier<List<Measurement>> {
   Future<void> deleteMeasurement(String id) async {
     final repository = ref.read(measurementRepositoryProvider);
     await repository.deleteMeasurement(id);
+    ref.read(measurementRefreshProvider.notifier).state++;
     ref.invalidateSelf();
   }
 
   Future<void> deleteAllMeasurementsForProfile(String profileId) async {
     final repository = ref.read(measurementRepositoryProvider);
     await repository.deleteAllMeasurementsForProfile(profileId);
+    ref.read(measurementRefreshProvider.notifier).state++;
     ref.invalidateSelf();
   }
 
