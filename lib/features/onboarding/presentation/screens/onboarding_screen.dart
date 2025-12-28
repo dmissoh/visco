@@ -131,10 +131,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.monitor_heart_outlined,
-            size: 80,
-            color: colors.accent,
+          Image.asset(
+            'assets/icon.png',
+            width: 100,
+            height: 100,
           ),
           const SizedBox(height: AppSpacing.xl),
           Text(
