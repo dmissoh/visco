@@ -24,6 +24,7 @@ class DatePickerField extends StatelessWidget {
       initialDate: selectedDate,
       firstDate: DateTime(1920),
       lastDate: DateTime.now().subtract(const Duration(days: 365 * 18)),
+      locale: const Locale('en', 'GB'),
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(
