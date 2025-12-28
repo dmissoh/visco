@@ -9,6 +9,7 @@ import 'package:visco/features/calculator/presentation/widgets/measurement_guide
 import 'package:visco/features/calculator/presentation/widgets/measurement_input_field.dart';
 import 'package:visco/features/calculator/providers/measurement_provider.dart';
 import 'package:visco/features/onboarding/providers/profile_provider.dart';
+import 'package:visco/shared/widgets/trend_indicator.dart';
 
 class CalculatorScreen extends ConsumerStatefulWidget {
   const CalculatorScreen({super.key});
@@ -66,6 +67,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
     final colors = AppColors.of(context);
     final latestMeasurement = ref.watch(latestMeasurementProvider);
     final profile = ref.watch(profileNotifierProvider);
+    final trend = ref.watch(vatTrendProvider);
     final dateFormat = DateFormat('dd/MM/yyyy');
 
     return Scaffold(
@@ -181,24 +183,32 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'VAT: ${measurement.vatCm2.toStringAsFixed(2)} cm\u00B2',
-                              style: AppTypography.body(color: colors.textPrimary),
-                            ),
-                            const SizedBox(height: AppSpacing.xs),
-                            Text(
-                              'BMI: ${measurement.bmi.toStringAsFixed(1)}',
-                              style: AppTypography.body(color: colors.textPrimary),
-                            ),
-                            const SizedBox(height: AppSpacing.xs),
-                            Text(
-                              'Measured: ${isToday ? "Today" : dateFormat.format(measurement.timestamp)}',
-                              style: AppTypography.caption(color: colors.textSecondary),
-                            ),
-                          ],
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    'VAT: ${measurement.vatCm2.toStringAsFixed(2)}',
+                                    style: AppTypography.body(color: colors.textPrimary),
+                                  ),
+                                  const SizedBox(width: AppSpacing.sm),
+                                  TrendIndicator(trend: trend),
+                                ],
+                              ),
+                              const SizedBox(height: AppSpacing.xs),
+                              Text(
+                                'BMI: ${measurement.bmi.toStringAsFixed(1)}',
+                                style: AppTypography.body(color: colors.textPrimary),
+                              ),
+                              const SizedBox(height: AppSpacing.xs),
+                              Text(
+                                'Measured: ${isToday ? "Today" : dateFormat.format(measurement.timestamp)}',
+                                style: AppTypography.caption(color: colors.textSecondary),
+                              ),
+                            ],
+                          ),
                         ),
                         Icon(
                           Icons.chevron_right,

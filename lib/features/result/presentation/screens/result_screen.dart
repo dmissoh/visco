@@ -5,6 +5,7 @@ import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/calculator/domain/models/measurement.dart';
+import 'package:visco/features/calculator/providers/measurement_provider.dart';
 import 'package:visco/features/result/presentation/widgets/bmi_result_card.dart';
 import 'package:visco/features/result/presentation/widgets/bmi_scale_indicator.dart';
 import 'package:visco/features/result/presentation/widgets/measurements_summary.dart';
@@ -22,6 +23,7 @@ class ResultScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = AppColors.of(context);
+    final trend = ref.watch(vatTrendProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -37,7 +39,7 @@ class ResultScreen extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              VatResultCard(measurement: measurement),
+              VatResultCard(measurement: measurement, trend: trend),
               const SizedBox(height: AppSpacing.md),
               RiskScaleIndicator(vatValue: measurement.vatCm2),
               const SizedBox(height: AppSpacing.xl),

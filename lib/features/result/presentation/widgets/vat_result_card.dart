@@ -3,13 +3,17 @@ import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/calculator/domain/models/measurement.dart';
+import 'package:visco/features/calculator/providers/measurement_provider.dart';
+import 'package:visco/shared/widgets/trend_indicator.dart';
 
 class VatResultCard extends StatelessWidget {
   final Measurement measurement;
+  final VatTrend? trend;
 
   const VatResultCard({
     super.key,
     required this.measurement,
+    this.trend,
   });
 
   @override
@@ -55,10 +59,18 @@ class VatResultCard extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: AppSpacing.xs),
-          Text(
-            'Visceral Fat Area',
-            style: AppTypography.caption(color: colors.textSecondary),
-            textAlign: TextAlign.center,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Visceral Fat Area',
+                style: AppTypography.caption(color: colors.textSecondary),
+              ),
+              if (trend != null && trend!.direction != TrendDirection.unknown) ...[
+                const SizedBox(width: AppSpacing.sm),
+                TrendIndicator(trend: trend!),
+              ],
+            ],
           ),
           const SizedBox(height: AppSpacing.lg),
           Container(

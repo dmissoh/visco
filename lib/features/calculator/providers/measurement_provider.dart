@@ -132,3 +132,54 @@ final filteredMeasurementsProvider = Provider<List<Measurement>>((ref) {
       .where((m) => m.timestamp.isAfter(cutoff))
       .toList();
 });
+
+// Trend data for VAT changes
+enum TrendDirection { up, down, stable, unknown }
+
+class VatTrend {
+  final TrendDirection direction;
+  final double? change; // Absolute change
+  final double? percentChange; // Percentage change
+
+  const VatTrend({
+    required this.direction,
+    this.change,
+    this.percentChange,
+  });
+
+  static const unknown = VatTrend(direction: TrendDirection.unknown);
+}
+
+final vatTrendProvider = Provider<VatTrend>((ref) {
+  final measurements = ref.watch(measurementsProvider);
+  ref.watch(measurementRefreshProvider);
+
+  if (measurements.length < 2) {
+    return VatTrend.unknown;
+  }
+
+  // Sort by timestamp descending to get latest first
+  final sorted = List<Measurement>.from(measurements)
+    ..sort((a, b) => b.timestamp.compareTo(a.timestamp));
+
+  final latest = sorted[0];
+  final previous = sorted[1];
+
+  final change = latest.vatCm2 - previous.vatCm2;
+  final percentChange = (change / previous.vatCm2) * 100;
+
+  TrendDirection direction;
+  if (change.abs() < 1) {
+    direction = TrendDirection.stable;
+  } else if (change > 0) {
+    direction = TrendDirection.up;
+  } else {
+    direction = TrendDirection.down;
+  }
+
+  return VatTrend(
+    direction: direction,
+    change: change,
+    percentChange: percentChange,
+  );
+});

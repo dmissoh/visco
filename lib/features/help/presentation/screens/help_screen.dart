@@ -40,6 +40,18 @@ class HelpScreen extends StatelessWidget {
             const SizedBox(height: AppSpacing.xl),
             _buildSection(
               context,
+              title: 'Setting a Goal',
+              child: _buildGoalExplanation(context),
+            ),
+            const SizedBox(height: AppSpacing.xl),
+            _buildSection(
+              context,
+              title: 'Understanding the Trend Indicator',
+              child: _buildTrendExplanation(context),
+            ),
+            const SizedBox(height: AppSpacing.xl),
+            _buildSection(
+              context,
               title: 'How is Visceral Fat Calculated?',
               child: _buildCalculationExplanation(context),
             ),
@@ -414,6 +426,164 @@ class HelpScreen extends StatelessWidget {
             child: Text(
               text,
               style: AppTypography.caption(color: colors.success),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildGoalExplanation(BuildContext context) {
+    final colors = AppColors.of(context);
+
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        border: Border.all(color: colors.border),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'You can set a personal VAT goal to help track your progress toward '
+            'a healthier body composition.',
+            style: AppTypography.body(color: colors.textPrimary),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          Text(
+            'How to set a goal:',
+            style: AppTypography.title(color: colors.textPrimary),
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          _buildInstructionStep(
+            context,
+            step: '1',
+            text: 'Go to Settings from the calculator screen.',
+          ),
+          _buildInstructionStep(
+            context,
+            step: '2',
+            text: 'Tap on "Set VAT Goal" in the Goals section.',
+          ),
+          _buildInstructionStep(
+            context,
+            step: '3',
+            text: 'Enter your target VAT value and save.',
+          ),
+          const SizedBox(height: AppSpacing.md),
+          Text(
+            'Once set, your goal will appear as a green dashed line on the '
+            'progress chart, helping you visualize how close you are to your target.',
+            style: AppTypography.body(color: colors.textPrimary),
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          _buildTip(
+            context,
+            'A VAT below 100 cm\u00B2 is generally considered healthy. '
+            'Consult a healthcare provider for personalized advice.',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTrendExplanation(BuildContext context) {
+    final colors = AppColors.of(context);
+
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        border: Border.all(color: colors.border),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'The trend indicator shows how your VAT has changed compared to '
+            'your previous measurement.',
+            style: AppTypography.body(color: colors.textPrimary),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          _buildTrendItem(
+            context,
+            icon: Icons.arrow_downward,
+            color: colors.success,
+            label: 'Decreasing',
+            description:
+                'Your VAT is lower than before. Great progress toward reducing visceral fat.',
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          _buildTrendItem(
+            context,
+            icon: Icons.arrow_upward,
+            color: colors.danger,
+            label: 'Increasing',
+            description:
+                'Your VAT is higher than before. Consider reviewing your diet and exercise routine.',
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          _buildTrendItem(
+            context,
+            icon: Icons.remove,
+            color: colors.textSecondary,
+            label: 'Stable',
+            description:
+                'Your VAT has changed less than 1 cm\u00B2. Your levels are holding steady.',
+          ),
+          const SizedBox(height: AppSpacing.md),
+          Text(
+            'The trend indicator also displays the exact change in VAT (e.g., -5.2) '
+            'so you can see the magnitude of the difference.',
+            style: AppTypography.caption(color: colors.textSecondary),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTrendItem(
+    BuildContext context, {
+    required IconData icon,
+    required Color color,
+    required String label,
+    required String description,
+  }) {
+    final colors = AppColors.of(context);
+
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.sm),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(AppRadius.sm),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(
+            icon,
+            size: 20,
+            color: color,
+          ),
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  label,
+                  style: AppTypography.label(color: color),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  description,
+                  style: AppTypography.caption(color: colors.textPrimary),
+                ),
+              ],
             ),
           ),
         ],
