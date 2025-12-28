@@ -175,7 +175,8 @@ class VatGoalNotifier extends FamilyNotifier<double?, String> {
   @override
   double? build(String arg) {
     _box = Hive.box(settingsBoxName);
-    return _box.get(_goalKey) as double?;
+    // Default goal is 100 cm² (healthy threshold)
+    return _box.get(_goalKey, defaultValue: 100.0) as double?;
   }
 
   Future<void> setGoal(double? goal) async {
