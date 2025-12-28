@@ -65,11 +65,12 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
     final latestMeasurement = ref.watch(latestMeasurementProvider);
+    final profile = ref.watch(profileNotifierProvider);
     final dateFormat = DateFormat('MMMM d, yyyy');
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calculate'),
+        title: Text(profile?.name ?? 'Calculate'),
         actions: [
           IconButton(
             icon: const Icon(Icons.help_outline_rounded),
