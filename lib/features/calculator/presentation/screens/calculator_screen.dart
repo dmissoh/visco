@@ -173,14 +173,16 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                     DateTime.now(),
                   );
 
-                  return Container(
-                    padding: const EdgeInsets.all(AppSpacing.md),
-                    decoration: BoxDecoration(
-                      color: colors.surface,
-                      borderRadius: BorderRadius.circular(AppRadius.md),
-                      border: Border.all(color: colors.border),
-                    ),
-                    child: Row(
+                  return GestureDetector(
+                    onTap: () => context.push('/result', extra: measurement),
+                    child: Container(
+                      padding: const EdgeInsets.all(AppSpacing.md),
+                      decoration: BoxDecoration(
+                        color: colors.surface,
+                        borderRadius: BorderRadius.circular(AppRadius.md),
+                        border: Border.all(color: colors.border),
+                      ),
+                      child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Expanded(
@@ -210,11 +212,12 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                             ],
                           ),
                         ),
-                        Icon(
-                          Icons.chevron_right,
-                          color: colors.textSecondary,
-                        ),
-                      ],
+                          Icon(
+                            Icons.chevron_right,
+                            color: colors.textSecondary,
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
