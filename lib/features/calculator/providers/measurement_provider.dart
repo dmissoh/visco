@@ -17,6 +17,7 @@ final measurementRepositoryProvider = Provider<MeasurementRepository>((ref) {
 // All measurements for current profile
 final measurementsProvider = Provider<List<Measurement>>((ref) {
   final repository = ref.watch(measurementRepositoryProvider);
+  ref.watch(activeProfileIdProvider); // Watch for profile switches
   final profile = ref.watch(profileNotifierProvider);
   if (profile == null) return [];
   return repository.getMeasurementsForProfile(profile.id);
@@ -25,6 +26,7 @@ final measurementsProvider = Provider<List<Measurement>>((ref) {
 // Latest measurement for current profile
 final latestMeasurementProvider = Provider<Measurement?>((ref) {
   final repository = ref.watch(measurementRepositoryProvider);
+  ref.watch(activeProfileIdProvider); // Watch for profile switches
   final profile = ref.watch(profileNotifierProvider);
   if (profile == null) return null;
   return repository.getLatestMeasurementForProfile(profile.id);
@@ -38,6 +40,7 @@ class MeasurementNotifier extends Notifier<List<Measurement>> {
   @override
   List<Measurement> build() {
     final repository = ref.watch(measurementRepositoryProvider);
+    ref.watch(activeProfileIdProvider); // Watch for profile switches
     final profile = ref.watch(profileNotifierProvider);
     if (profile == null) return [];
     return repository.getMeasurementsForProfile(profile.id);
