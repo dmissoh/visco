@@ -7,6 +7,8 @@ import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/onboarding/domain/models/user_profile.dart';
 import 'package:visco/features/onboarding/providers/profile_provider.dart';
+import 'package:visco/features/premium/presentation/screens/paywall_screen.dart';
+import 'package:visco/features/premium/providers/premium_provider.dart';
 import 'package:visco/features/settings/providers/settings_provider.dart';
 
 class SettingsScreen extends ConsumerWidget {
@@ -18,6 +20,7 @@ class SettingsScreen extends ConsumerWidget {
     final currentTheme = ref.watch(settingsProvider);
     final profile = ref.watch(profileNotifierProvider);
     final allProfiles = ref.watch(allProfilesProvider);
+    final isPremium = ref.watch(isPremiumProvider);
 
     return Scaffold(
       backgroundColor: colors.background,
@@ -57,11 +60,45 @@ class SettingsScreen extends ConsumerWidget {
                     Icons.add_circle_outline,
                     color: colors.accent,
                   ),
-                  title: Text(
-                    'Add Profile',
-                    style: AppTypography.body(color: colors.accent),
+                  title: Row(
+                    children: [
+                      Text(
+                        'Add Profile',
+                        style: AppTypography.body(color: colors.accent),
+                      ),
+                      if (!isPremium && allProfiles.isNotEmpty) ...[
+                        const SizedBox(width: AppSpacing.sm),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 6,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: colors.accent,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: Text(
+                            'PRO',
+                            style: AppTypography.label(color: Colors.white)
+                                .copyWith(fontSize: 10),
+                          ),
+                        ),
+                      ],
+                    ],
                   ),
-                  onTap: () => context.push('/new-profile'),
+                  onTap: () async {
+                    // Free users can only have 1 profile
+                    if (!isPremium && allProfiles.isNotEmpty) {
+                      final upgraded = await showPaywall(
+                        context,
+                        featureName: 'Multiple Profiles',
+                      );
+                      if (!upgraded) return;
+                    }
+                    if (context.mounted) {
+                      context.push('/new-profile');
+                    }
+                  },
                 ),
               ],
             ),

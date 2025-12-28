@@ -6,6 +6,7 @@ import 'package:visco/features/calculator/domain/models/measurement.dart';
 import 'package:visco/features/calculator/domain/services/vat_calculator.dart';
 import 'package:visco/features/onboarding/domain/models/user_profile.dart';
 import 'package:visco/features/onboarding/providers/profile_provider.dart';
+import 'package:visco/features/premium/providers/premium_provider.dart';
 
 const _uuid = Uuid();
 
@@ -113,24 +114,54 @@ enum TimeRange { oneMonth, threeMonths, sixMonths, oneYear, all }
 
 final timeRangeProvider = StateProvider<TimeRange>((ref) => TimeRange.threeMonths);
 
+// Free tier history limit
+const int freeHistoryLimit = 10;
+
+// Provider to check if user has more measurements than free limit allows
+final hasLockedMeasurementsProvider = Provider<bool>((ref) {
+  final measurements = ref.watch(measurementsProvider);
+  final isPremium = ref.watch(isPremiumProvider);
+  return !isPremium && measurements.length > freeHistoryLimit;
+});
+
+// Number of locked measurements
+final lockedMeasurementsCountProvider = Provider<int>((ref) {
+  final measurements = ref.watch(measurementsProvider);
+  final isPremium = ref.watch(isPremiumProvider);
+  if (isPremium) return 0;
+  return (measurements.length - freeHistoryLimit).clamp(0, measurements.length);
+});
+
 final filteredMeasurementsProvider = Provider<List<Measurement>>((ref) {
   final measurements = ref.watch(measurementsProvider);
   final timeRange = ref.watch(timeRangeProvider);
+  final isPremium = ref.watch(isPremiumProvider);
 
-  if (timeRange == TimeRange.all) return measurements;
+  List<Measurement> filtered = measurements;
 
-  final now = DateTime.now();
-  final cutoff = switch (timeRange) {
-    TimeRange.oneMonth => now.subtract(const Duration(days: 30)),
-    TimeRange.threeMonths => now.subtract(const Duration(days: 90)),
-    TimeRange.sixMonths => now.subtract(const Duration(days: 180)),
-    TimeRange.oneYear => now.subtract(const Duration(days: 365)),
-    TimeRange.all => DateTime(1970),
-  };
+  // Apply time range filter
+  if (timeRange != TimeRange.all) {
+    final now = DateTime.now();
+    final cutoff = switch (timeRange) {
+      TimeRange.oneMonth => now.subtract(const Duration(days: 30)),
+      TimeRange.threeMonths => now.subtract(const Duration(days: 90)),
+      TimeRange.sixMonths => now.subtract(const Duration(days: 180)),
+      TimeRange.oneYear => now.subtract(const Duration(days: 365)),
+      TimeRange.all => DateTime(1970),
+    };
 
-  return measurements
-      .where((m) => m.timestamp.isAfter(cutoff))
-      .toList();
+    filtered = filtered.where((m) => m.timestamp.isAfter(cutoff)).toList();
+  }
+
+  // Apply free tier limit (only show latest 10 for free users)
+  if (!isPremium && filtered.length > freeHistoryLimit) {
+    // Sort by timestamp descending and take first 10
+    final sorted = List<Measurement>.from(filtered)
+      ..sort((a, b) => b.timestamp.compareTo(a.timestamp));
+    filtered = sorted.take(freeHistoryLimit).toList();
+  }
+
+  return filtered;
 });
 
 // Trend data for VAT changes

@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:visco/app.dart';
 import 'package:visco/core/providers/database_provider.dart';
 import 'package:visco/core/services/notification_service.dart';
+import 'package:visco/core/services/revenuecat_service.dart';
 import 'package:visco/features/calculator/domain/models/measurement.dart';
 import 'package:visco/features/onboarding/domain/models/user_profile.dart';
 import 'package:visco/features/settings/providers/settings_provider.dart';
@@ -17,6 +18,9 @@ void main() async {
     
     // Initialize notifications
     await NotificationService().initialize();
+    
+    // Initialize RevenueCat
+    await RevenueCatService().initialize();
 
     // Register adapters
     if (!Hive.isAdapterRegistered(0)) {
