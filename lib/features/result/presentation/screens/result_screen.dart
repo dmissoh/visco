@@ -5,6 +5,8 @@ import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/calculator/domain/models/measurement.dart';
+import 'package:visco/features/result/presentation/widgets/bmi_result_card.dart';
+import 'package:visco/features/result/presentation/widgets/bmi_scale_indicator.dart';
 import 'package:visco/features/result/presentation/widgets/measurements_summary.dart';
 import 'package:visco/features/result/presentation/widgets/risk_scale_indicator.dart';
 import 'package:visco/features/result/presentation/widgets/vat_result_card.dart';
@@ -36,13 +38,12 @@ class ResultScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               VatResultCard(measurement: measurement),
-              const SizedBox(height: AppSpacing.lg),
-              Text(
-                'Risk Scale',
-                style: AppTypography.title(color: colors.textPrimary),
-              ),
               const SizedBox(height: AppSpacing.md),
               RiskScaleIndicator(vatValue: measurement.vatCm2),
+              const SizedBox(height: AppSpacing.xl),
+              BmiResultCard(bmi: measurement.bmi),
+              const SizedBox(height: AppSpacing.md),
+              BmiScaleIndicator(bmiValue: measurement.bmi),
               const SizedBox(height: AppSpacing.xl),
               MeasurementsSummary(measurement: measurement),
               const SizedBox(height: AppSpacing.xl),

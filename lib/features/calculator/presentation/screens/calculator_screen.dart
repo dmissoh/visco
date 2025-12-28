@@ -185,7 +185,12 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Last Result: ${measurement.vatCm2.toStringAsFixed(2)} cm\u00B2',
+                              'VAT: ${measurement.vatCm2.toStringAsFixed(2)} cm\u00B2',
+                              style: AppTypography.body(color: colors.textPrimary),
+                            ),
+                            const SizedBox(height: AppSpacing.xs),
+                            Text(
+                              'BMI: ${measurement.bmi.toStringAsFixed(1)}',
                               style: AppTypography.body(color: colors.textPrimary),
                             ),
                             const SizedBox(height: AppSpacing.xs),
