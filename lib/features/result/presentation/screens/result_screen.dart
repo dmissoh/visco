@@ -6,6 +6,8 @@ import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/calculator/domain/models/measurement.dart';
 import 'package:visco/features/calculator/providers/measurement_provider.dart';
+import 'package:visco/features/export/services/pdf_export_service.dart';
+import 'package:visco/features/onboarding/providers/profile_provider.dart';
 import 'package:visco/features/result/presentation/widgets/bmi_result_card.dart';
 import 'package:visco/features/result/presentation/widgets/bmi_scale_indicator.dart';
 import 'package:visco/features/result/presentation/widgets/measurements_summary.dart';
@@ -24,6 +26,7 @@ class ResultScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = AppColors.of(context);
     final trend = ref.watch(vatTrendProvider);
+    final profile = ref.watch(profileNotifierProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -32,6 +35,17 @@ class ResultScreen extends ConsumerWidget {
           onPressed: () => context.go('/'),
         ),
         title: const Text('Result'),
+        actions: [
+          if (profile != null)
+            IconButton(
+              icon: const Icon(Icons.share_outlined),
+              onPressed: () => PdfExportService.exportSingleMeasurement(
+                profile: profile,
+                measurement: measurement,
+              ),
+              tooltip: 'Share Result',
+            ),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(

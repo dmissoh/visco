@@ -4,6 +4,7 @@ import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/calculator/providers/measurement_provider.dart';
+import 'package:visco/features/export/services/pdf_export_service.dart';
 import 'package:visco/features/history/presentation/widgets/measurement_list_item.dart';
 import 'package:visco/features/history/presentation/widgets/progress_chart.dart';
 import 'package:visco/features/history/presentation/widgets/time_range_selector.dart';
@@ -25,6 +26,17 @@ class HistoryScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Progress'),
+        actions: [
+          if (measurements.isNotEmpty && profile != null)
+            IconButton(
+              icon: const Icon(Icons.share_outlined),
+              onPressed: () => PdfExportService.exportMeasurements(
+                profile: profile,
+                measurements: measurements,
+              ),
+              tooltip: 'Export PDF',
+            ),
+        ],
       ),
       body: SafeArea(
         child: measurements.isEmpty
