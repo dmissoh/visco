@@ -151,6 +151,13 @@ class SettingsScreen extends ConsumerWidget {
           _buildGoalSection(context, ref, colors),
           const SizedBox(height: AppSpacing.xl),
           Text(
+            'Units',
+            style: AppTypography.title(color: colors.textPrimary),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          _buildUnitsSection(context, ref, colors),
+          const SizedBox(height: AppSpacing.xl),
+          Text(
             'Appearance',
             style: AppTypography.title(color: colors.textPrimary),
           ),
@@ -261,6 +268,75 @@ class SettingsScreen extends ConsumerWidget {
             ? () => _showGoalDialog(context, ref, profile.id, goalValue) 
             : null,
       ),
+    );
+  }
+
+  Widget _buildUnitsSection(BuildContext context, WidgetRef ref, AppColorScheme colors) {
+    final currentUnit = ref.watch(unitSystemProvider);
+
+    return Container(
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        border: Border.all(color: colors.border),
+      ),
+      child: Column(
+        children: [
+          _buildUnitOption(
+            context,
+            ref,
+            title: 'Metric',
+            subtitle: 'kg, cm',
+            value: UnitSystem.metric,
+            currentValue: currentUnit,
+            icon: Icons.straighten_outlined,
+          ),
+          Divider(height: 1, color: colors.border),
+          _buildUnitOption(
+            context,
+            ref,
+            title: 'Imperial',
+            subtitle: 'lbs, inches',
+            value: UnitSystem.imperial,
+            currentValue: currentUnit,
+            icon: Icons.square_foot_outlined,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildUnitOption(
+    BuildContext context,
+    WidgetRef ref, {
+    required String title,
+    required String subtitle,
+    required UnitSystem value,
+    required UnitSystem currentValue,
+    required IconData icon,
+  }) {
+    final colors = AppColors.of(context);
+    final isSelected = value == currentValue;
+
+    return ListTile(
+      leading: Icon(
+        icon,
+        color: isSelected ? colors.accent : colors.textSecondary,
+      ),
+      title: Text(
+        title,
+        style: AppTypography.body(color: colors.textPrimary),
+      ),
+      subtitle: Text(
+        subtitle,
+        style: AppTypography.caption(color: colors.textSecondary),
+      ),
+      trailing: isSelected
+          ? Icon(Icons.check_circle, color: colors.accent)
+          : null,
+      onTap: () {
+        ref.read(unitSystemProvider.notifier).setUnitSystem(value);
+      },
     );
   }
 

@@ -9,6 +9,7 @@ import 'package:visco/features/calculator/presentation/widgets/measurement_guide
 import 'package:visco/features/calculator/presentation/widgets/measurement_input_field.dart';
 import 'package:visco/features/calculator/providers/measurement_provider.dart';
 import 'package:visco/features/onboarding/providers/profile_provider.dart';
+import 'package:visco/features/settings/providers/settings_provider.dart';
 import 'package:visco/shared/widgets/trend_indicator.dart';
 
 class CalculatorScreen extends ConsumerStatefulWidget {
@@ -68,6 +69,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
     final latestMeasurement = ref.watch(latestMeasurementProvider);
     final profile = ref.watch(profileNotifierProvider);
     final trend = ref.watch(vatTrendProvider);
+    final unitSystem = ref.watch(unitSystemProvider);
     final dateFormat = DateFormat('dd/MM/yyyy');
 
     return Scaffold(
@@ -113,6 +115,8 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                 hint: 'Enter weight',
                 minValue: 30,
                 maxValue: 300,
+                measurementType: MeasurementType.weight,
+                unitSystem: unitSystem,
                 onChanged: (value) => setState(() => _weight = value),
               ),
               const SizedBox(height: AppSpacing.lg),
@@ -121,6 +125,8 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                 unit: 'cm',
                 hint: 'Enter waist',
                 minValue: 50,
+                measurementType: MeasurementType.length,
+                unitSystem: unitSystem,
                 maxValue: 200,
                 showInfoButton: true,
                 onInfoPressed: () => _showMeasurementGuide('waist'),
@@ -133,6 +139,8 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                 hint: 'Enter thigh',
                 minValue: 30,
                 maxValue: 100,
+                measurementType: MeasurementType.length,
+                unitSystem: unitSystem,
                 showInfoButton: true,
                 onInfoPressed: () => _showMeasurementGuide('thigh'),
                 onChanged: (value) => setState(() => _thigh = value),
