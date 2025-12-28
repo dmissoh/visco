@@ -24,26 +24,26 @@ class SettingsNotifier extends Notifier<ThemeMode> {
   }
 }
 
-// VAT Goal provider
-final vatGoalProvider = NotifierProvider<VatGoalNotifier, double?>(() {
-  return VatGoalNotifier();
-});
+// VAT Goal provider (profile-specific)
+// Uses a family provider to store goals per profile
+final vatGoalFamilyProvider = NotifierProviderFamily<VatGoalNotifier, double?, String>(VatGoalNotifier.new);
 
-class VatGoalNotifier extends Notifier<double?> {
+class VatGoalNotifier extends FamilyNotifier<double?, String> {
   late Box _box;
 
+  String get _goalKey => 'vatGoal_$arg';
+
   @override
-  double? build() {
+  double? build(String arg) {
     _box = Hive.box(settingsBoxName);
-    final goal = _box.get('vatGoal') as double?;
-    return goal;
+    return _box.get(_goalKey) as double?;
   }
 
   Future<void> setGoal(double? goal) async {
     if (goal == null) {
-      await _box.delete('vatGoal');
+      await _box.delete(_goalKey);
     } else {
-      await _box.put('vatGoal', goal);
+      await _box.put(_goalKey, goal);
     }
     state = goal;
   }

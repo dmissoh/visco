@@ -7,6 +7,7 @@ import 'package:visco/features/calculator/providers/measurement_provider.dart';
 import 'package:visco/features/history/presentation/widgets/measurement_list_item.dart';
 import 'package:visco/features/history/presentation/widgets/progress_chart.dart';
 import 'package:visco/features/history/presentation/widgets/time_range_selector.dart';
+import 'package:visco/features/onboarding/providers/profile_provider.dart';
 import 'package:visco/features/settings/providers/settings_provider.dart';
 
 class HistoryScreen extends ConsumerWidget {
@@ -16,7 +17,10 @@ class HistoryScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = AppColors.of(context);
     final measurements = ref.watch(filteredMeasurementsProvider);
-    final goalValue = ref.watch(vatGoalProvider);
+    final profile = ref.watch(profileNotifierProvider);
+    final goalValue = profile != null 
+        ? ref.watch(vatGoalFamilyProvider(profile.id)) 
+        : null;
 
     return Scaffold(
       appBar: AppBar(

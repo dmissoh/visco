@@ -229,7 +229,10 @@ class SettingsScreen extends ConsumerWidget {
   }
 
   Widget _buildGoalSection(BuildContext context, WidgetRef ref, AppColorScheme colors) {
-    final goalValue = ref.watch(vatGoalProvider);
+    final profile = ref.watch(profileNotifierProvider);
+    final goalValue = profile != null 
+        ? ref.watch(vatGoalFamilyProvider(profile.id)) 
+        : null;
 
     return Container(
       decoration: BoxDecoration(
@@ -254,12 +257,14 @@ class SettingsScreen extends ConsumerWidget {
           Icons.chevron_right,
           color: colors.textSecondary,
         ),
-        onTap: () => _showGoalDialog(context, ref, goalValue),
+        onTap: profile != null 
+            ? () => _showGoalDialog(context, ref, profile.id, goalValue) 
+            : null,
       ),
     );
   }
 
-  void _showGoalDialog(BuildContext context, WidgetRef ref, double? currentGoal) {
+  void _showGoalDialog(BuildContext context, WidgetRef ref, String profileId, double? currentGoal) {
     final colors = AppColors.of(context);
     final controller = TextEditingController(
       text: currentGoal?.toStringAsFixed(0) ?? '',
@@ -304,7 +309,7 @@ class SettingsScreen extends ConsumerWidget {
           if (currentGoal != null)
             TextButton(
               onPressed: () {
-                ref.read(vatGoalProvider.notifier).setGoal(null);
+                ref.read(vatGoalFamilyProvider(profileId).notifier).setGoal(null);
                 Navigator.pop(context);
               },
               child: Text(
@@ -323,7 +328,7 @@ class SettingsScreen extends ConsumerWidget {
             onPressed: () {
               final value = double.tryParse(controller.text);
               if (value != null && value > 0) {
-                ref.read(vatGoalProvider.notifier).setGoal(value);
+                ref.read(vatGoalFamilyProvider(profileId).notifier).setGoal(value);
               }
               Navigator.pop(context);
             },
