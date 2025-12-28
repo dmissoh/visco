@@ -54,6 +54,8 @@ class ProfileNotifier extends Notifier<UserProfile?> {
     String? id,
   }) async {
     final repository = ref.read(profileRepositoryProvider);
+    final refreshNotifier = ref.read(profileRefreshProvider.notifier);
+    final activeIdNotifier = ref.read(activeProfileIdProvider.notifier);
 
     final profile = UserProfile(
       id: id,
@@ -64,20 +66,21 @@ class ProfileNotifier extends Notifier<UserProfile?> {
     );
 
     await repository.saveProfile(profile);
-    await _setActiveProfile(profile.id);
-    ref.invalidateSelf();
-    ref.read(profileRefreshProvider.notifier).state++;
+    
+    // Set active profile
+    final box = Hive.box(settingsBoxName);
+    await box.put('activeProfileId', profile.id);
+    activeIdNotifier.state = profile.id;
+    
+    refreshNotifier.state++;
   }
 
   Future<void> switchProfile(String profileId) async {
-    await _setActiveProfile(profileId);
-    ref.invalidateSelf();
-  }
-
-  Future<void> _setActiveProfile(String profileId) async {
+    final activeIdNotifier = ref.read(activeProfileIdProvider.notifier);
+    
     final box = Hive.box(settingsBoxName);
     await box.put('activeProfileId', profileId);
-    ref.read(activeProfileIdProvider.notifier).state = profileId;
+    activeIdNotifier.state = profileId;
   }
 
   Future<void> updateProfile({
@@ -90,6 +93,7 @@ class ProfileNotifier extends Notifier<UserProfile?> {
     if (currentProfile == null) return;
 
     final repository = ref.read(profileRepositoryProvider);
+    final refreshNotifier = ref.read(profileRefreshProvider.notifier);
 
     final updatedProfile = UserProfile(
       id: currentProfile.id,
@@ -100,43 +104,48 @@ class ProfileNotifier extends Notifier<UserProfile?> {
     );
 
     await repository.saveProfile(updatedProfile);
-    ref.invalidateSelf();
-    ref.read(profileRefreshProvider.notifier).state++;
+    refreshNotifier.state++;
   }
 
   Future<void> deleteProfile([String? id]) async {
     final repository = ref.read(profileRepositoryProvider);
+    final refreshNotifier = ref.read(profileRefreshProvider.notifier);
+    final activeIdNotifier = ref.read(activeProfileIdProvider.notifier);
     final profileIdToDelete = id ?? state?.id;
+    final currentProfileId = state?.id;
     
     if (profileIdToDelete != null) {
       await repository.deleteProfile(profileIdToDelete);
       
       // If we deleted the active profile, switch to another
-      if (state?.id == profileIdToDelete) {
+      if (currentProfileId == profileIdToDelete) {
         final remaining = repository.getAllProfiles();
         if (remaining.isNotEmpty) {
-          await _setActiveProfile(remaining.first.id);
+          final box = Hive.box(settingsBoxName);
+          await box.put('activeProfileId', remaining.first.id);
+          activeIdNotifier.state = remaining.first.id;
         } else {
           final box = Hive.box(settingsBoxName);
           await box.delete('activeProfileId');
-          ref.read(activeProfileIdProvider.notifier).state = null;
+          activeIdNotifier.state = null;
         }
       }
     }
     
-    ref.invalidateSelf();
-    ref.read(profileRefreshProvider.notifier).state++;
+    refreshNotifier.state++;
   }
 
   Future<void> deleteAllProfiles() async {
     final repository = ref.read(profileRepositoryProvider);
+    final refreshNotifier = ref.read(profileRefreshProvider.notifier);
+    final activeIdNotifier = ref.read(activeProfileIdProvider.notifier);
+    
     await repository.deleteAllProfiles();
     
     final box = Hive.box(settingsBoxName);
     await box.delete('activeProfileId');
-    ref.read(activeProfileIdProvider.notifier).state = null;
+    activeIdNotifier.state = null;
     
-    ref.invalidateSelf();
-    ref.read(profileRefreshProvider.notifier).state++;
+    refreshNotifier.state++;
   }
 }
