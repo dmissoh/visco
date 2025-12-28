@@ -76,7 +76,7 @@ class ProgressChart extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(top: 8),
                   child: Text(
-                    DateFormat('MMM d').format(date),
+                    DateFormat('dd/MM').format(date),
                     style: TextStyle(
                       color: colors.textSecondary,
                       fontSize: 10,
@@ -170,7 +170,7 @@ class ProgressChart extends StatelessWidget {
                 }
                 final measurement = sortedMeasurements[index];
                 return LineTooltipItem(
-                  '${measurement.vatCm2.toStringAsFixed(1)} cm\u00B2\n${DateFormat('MMM d').format(measurement.timestamp)}',
+                  '${measurement.vatCm2.toStringAsFixed(1)} cm\u00B2\n${DateFormat('dd/MM/yyyy').format(measurement.timestamp)}',
                   TextStyle(
                     color: colors.textPrimary,
                     fontWeight: FontWeight.w500,

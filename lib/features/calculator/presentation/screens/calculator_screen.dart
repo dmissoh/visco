@@ -66,7 +66,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
     final colors = AppColors.of(context);
     final latestMeasurement = ref.watch(latestMeasurementProvider);
     final profile = ref.watch(profileNotifierProvider);
-    final dateFormat = DateFormat('MMMM d, yyyy');
+    final dateFormat = DateFormat('dd/MM/yyyy');
 
     return Scaffold(
       appBar: AppBar(

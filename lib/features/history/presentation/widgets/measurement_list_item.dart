@@ -18,7 +18,7 @@ class MeasurementListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
-    final dateFormat = DateFormat('MMM d, yyyy');
+    final dateFormat = DateFormat('dd/MM/yyyy');
 
     final riskColor = switch (measurement.riskCategory) {
       RiskCategory.healthy => colors.success,
