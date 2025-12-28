@@ -36,13 +36,18 @@ class ProgressChart extends StatelessWidget {
 
     // Calculate min/max for Y axis
     final vatValues = sortedMeasurements.map((m) => m.vatCm2).toList();
-    final minY = (vatValues.reduce((a, b) => a < b ? a : b) - 20).clamp(0.0, double.infinity);
-    final maxY = vatValues.reduce((a, b) => a > b ? a : b) + 20;
+    final minVat = vatValues.reduce((a, b) => a < b ? a : b);
+    final maxVat = vatValues.reduce((a, b) => a > b ? a : b);
+    final minY = (minVat - 20).clamp(0.0, double.infinity);
+    final maxY = maxVat + 20;
+
+    // Handle single data point - need at least maxX > 0 for chart to render
+    final maxX = spots.length > 1 ? (spots.length - 1).toDouble() : 1.0;
 
     return LineChart(
       LineChartData(
         minX: 0,
-        maxX: (spots.length - 1).toDouble().clamp(0, double.infinity),
+        maxX: maxX,
         minY: minY,
         maxY: maxY,
         gridData: FlGridData(
@@ -71,7 +76,7 @@ class ProgressChart extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(top: 8),
                   child: Text(
-                    DateFormat('MMM').format(date),
+                    DateFormat('MMM d').format(date),
                     style: TextStyle(
                       color: colors.textSecondary,
                       fontSize: 10,
@@ -109,7 +114,7 @@ class ProgressChart extends StatelessWidget {
           // VAT line
           LineChartBarData(
             spots: spots,
-            isCurved: true,
+            isCurved: spots.length > 2,
             curveSmoothness: 0.3,
             color: colors.accent,
             barWidth: 3,
@@ -118,7 +123,7 @@ class ProgressChart extends StatelessWidget {
               show: true,
               getDotPainter: (spot, percent, barData, index) {
                 return FlDotCirclePainter(
-                  radius: 4,
+                  radius: 5,
                   color: colors.accent,
                   strokeWidth: 2,
                   strokeColor: colors.background,
@@ -126,7 +131,7 @@ class ProgressChart extends StatelessWidget {
               },
             ),
             belowBarData: BarAreaData(
-              show: true,
+              show: spots.length > 1,
               gradient: LinearGradient(
                 colors: [
                   colors.accent.withValues(alpha: 0.3),
@@ -137,18 +142,19 @@ class ProgressChart extends StatelessWidget {
               ),
             ),
           ),
-          // Healthy threshold line (100 cm2)
-          LineChartBarData(
-            spots: [
-              const FlSpot(0, 100),
-              FlSpot((spots.length - 1).toDouble().clamp(0, double.infinity), 100),
-            ],
-            isCurved: false,
-            color: colors.success.withValues(alpha: 0.5),
-            barWidth: 2,
-            dashArray: [5, 5],
-            dotData: const FlDotData(show: false),
-          ),
+          // Healthy threshold line (100 cm2) - only show if in range
+          if (100 >= minY && 100 <= maxY)
+            LineChartBarData(
+              spots: [
+                const FlSpot(0, 100),
+                FlSpot(maxX, 100),
+              ],
+              isCurved: false,
+              color: colors.success.withValues(alpha: 0.5),
+              barWidth: 2,
+              dashArray: [5, 5],
+              dotData: const FlDotData(show: false),
+            ),
         ],
         lineTouchData: LineTouchData(
           enabled: true,
@@ -180,9 +186,9 @@ class ProgressChart extends StatelessWidget {
   }
 
   double _calculateInterval(int count) {
-    if (count <= 5) return 1;
-    if (count <= 10) return 2;
-    if (count <= 20) return 4;
+    if (count <= 3) return 1;
+    if (count <= 7) return 2;
+    if (count <= 15) return 3;
     return (count / 5).ceil().toDouble();
   }
 }
