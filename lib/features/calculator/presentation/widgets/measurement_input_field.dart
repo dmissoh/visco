@@ -11,6 +11,8 @@ class MeasurementInputField extends StatefulWidget {
   final bool showInfoButton;
   final VoidCallback? onInfoPressed;
   final ValueChanged<double?> onChanged;
+  final double? minValue;
+  final double? maxValue;
 
   const MeasurementInputField({
     super.key,
@@ -20,6 +22,8 @@ class MeasurementInputField extends StatefulWidget {
     this.showInfoButton = false,
     this.onInfoPressed,
     required this.onChanged,
+    this.minValue,
+    this.maxValue,
   });
 
   @override
@@ -28,11 +32,24 @@ class MeasurementInputField extends StatefulWidget {
 
 class _MeasurementInputFieldState extends State<MeasurementInputField> {
   final _controller = TextEditingController();
+  String? _errorText;
 
   @override
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  String? _validate(double? value) {
+    if (value == null) return null;
+    
+    if (widget.minValue != null && value < widget.minValue!) {
+      return 'Min ${widget.minValue!.toInt()} ${widget.unit}';
+    }
+    if (widget.maxValue != null && value > widget.maxValue!) {
+      return 'Max ${widget.maxValue!.toInt()} ${widget.unit}';
+    }
+    return null;
   }
 
   @override
@@ -70,12 +87,16 @@ class _MeasurementInputFieldState extends State<MeasurementInputField> {
           ],
           onChanged: (value) {
             final parsed = double.tryParse(value);
-            widget.onChanged(parsed);
+            final error = _validate(parsed);
+            setState(() => _errorText = error);
+            // Only pass valid values to parent
+            widget.onChanged(error == null ? parsed : null);
           },
           decoration: InputDecoration(
             hintText: widget.hint,
             suffixText: widget.unit,
             suffixStyle: AppTypography.body(color: colors.textSecondary),
+            errorText: _errorText,
           ),
           style: AppTypography.body(color: colors.textPrimary),
         ),
