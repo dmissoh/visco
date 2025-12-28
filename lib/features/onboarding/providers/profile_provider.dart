@@ -11,11 +11,11 @@ final profileRepositoryProvider = Provider<ProfileRepository>((ref) {
 });
 
 // Trigger to refresh profile list
-final _profileRefreshProvider = StateProvider<int>((ref) => 0);
+final profileRefreshProvider = StateProvider<int>((ref) => 0);
 
 // All profiles
 final allProfilesProvider = Provider<List<UserProfile>>((ref) {
-  ref.watch(_profileRefreshProvider); // Watch for refresh triggers
+  ref.watch(profileRefreshProvider);
   final repository = ref.watch(profileRepositoryProvider);
   return repository.getAllProfiles();
 });
@@ -33,7 +33,7 @@ final profileNotifierProvider =
 class ProfileNotifier extends Notifier<UserProfile?> {
   @override
   UserProfile? build() {
-    ref.watch(_profileRefreshProvider); // Watch for refresh triggers
+    ref.watch(profileRefreshProvider);
     final repository = ref.watch(profileRepositoryProvider);
     final activeId = ref.watch(activeProfileIdProvider);
     
@@ -44,10 +44,6 @@ class ProfileNotifier extends Notifier<UserProfile?> {
     
     // Fall back to first profile if active not found
     return repository.getFirstProfile();
-  }
-
-  void _refreshProfiles() {
-    ref.read(_profileRefreshProvider.notifier).state++;
   }
 
   Future<void> saveProfile({
@@ -69,12 +65,13 @@ class ProfileNotifier extends Notifier<UserProfile?> {
 
     await repository.saveProfile(profile);
     await _setActiveProfile(profile.id);
-    _refreshProfiles();
+    ref.invalidateSelf();
+    ref.read(profileRefreshProvider.notifier).state++;
   }
 
   Future<void> switchProfile(String profileId) async {
     await _setActiveProfile(profileId);
-    _refreshProfiles();
+    ref.invalidateSelf();
   }
 
   Future<void> _setActiveProfile(String profileId) async {
@@ -103,7 +100,8 @@ class ProfileNotifier extends Notifier<UserProfile?> {
     );
 
     await repository.saveProfile(updatedProfile);
-    _refreshProfiles();
+    ref.invalidateSelf();
+    ref.read(profileRefreshProvider.notifier).state++;
   }
 
   Future<void> deleteProfile([String? id]) async {
@@ -126,7 +124,8 @@ class ProfileNotifier extends Notifier<UserProfile?> {
       }
     }
     
-    _refreshProfiles();
+    ref.invalidateSelf();
+    ref.read(profileRefreshProvider.notifier).state++;
   }
 
   Future<void> deleteAllProfiles() async {
@@ -137,6 +136,7 @@ class ProfileNotifier extends Notifier<UserProfile?> {
     await box.delete('activeProfileId');
     ref.read(activeProfileIdProvider.notifier).state = null;
     
-    _refreshProfiles();
+    ref.invalidateSelf();
+    ref.read(profileRefreshProvider.notifier).state++;
   }
 }
