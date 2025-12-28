@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -275,7 +276,127 @@ class SettingsScreen extends ConsumerWidget {
               onTap: () => _showResetAllConfirmation(context, ref),
             ),
           ),
+          // Debug section - only visible in debug mode
+          if (kDebugMode) ...[
+            const SizedBox(height: AppSpacing.xl),
+            Text(
+              'Developer Options',
+              style: AppTypography.title(color: colors.textPrimary),
+            ),
+            const SizedBox(height: AppSpacing.md),
+            _buildDebugSection(context, ref, colors),
+          ],
         ],
+      ),
+    );
+  }
+
+  Widget _buildDebugSection(BuildContext context, WidgetRef ref, AppColorScheme colors) {
+    final debugOverride = ref.watch(debugPremiumOverrideProvider);
+    final isPremium = ref.watch(isPremiumProvider);
+
+    String statusText;
+    if (debugOverride == true) {
+      statusText = 'Simulating Premium';
+    } else if (debugOverride == false) {
+      statusText = 'Simulating Free';
+    } else {
+      statusText = 'Using Real Status';
+    }
+
+    return Container(
+      decoration: BoxDecoration(
+        color: colors.warning.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        border: Border.all(color: colors.warning.withValues(alpha: 0.3)),
+      ),
+      child: Column(
+        children: [
+          ListTile(
+            leading: Icon(
+              Icons.bug_report_outlined,
+              color: colors.warning,
+            ),
+            title: Text(
+              'Premium Status Override',
+              style: AppTypography.body(color: colors.textPrimary),
+            ),
+            subtitle: Text(
+              '$statusText (actual: ${isPremium ? "Premium" : "Free"})',
+              style: AppTypography.caption(color: colors.textSecondary),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: _buildDebugButton(
+                    context,
+                    ref,
+                    label: 'Free',
+                    isSelected: debugOverride == false,
+                    onTap: () => ref.read(debugPremiumOverrideProvider.notifier).state = false,
+                    colors: colors,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: _buildDebugButton(
+                    context,
+                    ref,
+                    label: 'Premium',
+                    isSelected: debugOverride == true,
+                    onTap: () => ref.read(debugPremiumOverrideProvider.notifier).state = true,
+                    colors: colors,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: _buildDebugButton(
+                    context,
+                    ref,
+                    label: 'Real',
+                    isSelected: debugOverride == null,
+                    onTap: () => ref.read(debugPremiumOverrideProvider.notifier).state = null,
+                    colors: colors,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDebugButton(
+    BuildContext context,
+    WidgetRef ref, {
+    required String label,
+    required bool isSelected,
+    required VoidCallback onTap,
+    required AppColorScheme colors,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        decoration: BoxDecoration(
+          color: isSelected ? colors.accent : colors.surface,
+          borderRadius: BorderRadius.circular(AppRadius.sm),
+          border: Border.all(
+            color: isSelected ? colors.accent : colors.border,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            label,
+            style: AppTypography.caption(
+              color: isSelected ? Colors.white : colors.textPrimary,
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -1,6 +1,15 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:visco/core/services/revenuecat_service.dart';
+
+/// Debug override for premium status during development
+/// Set to true to simulate premium user, false for free user, null to use real status
+final debugPremiumOverrideProvider = StateProvider<bool?>((ref) {
+  // In debug mode, default to premium for easier testing
+  // Set to null to test real RevenueCat flow
+  return kDebugMode ? true : null;
+});
 
 /// Provider for RevenueCat service singleton
 final revenueCatServiceProvider = Provider<RevenueCatService>((ref) {
@@ -49,6 +58,13 @@ final customerInfoProvider = FutureProvider<CustomerInfo?>((ref) async {
 
 /// Convenience provider to check if user is premium (synchronous with default false)
 final isPremiumProvider = Provider<bool>((ref) {
+  // Check for debug override first
+  final debugOverride = ref.watch(debugPremiumOverrideProvider);
+  if (debugOverride != null) {
+    return debugOverride;
+  }
+  
+  // Otherwise use real premium status
   final premiumStatus = ref.watch(premiumStatusProvider);
   return premiumStatus.valueOrNull ?? false;
 });
