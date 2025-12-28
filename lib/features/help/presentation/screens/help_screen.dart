@@ -24,6 +24,8 @@ class HelpScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            _buildIntroduction(context),
+            const SizedBox(height: AppSpacing.xl),
             _buildSection(
               context,
               title: 'How to Measure Waist Circumference',
@@ -56,6 +58,35 @@ class HelpScreen extends StatelessWidget {
             const SizedBox(height: AppSpacing.xl),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildIntroduction(BuildContext context) {
+    final colors = AppColors.of(context);
+
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: colors.accent.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(AppRadius.md),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'About Visco',
+            style: AppTypography.title(color: colors.accent),
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          Text(
+            'Visco helps you estimate your visceral fat using simple body measurements. '
+            'Visceral fat is the fat stored around your internal organs and is linked to '
+            'increased health risks. By tracking your measurements over time, you can '
+            'monitor your progress toward a healthier body composition.',
+            style: AppTypography.body(color: colors.textPrimary),
+          ),
+        ],
       ),
     );
   }
