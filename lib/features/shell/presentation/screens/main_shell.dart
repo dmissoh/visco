@@ -34,7 +34,7 @@ class MainShell extends ConsumerWidget {
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex,
         onDestinationSelected: (index) {
-          HapticFeedback.selectionClick();
+          HapticFeedback.lightImpact();
           ref.read(currentTabProvider.notifier).state = index;
         },
         backgroundColor: colors.surface,
