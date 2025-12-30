@@ -71,9 +71,11 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
       appBar: AppBar(
         title: const Text('What-If Calculator'),
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(AppSpacing.lg),
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(AppSpacing.lg),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -186,6 +188,7 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
                 _buildResultCard(colors, goalValue),
               ],
             ],
+          ),
           ),
         ),
       ),

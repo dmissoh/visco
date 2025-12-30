@@ -83,8 +83,10 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: SafeArea(
+          child: SingleChildScrollView(
           padding: const EdgeInsets.all(AppSpacing.lg),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -223,6 +225,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
               ),
             ],
           ),
+        ),
         ),
       ),
     );
