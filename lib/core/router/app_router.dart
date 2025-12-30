@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:visco/features/calculator/domain/models/measurement.dart';
 import 'package:visco/features/calculator/presentation/screens/calculator_screen.dart';
+import 'package:visco/features/calculator/presentation/screens/whatif_calculator_screen.dart';
 import 'package:visco/features/help/presentation/screens/help_screen.dart';
 import 'package:visco/features/history/presentation/screens/history_screen.dart';
 import 'package:visco/features/onboarding/presentation/screens/onboarding_screen.dart';
@@ -67,6 +68,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/new-profile',
         name: 'new-profile',
         builder: (context, state) => const OnboardingScreen(isAddingNewProfile: true),
+      ),
+      GoRoute(
+        path: '/whatif',
+        name: 'whatif',
+        builder: (context, state) => const WhatIfCalculatorScreen(),
       ),
     ],
     errorBuilder: (context, state) => Scaffold(

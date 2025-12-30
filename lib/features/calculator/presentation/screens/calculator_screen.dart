@@ -146,20 +146,51 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                 onChanged: (value) => setState(() => _thigh = value),
               ),
               const SizedBox(height: AppSpacing.xl),
-              SizedBox(
-                height: 56,
-                child: ElevatedButton(
-                  onPressed: _canCalculate && !_isLoading ? _calculate : null,
-                  child: _isLoading
-                      ? const SizedBox(
-                          width: 24,
-                          height: 24,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            color: Colors.white,
-                          ),
-                        )
-                      : const Text('Calculate VAT'),
+              Row(
+                children: [
+                  Expanded(
+                    child: SizedBox(
+                      height: 56,
+                      child: ElevatedButton(
+                        onPressed: _canCalculate && !_isLoading ? _calculate : null,
+                        child: _isLoading
+                            ? const SizedBox(
+                                width: 24,
+                                height: 24,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : const Text('Calculate & Save'),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: AppSpacing.md),
+                  SizedBox(
+                    height: 56,
+                    child: OutlinedButton(
+                      onPressed: () => context.push('/whatif'),
+                      style: OutlinedButton.styleFrom(
+                        side: BorderSide(color: colors.accent),
+                      ),
+                      child: Icon(
+                        Icons.science_outlined,
+                        color: colors.accent,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: AppSpacing.sm),
+              Center(
+                child: TextButton.icon(
+                  onPressed: () => context.push('/whatif'),
+                  icon: Icon(Icons.lightbulb_outline, size: 16, color: colors.textSecondary),
+                  label: Text(
+                    'Try What-If Calculator',
+                    style: AppTypography.caption(color: colors.textSecondary),
+                  ),
                 ),
               ),
               const SizedBox(height: AppSpacing.xl),
