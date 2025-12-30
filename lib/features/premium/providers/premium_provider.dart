@@ -8,6 +8,10 @@ import 'package:visco/core/services/revenuecat_service.dart';
 const bool _enableDevOptions = bool.fromEnvironment('ENABLE_DEV_OPTIONS', defaultValue: false);
 bool get isDevOptionsEnabled => kDebugMode || kProfileMode || _enableDevOptions;
 
+/// LAUNCH FLAG: Set to true to make all features free for initial launch
+/// When ready to enable freemium, set this to false
+const bool kAllFeaturesFree = true;
+
 /// Debug override for premium status during development
 /// Set to true to simulate premium user, false for free user, null to use real status
 final debugPremiumOverrideProvider = StateProvider<bool?>((ref) {
@@ -63,6 +67,11 @@ final customerInfoProvider = FutureProvider<CustomerInfo?>((ref) async {
 
 /// Convenience provider to check if user is premium (synchronous with default false)
 final isPremiumProvider = Provider<bool>((ref) {
+  // LAUNCH FLAG: All features free for initial launch
+  if (kAllFeaturesFree) {
+    return true;
+  }
+  
   // Check for debug override first
   final debugOverride = ref.watch(debugPremiumOverrideProvider);
   if (debugOverride != null) {
