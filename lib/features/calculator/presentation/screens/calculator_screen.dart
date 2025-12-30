@@ -30,6 +30,9 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
   Future<void> _calculate() async {
     if (!_canCalculate) return;
 
+    // Dismiss keyboard
+    FocusScope.of(context).unfocus();
+
     final profile = ref.read(profileNotifierProvider);
     if (profile == null) return;
 

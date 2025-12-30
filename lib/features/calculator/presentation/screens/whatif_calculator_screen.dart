@@ -35,6 +35,9 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
   void _calculate() {
     if (!_canCalculate) return;
 
+    // Dismiss keyboard
+    FocusScope.of(context).unfocus();
+
     final profile = ref.read(profileNotifierProvider);
     if (profile == null) return;
 
