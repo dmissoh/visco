@@ -8,6 +8,7 @@ import 'package:visco/features/calculator/domain/services/vat_calculator.dart';
 import 'package:visco/features/calculator/presentation/widgets/measurement_guide_modal.dart';
 import 'package:visco/features/calculator/presentation/widgets/measurement_input_field.dart';
 import 'package:visco/features/onboarding/providers/profile_provider.dart';
+import 'package:visco/features/result/presentation/widgets/risk_scale_indicator.dart';
 import 'package:visco/features/settings/providers/settings_provider.dart';
 
 /// A "What-If" calculator that lets users simulate VAT without saving
@@ -177,6 +178,11 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
                 const SizedBox(height: AppSpacing.xl),
                 Divider(color: colors.border),
                 const SizedBox(height: AppSpacing.lg),
+                
+                // Risk scale indicator
+                RiskScaleIndicator(vatValue: _result!.vatCm2),
+                const SizedBox(height: AppSpacing.lg),
+                
                 _buildResultCard(colors, goalValue),
               ],
             ],
