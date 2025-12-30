@@ -14,12 +14,20 @@ final currentTabProvider = StateProvider<int>((ref) => 0);
 class MainShell extends ConsumerWidget {
   const MainShell({super.key});
 
-  static const _screens = [
-    CalculatorScreen(),
-    WhatIfCalculatorScreen(),
-    HistoryScreen(),
-    SettingsScreen(),
-  ];
+  Widget _buildScreen(int index) {
+    switch (index) {
+      case 0:
+        return const CalculatorScreen();
+      case 1:
+        return const WhatIfCalculatorScreen();
+      case 2:
+        return const HistoryScreen();
+      case 3:
+        return const SettingsScreen();
+      default:
+        return const CalculatorScreen();
+    }
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,9 +35,12 @@ class MainShell extends ConsumerWidget {
     final currentIndex = ref.watch(currentTabProvider);
 
     return Scaffold(
-      body: IndexedStack(
-        index: currentIndex,
-        children: _screens,
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 200),
+        child: KeyedSubtree(
+          key: ValueKey<int>(currentIndex),
+          child: _buildScreen(currentIndex),
+        ),
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex,
