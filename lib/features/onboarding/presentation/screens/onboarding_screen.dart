@@ -76,32 +76,38 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final colors = AppColors.of(context);
+    // Always use light colors for onboarding regardless of system theme
+    const colors = AppColors.light;
 
     // For adding new profile, skip intro pages
     if (widget.isAddingNewProfile) {
       return _buildProfileSetupPage(colors, isStandalone: true);
     }
 
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: PageView(
-                controller: _pageController,
-                onPageChanged: (index) => setState(() => _currentPage = index),
-                children: [
-                  _buildWelcomePage(colors),
-                  _buildWhatIsVatPage(colors),
-                  _buildHowItWorksPage(colors),
-                  _buildProfileSetupPage(colors, isStandalone: false),
-                ],
+    // Always use white background for onboarding regardless of theme
+    return Theme(
+      data: ThemeData.light(),
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SafeArea(
+          child: Column(
+            children: [
+              Expanded(
+                child: PageView(
+                  controller: _pageController,
+                  onPageChanged: (index) => setState(() => _currentPage = index),
+                  children: [
+                    _buildWelcomePage(colors),
+                    _buildWhatIsVatPage(colors),
+                    _buildHowItWorksPage(colors),
+                    _buildProfileSetupPage(colors, isStandalone: false),
+                  ],
+                ),
               ),
-            ),
-            _buildPageIndicator(colors),
-            const SizedBox(height: AppSpacing.lg),
-          ],
+              _buildPageIndicator(colors),
+              const SizedBox(height: AppSpacing.lg),
+            ],
+          ),
         ),
       ),
     );
