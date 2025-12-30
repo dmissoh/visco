@@ -141,12 +141,6 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            'assets/icon.png',
-            width: 100,
-            height: 100,
-          ),
-          const SizedBox(height: AppSpacing.xl),
           Text(
             'Welcome to Visqo',
             style: AppTypography.display(color: colors.textPrimary),
