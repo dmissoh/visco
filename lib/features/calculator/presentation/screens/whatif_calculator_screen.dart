@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
@@ -66,6 +67,51 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
     final goalValue = profile != null
         ? ref.watch(vatGoalFamilyProvider(profile.id))
         : null;
+
+    // Show create profile prompt if no profile exists
+    if (profile == null) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('What-If Calculator'),
+        ),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(AppSpacing.lg),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.science_outlined,
+                  size: 80,
+                  color: colors.textTertiary,
+                ),
+                const SizedBox(height: AppSpacing.lg),
+                Text(
+                  'Create a Profile First',
+                  style: AppTypography.headline(color: colors.textPrimary),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: AppSpacing.md),
+                Text(
+                  'The What-If calculator needs your profile information (sex, age, height) to simulate visceral fat calculations.',
+                  style: AppTypography.body(color: colors.textSecondary),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: AppSpacing.xl),
+                SizedBox(
+                  width: double.infinity,
+                  height: 56,
+                  child: ElevatedButton(
+                    onPressed: () => context.push('/new-profile'),
+                    child: const Text('Create Profile'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(

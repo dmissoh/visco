@@ -10,6 +10,19 @@ final profileRepositoryProvider = Provider<ProfileRepository>((ref) {
   return ProfileRepository(box);
 });
 
+/// Tracks whether user has completed or skipped onboarding
+final onboardingCompletedProvider = StateProvider<bool>((ref) {
+  final box = Hive.box(settingsBoxName);
+  return box.get('onboardingCompleted', defaultValue: false) as bool;
+});
+
+/// Mark onboarding as completed (or skipped)
+Future<void> markOnboardingCompleted(WidgetRef ref) async {
+  final box = Hive.box(settingsBoxName);
+  await box.put('onboardingCompleted', true);
+  ref.read(onboardingCompletedProvider.notifier).state = true;
+}
+
 // Trigger to refresh profile list
 final profileRefreshProvider = StateProvider<int>((ref) => 0);
 

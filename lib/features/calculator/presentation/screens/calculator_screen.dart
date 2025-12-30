@@ -72,9 +72,61 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
     final unitSystem = ref.watch(unitSystemProvider);
     final dateFormat = DateFormat('dd/MM/yyyy');
 
+    // Show create profile prompt if no profile exists
+    if (profile == null) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Calculate'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.help_outline_rounded),
+              onPressed: () => context.push('/help'),
+              tooltip: 'Help',
+            ),
+          ],
+        ),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(AppSpacing.lg),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.person_outline,
+                  size: 80,
+                  color: colors.textTertiary,
+                ),
+                const SizedBox(height: AppSpacing.lg),
+                Text(
+                  'Create a Profile to Start',
+                  style: AppTypography.headline(color: colors.textPrimary),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: AppSpacing.md),
+                Text(
+                  'To calculate your visceral fat, we need some basic information about you like your sex, age, and height.',
+                  style: AppTypography.body(color: colors.textSecondary),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: AppSpacing.xl),
+                SizedBox(
+                  width: double.infinity,
+                  height: 56,
+                  child: ElevatedButton(
+                    onPressed: () => context.push('/new-profile'),
+                    child: const Text('Create Profile'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(profile?.name ?? 'Calculate'),
+        title: Text(profile.name),
         actions: [
           IconButton(
             icon: const Icon(Icons.help_outline_rounded),

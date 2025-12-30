@@ -61,6 +61,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             heightCm: _heightCm,
           );
 
+      // Mark onboarding as completed
+      await markOnboardingCompleted(ref);
+
       if (mounted) {
         context.go('/');
       }
@@ -125,6 +128,13 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     );
   }
 
+  Future<void> _skipOnboarding() async {
+    await markOnboardingCompleted(ref);
+    if (mounted) {
+      context.go('/');
+    }
+  }
+
   Widget _buildWelcomePage(AppColorScheme colors) {
     return Padding(
       padding: const EdgeInsets.all(AppSpacing.lg),
@@ -155,6 +165,14 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             child: ElevatedButton(
               onPressed: _nextPage,
               child: const Text('Get Started'),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          TextButton(
+            onPressed: _skipOnboarding,
+            child: Text(
+              'Skip and explore',
+              style: AppTypography.body(color: colors.textSecondary),
             ),
           ),
         ],

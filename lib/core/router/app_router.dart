@@ -6,13 +6,14 @@ import 'package:visco/features/calculator/presentation/screens/whatif_calculator
 import 'package:visco/features/help/presentation/screens/help_screen.dart';
 import 'package:visco/features/history/presentation/screens/history_screen.dart';
 import 'package:visco/features/onboarding/presentation/screens/onboarding_screen.dart';
-import 'package:visco/features/onboarding/providers/profile_provider.dart';
+import 'package:visco/features/onboarding/providers/profile_provider.dart' show profileNotifierProvider, onboardingCompletedProvider;
 import 'package:visco/features/result/presentation/screens/result_screen.dart';
 import 'package:visco/features/settings/presentation/screens/settings_screen.dart';
 import 'package:visco/features/shell/presentation/screens/main_shell.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   final profile = ref.watch(profileNotifierProvider);
+  final onboardingCompleted = ref.watch(onboardingCompletedProvider);
 
   return GoRouter(
     initialLocation: '/',
@@ -20,10 +21,12 @@ final routerProvider = Provider<GoRouter>((ref) {
       final hasProfile = profile != null;
       final isOnboarding = state.matchedLocation == '/onboarding';
 
-      if (!hasProfile && !isOnboarding) {
+      // Show onboarding only if no profile AND onboarding not completed/skipped
+      if (!hasProfile && !onboardingCompleted && !isOnboarding) {
         return '/onboarding';
       }
 
+      // If user has profile and tries to go to onboarding, redirect home
       if (hasProfile && isOnboarding) {
         return '/';
       }
