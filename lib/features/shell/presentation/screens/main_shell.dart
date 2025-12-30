@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/features/calculator/presentation/screens/calculator_screen.dart';
@@ -33,6 +34,7 @@ class MainShell extends ConsumerWidget {
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex,
         onDestinationSelected: (index) {
+          HapticFeedback.selectionClick();
           ref.read(currentTabProvider.notifier).state = index;
         },
         backgroundColor: colors.surface,
