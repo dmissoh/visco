@@ -35,7 +35,7 @@ class HistoryScreen extends ConsumerWidget {
         actions: [
           if (measurements.isNotEmpty && profile != null)
             IconButton(
-              icon: const Icon(Icons.medical_information_outlined),
+              icon: const Icon(Icons.share_outlined),
               onPressed: () async {
                 // Doctor's Report is a premium feature
                 if (!isPremium) {

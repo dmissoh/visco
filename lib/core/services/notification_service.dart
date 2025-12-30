@@ -1,8 +1,10 @@
 import 'dart:developer' as dev;
+import 'dart:io' show Platform;
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/timezone.dart' as tz;
-import 'package:timezone/data/latest.dart' as tz_data;
+import 'package:timezone/data/latest_all.dart' as tz_data;
 
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
@@ -16,9 +18,19 @@ class NotificationService {
   static const _channelName = 'Measurement Reminders';
   static const _channelDescription = 'Reminders to take your measurements';
 
+  bool _initialized = false;
+
   Future<void> initialize() async {
+    if (_initialized) return;
+    
     try {
+      // Initialize timezone database
       tz_data.initializeTimeZones();
+      
+      // Get device timezone and set it as local
+      final String timeZoneName = await FlutterTimezone.getLocalTimezone();
+      tz.setLocalLocation(tz.getLocation(timeZoneName));
+      dev.log('NotificationService: Timezone set to $timeZoneName');
 
       const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
       const iosSettings = DarwinInitializationSettings(
@@ -32,41 +44,107 @@ class NotificationService {
         iOS: iosSettings,
       );
 
-      await _notifications.initialize(initSettings);
-    } catch (e) {
+      final result = await _notifications.initialize(
+        initSettings,
+        onDidReceiveNotificationResponse: (NotificationResponse response) {
+          dev.log('NotificationService: Notification tapped: ${response.payload}');
+        },
+      );
+      
+      _initialized = result ?? false;
+      dev.log('NotificationService: Initialized successfully: $_initialized');
+    } catch (e, stack) {
       dev.log('NotificationService: Failed to initialize: $e');
+      dev.log('NotificationService: Stack trace: $stack');
     }
   }
 
   Future<bool> requestPermissions() async {
     try {
-      final android = _notifications.resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>();
-      final iOS = _notifications.resolvePlatformSpecificImplementation<
-          IOSFlutterLocalNotificationsPlugin>();
-
+      // Ensure initialized first
+      if (!_initialized) {
+        await initialize();
+      }
+      
       bool granted = false;
 
-      if (android != null) {
-        // Request notification permission (Android 13+)
-        granted = await android.requestNotificationsPermission() ?? false;
-        
-        // Request exact alarm permission (Android 12+)
-        await android.requestExactAlarmsPermission();
+      if (Platform.isAndroid) {
+        final android = _notifications.resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>();
+        if (android != null) {
+          // Request notification permission (Android 13+)
+          granted = await android.requestNotificationsPermission() ?? false;
+          dev.log('NotificationService: Android notification permission: $granted');
+          
+          // Request exact alarm permission (Android 12+)
+          await android.requestExactAlarmsPermission();
+        }
       }
 
-      if (iOS != null) {
-        granted = await iOS.requestPermissions(
-              alert: true,
-              badge: true,
-              sound: true,
-            ) ??
-            false;
+      if (Platform.isIOS) {
+        final iOS = _notifications.resolvePlatformSpecificImplementation<
+            IOSFlutterLocalNotificationsPlugin>();
+        if (iOS != null) {
+          granted = await iOS.requestPermissions(
+                alert: true,
+                badge: true,
+                sound: true,
+              ) ??
+              false;
+          dev.log('NotificationService: iOS notification permission: $granted');
+        } else {
+          dev.log('NotificationService: iOS implementation is null');
+        }
       }
 
       return granted;
-    } catch (e) {
+    } catch (e, stack) {
       dev.log('NotificationService: Failed to request permissions: $e');
+      dev.log('NotificationService: Stack trace: $stack');
+      return false;
+    }
+  }
+
+  /// Show an immediate test notification to verify the system is working
+  Future<bool> showTestNotification() async {
+    try {
+      // Ensure initialized
+      if (!_initialized) {
+        await initialize();
+      }
+      
+      // Request permissions first
+      final hasPermission = await requestPermissions();
+      if (!hasPermission) {
+        dev.log('NotificationService: No permission for test notification');
+        return false;
+      }
+
+      await _notifications.show(
+        999, // Test notification ID
+        'Test Notification',
+        'Notifications are working correctly!',
+        NotificationDetails(
+          android: AndroidNotificationDetails(
+            _channelId,
+            _channelName,
+            channelDescription: _channelDescription,
+            importance: Importance.high,
+            priority: Priority.high,
+          ),
+          iOS: const DarwinNotificationDetails(
+            presentAlert: true,
+            presentBadge: true,
+            presentSound: true,
+          ),
+        ),
+      );
+      
+      dev.log('NotificationService: Test notification shown');
+      return true;
+    } catch (e, stack) {
+      dev.log('NotificationService: Failed to show test notification: $e');
+      dev.log('NotificationService: Stack trace: $stack');
       return false;
     }
   }
