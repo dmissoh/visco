@@ -97,7 +97,7 @@ class NotificationService {
       await _notifications.zonedSchedule(
         0,
         'Time to Measure',
-        'Track your visceral fat progress with Visco',
+        'Track your visceral fat progress with Visqo',
         scheduledDate,
         NotificationDetails(
           android: AndroidNotificationDetails(
@@ -151,7 +151,7 @@ class NotificationService {
       await _notifications.zonedSchedule(
         0,
         'Time to Measure',
-        'Track your visceral fat progress with Visco',
+        'Track your visceral fat progress with Visqo',
         scheduledDate,
         NotificationDetails(
           android: AndroidNotificationDetails(

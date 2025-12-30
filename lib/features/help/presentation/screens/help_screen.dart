@@ -87,12 +87,12 @@ class HelpScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'About Visco',
+            'About Visqo',
             style: AppTypography.title(color: colors.accent),
           ),
           const SizedBox(height: AppSpacing.sm),
           Text(
-            'Visco helps you estimate your visceral fat using simple body measurements. '
+            'Visqo helps you estimate your visceral fat using simple body measurements. '
             'Visceral fat is the fat stored around your internal organs and is linked to '
             'increased health risks. By tracking your measurements over time, you can '
             'monitor your progress toward a healthier body composition.',
@@ -137,7 +137,7 @@ class HelpScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Visco uses the Samouda Anthropometric Model to estimate visceral '
+            'Visqo uses the Samouda Anthropometric Model to estimate visceral '
             'adipose tissue (VAT) area without requiring expensive imaging like '
             'CT scans or MRI.',
             style: AppTypography.body(color: colors.textPrimary),

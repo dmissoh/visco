@@ -14,7 +14,7 @@ class ViscoApp extends ConsumerWidget {
     final themeMode = ref.watch(settingsProvider);
 
     return MaterialApp.router(
-      title: 'Visco',
+      title: 'Visqo',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
