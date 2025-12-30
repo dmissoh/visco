@@ -10,37 +10,39 @@ import 'package:visco/features/settings/presentation/screens/settings_screen.dar
 /// Provider for the current tab index
 final currentTabProvider = StateProvider<int>((ref) => 0);
 
-/// Main shell with bottom navigation bar
-class MainShell extends ConsumerWidget {
+/// Main shell with bottom navigation bar and fade transitions
+class MainShell extends ConsumerStatefulWidget {
   const MainShell({super.key});
 
-  Widget _buildScreen(int index) {
-    switch (index) {
-      case 0:
-        return const CalculatorScreen();
-      case 1:
-        return const WhatIfCalculatorScreen();
-      case 2:
-        return const HistoryScreen();
-      case 3:
-        return const SettingsScreen();
-      default:
-        return const CalculatorScreen();
-    }
-  }
+  @override
+  ConsumerState<MainShell> createState() => _MainShellState();
+}
+
+class _MainShellState extends ConsumerState<MainShell> {
+  static const _screens = [
+    CalculatorScreen(),
+    WhatIfCalculatorScreen(),
+    HistoryScreen(),
+    SettingsScreen(),
+  ];
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final colors = AppColors.of(context);
     final currentIndex = ref.watch(currentTabProvider);
 
     return Scaffold(
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 200),
-        child: KeyedSubtree(
-          key: ValueKey<int>(currentIndex),
-          child: _buildScreen(currentIndex),
-        ),
+      body: Stack(
+        children: List.generate(_screens.length, (index) {
+          return AnimatedOpacity(
+            opacity: index == currentIndex ? 1.0 : 0.0,
+            duration: const Duration(milliseconds: 200),
+            child: IgnorePointer(
+              ignoring: index != currentIndex,
+              child: _screens[index],
+            ),
+          );
+        }),
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex,
