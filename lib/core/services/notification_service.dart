@@ -205,7 +205,8 @@ class NotificationService {
     }
   }
 
-  Future<bool> scheduleDailyReminder({
+  Future<bool> scheduleMonthlyReminder({
+    required int dayOfMonth, // 1-28
     required int hour,
     required int minute,
   }) async {
@@ -213,17 +214,40 @@ class NotificationService {
       await cancelAllReminders();
 
       final now = tz.TZDateTime.now(tz.local);
+      
+      // Clamp day to 1-28 to ensure it exists in all months
+      final safeDay = dayOfMonth.clamp(1, 28);
+      
       var scheduledDate = tz.TZDateTime(
         tz.local,
         now.year,
         now.month,
-        now.day,
+        safeDay,
         hour,
         minute,
       );
 
+      // If the scheduled date is in the past, move to next month
       if (scheduledDate.isBefore(now)) {
-        scheduledDate = scheduledDate.add(const Duration(days: 1));
+        if (now.month == 12) {
+          scheduledDate = tz.TZDateTime(
+            tz.local,
+            now.year + 1,
+            1,
+            safeDay,
+            hour,
+            minute,
+          );
+        } else {
+          scheduledDate = tz.TZDateTime(
+            tz.local,
+            now.year,
+            now.month + 1,
+            safeDay,
+            hour,
+            minute,
+          );
+        }
       }
 
       await _notifications.zonedSchedule(
@@ -248,13 +272,13 @@ class NotificationService {
         androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
-        matchDateTimeComponents: DateTimeComponents.time,
+        matchDateTimeComponents: DateTimeComponents.dayOfMonthAndTime,
       );
       
-      dev.log('NotificationService: Daily reminder scheduled for $scheduledDate');
+      dev.log('NotificationService: Monthly reminder scheduled for $scheduledDate');
       return true;
     } catch (e) {
-      dev.log('NotificationService: Failed to schedule daily reminder: $e');
+      dev.log('NotificationService: Failed to schedule monthly reminder: $e');
       return false;
     }
   }

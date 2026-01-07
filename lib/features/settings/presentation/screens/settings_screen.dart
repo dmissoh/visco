@@ -515,15 +515,16 @@ class SettingsScreen extends ConsumerWidget {
       case ReminderFrequency.off:
         frequencyText = 'Off';
         subtitleText = 'No reminders scheduled';
-      case ReminderFrequency.daily:
-        final time = TimeOfDay(hour: reminderSettings.hour, minute: reminderSettings.minute);
-        frequencyText = 'Daily';
-        subtitleText = 'Every day at ${time.format(context)}';
       case ReminderFrequency.weekly:
         final time = TimeOfDay(hour: reminderSettings.hour, minute: reminderSettings.minute);
         final dayName = _getDayName(reminderSettings.dayOfWeek);
         frequencyText = 'Weekly';
         subtitleText = 'Every $dayName at ${time.format(context)}';
+      case ReminderFrequency.monthly:
+        final time = TimeOfDay(hour: reminderSettings.hour, minute: reminderSettings.minute);
+        final dayOrdinal = _getDayOrdinal(reminderSettings.dayOfMonth);
+        frequencyText = 'Monthly';
+        subtitleText = 'Every $dayOrdinal at ${time.format(context)}';
     }
 
     return Container(
@@ -559,12 +560,29 @@ class SettingsScreen extends ConsumerWidget {
     return days[dayOfWeek - 1];
   }
 
+  String _getDayOrdinal(int day) {
+    if (day >= 11 && day <= 13) {
+      return '${day}th';
+    }
+    switch (day % 10) {
+      case 1:
+        return '${day}st';
+      case 2:
+        return '${day}nd';
+      case 3:
+        return '${day}rd';
+      default:
+        return '${day}th';
+    }
+  }
+
   void _showReminderDialog(BuildContext context, WidgetRef ref, ReminderSettings currentSettings) {
     final colors = AppColors.of(context);
     var frequency = currentSettings.frequency;
     var hour = currentSettings.hour;
     var minute = currentSettings.minute;
     var dayOfWeek = currentSettings.dayOfWeek;
+    var dayOfMonth = currentSettings.dayOfMonth;
 
     showDialog(
       context: context,
@@ -587,8 +605,8 @@ class SettingsScreen extends ConsumerWidget {
               SegmentedButton<ReminderFrequency>(
                 segments: const [
                   ButtonSegment(value: ReminderFrequency.off, label: Text('Off')),
-                  ButtonSegment(value: ReminderFrequency.daily, label: Text('Daily')),
                   ButtonSegment(value: ReminderFrequency.weekly, label: Text('Weekly')),
+                  ButtonSegment(value: ReminderFrequency.monthly, label: Text('Monthly')),
                 ],
                 selected: {frequency},
                 onSelectionChanged: (selected) {
@@ -640,7 +658,7 @@ class SettingsScreen extends ConsumerWidget {
               if (frequency == ReminderFrequency.weekly) ...[
                 const SizedBox(height: AppSpacing.lg),
                 Text(
-                  'Day',
+                  'Day of Week',
                   style: AppTypography.caption(color: colors.textSecondary),
                 ),
                 const SizedBox(height: AppSpacing.sm),
@@ -668,6 +686,37 @@ class SettingsScreen extends ConsumerWidget {
                   },
                 ),
               ],
+              if (frequency == ReminderFrequency.monthly) ...[
+                const SizedBox(height: AppSpacing.lg),
+                Text(
+                  'Day of Month',
+                  style: AppTypography.caption(color: colors.textSecondary),
+                ),
+                const SizedBox(height: AppSpacing.sm),
+                DropdownButtonFormField<int>(
+                  initialValue: dayOfMonth,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(AppRadius.sm),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.md,
+                      vertical: AppSpacing.sm,
+                    ),
+                  ),
+                  items: List.generate(28, (index) {
+                    return DropdownMenuItem(
+                      value: index + 1,
+                      child: Text(_getDayOrdinal(index + 1)),
+                    );
+                  }),
+                  onChanged: (value) {
+                    if (value != null) {
+                      setState(() => dayOfMonth = value);
+                    }
+                  },
+                ),
+              ],
             ],
           ),
           actions: [
@@ -685,6 +734,7 @@ class SettingsScreen extends ConsumerWidget {
                   hour: hour,
                   minute: minute,
                   dayOfWeek: dayOfWeek,
+                  dayOfMonth: dayOfMonth,
                 );
                 
                 await ref.read(reminderSettingsProvider.notifier).updateSettings(newSettings);
@@ -694,16 +744,17 @@ class SettingsScreen extends ConsumerWidget {
                 switch (frequency) {
                   case ReminderFrequency.off:
                     await notificationService.cancelAllReminders();
-                  case ReminderFrequency.daily:
-                    await notificationService.requestPermissions();
-                    await notificationService.scheduleDailyReminder(
-                      hour: hour,
-                      minute: minute,
-                    );
                   case ReminderFrequency.weekly:
                     await notificationService.requestPermissions();
                     await notificationService.scheduleWeeklyReminder(
                       dayOfWeek: dayOfWeek,
+                      hour: hour,
+                      minute: minute,
+                    );
+                  case ReminderFrequency.monthly:
+                    await notificationService.requestPermissions();
+                    await notificationService.scheduleMonthlyReminder(
+                      dayOfMonth: dayOfMonth,
                       hour: hour,
                       minute: minute,
                     );

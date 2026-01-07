@@ -100,7 +100,7 @@ class UnitConverter {
 }
 
 // Reminder frequency enum
-enum ReminderFrequency { off, daily, weekly }
+enum ReminderFrequency { off, weekly, monthly }
 
 // Reminder settings provider
 final reminderSettingsProvider = NotifierProvider<ReminderSettingsNotifier, ReminderSettings>(() {
@@ -112,12 +112,14 @@ class ReminderSettings {
   final int hour;
   final int minute;
   final int dayOfWeek; // 1 = Monday, 7 = Sunday (for weekly)
+  final int dayOfMonth; // 1-28 (for monthly, capped at 28 for safety)
 
   const ReminderSettings({
     this.frequency = ReminderFrequency.off,
     this.hour = 9,
     this.minute = 0,
     this.dayOfWeek = 1,
+    this.dayOfMonth = 1,
   });
 
   ReminderSettings copyWith({
@@ -125,12 +127,14 @@ class ReminderSettings {
     int? hour,
     int? minute,
     int? dayOfWeek,
+    int? dayOfMonth,
   }) {
     return ReminderSettings(
       frequency: frequency ?? this.frequency,
       hour: hour ?? this.hour,
       minute: minute ?? this.minute,
       dayOfWeek: dayOfWeek ?? this.dayOfWeek,
+      dayOfMonth: dayOfMonth ?? this.dayOfMonth,
     );
   }
 }
@@ -145,12 +149,19 @@ class ReminderSettingsNotifier extends Notifier<ReminderSettings> {
     final hour = _box.get('reminderHour', defaultValue: 9) as int;
     final minute = _box.get('reminderMinute', defaultValue: 0) as int;
     final dayOfWeek = _box.get('reminderDayOfWeek', defaultValue: 1) as int;
+    final dayOfMonth = _box.get('reminderDayOfMonth', defaultValue: 1) as int;
+    
+    // Handle migration from old daily frequency (index 1) to off
+    // Old: off=0, daily=1, weekly=2
+    // New: off=0, weekly=1, monthly=2
+    final safeFrequencyIndex = frequencyIndex.clamp(0, ReminderFrequency.values.length - 1);
     
     return ReminderSettings(
-      frequency: ReminderFrequency.values[frequencyIndex],
+      frequency: ReminderFrequency.values[safeFrequencyIndex],
       hour: hour,
       minute: minute,
       dayOfWeek: dayOfWeek,
+      dayOfMonth: dayOfMonth,
     );
   }
 
@@ -159,6 +170,7 @@ class ReminderSettingsNotifier extends Notifier<ReminderSettings> {
     await _box.put('reminderHour', settings.hour);
     await _box.put('reminderMinute', settings.minute);
     await _box.put('reminderDayOfWeek', settings.dayOfWeek);
+    await _box.put('reminderDayOfMonth', settings.dayOfMonth);
     state = settings;
   }
 }
