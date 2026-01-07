@@ -8,6 +8,7 @@ import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/calculator/presentation/widgets/measurement_guide_modal.dart';
 import 'package:visco/features/calculator/presentation/widgets/measurement_input_field.dart';
 import 'package:visco/features/calculator/providers/measurement_provider.dart';
+import 'package:visco/features/insights/presentation/widgets/insights_card.dart';
 import 'package:visco/features/onboarding/providers/profile_provider.dart';
 import 'package:visco/features/settings/providers/settings_provider.dart';
 import 'package:visco/shared/widgets/trend_indicator.dart';
@@ -278,6 +279,10 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                   );
                 },
               ),
+              if (latestMeasurement != null) ...[
+                const SizedBox(height: AppSpacing.md),
+                const InsightsCard(),
+              ],
             ],
           ),
         ),
