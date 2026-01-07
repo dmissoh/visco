@@ -56,6 +56,22 @@ class ResultScreen extends ConsumerWidget {
               VatResultCard(measurement: measurement, trend: trend),
               const SizedBox(height: AppSpacing.md),
               RiskScaleIndicator(vatValue: measurement.vatCm2),
+              const SizedBox(height: AppSpacing.md),
+              SizedBox(
+                height: 48,
+                child: FilledButton.icon(
+                  onPressed: () => context.push('/insights', extra: measurement),
+                  icon: const Icon(Icons.lightbulb_outline, size: 20),
+                  label: const Text('View Health Insights'),
+                  style: FilledButton.styleFrom(
+                    backgroundColor: colors.accent,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(AppRadius.md),
+                    ),
+                  ),
+                ),
+              ),
               const SizedBox(height: AppSpacing.xl),
               BmiResultCard(bmi: measurement.bmi),
               const SizedBox(height: AppSpacing.md),

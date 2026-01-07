@@ -1,0 +1,149 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:visco/features/calculator/domain/models/measurement.dart';
+import 'package:visco/features/calculator/providers/measurement_provider.dart';
+import 'package:visco/features/insights/domain/data/insights_data.dart';
+import 'package:visco/features/insights/domain/models/health_risk.dart';
+import 'package:visco/features/insights/domain/models/health_tip.dart';
+
+/// Personalized insights based on user's current VAT measurement.
+class PersonalizedInsights {
+  final RiskCategory riskCategory;
+  final double vatValue;
+  final String summaryTitle;
+  final String summaryDescription;
+  final List<HealthRisk> risks;
+  final List<HealthTip> priorityTips;
+  final List<HealthTip> allTips;
+  final bool isImproving;
+
+  const PersonalizedInsights({
+    required this.riskCategory,
+    required this.vatValue,
+    required this.summaryTitle,
+    required this.summaryDescription,
+    required this.risks,
+    required this.priorityTips,
+    required this.allTips,
+    required this.isImproving,
+  });
+
+  /// Creates default insights when no measurement is available.
+  factory PersonalizedInsights.empty() {
+    return PersonalizedInsights(
+      riskCategory: RiskCategory.healthy,
+      vatValue: 0,
+      summaryTitle: 'No Measurement Available',
+      summaryDescription: 'Complete a VAT measurement to see personalized health insights.',
+      risks: InsightsData.risks,
+      priorityTips: InsightsData.priorityTips,
+      allTips: InsightsData.tips,
+      isImproving: false,
+    );
+  }
+}
+
+/// Provider for personalized health insights based on latest measurement.
+final insightsProvider = Provider<PersonalizedInsights>((ref) {
+  final latestMeasurement = ref.watch(latestMeasurementProvider);
+  final trend = ref.watch(vatTrendProvider);
+
+  if (latestMeasurement == null) {
+    return PersonalizedInsights.empty();
+  }
+
+  return _generateInsights(
+    measurement: latestMeasurement,
+    isImproving: trend.direction == TrendDirection.down,
+  );
+});
+
+/// Provider for insights based on a specific measurement.
+final measurementInsightsProvider =
+    Provider.family<PersonalizedInsights, Measurement>((ref, measurement) {
+  final trend = ref.watch(vatTrendProvider);
+
+  return _generateInsights(
+    measurement: measurement,
+    isImproving: trend.direction == TrendDirection.down,
+  );
+});
+
+PersonalizedInsights _generateInsights({
+  required Measurement measurement,
+  required bool isImproving,
+}) {
+  final riskCategory = measurement.riskCategory;
+  final vatValue = measurement.vatCm2;
+
+  // Generate personalized summary based on risk level
+  final (summaryTitle, summaryDescription) = _getSummary(riskCategory, isImproving);
+
+  // Sort risks by severity (most severe first)
+  final sortedRisks = List<HealthRisk>.from(InsightsData.risks)
+    ..sort((a, b) => b.severity.index.compareTo(a.severity.index));
+
+  // Filter and prioritize tips based on risk category
+  final priorityTips = _getPriorityTips(riskCategory);
+  final allTips = InsightsData.tips;
+
+  return PersonalizedInsights(
+    riskCategory: riskCategory,
+    vatValue: vatValue,
+    summaryTitle: summaryTitle,
+    summaryDescription: summaryDescription,
+    risks: sortedRisks,
+    priorityTips: priorityTips,
+    allTips: allTips,
+    isImproving: isImproving,
+  );
+}
+
+(String, String) _getSummary(RiskCategory category, bool isImproving) {
+  switch (category) {
+    case RiskCategory.healthy:
+      return (
+        'Your Visceral Fat is Healthy',
+        isImproving
+            ? 'Great progress! Your visceral fat is in a healthy range and continuing to improve. Keep up your healthy habits.'
+            : 'Your visceral fat is in a healthy range. Maintain your current lifestyle to keep it that way.',
+      );
+    case RiskCategory.elevated:
+      return (
+        'Your Visceral Fat is Elevated',
+        isImproving
+            ? 'You\'re making progress! While your visceral fat is still elevated, the trend is improving. Keep following the tips below.'
+            : 'Your visceral fat is moderately elevated, which may increase health risks. Consider the evidence-based tips below to help reduce it.',
+      );
+    case RiskCategory.obesity:
+      return (
+        'Your Visceral Fat is High',
+        isImproving
+            ? 'You\'re on the right track! Your visceral fat is high but improving. Continue with your efforts and consult a healthcare provider for personalized guidance.'
+            : 'Your visceral fat level indicates increased health risks. We recommend reviewing the information below and consulting with a healthcare provider.',
+      );
+  }
+}
+
+List<HealthTip> _getPriorityTips(RiskCategory category) {
+  switch (category) {
+    case RiskCategory.healthy:
+      // For healthy users, focus on maintenance tips
+      return InsightsData.tips
+          .where((t) =>
+              t.category == TipCategory.activity ||
+              t.category == TipCategory.diet)
+          .toList();
+    case RiskCategory.elevated:
+      // For elevated users, focus on activity, diet, and lifestyle
+      return InsightsData.tips
+          .where((t) =>
+              t.category == TipCategory.activity ||
+              t.category == TipCategory.diet ||
+              t.category == TipCategory.lifestyle ||
+              t.category == TipCategory.sleepStress)
+          .toList();
+    case RiskCategory.obesity:
+      // For high-risk users, show all tips as priorities
+      return InsightsData.tips;
+  }
+}
