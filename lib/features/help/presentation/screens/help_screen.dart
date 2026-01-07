@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
@@ -635,7 +636,53 @@ class HelpScreen extends StatelessWidget {
             description:
                 'High visceral fat associated with increased metabolic health risks.',
           ),
+          const SizedBox(height: AppSpacing.lg),
+          _buildHealthInsightsLink(context, colors),
         ],
+      ),
+    );
+  }
+
+  Widget _buildHealthInsightsLink(BuildContext context, AppColorScheme colors) {
+    return GestureDetector(
+      onTap: () => context.push('/insights?educational=true'),
+      child: Container(
+        padding: const EdgeInsets.all(AppSpacing.md),
+        decoration: BoxDecoration(
+          color: colors.accent.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(AppRadius.sm),
+          border: Border.all(color: colors.accent.withValues(alpha: 0.3)),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              Icons.lightbulb_outline,
+              size: 20,
+              color: colors.accent,
+            ),
+            const SizedBox(width: AppSpacing.sm),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Learn More About Health Risks & Tips',
+                    style: AppTypography.label(color: colors.accent),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    'Understand the health implications and evidence-based ways to reduce visceral fat.',
+                    style: AppTypography.caption(color: colors.textSecondary),
+                  ),
+                ],
+              ),
+            ),
+            Icon(
+              Icons.chevron_right,
+              color: colors.accent,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -82,8 +82,13 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/insights',
         name: 'insights',
         builder: (context, state) {
-          final measurement = state.extra as Measurement?;
-          return InsightsScreen(measurement: measurement);
+          // Check if educational mode is requested via query parameter
+          final educationalMode = state.uri.queryParameters['educational'] == 'true';
+          final measurement = educationalMode ? null : state.extra as Measurement?;
+          return InsightsScreen(
+            measurement: measurement,
+            educationalMode: educationalMode,
+          );
         },
       ),
     ],
