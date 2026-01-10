@@ -108,9 +108,12 @@ class InsightsCard extends ConsumerWidget {
                         color: riskColor,
                       ),
                       const SizedBox(width: 4),
-                      Text(
-                        l10n.yourVisceralFatIs(_getRiskLabel(context, insights.riskCategory).toLowerCase()),
-                        style: AppTypography.caption(color: colors.textSecondary),
+                      Flexible(
+                        child: Text(
+                          l10n.yourVisceralFatIs(_getRiskLabel(context, insights.riskCategory).toLowerCase()),
+                          style: AppTypography.caption(color: colors.textSecondary),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ],
                   ),
