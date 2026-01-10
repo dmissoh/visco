@@ -2379,6 +2379,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Smoking'**
   String get categorySmoking;
+
+  /// No description provided for @takePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Take Photo'**
+  String get takePhoto;
+
+  /// No description provided for @chooseFromGallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from Gallery'**
+  String get chooseFromGallery;
+
+  /// No description provided for @removePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Photo'**
+  String get removePhoto;
 }
 
 class _AppLocalizationsDelegate

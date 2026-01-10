@@ -1299,4 +1299,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get categorySmoking => 'Rauchen';
+
+  @override
+  String get takePhoto => 'Foto aufnehmen';
+
+  @override
+  String get chooseFromGallery => 'Aus Galerie wählen';
+
+  @override
+  String get removePhoto => 'Foto entfernen';
 }

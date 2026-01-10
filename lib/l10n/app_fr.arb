@@ -556,5 +556,9 @@
   "categoryLifestyle": "Mode de vie",
   "categorySleepStress": "Sommeil et stress",
   "categoryAlcohol": "Alcool",
-  "categorySmoking": "Tabac"
+  "categorySmoking": "Tabac",
+  
+  "takePhoto": "Prendre une photo",
+  "chooseFromGallery": "Choisir dans la galerie",
+  "removePhoto": "Supprimer la photo"
 }

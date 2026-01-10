@@ -12,6 +12,7 @@ class UserProfile extends HiveObject {
   Sex sex;
   DateTime birthDate;
   double heightCm;
+  String? profileImagePath;
 
   UserProfile({
     String? id,
@@ -19,6 +20,7 @@ class UserProfile extends HiveObject {
     required this.sex,
     required this.birthDate,
     required this.heightCm,
+    this.profileImagePath,
   }) : id = id ?? const Uuid().v4();
 
   int get age {
@@ -59,6 +61,7 @@ class UserProfileAdapter extends TypeAdapter<UserProfile> {
     Sex sex = Sex.female;
     DateTime birthDate = DateTime.now();
     double heightCm = 170;
+    String? profileImagePath;
 
     for (int i = 0; i < numFields; i++) {
       final fieldId = reader.readByte();
@@ -78,6 +81,10 @@ class UserProfileAdapter extends TypeAdapter<UserProfile> {
         case 4:
           heightCm = reader.readDouble();
           break;
+        case 5:
+          final imagePath = reader.readString();
+          profileImagePath = imagePath.isEmpty ? null : imagePath;
+          break;
       }
     }
 
@@ -87,12 +94,13 @@ class UserProfileAdapter extends TypeAdapter<UserProfile> {
       sex: sex,
       birthDate: birthDate,
       heightCm: heightCm,
+      profileImagePath: profileImagePath,
     );
   }
 
   @override
   void write(BinaryWriter writer, UserProfile obj) {
-    writer.writeByte(5); // number of fields
+    writer.writeByte(6); // number of fields
     writer.writeByte(0);
     writer.writeString(obj.id);
     writer.writeByte(1);
@@ -103,5 +111,7 @@ class UserProfileAdapter extends TypeAdapter<UserProfile> {
     writer.writeInt(obj.birthDate.millisecondsSinceEpoch);
     writer.writeByte(4);
     writer.writeDouble(obj.heightCm);
+    writer.writeByte(5);
+    writer.writeString(obj.profileImagePath ?? '');
   }
 }

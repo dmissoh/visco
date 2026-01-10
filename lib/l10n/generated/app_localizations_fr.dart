@@ -1309,4 +1309,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get categorySmoking => 'Tabac';
+
+  @override
+  String get takePhoto => 'Prendre une photo';
+
+  @override
+  String get chooseFromGallery => 'Choisir dans la galerie';
+
+  @override
+  String get removePhoto => 'Supprimer la photo';
 }

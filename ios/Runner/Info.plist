@@ -41,6 +41,10 @@
 		</array>
 		<key>NSUserNotificationsUsageDescription</key>
 		<string>Visco uses notifications to remind you to take your measurements.</string>
+		<key>NSCameraUsageDescription</key>
+		<string>Visqo needs camera access to take a profile photo.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Visqo needs photo library access to choose a profile photo.</string>
 		<key>CADisableMinimumFrameDurationOnPhone</key>
 		<true/>
 		<key>UIApplicationSupportsIndirectInputEvents</key>

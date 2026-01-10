@@ -556,5 +556,9 @@
   "categoryLifestyle": "Lifestyle",
   "categorySleepStress": "Sleep & Stress",
   "categoryAlcohol": "Alcohol",
-  "categorySmoking": "Smoking"
+  "categorySmoking": "Smoking",
+  
+  "takePhoto": "Take Photo",
+  "chooseFromGallery": "Choose from Gallery",
+  "removePhoto": "Remove Photo"
 }

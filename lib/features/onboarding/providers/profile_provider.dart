@@ -101,6 +101,7 @@ class ProfileNotifier extends Notifier<UserProfile?> {
     Sex? sex,
     DateTime? birthDate,
     double? heightCm,
+    String? profileImagePath,
   }) async {
     final currentProfile = state;
     if (currentProfile == null) return;
@@ -114,6 +115,27 @@ class ProfileNotifier extends Notifier<UserProfile?> {
       sex: sex ?? currentProfile.sex,
       birthDate: birthDate ?? currentProfile.birthDate,
       heightCm: heightCm ?? currentProfile.heightCm,
+      profileImagePath: profileImagePath ?? currentProfile.profileImagePath,
+    );
+
+    await repository.saveProfile(updatedProfile);
+    refreshNotifier.state++;
+  }
+
+  Future<void> updateProfileImage(String? imagePath) async {
+    final currentProfile = state;
+    if (currentProfile == null) return;
+
+    final repository = ref.read(profileRepositoryProvider);
+    final refreshNotifier = ref.read(profileRefreshProvider.notifier);
+
+    final updatedProfile = UserProfile(
+      id: currentProfile.id,
+      name: currentProfile.name,
+      sex: currentProfile.sex,
+      birthDate: currentProfile.birthDate,
+      heightCm: currentProfile.heightCm,
+      profileImagePath: imagePath,
     );
 
     await repository.saveProfile(updatedProfile);

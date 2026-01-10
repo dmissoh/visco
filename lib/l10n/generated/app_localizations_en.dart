@@ -1285,4 +1285,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get categorySmoking => 'Smoking';
+
+  @override
+  String get takePhoto => 'Take Photo';
+
+  @override
+  String get chooseFromGallery => 'Choose from Gallery';
+
+  @override
+  String get removePhoto => 'Remove Photo';
 }
