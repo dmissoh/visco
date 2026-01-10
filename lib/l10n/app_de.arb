@@ -128,8 +128,8 @@
   "measurementReminder": "Messerinnerung",
   "frequency": "Häufigkeit",
   "off": "Aus",
-  "weekly": "Wöchentlich",
-  "monthly": "Monatlich",
+  "weekly": "Woche",
+  "monthly": "Monat",
   "noRemindersScheduled": "Keine Erinnerungen geplant",
   "everyDayAt": "Jeden {day} um {time}",
   "@everyDayAt": {

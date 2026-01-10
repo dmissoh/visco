@@ -303,10 +303,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get off => 'Désactivé';
 
   @override
-  String get weekly => 'Hebdomadaire';
+  String get weekly => 'Semaine';
 
   @override
-  String get monthly => 'Mensuel';
+  String get monthly => 'Mois';
 
   @override
   String get noRemindersScheduled => 'Aucun rappel programmé';

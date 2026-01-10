@@ -303,10 +303,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get off => 'Aus';
 
   @override
-  String get weekly => 'Wöchentlich';
+  String get weekly => 'Woche';
 
   @override
-  String get monthly => 'Monatlich';
+  String get monthly => 'Monat';
 
   @override
   String get noRemindersScheduled => 'Keine Erinnerungen geplant';
