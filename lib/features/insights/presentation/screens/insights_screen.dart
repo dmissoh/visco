@@ -9,6 +9,7 @@ import 'package:visco/features/insights/presentation/providers/insights_provider
 import 'package:visco/features/insights/presentation/widgets/health_risk_card.dart';
 import 'package:visco/features/insights/presentation/widgets/health_tip_card.dart';
 import 'package:visco/features/insights/presentation/widgets/risk_summary_header.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class InsightsScreen extends ConsumerWidget {
   final Measurement? measurement;
@@ -25,10 +26,11 @@ class InsightsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     // In educational mode, show general content without personalization
     if (educationalMode) {
-      return _buildEducationalContent(context, colors);
+      return _buildEducationalContent(context, colors, l10n);
     }
 
     // Use measurement-specific insights if provided, otherwise use latest
@@ -39,7 +41,7 @@ class InsightsScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: colors.background,
       appBar: AppBar(
-        title: const Text('Health Insights'),
+        title: Text(l10n.healthInsights),
         backgroundColor: colors.background,
         foregroundColor: colors.textPrimary,
         elevation: 0,
@@ -64,9 +66,8 @@ class InsightsScreen extends ConsumerWidget {
               // Health Risks Section
               _buildSectionHeader(
                 context,
-                title: 'Health Risks of Elevated Visceral Fat',
-                subtitle:
-                    'Understanding the risks can help motivate positive changes',
+                title: l10n.healthRisksOfElevatedVat,
+                subtitle: l10n.healthRisksSubtitle,
               ),
               const SizedBox(height: AppSpacing.md),
               ...insights.risks.map((risk) => Padding(
@@ -79,14 +80,14 @@ class InsightsScreen extends ConsumerWidget {
               // Health Tips Section
               _buildSectionHeader(
                 context,
-                title: 'Evidence-Based Tips',
-                subtitle: 'Simple actions to help reduce visceral fat',
+                title: l10n.evidenceBasedTips,
+                subtitle: l10n.evidenceBasedTipsSubtitle,
               ),
               const SizedBox(height: AppSpacing.md),
 
               // Priority tips for the user's risk level
               if (insights.riskCategory != RiskCategory.healthy) ...[
-                _buildTipsSectionLabel(context, 'Recommended for You'),
+                _buildTipsSectionLabel(context, l10n.recommendedForYou),
                 const SizedBox(height: AppSpacing.sm),
                 ...insights.priorityTips.map((tip) => Padding(
                       padding: const EdgeInsets.only(bottom: AppSpacing.md),
@@ -94,14 +95,14 @@ class InsightsScreen extends ConsumerWidget {
                     )),
               ] else ...[
                 // For healthy users, show maintenance tips
-                _buildTipsSectionLabel(context, 'Maintain Your Health'),
+                _buildTipsSectionLabel(context, l10n.maintainYourHealth),
                 const SizedBox(height: AppSpacing.sm),
                 ...insights.priorityTips.map((tip) => Padding(
                       padding: const EdgeInsets.only(bottom: AppSpacing.md),
                       child: HealthTipCard(tip: tip),
                     )),
                 const SizedBox(height: AppSpacing.lg),
-                _buildTipsSectionLabel(context, 'Additional Tips'),
+                _buildTipsSectionLabel(context, l10n.additionalTips),
                 const SizedBox(height: AppSpacing.sm),
                 ...insights.allTips
                     .where((tip) => !insights.priorityTips.contains(tip))
@@ -114,7 +115,7 @@ class InsightsScreen extends ConsumerWidget {
               const SizedBox(height: AppSpacing.xl),
 
               // Disclaimer
-              _buildDisclaimer(context),
+              _buildDisclaimer(context, l10n),
 
               const SizedBox(height: AppSpacing.lg),
             ],
@@ -124,11 +125,11 @@ class InsightsScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildEducationalContent(BuildContext context, AppColorScheme colors) {
+  Widget _buildEducationalContent(BuildContext context, AppColorScheme colors, AppLocalizations l10n) {
     return Scaffold(
       backgroundColor: colors.background,
       appBar: AppBar(
-        title: const Text('Health Insights'),
+        title: Text(l10n.healthInsights),
         backgroundColor: colors.background,
         foregroundColor: colors.textPrimary,
         elevation: 0,
@@ -140,16 +141,15 @@ class InsightsScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Educational intro instead of personalized header
-              _buildEducationalHeader(context, colors),
+              _buildEducationalHeader(context, colors, l10n),
 
               const SizedBox(height: AppSpacing.xl),
 
               // Health Risks Section
               _buildSectionHeader(
                 context,
-                title: 'Health Risks of Elevated Visceral Fat',
-                subtitle:
-                    'Understanding the risks can help motivate positive changes',
+                title: l10n.healthRisksOfElevatedVat,
+                subtitle: l10n.healthRisksSubtitle,
               ),
               const SizedBox(height: AppSpacing.md),
               ...InsightsData.risks.map((risk) => Padding(
@@ -162,8 +162,8 @@ class InsightsScreen extends ConsumerWidget {
               // Health Tips Section - show all tips
               _buildSectionHeader(
                 context,
-                title: 'Evidence-Based Tips',
-                subtitle: 'Simple actions to help reduce visceral fat',
+                title: l10n.evidenceBasedTips,
+                subtitle: l10n.evidenceBasedTipsSubtitle,
               ),
               const SizedBox(height: AppSpacing.md),
               ...InsightsData.tips.map((tip) => Padding(
@@ -174,7 +174,7 @@ class InsightsScreen extends ConsumerWidget {
               const SizedBox(height: AppSpacing.xl),
 
               // Disclaimer
-              _buildDisclaimer(context),
+              _buildDisclaimer(context, l10n),
 
               const SizedBox(height: AppSpacing.lg),
             ],
@@ -184,7 +184,7 @@ class InsightsScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildEducationalHeader(BuildContext context, AppColorScheme colors) {
+  Widget _buildEducationalHeader(BuildContext context, AppColorScheme colors, AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
@@ -214,7 +214,7 @@ class InsightsScreen extends ConsumerWidget {
               const SizedBox(width: AppSpacing.md),
               Expanded(
                 child: Text(
-                  'About Visceral Fat',
+                  l10n.aboutVisceralFat,
                   style: AppTypography.title(color: colors.textPrimary),
                 ),
               ),
@@ -222,9 +222,7 @@ class InsightsScreen extends ConsumerWidget {
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            'Visceral fat is stored deep within the abdominal cavity around internal organs. '
-            'Unlike subcutaneous fat, it plays a hormonally active role and is linked to increased health risks. '
-            'Learn about the risks and evidence-based ways to reduce it.',
+            l10n.aboutVisceralFatDescription,
             style: AppTypography.body(color: colors.textSecondary),
           ),
         ],
@@ -274,7 +272,7 @@ class InsightsScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildDisclaimer(BuildContext context) {
+  Widget _buildDisclaimer(BuildContext context, AppLocalizations l10n) {
     final colors = AppColors.of(context);
 
     return Container(
@@ -295,7 +293,7 @@ class InsightsScreen extends ConsumerWidget {
           const SizedBox(width: AppSpacing.sm),
           Expanded(
             child: Text(
-              'This information is for educational purposes only and should not replace professional medical advice. Please consult a healthcare provider for personalized guidance.',
+              l10n.disclaimer,
               style: AppTypography.caption(color: colors.textSecondary),
             ),
           ),

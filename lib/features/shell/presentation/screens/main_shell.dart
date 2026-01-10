@@ -6,6 +6,7 @@ import 'package:visco/features/calculator/presentation/screens/calculator_screen
 import 'package:visco/features/calculator/presentation/screens/whatif_calculator_screen.dart';
 import 'package:visco/features/history/presentation/screens/history_screen.dart';
 import 'package:visco/features/settings/presentation/screens/settings_screen.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 /// Provider for the current tab index
 final currentTabProvider = StateProvider<int>((ref) => 0);
@@ -30,6 +31,7 @@ class _MainShellState extends ConsumerState<MainShell> {
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
     final currentIndex = ref.watch(currentTabProvider);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       body: Stack(
@@ -56,22 +58,22 @@ class _MainShellState extends ConsumerState<MainShell> {
           NavigationDestination(
             icon: Icon(Icons.calculate_outlined, color: colors.textSecondary),
             selectedIcon: Icon(Icons.calculate, color: colors.accent),
-            label: 'Calculate',
+            label: l10n.navCalculate,
           ),
           NavigationDestination(
             icon: Icon(Icons.science_outlined, color: colors.textSecondary),
             selectedIcon: Icon(Icons.science, color: colors.accent),
-            label: 'What-If',
+            label: l10n.navWhatIf,
           ),
           NavigationDestination(
             icon: Icon(Icons.bar_chart_outlined, color: colors.textSecondary),
             selectedIcon: Icon(Icons.bar_chart, color: colors.accent),
-            label: 'Progress',
+            label: l10n.navProgress,
           ),
           NavigationDestination(
             icon: Icon(Icons.settings_outlined, color: colors.textSecondary),
             selectedIcon: Icon(Icons.settings, color: colors.accent),
-            label: 'Settings',
+            label: l10n.navSettings,
           ),
         ],
       ),

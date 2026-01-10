@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class HelpScreen extends StatelessWidget {
   const HelpScreen({super.key});
@@ -11,11 +12,12 @@ class HelpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: colors.background,
       appBar: AppBar(
-        title: const Text('Help'),
+        title: Text(l10n.help),
         backgroundColor: colors.background,
         foregroundColor: colors.textPrimary,
         elevation: 0,
@@ -25,48 +27,48 @@ class HelpScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildIntroduction(context),
+            _buildIntroduction(context, l10n),
             const SizedBox(height: AppSpacing.xl),
             _buildSection(
               context,
-              title: 'How to Measure Waist Circumference',
-              child: _buildWaistMeasurementGuide(context),
+              title: l10n.howToMeasureWaist,
+              child: _buildWaistMeasurementGuide(context, l10n),
             ),
             const SizedBox(height: AppSpacing.xl),
             _buildSection(
               context,
-              title: 'How to Measure Thigh Circumference',
-              child: _buildThighMeasurementGuide(context),
+              title: l10n.howToMeasureThigh,
+              child: _buildThighMeasurementGuide(context, l10n),
             ),
             const SizedBox(height: AppSpacing.xl),
             _buildSection(
               context,
-              title: 'Setting a Goal',
-              child: _buildGoalExplanation(context),
+              title: l10n.settingGoalTitle,
+              child: _buildGoalExplanation(context, l10n),
             ),
             const SizedBox(height: AppSpacing.xl),
             _buildSection(
               context,
-              title: 'Understanding the Trend Indicator',
-              child: _buildTrendExplanation(context),
+              title: l10n.trendIndicatorTitle,
+              child: _buildTrendExplanation(context, l10n),
             ),
             const SizedBox(height: AppSpacing.xl),
             _buildSection(
               context,
-              title: 'How is Visceral Fat Calculated?',
-              child: _buildCalculationExplanation(context),
+              title: l10n.calculationTitle,
+              child: _buildCalculationExplanation(context, l10n),
             ),
             const SizedBox(height: AppSpacing.xl),
             _buildSection(
               context,
-              title: 'Understanding Your Results',
-              child: _buildResultsExplanation(context),
+              title: l10n.understandingResultsTitle,
+              child: _buildResultsExplanation(context, l10n),
             ),
             const SizedBox(height: AppSpacing.xl),
             _buildSection(
               context,
-              title: 'Scientific Reference',
-              child: _buildReference(context),
+              title: l10n.scientificReference,
+              child: _buildReference(context, l10n),
             ),
             const SizedBox(height: AppSpacing.xl),
           ],
@@ -75,7 +77,7 @@ class HelpScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildIntroduction(BuildContext context) {
+  Widget _buildIntroduction(BuildContext context, AppLocalizations l10n) {
     final colors = AppColors.of(context);
 
     return Container(
@@ -88,15 +90,12 @@ class HelpScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'About Visqo',
+            l10n.aboutVisqo,
             style: AppTypography.title(color: colors.accent),
           ),
           const SizedBox(height: AppSpacing.sm),
           Text(
-            'Visqo helps you estimate your visceral fat using simple body measurements. '
-            'Visceral fat is the fat stored around your internal organs and is linked to '
-            'increased health risks. By tracking your measurements over time, you can '
-            'monitor your progress toward a healthier body composition.',
+            l10n.aboutVisqoDescription,
             style: AppTypography.body(color: colors.textPrimary),
           ),
         ],
@@ -124,7 +123,8 @@ class HelpScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCalculationExplanation(BuildContext context) {
+  Widget _buildCalculationExplanation(
+      BuildContext context, AppLocalizations l10n) {
     final colors = AppColors.of(context);
 
     return Container(
@@ -138,36 +138,31 @@ class HelpScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Visqo uses the Samouda Anthropometric Model to estimate visceral '
-            'adipose tissue (VAT) area without requiring expensive imaging like '
-            'CT scans or MRI.',
+            l10n.calculationDescription,
             style: AppTypography.body(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            'The model uses simple body measurements combined with your age and '
-            'BMI to predict VAT with high accuracy:',
+            l10n.calculationModelDescription,
             style: AppTypography.body(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.md),
           _buildFormulaCard(
             context,
-            title: 'For Men',
-            formula: 'VAT = 6 x Waist - 4.41 x Thigh + 1.19 x Age - 213.65',
-            accuracy: 'Explains 80.3% of VAT variance',
+            title: l10n.formulaForMen,
+            formula: l10n.formulaMen,
+            accuracy: l10n.accuracyMen,
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildFormulaCard(
             context,
-            title: 'For Women',
-            formula:
-                'VAT = 2.15 x Waist - 3.63 x Thigh + 1.46 x Age + 6.22 x BMI - 92.713',
-            accuracy: 'Explains 83.6% of VAT variance',
+            title: l10n.formulaForWomen,
+            formula: l10n.formulaWomen,
+            accuracy: l10n.accuracyWomen,
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            'The result is expressed in cm\u00B2, representing the estimated '
-            'cross-sectional area of visceral fat tissue.',
+            l10n.resultUnit,
             style: AppTypography.caption(color: colors.textSecondary),
           ),
         ],
@@ -212,7 +207,8 @@ class HelpScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildWaistMeasurementGuide(BuildContext context) {
+  Widget _buildWaistMeasurementGuide(
+      BuildContext context, AppLocalizations l10n) {
     final colors = AppColors.of(context);
 
     return Container(
@@ -228,54 +224,51 @@ class HelpScreen extends StatelessWidget {
           _buildMeasurementDiagram(
             context,
             type: 'waist',
+            l10n: l10n,
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            'Instructions:',
+            '${l10n.instructions}:',
             style: AppTypography.title(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildInstructionStep(
             context,
             step: '1',
-            text:
-                'Stand upright with your feet together and arms relaxed at your sides.',
+            text: l10n.waistStep1,
           ),
           _buildInstructionStep(
             context,
             step: '2',
-            text:
-                'Locate the bottom of your ribs and the top of your hip bones (iliac crest).',
+            text: l10n.waistStep2,
           ),
           _buildInstructionStep(
             context,
             step: '3',
-            text:
-                'Place the tape measure midway between these two points, roughly at your navel level.',
+            text: l10n.waistStep3,
           ),
           _buildInstructionStep(
             context,
             step: '4',
-            text:
-                'Wrap the tape around your waist, keeping it parallel to the floor.',
+            text: l10n.waistStep4,
           ),
           _buildInstructionStep(
             context,
             step: '5',
-            text:
-                'Breathe out normally and take the reading without pulling the tape too tight.',
+            text: l10n.waistStep5,
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildTip(
             context,
-            'Measure directly on skin or over light clothing for accuracy.',
+            l10n.waistTip,
           ),
         ],
       ),
     );
   }
 
-  Widget _buildThighMeasurementGuide(BuildContext context) {
+  Widget _buildThighMeasurementGuide(
+      BuildContext context, AppLocalizations l10n) {
     final colors = AppColors.of(context);
 
     return Container(
@@ -291,47 +284,43 @@ class HelpScreen extends StatelessWidget {
           _buildMeasurementDiagram(
             context,
             type: 'thigh',
+            l10n: l10n,
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            'Instructions:',
+            '${l10n.instructions}:',
             style: AppTypography.title(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildInstructionStep(
             context,
             step: '1',
-            text:
-                'Stand upright with your weight evenly distributed on both legs.',
+            text: l10n.thighStep1,
           ),
           _buildInstructionStep(
             context,
             step: '2',
-            text:
-                'Identify the gluteal crease (the fold where your buttock meets your thigh).',
+            text: l10n.thighStep2,
           ),
           _buildInstructionStep(
             context,
             step: '3',
-            text:
-                'Position the tape measure just below (distal to) the gluteal crease.',
+            text: l10n.thighStep3,
           ),
           _buildInstructionStep(
             context,
             step: '4',
-            text:
-                'Wrap the tape horizontally around your thigh, keeping it perpendicular to the thigh axis.',
+            text: l10n.thighStep4,
           ),
           _buildInstructionStep(
             context,
             step: '5',
-            text:
-                'Keep your muscles relaxed and read the measurement without compressing the skin.',
+            text: l10n.thighStep5,
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildTip(
             context,
-            'Measure both thighs and use the average if they differ significantly.',
+            l10n.thighTip,
           ),
         ],
       ),
@@ -341,6 +330,7 @@ class HelpScreen extends StatelessWidget {
   Widget _buildMeasurementDiagram(
     BuildContext context, {
     required String type,
+    required AppLocalizations l10n,
   }) {
     final colors = AppColors.of(context);
     final isWaist = type == 'waist';
@@ -359,6 +349,13 @@ class HelpScreen extends StatelessWidget {
           primaryColor: colors.accent,
           secondaryColor: colors.textSecondary,
           backgroundColor: colors.background,
+          waistLabel: l10n.waist,
+          proximalThighLabel: l10n.proximalThigh,
+          lowerRibLabel: l10n.lowerRib,
+          hipBoneLabel: l10n.hipBone,
+          midpointLabel: l10n.midpoint,
+          glutealCreaseLabel: l10n.glutealCrease,
+          justBelowCreaseLabel: l10n.justBelowCrease,
         ),
       ),
     );
@@ -434,7 +431,7 @@ class HelpScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildGoalExplanation(BuildContext context) {
+  Widget _buildGoalExplanation(BuildContext context, AppLocalizations l10n) {
     final colors = AppColors.of(context);
 
     return Container(
@@ -448,49 +445,46 @@ class HelpScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'You can set a personal VAT goal to help track your progress toward '
-            'a healthier body composition.',
+            l10n.settingGoalDescription,
             style: AppTypography.body(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            'How to set a goal:',
+            '${l10n.instructions}:',
             style: AppTypography.title(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildInstructionStep(
             context,
             step: '1',
-            text: 'Go to Settings from the calculator screen.',
+            text: l10n.settingGoalStep1,
           ),
           _buildInstructionStep(
             context,
             step: '2',
-            text: 'Tap on "Set VAT Goal" in the Goals section.',
+            text: l10n.settingGoalStep2,
           ),
           _buildInstructionStep(
             context,
             step: '3',
-            text: 'Enter your target VAT value and save.',
+            text: l10n.settingGoalStep3,
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            'Once set, your goal will appear as a green dashed line on the '
-            'progress chart, helping you visualize how close you are to your target.',
+            l10n.goalChartDescription,
             style: AppTypography.body(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildTip(
             context,
-            'A VAT below 100 cm\u00B2 is generally considered healthy. '
-            'Consult a healthcare provider for personalized advice.',
+            l10n.goalHealthTip,
           ),
         ],
       ),
     );
   }
 
-  Widget _buildTrendExplanation(BuildContext context) {
+  Widget _buildTrendExplanation(BuildContext context, AppLocalizations l10n) {
     final colors = AppColors.of(context);
 
     return Container(
@@ -504,8 +498,7 @@ class HelpScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'The trend indicator shows how your VAT has changed compared to '
-            'your previous measurement.',
+            l10n.trendIndicatorDescription,
             style: AppTypography.body(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.md),
@@ -513,32 +506,28 @@ class HelpScreen extends StatelessWidget {
             context,
             icon: Icons.arrow_downward,
             color: colors.success,
-            label: 'Decreasing',
-            description:
-                'Your VAT is lower than before. Great progress toward reducing visceral fat.',
+            label: l10n.trendDecreasing,
+            description: l10n.trendDecreasingDesc,
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildTrendItem(
             context,
             icon: Icons.arrow_upward,
             color: colors.danger,
-            label: 'Increasing',
-            description:
-                'Your VAT is higher than before. Consider reviewing your diet and exercise routine.',
+            label: l10n.trendIncreasing,
+            description: l10n.trendIncreasingDesc,
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildTrendItem(
             context,
             icon: Icons.remove,
             color: colors.textSecondary,
-            label: 'Stable',
-            description:
-                'Your VAT has changed less than 1 cm\u00B2. Your levels are holding steady.',
+            label: l10n.trendStable,
+            description: l10n.trendStableDesc,
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            'The trend indicator also displays the exact change in VAT (e.g., -5.2) '
-            'so you can see the magnitude of the difference.',
+            l10n.trendMagnitudeNote,
             style: AppTypography.caption(color: colors.textSecondary),
           ),
         ],
@@ -592,7 +581,7 @@ class HelpScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildResultsExplanation(BuildContext context) {
+  Widget _buildResultsExplanation(BuildContext context, AppLocalizations l10n) {
     final colors = AppColors.of(context);
 
     return Container(
@@ -606,44 +595,42 @@ class HelpScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Your VAT result is categorized into three risk levels:',
+            l10n.resultsIntro,
             style: AppTypography.body(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.md),
           _buildRiskLevel(
             context,
             color: colors.success,
-            label: 'Healthy',
-            range: 'Less than 100 cm\u00B2',
-            description:
-                'Normal visceral fat levels associated with lower health risks.',
+            label: l10n.riskHealthy,
+            range: l10n.riskHealthyRange,
+            description: l10n.riskHealthyDesc,
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildRiskLevel(
             context,
             color: colors.warning,
-            label: 'Elevated',
-            range: '100 - 130 cm\u00B2',
-            description:
-                'Moderately elevated levels. Consider lifestyle changes.',
+            label: l10n.riskElevated,
+            range: l10n.riskElevatedRange,
+            description: l10n.riskElevatedDesc,
           ),
           const SizedBox(height: AppSpacing.sm),
           _buildRiskLevel(
             context,
             color: colors.danger,
-            label: 'High Risk',
-            range: 'Greater than 130 cm\u00B2',
-            description:
-                'High visceral fat associated with increased metabolic health risks.',
+            label: l10n.riskHighRisk,
+            range: l10n.riskHighRiskRange,
+            description: l10n.riskHighRiskDesc,
           ),
           const SizedBox(height: AppSpacing.lg),
-          _buildHealthInsightsLink(context, colors),
+          _buildHealthInsightsLink(context, colors, l10n),
         ],
       ),
     );
   }
 
-  Widget _buildHealthInsightsLink(BuildContext context, AppColorScheme colors) {
+  Widget _buildHealthInsightsLink(
+      BuildContext context, AppColorScheme colors, AppLocalizations l10n) {
     return GestureDetector(
       onTap: () => context.push('/insights?educational=true'),
       child: Container(
@@ -666,12 +653,12 @@ class HelpScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Learn More About Health Risks & Tips',
+                    l10n.learnMoreHealthRisks,
                     style: AppTypography.label(color: colors.accent),
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    'Understand the health implications and evidence-based ways to reduce visceral fat.',
+                    l10n.learnMoreHealthRisksDesc,
                     style: AppTypography.caption(color: colors.textSecondary),
                   ),
                 ],
@@ -746,7 +733,7 @@ class HelpScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildReference(BuildContext context) {
+  Widget _buildReference(BuildContext context, AppLocalizations l10n) {
     final colors = AppColors.of(context);
 
     return Container(
@@ -760,7 +747,7 @@ class HelpScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'The calculation method used in this app is based on peer-reviewed research:',
+            l10n.referenceIntro,
             style: AppTypography.body(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.md),
@@ -775,17 +762,17 @@ class HelpScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Samouda, H., Dutour, A., Chaumoitre, K., Panuel, M., Dutour, O., & Dadoun, F.',
+                  l10n.referenceAuthors,
                   style: AppTypography.caption(color: colors.textPrimary),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'VAT=TAAT-SAAT: innovative anthropometric model to predict visceral adipose tissue without resort to CT-Scan or DXA.',
+                  l10n.referenceTitle,
                   style: AppTypography.caption(color: colors.textPrimary),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Obesity (2013), 21(1), E41-E50.',
+                  l10n.referenceJournal,
                   style: AppTypography.caption(color: colors.textSecondary),
                 ),
                 const SizedBox(height: 8),
@@ -826,12 +813,26 @@ class _MeasurementDiagramPainter extends CustomPainter {
   final Color primaryColor;
   final Color secondaryColor;
   final Color backgroundColor;
+  final String waistLabel;
+  final String proximalThighLabel;
+  final String lowerRibLabel;
+  final String hipBoneLabel;
+  final String midpointLabel;
+  final String glutealCreaseLabel;
+  final String justBelowCreaseLabel;
 
   _MeasurementDiagramPainter({
     required this.isWaist,
     required this.primaryColor,
     required this.secondaryColor,
     required this.backgroundColor,
+    required this.waistLabel,
+    required this.proximalThighLabel,
+    required this.lowerRibLabel,
+    required this.hipBoneLabel,
+    required this.midpointLabel,
+    required this.glutealCreaseLabel,
+    required this.justBelowCreaseLabel,
   });
 
   @override
@@ -930,7 +931,7 @@ class _MeasurementDiagramPainter extends CustomPainter {
     // Draw labels
     _drawLabel(
       canvas,
-      'Waist',
+      waistLabel,
       Offset(centerX, measureY - 20),
       primaryColor,
     );
@@ -947,7 +948,7 @@ class _MeasurementDiagramPainter extends CustomPainter {
     );
     _drawLabel(
       canvas,
-      'Lower rib',
+      lowerRibLabel,
       Offset(centerX + 70, centerY - 35),
       secondaryColor,
       fontSize: 10,
@@ -962,7 +963,7 @@ class _MeasurementDiagramPainter extends CustomPainter {
     );
     _drawLabel(
       canvas,
-      'Hip bone',
+      hipBoneLabel,
       Offset(centerX + 70, centerY + 35),
       secondaryColor,
       fontSize: 10,
@@ -972,7 +973,7 @@ class _MeasurementDiagramPainter extends CustomPainter {
     // Midpoint indicator
     _drawLabel(
       canvas,
-      'Midpoint',
+      midpointLabel,
       Offset(centerX - 70, measureY),
       primaryColor,
       fontSize: 10,
@@ -1038,7 +1039,7 @@ class _MeasurementDiagramPainter extends CustomPainter {
     );
     _drawLabel(
       canvas,
-      'Gluteal crease',
+      glutealCreaseLabel,
       Offset(centerX + 60, centerY - 45),
       secondaryColor,
       fontSize: 10,
@@ -1064,14 +1065,14 @@ class _MeasurementDiagramPainter extends CustomPainter {
     // Draw labels
     _drawLabel(
       canvas,
-      'Proximal Thigh',
+      proximalThighLabel,
       Offset(centerX, measureY - 20),
       primaryColor,
     );
 
     _drawLabel(
       canvas,
-      'Just below crease',
+      justBelowCreaseLabel,
       Offset(centerX - 60, measureY),
       primaryColor,
       fontSize: 10,

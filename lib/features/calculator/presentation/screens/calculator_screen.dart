@@ -11,6 +11,7 @@ import 'package:visco/features/calculator/providers/measurement_provider.dart';
 import 'package:visco/features/insights/presentation/widgets/insights_card.dart';
 import 'package:visco/features/onboarding/providers/profile_provider.dart';
 import 'package:visco/features/settings/providers/settings_provider.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 import 'package:visco/shared/widgets/trend_indicator.dart';
 
 class CalculatorScreen extends ConsumerStatefulWidget {
@@ -69,6 +70,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colors = AppColors.of(context);
     final latestMeasurement = ref.watch(latestMeasurementProvider);
     final profile = ref.watch(profileNotifierProvider);
@@ -80,12 +82,12 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
     if (profile == null) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Calculate'),
+          title: Text(l10n.navCalculate),
           actions: [
             IconButton(
               icon: const Icon(Icons.help_outline_rounded),
               onPressed: () => context.push('/help'),
-              tooltip: 'Help',
+              tooltip: l10n.help,
             ),
           ],
         ),
@@ -102,13 +104,13 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                 ),
                 const SizedBox(height: AppSpacing.lg),
                 Text(
-                  'Create a Profile to Start',
+                  l10n.createProfileToStart,
                   style: AppTypography.headline(color: colors.textPrimary),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: AppSpacing.md),
                 Text(
-                  'To calculate your visceral fat, we need some basic information about you like your sex, age, and height.',
+                  l10n.createProfileExplanation,
                   style: AppTypography.body(color: colors.textSecondary),
                   textAlign: TextAlign.center,
                 ),
@@ -118,7 +120,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                   height: 56,
                   child: ElevatedButton(
                     onPressed: () => context.push('/new-profile'),
-                    child: const Text('Create Profile'),
+                    child: Text(l10n.createProfile),
                   ),
                 ),
               ],
@@ -135,7 +137,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
           IconButton(
             icon: const Icon(Icons.help_outline_rounded),
             onPressed: () => context.push('/help'),
-            tooltip: 'Help',
+            tooltip: l10n.help,
           ),
         ],
       ),
@@ -148,7 +150,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                "Today's Measurements",
+                l10n.todaysMeasurements,
                 style: AppTypography.headline(color: colors.textPrimary),
               ),
               const SizedBox(height: AppSpacing.xs),
@@ -158,9 +160,9 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
               ),
               const SizedBox(height: AppSpacing.lg),
               MeasurementInputField(
-                label: 'Weight',
+                label: l10n.weight,
                 unit: 'kg',
-                hint: 'Enter weight',
+                hint: l10n.enterWeight,
                 minValue: 30,
                 maxValue: 300,
                 measurementType: MeasurementType.weight,
@@ -169,9 +171,9 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
               ),
               const SizedBox(height: AppSpacing.lg),
               MeasurementInputField(
-                label: 'Waist Circumference',
+                label: l10n.waistCircumference,
                 unit: 'cm',
-                hint: 'Enter waist',
+                hint: l10n.enterWaist,
                 minValue: 50,
                 measurementType: MeasurementType.length,
                 unitSystem: unitSystem,
@@ -182,9 +184,9 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
               ),
               const SizedBox(height: AppSpacing.lg),
               MeasurementInputField(
-                label: 'Thigh Circumference',
+                label: l10n.thighCircumference,
                 unit: 'cm',
-                hint: 'Enter thigh',
+                hint: l10n.enterThigh,
                 minValue: 30,
                 maxValue: 100,
                 measurementType: MeasurementType.length,
@@ -208,7 +210,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                             color: Colors.white,
                           ),
                         )
-                      : const Text('Calculate & Save'),
+                      : Text(l10n.calculateAndSave),
                 ),
               ),
               const SizedBox(height: AppSpacing.xl),
@@ -219,7 +221,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                   final measurement = latestMeasurement;
                   if (measurement == null) {
                     return Text(
-                      'No previous measurements',
+                      l10n.noPreviousMeasurements,
                       style: AppTypography.caption(color: colors.textSecondary),
                       textAlign: TextAlign.center,
                     );
@@ -263,7 +265,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
                               ),
                               const SizedBox(height: AppSpacing.xs),
                               Text(
-                                'Measured: ${isToday ? "Today" : dateFormat.format(measurement.timestamp)}',
+                                '${l10n.measured} ${isToday ? l10n.today : dateFormat.format(measurement.timestamp)}',
                                 style: AppTypography.caption(color: colors.textSecondary),
                               ),
                             ],

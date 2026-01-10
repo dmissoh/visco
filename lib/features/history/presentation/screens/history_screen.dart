@@ -13,6 +13,7 @@ import 'package:visco/features/onboarding/providers/profile_provider.dart';
 import 'package:visco/features/premium/presentation/screens/paywall_screen.dart';
 import 'package:visco/features/premium/providers/premium_provider.dart';
 import 'package:visco/features/settings/providers/settings_provider.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class HistoryScreen extends ConsumerWidget {
   const HistoryScreen({super.key});
@@ -20,6 +21,7 @@ class HistoryScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final measurements = ref.watch(filteredMeasurementsProvider);
     final profile = ref.watch(profileNotifierProvider);
     final goalValue = profile != null 
@@ -31,7 +33,7 @@ class HistoryScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Progress'),
+        title: Text(l10n.navProgress),
         actions: [
           if (measurements.isNotEmpty && profile != null)
             IconButton(
@@ -41,7 +43,7 @@ class HistoryScreen extends ConsumerWidget {
                 if (!isPremium) {
                   final upgraded = await showPaywall(
                     context,
-                    featureName: "Doctor's Report",
+                    featureName: l10n.doctorsReport,
                   );
                   if (!upgraded) return;
                 }
@@ -52,7 +54,7 @@ class HistoryScreen extends ConsumerWidget {
                   );
                 }
               },
-              tooltip: "Doctor's Report",
+              tooltip: l10n.doctorsReport,
             ),
         ],
       ),
@@ -69,12 +71,12 @@ class HistoryScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: AppSpacing.md),
                     Text(
-                      'No measurements yet',
+                      l10n.noMeasurementsYet,
                       style: AppTypography.body(color: colors.textSecondary),
                     ),
                     const SizedBox(height: AppSpacing.sm),
                     Text(
-                      'Start tracking to see your progress',
+                      l10n.startTrackingToSeeProgress,
                       style: AppTypography.caption(color: colors.textTertiary),
                     ),
                   ],
@@ -89,7 +91,7 @@ class HistoryScreen extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Visceral Fat Trend',
+                            l10n.visceralFatTrend,
                             style:
                                 AppTypography.headline(color: colors.textPrimary),
                           ),
@@ -107,7 +109,7 @@ class HistoryScreen extends ConsumerWidget {
                           const TrajectoryCard(),
                           const SizedBox(height: AppSpacing.xl),
                           Text(
-                            'History',
+                            l10n.history,
                             style: AppTypography.title(color: colors.textPrimary),
                           ),
                         ],
@@ -145,6 +147,7 @@ class HistoryScreen extends ConsumerWidget {
                         child: _LockedHistoryCard(
                           lockedCount: lockedCount,
                           colors: colors,
+                          l10n: l10n,
                         ),
                       ),
                     ),
@@ -161,16 +164,18 @@ class HistoryScreen extends ConsumerWidget {
 class _LockedHistoryCard extends StatelessWidget {
   final int lockedCount;
   final AppColorScheme colors;
+  final AppLocalizations l10n;
 
   const _LockedHistoryCard({
     required this.lockedCount,
     required this.colors,
+    required this.l10n,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => showPaywall(context, featureName: 'Unlimited History'),
+      onTap: () => showPaywall(context, featureName: l10n.unlimitedHistory),
       child: Container(
         padding: const EdgeInsets.all(AppSpacing.lg),
         decoration: BoxDecoration(
@@ -199,12 +204,12 @@ class _LockedHistoryCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '$lockedCount older measurements',
+                    l10n.olderMeasurements(lockedCount),
                     style: AppTypography.body(color: colors.textPrimary),
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    'Unlock to see your full progress',
+                    l10n.unlockFullProgress,
                     style: AppTypography.caption(color: colors.textSecondary),
                   ),
                 ],

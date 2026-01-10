@@ -17,6 +17,7 @@ class SettingsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final colors = AppColors.of(context);
     final currentTheme = ref.watch(settingsProvider);
     final profile = ref.watch(profileNotifierProvider);
@@ -26,7 +27,7 @@ class SettingsScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: colors.background,
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text(l10n.settings),
         backgroundColor: colors.background,
         foregroundColor: colors.textPrimary,
         elevation: 0,
@@ -35,7 +36,7 @@ class SettingsScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(AppSpacing.lg),
         children: [
           Text(
-            'Profiles',
+            l10n.profiles,
             style: AppTypography.title(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.md),
@@ -64,7 +65,7 @@ class SettingsScreen extends ConsumerWidget {
                   title: Row(
                     children: [
                       Text(
-                        'Add Profile',
+                        l10n.addProfile,
                         style: AppTypography.body(color: colors.accent),
                       ),
                       if (!isPremium && allProfiles.isNotEmpty) ...[
@@ -79,7 +80,7 @@ class SettingsScreen extends ConsumerWidget {
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Text(
-                            'PRO',
+                            l10n.pro,
                             style: AppTypography.label(color: Colors.white)
                                 .copyWith(fontSize: 10),
                           ),
@@ -92,7 +93,7 @@ class SettingsScreen extends ConsumerWidget {
                     if (!isPremium && allProfiles.isNotEmpty) {
                       final upgraded = await showPaywall(
                         context,
-                        featureName: 'Multiple Profiles',
+                        featureName: l10n.multipleProfiles,
                       );
                       if (!upgraded) return;
                     }
@@ -107,7 +108,7 @@ class SettingsScreen extends ConsumerWidget {
           if (profile != null) ...[
             const SizedBox(height: AppSpacing.xl),
             Text(
-              'Current Profile',
+              l10n.currentProfile,
               style: AppTypography.title(color: colors.textPrimary),
             ),
             const SizedBox(height: AppSpacing.md),
@@ -125,11 +126,11 @@ class SettingsScreen extends ConsumerWidget {
                       color: colors.textSecondary,
                     ),
                     title: Text(
-                      'Sex',
+                      l10n.sexLabel,
                       style: AppTypography.body(color: colors.textPrimary),
                     ),
                     trailing: Text(
-                      profile.sex == Sex.male ? 'Male' : 'Female',
+                      profile.sex == Sex.male ? l10n.male : l10n.female,
                       style: AppTypography.body(color: colors.textSecondary),
                     ),
                   ),
@@ -140,11 +141,11 @@ class SettingsScreen extends ConsumerWidget {
                       color: colors.textSecondary,
                     ),
                     title: Text(
-                      'Age',
+                      l10n.age,
                       style: AppTypography.body(color: colors.textPrimary),
                     ),
                     trailing: Text(
-                      '${profile.age} years',
+                      l10n.ageYears(profile.age),
                       style: AppTypography.body(color: colors.textSecondary),
                     ),
                   ),
@@ -155,7 +156,7 @@ class SettingsScreen extends ConsumerWidget {
                       color: colors.textSecondary,
                     ),
                     title: Text(
-                      'Height',
+                      l10n.height,
                       style: AppTypography.body(color: colors.textPrimary),
                     ),
                     trailing: Text(
@@ -171,7 +172,7 @@ class SettingsScreen extends ConsumerWidget {
                         color: colors.danger,
                       ),
                       title: Text(
-                        'Delete Profile',
+                        l10n.deleteProfile,
                         style: AppTypography.body(color: colors.danger),
                       ),
                       onTap: () => _showDeleteProfileConfirmation(context, ref, profile),
@@ -183,28 +184,28 @@ class SettingsScreen extends ConsumerWidget {
           ],
           const SizedBox(height: AppSpacing.xl),
           Text(
-            'Goals',
+            l10n.goals,
             style: AppTypography.title(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.md),
           _buildGoalSection(context, ref, colors),
           const SizedBox(height: AppSpacing.xl),
           Text(
-            'Units',
+            l10n.units,
             style: AppTypography.title(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.md),
           _buildUnitsSection(context, ref, colors),
           const SizedBox(height: AppSpacing.xl),
           Text(
-            'Reminders',
+            l10n.reminders,
             style: AppTypography.title(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.md),
           _buildRemindersSection(context, ref, colors),
           const SizedBox(height: AppSpacing.xl),
           Text(
-            'Appearance',
+            l10n.appearance,
             style: AppTypography.title(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.md),
@@ -219,8 +220,8 @@ class SettingsScreen extends ConsumerWidget {
                 _buildThemeOption(
                   context,
                   ref,
-                  title: 'System',
-                  subtitle: 'Follow system settings',
+                  title: l10n.system,
+                  subtitle: l10n.followSystemSettings,
                   value: ThemeMode.system,
                   currentValue: currentTheme,
                   icon: Icons.settings_suggest_outlined,
@@ -229,8 +230,8 @@ class SettingsScreen extends ConsumerWidget {
                 _buildThemeOption(
                   context,
                   ref,
-                  title: 'Light',
-                  subtitle: 'Always use light theme',
+                  title: l10n.light,
+                  subtitle: l10n.alwaysLightTheme,
                   value: ThemeMode.light,
                   currentValue: currentTheme,
                   icon: Icons.light_mode_outlined,
@@ -239,8 +240,8 @@ class SettingsScreen extends ConsumerWidget {
                 _buildThemeOption(
                   context,
                   ref,
-                  title: 'Dark',
-                  subtitle: 'Always use dark theme',
+                  title: l10n.dark,
+                  subtitle: l10n.alwaysDarkTheme,
                   value: ThemeMode.dark,
                   currentValue: currentTheme,
                   icon: Icons.dark_mode_outlined,
@@ -250,14 +251,14 @@ class SettingsScreen extends ConsumerWidget {
           ),
           const SizedBox(height: AppSpacing.xl),
           Text(
-            'Language',
+            l10n.language,
             style: AppTypography.title(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.md),
           _buildLanguageSection(context, ref, colors),
           const SizedBox(height: AppSpacing.xl),
           Text(
-            'Data',
+            l10n.data,
             style: AppTypography.title(color: colors.textPrimary),
           ),
           const SizedBox(height: AppSpacing.md),
@@ -273,11 +274,11 @@ class SettingsScreen extends ConsumerWidget {
                 color: colors.danger,
               ),
               title: Text(
-                'Reset All Data',
+                l10n.resetAllData,
                 style: AppTypography.body(color: colors.danger),
               ),
               subtitle: Text(
-                'Delete all profiles and measurements',
+                l10n.deleteAllProfilesAndMeasurements,
                 style: AppTypography.caption(color: colors.textSecondary),
               ),
               onTap: () => _showResetAllConfirmation(context, ref),
@@ -287,7 +288,7 @@ class SettingsScreen extends ConsumerWidget {
           if (isDevOptionsEnabled) ...[
             const SizedBox(height: AppSpacing.xl),
             Text(
-              'Developer Options',
+              l10n.developerOptions,
               style: AppTypography.title(color: colors.textPrimary),
             ),
             const SizedBox(height: AppSpacing.md),
@@ -299,16 +300,17 @@ class SettingsScreen extends ConsumerWidget {
   }
 
   Widget _buildDebugSection(BuildContext context, WidgetRef ref, AppColorScheme colors) {
+    final l10n = AppLocalizations.of(context)!;
     final debugOverride = ref.watch(debugPremiumOverrideProvider);
     final isPremium = ref.watch(isPremiumProvider);
 
     String statusText;
     if (debugOverride == true) {
-      statusText = 'Simulating Premium';
+      statusText = l10n.simulatingPremium;
     } else if (debugOverride == false) {
-      statusText = 'Simulating Free';
+      statusText = l10n.simulatingFree;
     } else {
-      statusText = 'Using Real Status';
+      statusText = l10n.usingRealStatus;
     }
 
     return Container(
@@ -325,11 +327,11 @@ class SettingsScreen extends ConsumerWidget {
               color: colors.warning,
             ),
             title: Text(
-              'Premium Status Override',
+              l10n.premiumStatusOverride,
               style: AppTypography.body(color: colors.textPrimary),
             ),
             subtitle: Text(
-              '$statusText (actual: ${isPremium ? "Premium" : "Free"})',
+              '$statusText (${l10n.actual}: ${isPremium ? l10n.premium : l10n.free})',
               style: AppTypography.caption(color: colors.textSecondary),
             ),
           ),
@@ -341,7 +343,7 @@ class SettingsScreen extends ConsumerWidget {
                   child: _buildDebugButton(
                     context,
                     ref,
-                    label: 'Free',
+                    label: l10n.free,
                     isSelected: debugOverride == false,
                     onTap: () => ref.read(debugPremiumOverrideProvider.notifier).state = false,
                     colors: colors,
@@ -352,7 +354,7 @@ class SettingsScreen extends ConsumerWidget {
                   child: _buildDebugButton(
                     context,
                     ref,
-                    label: 'Premium',
+                    label: l10n.premium,
                     isSelected: debugOverride == true,
                     onTap: () => ref.read(debugPremiumOverrideProvider.notifier).state = true,
                     colors: colors,
@@ -363,7 +365,7 @@ class SettingsScreen extends ConsumerWidget {
                   child: _buildDebugButton(
                     context,
                     ref,
-                    label: 'Real',
+                    label: l10n.real,
                     isSelected: debugOverride == null,
                     onTap: () => ref.read(debugPremiumOverrideProvider.notifier).state = null,
                     colors: colors,
@@ -409,6 +411,7 @@ class SettingsScreen extends ConsumerWidget {
   }
 
   Widget _buildGoalSection(BuildContext context, WidgetRef ref, AppColorScheme colors) {
+    final l10n = AppLocalizations.of(context)!;
     final profile = ref.watch(profileNotifierProvider);
     final goalValue = profile != null 
         ? ref.watch(vatGoalFamilyProvider(profile.id)) 
@@ -426,11 +429,11 @@ class SettingsScreen extends ConsumerWidget {
           color: colors.textSecondary,
         ),
         title: Text(
-          'VAT Goal',
+          l10n.vatGoal,
           style: AppTypography.body(color: colors.textPrimary),
         ),
         subtitle: Text(
-          goalValue != null ? '${goalValue.toStringAsFixed(0)} cm\u00B2' : 'Not set',
+          goalValue != null ? '${goalValue.toStringAsFixed(0)} cm\u00B2' : l10n.notSet,
           style: AppTypography.caption(color: colors.textSecondary),
         ),
         trailing: Icon(
@@ -445,6 +448,7 @@ class SettingsScreen extends ConsumerWidget {
   }
 
   Widget _buildUnitsSection(BuildContext context, WidgetRef ref, AppColorScheme colors) {
+    final l10n = AppLocalizations.of(context)!;
     final currentUnit = ref.watch(unitSystemProvider);
 
     return Container(
@@ -458,8 +462,8 @@ class SettingsScreen extends ConsumerWidget {
           _buildUnitOption(
             context,
             ref,
-            title: 'Metric',
-            subtitle: 'kg, cm',
+            title: l10n.metric,
+            subtitle: l10n.metricUnits,
             value: UnitSystem.metric,
             currentValue: currentUnit,
             icon: Icons.straighten_outlined,
@@ -468,8 +472,8 @@ class SettingsScreen extends ConsumerWidget {
           _buildUnitOption(
             context,
             ref,
-            title: 'Imperial',
-            subtitle: 'lbs, inches',
+            title: l10n.imperial,
+            subtitle: l10n.imperialUnits,
             value: UnitSystem.imperial,
             currentValue: currentUnit,
             icon: Icons.square_foot_outlined,
@@ -601,6 +605,7 @@ class SettingsScreen extends ConsumerWidget {
   }
 
   Widget _buildRemindersSection(BuildContext context, WidgetRef ref, AppColorScheme colors) {
+    final l10n = AppLocalizations.of(context)!;
     final reminderSettings = ref.watch(reminderSettingsProvider);
     
     String frequencyText;
@@ -608,18 +613,18 @@ class SettingsScreen extends ConsumerWidget {
     
     switch (reminderSettings.frequency) {
       case ReminderFrequency.off:
-        frequencyText = 'Off';
-        subtitleText = 'No reminders scheduled';
+        frequencyText = l10n.off;
+        subtitleText = l10n.noRemindersScheduled;
       case ReminderFrequency.weekly:
         final time = TimeOfDay(hour: reminderSettings.hour, minute: reminderSettings.minute);
-        final dayName = _getDayName(reminderSettings.dayOfWeek);
-        frequencyText = 'Weekly';
-        subtitleText = 'Every $dayName at ${time.format(context)}';
+        final dayName = _getLocalizedDayName(l10n, reminderSettings.dayOfWeek);
+        frequencyText = l10n.weekly;
+        subtitleText = l10n.everyDayAt(dayName, time.format(context));
       case ReminderFrequency.monthly:
         final time = TimeOfDay(hour: reminderSettings.hour, minute: reminderSettings.minute);
         final dayOrdinal = _getDayOrdinal(reminderSettings.dayOfMonth);
-        frequencyText = 'Monthly';
-        subtitleText = 'Every $dayOrdinal at ${time.format(context)}';
+        frequencyText = l10n.monthly;
+        subtitleText = l10n.everyOrdinalAt(dayOrdinal, time.format(context));
     }
 
     return Container(
@@ -650,9 +655,25 @@ class SettingsScreen extends ConsumerWidget {
     );
   }
 
-  String _getDayName(int dayOfWeek) {
-    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    return days[dayOfWeek - 1];
+  String _getLocalizedDayName(AppLocalizations l10n, int dayOfWeek) {
+    switch (dayOfWeek) {
+      case 1:
+        return l10n.monday;
+      case 2:
+        return l10n.tuesday;
+      case 3:
+        return l10n.wednesday;
+      case 4:
+        return l10n.thursday;
+      case 5:
+        return l10n.friday;
+      case 6:
+        return l10n.saturday;
+      case 7:
+        return l10n.sunday;
+      default:
+        return l10n.monday;
+    }
   }
 
   String _getDayOrdinal(int day) {
@@ -681,192 +702,195 @@ class SettingsScreen extends ConsumerWidget {
 
     showDialog(
       context: context,
-      builder: (context) => StatefulBuilder(
-        builder: (context, setState) => AlertDialog(
-          backgroundColor: colors.surface,
-          title: Text(
-            'Measurement Reminder',
-            style: AppTypography.title(color: colors.textPrimary),
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Frequency',
-                style: AppTypography.caption(color: colors.textSecondary),
-              ),
-              const SizedBox(height: AppSpacing.sm),
-              SegmentedButton<ReminderFrequency>(
-                segments: const [
-                  ButtonSegment(value: ReminderFrequency.off, label: Text('Off')),
-                  ButtonSegment(value: ReminderFrequency.weekly, label: Text('Weekly')),
-                  ButtonSegment(value: ReminderFrequency.monthly, label: Text('Monthly')),
+      builder: (context) {
+        final dialogL10n = AppLocalizations.of(context)!;
+        return StatefulBuilder(
+          builder: (context, setState) => AlertDialog(
+            backgroundColor: colors.surface,
+            title: Text(
+              dialogL10n.measurementReminder,
+              style: AppTypography.title(color: colors.textPrimary),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  dialogL10n.frequency,
+                  style: AppTypography.caption(color: colors.textSecondary),
+                ),
+                const SizedBox(height: AppSpacing.sm),
+                SegmentedButton<ReminderFrequency>(
+                  segments: [
+                    ButtonSegment(value: ReminderFrequency.off, label: Text(dialogL10n.off)),
+                    ButtonSegment(value: ReminderFrequency.weekly, label: Text(dialogL10n.weekly)),
+                    ButtonSegment(value: ReminderFrequency.monthly, label: Text(dialogL10n.monthly)),
+                  ],
+                  selected: {frequency},
+                  onSelectionChanged: (selected) {
+                    setState(() => frequency = selected.first);
+                  },
+                ),
+                if (frequency != ReminderFrequency.off) ...[
+                  const SizedBox(height: AppSpacing.lg),
+                  Text(
+                    dialogL10n.time,
+                    style: AppTypography.caption(color: colors.textSecondary),
+                  ),
+                  const SizedBox(height: AppSpacing.sm),
+                  InkWell(
+                    onTap: () async {
+                      final time = await showTimePicker(
+                        context: context,
+                        initialTime: TimeOfDay(hour: hour, minute: minute),
+                      );
+                      if (time != null) {
+                        setState(() {
+                          hour = time.hour;
+                          minute = time.minute;
+                        });
+                      }
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.md,
+                        vertical: AppSpacing.sm,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: colors.border),
+                        borderRadius: BorderRadius.circular(AppRadius.sm),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            TimeOfDay(hour: hour, minute: minute).format(context),
+                            style: AppTypography.body(color: colors.textPrimary),
+                          ),
+                          Icon(Icons.access_time, color: colors.textSecondary),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
-                selected: {frequency},
-                onSelectionChanged: (selected) {
-                  setState(() => frequency = selected.first);
-                },
+                if (frequency == ReminderFrequency.weekly) ...[
+                  const SizedBox(height: AppSpacing.lg),
+                  Text(
+                    dialogL10n.dayOfWeek,
+                    style: AppTypography.caption(color: colors.textSecondary),
+                  ),
+                  const SizedBox(height: AppSpacing.sm),
+                  DropdownButtonFormField<int>(
+                    initialValue: dayOfWeek,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(AppRadius.sm),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.md,
+                        vertical: AppSpacing.sm,
+                      ),
+                    ),
+                    items: List.generate(7, (index) {
+                      return DropdownMenuItem(
+                        value: index + 1,
+                        child: Text(_getLocalizedDayName(dialogL10n, index + 1)),
+                      );
+                    }),
+                    onChanged: (value) {
+                      if (value != null) {
+                        setState(() => dayOfWeek = value);
+                      }
+                    },
+                  ),
+                ],
+                if (frequency == ReminderFrequency.monthly) ...[
+                  const SizedBox(height: AppSpacing.lg),
+                  Text(
+                    dialogL10n.dayOfMonth,
+                    style: AppTypography.caption(color: colors.textSecondary),
+                  ),
+                  const SizedBox(height: AppSpacing.sm),
+                  DropdownButtonFormField<int>(
+                    initialValue: dayOfMonth,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(AppRadius.sm),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.md,
+                        vertical: AppSpacing.sm,
+                      ),
+                    ),
+                    items: List.generate(28, (index) {
+                      return DropdownMenuItem(
+                        value: index + 1,
+                        child: Text(_getDayOrdinal(index + 1)),
+                      );
+                    }),
+                    onChanged: (value) {
+                      if (value != null) {
+                        setState(() => dayOfMonth = value);
+                      }
+                    },
+                  ),
+                ],
+              ],
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text(
+                  dialogL10n.cancel,
+                  style: AppTypography.body(color: colors.textSecondary),
+                ),
               ),
-              if (frequency != ReminderFrequency.off) ...[
-                const SizedBox(height: AppSpacing.lg),
-                Text(
-                  'Time',
-                  style: AppTypography.caption(color: colors.textSecondary),
+              TextButton(
+                onPressed: () async {
+                  final newSettings = ReminderSettings(
+                    frequency: frequency,
+                    hour: hour,
+                    minute: minute,
+                    dayOfWeek: dayOfWeek,
+                    dayOfMonth: dayOfMonth,
+                  );
+                  
+                  await ref.read(reminderSettingsProvider.notifier).updateSettings(newSettings);
+                  
+                  final notificationService = NotificationService();
+                  
+                  switch (frequency) {
+                    case ReminderFrequency.off:
+                      await notificationService.cancelAllReminders();
+                    case ReminderFrequency.weekly:
+                      await notificationService.requestPermissions();
+                      await notificationService.scheduleWeeklyReminder(
+                        dayOfWeek: dayOfWeek,
+                        hour: hour,
+                        minute: minute,
+                      );
+                    case ReminderFrequency.monthly:
+                      await notificationService.requestPermissions();
+                      await notificationService.scheduleMonthlyReminder(
+                        dayOfMonth: dayOfMonth,
+                        hour: hour,
+                        minute: minute,
+                      );
+                  }
+                  
+                  if (context.mounted) {
+                    Navigator.pop(context);
+                  }
+                },
+                child: Text(
+                  dialogL10n.save,
+                  style: AppTypography.body(color: colors.accent),
                 ),
-                const SizedBox(height: AppSpacing.sm),
-                InkWell(
-                  onTap: () async {
-                    final time = await showTimePicker(
-                      context: context,
-                      initialTime: TimeOfDay(hour: hour, minute: minute),
-                    );
-                    if (time != null) {
-                      setState(() {
-                        hour = time.hour;
-                        minute = time.minute;
-                      });
-                    }
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: AppSpacing.md,
-                      vertical: AppSpacing.sm,
-                    ),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: colors.border),
-                      borderRadius: BorderRadius.circular(AppRadius.sm),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          TimeOfDay(hour: hour, minute: minute).format(context),
-                          style: AppTypography.body(color: colors.textPrimary),
-                        ),
-                        Icon(Icons.access_time, color: colors.textSecondary),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-              if (frequency == ReminderFrequency.weekly) ...[
-                const SizedBox(height: AppSpacing.lg),
-                Text(
-                  'Day of Week',
-                  style: AppTypography.caption(color: colors.textSecondary),
-                ),
-                const SizedBox(height: AppSpacing.sm),
-                DropdownButtonFormField<int>(
-                  initialValue: dayOfWeek,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(AppRadius.sm),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: AppSpacing.md,
-                      vertical: AppSpacing.sm,
-                    ),
-                  ),
-                  items: List.generate(7, (index) {
-                    return DropdownMenuItem(
-                      value: index + 1,
-                      child: Text(_getDayName(index + 1)),
-                    );
-                  }),
-                  onChanged: (value) {
-                    if (value != null) {
-                      setState(() => dayOfWeek = value);
-                    }
-                  },
-                ),
-              ],
-              if (frequency == ReminderFrequency.monthly) ...[
-                const SizedBox(height: AppSpacing.lg),
-                Text(
-                  'Day of Month',
-                  style: AppTypography.caption(color: colors.textSecondary),
-                ),
-                const SizedBox(height: AppSpacing.sm),
-                DropdownButtonFormField<int>(
-                  initialValue: dayOfMonth,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(AppRadius.sm),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: AppSpacing.md,
-                      vertical: AppSpacing.sm,
-                    ),
-                  ),
-                  items: List.generate(28, (index) {
-                    return DropdownMenuItem(
-                      value: index + 1,
-                      child: Text(_getDayOrdinal(index + 1)),
-                    );
-                  }),
-                  onChanged: (value) {
-                    if (value != null) {
-                      setState(() => dayOfMonth = value);
-                    }
-                  },
-                ),
-              ],
+              ),
             ],
           ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text(
-                'Cancel',
-                style: AppTypography.body(color: colors.textSecondary),
-              ),
-            ),
-            TextButton(
-              onPressed: () async {
-                final newSettings = ReminderSettings(
-                  frequency: frequency,
-                  hour: hour,
-                  minute: minute,
-                  dayOfWeek: dayOfWeek,
-                  dayOfMonth: dayOfMonth,
-                );
-                
-                await ref.read(reminderSettingsProvider.notifier).updateSettings(newSettings);
-                
-                final notificationService = NotificationService();
-                
-                switch (frequency) {
-                  case ReminderFrequency.off:
-                    await notificationService.cancelAllReminders();
-                  case ReminderFrequency.weekly:
-                    await notificationService.requestPermissions();
-                    await notificationService.scheduleWeeklyReminder(
-                      dayOfWeek: dayOfWeek,
-                      hour: hour,
-                      minute: minute,
-                    );
-                  case ReminderFrequency.monthly:
-                    await notificationService.requestPermissions();
-                    await notificationService.scheduleMonthlyReminder(
-                      dayOfMonth: dayOfMonth,
-                      hour: hour,
-                      minute: minute,
-                    );
-                }
-                
-                if (context.mounted) {
-                  Navigator.pop(context);
-                }
-              },
-              child: Text(
-                'Save',
-                style: AppTypography.body(color: colors.accent),
-              ),
-            ),
-          ],
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -878,73 +902,76 @@ class SettingsScreen extends ConsumerWidget {
 
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: colors.surface,
-        title: Text(
-          'Set VAT Goal',
-          style: AppTypography.title(color: colors.textPrimary),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Set a target visceral fat area to track on your progress chart.',
-              style: AppTypography.caption(color: colors.textSecondary),
-            ),
-            const SizedBox(height: AppSpacing.md),
-            TextField(
-              controller: controller,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Goal (cm\u00B2)',
-                hintText: 'e.g., 100',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(AppRadius.sm),
+      builder: (context) {
+        final dialogL10n = AppLocalizations.of(context)!;
+        return AlertDialog(
+          backgroundColor: colors.surface,
+          title: Text(
+            dialogL10n.setVatGoal,
+            style: AppTypography.title(color: colors.textPrimary),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                dialogL10n.setVatGoalDescription,
+                style: AppTypography.caption(color: colors.textSecondary),
+              ),
+              const SizedBox(height: AppSpacing.md),
+              TextField(
+                controller: controller,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: 'Goal (cm\u00B2)',
+                  hintText: dialogL10n.goalHint,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(AppRadius.sm),
+                  ),
                 ),
               ),
+              const SizedBox(height: AppSpacing.sm),
+              Text(
+                dialogL10n.goalTip,
+                style: AppTypography.caption(color: colors.success),
+              ),
+            ],
+          ),
+          actions: [
+            if (currentGoal != null)
+              TextButton(
+                onPressed: () {
+                  ref.read(vatGoalFamilyProvider(profileId).notifier).setGoal(null);
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  dialogL10n.clear,
+                  style: AppTypography.body(color: colors.danger),
+                ),
+              ),
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(
+                dialogL10n.cancel,
+                style: AppTypography.body(color: colors.textSecondary),
+              ),
             ),
-            const SizedBox(height: AppSpacing.sm),
-            Text(
-              'Tip: Below 100 cm\u00B2 is considered healthy',
-              style: AppTypography.caption(color: colors.success),
-            ),
-          ],
-        ),
-        actions: [
-          if (currentGoal != null)
             TextButton(
               onPressed: () {
-                ref.read(vatGoalFamilyProvider(profileId).notifier).setGoal(null);
+                final value = double.tryParse(controller.text);
+                if (value != null && value > 0) {
+                  ref.read(vatGoalFamilyProvider(profileId).notifier).setGoal(value);
+                }
                 Navigator.pop(context);
               },
               child: Text(
-                'Clear',
-                style: AppTypography.body(color: colors.danger),
+                dialogL10n.save,
+                style: AppTypography.body(color: colors.accent),
               ),
             ),
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(
-              'Cancel',
-              style: AppTypography.body(color: colors.textSecondary),
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              final value = double.tryParse(controller.text);
-              if (value != null && value > 0) {
-                ref.read(vatGoalFamilyProvider(profileId).notifier).setGoal(value);
-              }
-              Navigator.pop(context);
-            },
-            child: Text(
-              'Save',
-              style: AppTypography.body(color: colors.accent),
-            ),
-          ),
-        ],
-      ),
+          ],
+        );
+      },
     );
   }
 
@@ -955,6 +982,7 @@ class SettingsScreen extends ConsumerWidget {
     required bool isActive,
     required AppColorScheme colors,
   }) {
+    final l10n = AppLocalizations.of(context)!;
     return ListTile(
       leading: CircleAvatar(
         backgroundColor: isActive ? colors.accent : colors.border,
@@ -970,7 +998,7 @@ class SettingsScreen extends ConsumerWidget {
         style: AppTypography.body(color: colors.textPrimary),
       ),
       subtitle: Text(
-        '${profile.sex == Sex.male ? 'Male' : 'Female'}, ${profile.age} years',
+        '${profile.sex == Sex.male ? l10n.male : l10n.female}, ${l10n.ageYears(profile.age)}',
         style: AppTypography.caption(color: colors.textSecondary),
       ),
       trailing: isActive
@@ -987,38 +1015,41 @@ class SettingsScreen extends ConsumerWidget {
 
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: colors.surface,
-        title: Text(
-          'Delete Profile',
-          style: AppTypography.title(color: colors.textPrimary),
-        ),
-        content: Text(
-          'Delete "${profile.name}" and all their measurements? This cannot be undone.',
-          style: AppTypography.body(color: colors.textSecondary),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(
-              'Cancel',
-              style: AppTypography.body(color: colors.textSecondary),
-            ),
+      builder: (context) {
+        final dialogL10n = AppLocalizations.of(context)!;
+        return AlertDialog(
+          backgroundColor: colors.surface,
+          title: Text(
+            dialogL10n.deleteProfile,
+            style: AppTypography.title(color: colors.textPrimary),
           ),
-          TextButton(
-            onPressed: () async {
-              await ref.read(profileNotifierProvider.notifier).deleteProfile(profile.id);
-              if (context.mounted) {
-                Navigator.pop(context);
-              }
-            },
-            child: Text(
-              'Delete',
-              style: AppTypography.body(color: colors.danger),
-            ),
+          content: Text(
+            dialogL10n.deleteProfileConfirmation(profile.name),
+            style: AppTypography.body(color: colors.textSecondary),
           ),
-        ],
-      ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(
+                dialogL10n.cancel,
+                style: AppTypography.body(color: colors.textSecondary),
+              ),
+            ),
+            TextButton(
+              onPressed: () async {
+                await ref.read(profileNotifierProvider.notifier).deleteProfile(profile.id);
+                if (context.mounted) {
+                  Navigator.pop(context);
+                }
+              },
+              child: Text(
+                dialogL10n.delete,
+                style: AppTypography.body(color: colors.danger),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -1027,39 +1058,42 @@ class SettingsScreen extends ConsumerWidget {
 
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: colors.surface,
-        title: Text(
-          'Reset All Data',
-          style: AppTypography.title(color: colors.textPrimary),
-        ),
-        content: Text(
-          'This will delete ALL profiles and measurements. You will need to set up a new profile. This cannot be undone.',
-          style: AppTypography.body(color: colors.textSecondary),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(
-              'Cancel',
-              style: AppTypography.body(color: colors.textSecondary),
-            ),
+      builder: (context) {
+        final dialogL10n = AppLocalizations.of(context)!;
+        return AlertDialog(
+          backgroundColor: colors.surface,
+          title: Text(
+            dialogL10n.resetAllData,
+            style: AppTypography.title(color: colors.textPrimary),
           ),
-          TextButton(
-            onPressed: () async {
-              await ref.read(profileNotifierProvider.notifier).deleteAllProfiles();
-              if (context.mounted) {
-                Navigator.pop(context);
-                context.go('/onboarding');
-              }
-            },
-            child: Text(
-              'Reset',
-              style: AppTypography.body(color: colors.danger),
-            ),
+          content: Text(
+            dialogL10n.resetAllDataConfirmation,
+            style: AppTypography.body(color: colors.textSecondary),
           ),
-        ],
-      ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(
+                dialogL10n.cancel,
+                style: AppTypography.body(color: colors.textSecondary),
+              ),
+            ),
+            TextButton(
+              onPressed: () async {
+                await ref.read(profileNotifierProvider.notifier).deleteAllProfiles();
+                if (context.mounted) {
+                  Navigator.pop(context);
+                  context.go('/onboarding');
+                }
+              },
+              child: Text(
+                dialogL10n.reset,
+                style: AppTypography.body(color: colors.danger),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 

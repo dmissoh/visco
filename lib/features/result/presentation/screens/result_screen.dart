@@ -13,6 +13,7 @@ import 'package:visco/features/result/presentation/widgets/bmi_scale_indicator.d
 import 'package:visco/features/result/presentation/widgets/measurements_summary.dart';
 import 'package:visco/features/result/presentation/widgets/risk_scale_indicator.dart';
 import 'package:visco/features/result/presentation/widgets/vat_result_card.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class ResultScreen extends ConsumerWidget {
   final Measurement measurement;
@@ -27,6 +28,7 @@ class ResultScreen extends ConsumerWidget {
     final colors = AppColors.of(context);
     final trend = ref.watch(vatTrendProvider);
     final profile = ref.watch(profileNotifierProvider);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
@@ -34,7 +36,7 @@ class ResultScreen extends ConsumerWidget {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.go('/'),
         ),
-        title: const Text('Result'),
+        title: Text(l10n.result),
         actions: [
           if (profile != null)
             IconButton(
@@ -43,7 +45,7 @@ class ResultScreen extends ConsumerWidget {
                 profile: profile,
                 measurement: measurement,
               ),
-              tooltip: 'Share Result',
+              tooltip: l10n.shareResult,
             ),
         ],
       ),
@@ -62,7 +64,7 @@ class ResultScreen extends ConsumerWidget {
                 child: FilledButton.icon(
                   onPressed: () => context.push('/insights', extra: measurement),
                   icon: const Icon(Icons.lightbulb_outline, size: 20),
-                  label: const Text('View Health Insights'),
+                  label: Text(l10n.viewHealthInsights),
                   style: FilledButton.styleFrom(
                     backgroundColor: colors.accent,
                     foregroundColor: Colors.white,
@@ -90,7 +92,7 @@ class ResultScreen extends ConsumerWidget {
                     ),
                   ),
                   child: Text(
-                    'View Progress Chart',
+                    l10n.viewProgressChart,
                     style: AppTypography.body(color: colors.accent),
                   ),
                 ),

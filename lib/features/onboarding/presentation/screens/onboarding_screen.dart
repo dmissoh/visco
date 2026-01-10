@@ -9,6 +9,7 @@ import 'package:visco/features/onboarding/presentation/widgets/date_picker_field
 import 'package:visco/features/onboarding/presentation/widgets/height_input_field.dart';
 import 'package:visco/features/onboarding/presentation/widgets/sex_selector.dart';
 import 'package:visco/features/onboarding/providers/profile_provider.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
   final bool isAddingNewProfile;
@@ -43,10 +44,11 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 
   Future<void> _saveProfile() async {
+    final l10n = AppLocalizations.of(context)!;
     final name = _nameController.text.trim();
     if (name.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter a profile name')),
+        SnackBar(content: Text(l10n.pleaseEnterProfileName)),
       );
       return;
     }
@@ -136,19 +138,20 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 
   Widget _buildWelcomePage(AppColorScheme colors) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.all(AppSpacing.lg),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Welcome to Visqo',
+            l10n.welcomeTitle,
             style: AppTypography.display(color: colors.textPrimary),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            'Your personal visceral fat tracker',
+            l10n.welcomeSubtitle,
             style: AppTypography.body(color: colors.textSecondary),
             textAlign: TextAlign.center,
           ),
@@ -158,14 +161,14 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             height: 56,
             child: ElevatedButton(
               onPressed: _nextPage,
-              child: const Text('Get Started'),
+              child: Text(l10n.getStarted),
             ),
           ),
           const SizedBox(height: AppSpacing.md),
           TextButton(
             onPressed: _skipOnboarding,
             child: Text(
-              'Skip and explore',
+              l10n.skipAndExplore,
               style: AppTypography.body(color: colors.textSecondary),
             ),
           ),
@@ -175,6 +178,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 
   Widget _buildWhatIsVatPage(AppColorScheme colors) {
+    final l10n = AppLocalizations.of(context)!;
     return SingleChildScrollView(
       padding: const EdgeInsets.all(AppSpacing.lg),
       child: Column(
@@ -190,7 +194,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           ),
           const SizedBox(height: AppSpacing.xl),
           Text(
-            'What is Visceral Fat?',
+            l10n.whatIsVatTitle,
             style: AppTypography.headline(color: colors.textPrimary),
             textAlign: TextAlign.center,
           ),
@@ -198,25 +202,22 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           _buildInfoCard(
             colors,
             icon: Icons.layers_outlined,
-            title: 'Hidden Fat',
-            description:
-                'Visceral fat is stored deep inside your abdomen, surrounding vital organs like the liver, stomach, and intestines.',
+            title: l10n.hiddenFatTitle,
+            description: l10n.hiddenFatDesc,
           ),
           const SizedBox(height: AppSpacing.md),
           _buildInfoCard(
             colors,
             icon: Icons.warning_amber_outlined,
-            title: 'Health Risks',
-            description:
-                'High levels are linked to increased risk of heart disease, type 2 diabetes, and metabolic syndrome.',
+            title: l10n.healthRisksTitle,
+            description: l10n.healthRisksDesc,
           ),
           const SizedBox(height: AppSpacing.md),
           _buildInfoCard(
             colors,
             icon: Icons.visibility_outlined,
-            title: 'Not Always Visible',
-            description:
-                'Unlike subcutaneous fat (under the skin), visceral fat can be high even in people who appear slim.',
+            title: l10n.notVisibleTitle,
+            description: l10n.notVisibleDesc,
           ),
           const SizedBox(height: AppSpacing.xl),
           SizedBox(
@@ -224,7 +225,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             height: 56,
             child: ElevatedButton(
               onPressed: _nextPage,
-              child: const Text('Continue'),
+              child: Text(l10n.continueButton),
             ),
           ),
         ],
@@ -233,6 +234,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 
   Widget _buildHowItWorksPage(AppColorScheme colors) {
+    final l10n = AppLocalizations.of(context)!;
     return SingleChildScrollView(
       padding: const EdgeInsets.all(AppSpacing.lg),
       child: Column(
@@ -248,16 +250,16 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           ),
           const SizedBox(height: AppSpacing.xl),
           Text(
-            'How Visqo Works',
+            l10n.howItWorksTitle,
             style: AppTypography.headline(color: colors.textPrimary),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: AppSpacing.lg),
-          _buildStepCard(colors, step: '1', title: 'Measure', description: 'Take simple body measurements: waist and thigh circumference.'),
+          _buildStepCard(colors, step: '1', title: l10n.stepMeasure, description: l10n.stepMeasureDesc),
           const SizedBox(height: AppSpacing.md),
-          _buildStepCard(colors, step: '2', title: 'Calculate', description: 'Visqo uses a scientifically validated formula to estimate your visceral fat area.'),
+          _buildStepCard(colors, step: '2', title: l10n.stepCalculate, description: l10n.stepCalculateDesc),
           const SizedBox(height: AppSpacing.md),
-          _buildStepCard(colors, step: '3', title: 'Track', description: 'Monitor your progress over time with charts and trends.'),
+          _buildStepCard(colors, step: '3', title: l10n.stepTrack, description: l10n.stepTrackDesc),
           const SizedBox(height: AppSpacing.lg),
           Container(
             padding: const EdgeInsets.all(AppSpacing.md),
@@ -272,7 +274,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 const SizedBox(width: AppSpacing.sm),
                 Expanded(
                   child: Text(
-                    'Based on peer-reviewed research with 80-84% accuracy compared to CT scans.',
+                    l10n.scientificNote,
                     style: AppTypography.caption(color: colors.success),
                   ),
                 ),
@@ -285,7 +287,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             height: 56,
             child: ElevatedButton(
               onPressed: _nextPage,
-              child: const Text('Set Up Profile'),
+              child: Text(l10n.setUpProfile),
             ),
           ),
         ],
@@ -385,13 +387,14 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 
   Widget _buildProfileSetupPage(AppColorScheme colors, {required bool isStandalone}) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: isStandalone
           ? AppBar(
               backgroundColor: colors.background,
               foregroundColor: colors.textPrimary,
               elevation: 0,
-              title: const Text('New Profile'),
+              title: Text(l10n.newProfileTitle),
             )
           : null,
       body: SingleChildScrollView(
@@ -402,17 +405,17 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             if (!isStandalone) ...[
               const SizedBox(height: AppSpacing.lg),
               Text(
-                "Let's set up your profile",
+                l10n.profileSetupTitle,
                 style: AppTypography.headline(color: colors.textPrimary),
               ),
               const SizedBox(height: AppSpacing.sm),
               Text(
-                'This information is used to calculate your visceral fat accurately.',
+                l10n.profileSetupSubtitle,
                 style: AppTypography.body(color: colors.textSecondary),
               ),
             ] else ...[
               Text(
-                "Create a new profile",
+                l10n.createNewProfile,
                 style: AppTypography.headline(color: colors.textPrimary),
               ),
             ],
@@ -420,8 +423,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             TextField(
               controller: _nameController,
               decoration: InputDecoration(
-                labelText: 'Profile Name',
-                hintText: 'e.g., John, Mom, Dad',
+                labelText: l10n.profileName,
+                hintText: l10n.profileNameHint,
                 labelStyle: AppTypography.caption(color: colors.textSecondary),
               ),
               style: AppTypography.body(color: colors.textPrimary),
@@ -433,7 +436,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             ),
             const SizedBox(height: AppSpacing.lg),
             DatePickerField(
-              label: 'Date of Birth',
+              label: l10n.dateOfBirth,
               selectedDate: _birthDate,
               onChanged: (date) => setState(() => _birthDate = date),
             ),
@@ -456,7 +459,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                           color: Colors.white,
                         ),
                       )
-                    : Text(isStandalone ? 'Create Profile' : 'Start Tracking'),
+                    : Text(isStandalone ? l10n.createProfile : l10n.startTracking),
               ),
             ),
           ],
