@@ -15,627 +15,632 @@ class AppLocalizationsFr extends AppLocalizations {
   String get navCalculate => 'Calculer';
 
   @override
-  String get navWhatIf => 'What-If';
+  String get navWhatIf => 'Simulation';
 
   @override
-  String get navProgress => 'Progress';
+  String get navProgress => 'Progression';
 
   @override
-  String get navSettings => 'Settings';
+  String get navSettings => 'Paramètres';
 
   @override
-  String get welcomeTitle => 'Welcome to Visqo';
+  String get welcomeTitle => 'Bienvenue sur Visqo';
 
   @override
-  String get welcomeSubtitle => 'Your personal graisse viscérale tracker';
+  String get welcomeSubtitle => 'Votre suivi personnel de graisse viscérale';
 
   @override
-  String get getStarted => 'Get Started';
+  String get getStarted => 'Commencer';
 
   @override
-  String get skipAndExplore => 'Skip and explore';
+  String get skipAndExplore => 'Passer et explorer';
 
   @override
-  String get whatIsVatTitle => 'What is Visceral Fat?';
+  String get whatIsVatTitle => 'Qu\'est-ce que la graisse viscérale ?';
 
   @override
-  String get hiddenFatTitle => 'Hidden Fat';
+  String get hiddenFatTitle => 'Graisse cachée';
 
   @override
   String get hiddenFatDesc =>
-      'Visceral fat is stored deep inside your abdomen, surrounding vital organs like the liver, stomach, and intestines.';
+      'La graisse viscérale est stockée en profondeur dans l\'abdomen, autour des organes vitaux comme le foie, l\'estomac et les intestins.';
 
   @override
-  String get healthRisksTitle => 'Health Risks';
+  String get healthRisksTitle => 'Risques pour la santé';
 
   @override
   String get healthRisksDesc =>
-      'High levels are linked to increased risk of heart disease, type 2 diabetes, and metabolic syndrome.';
+      'Des niveaux élevés sont associés à un risque accru de maladies cardiaques, de diabète de type 2 et de syndrome métabolique.';
 
   @override
-  String get notVisibleTitle => 'Not Always Visible';
+  String get notVisibleTitle => 'Pas toujours visible';
 
   @override
   String get notVisibleDesc =>
-      'Unlike subcutaneous fat (under the skin), graisse viscérale can be high even in people who appear slim.';
+      'Contrairement à la graisse sous-cutanée (sous la peau), la graisse viscérale peut être élevée même chez les personnes minces.';
 
   @override
   String get continueButton => 'Continuer';
 
   @override
-  String get howItWorksTitle => 'How Visqo Works';
+  String get howItWorksTitle => 'Comment fonctionne Visqo';
 
   @override
   String get stepMeasure => 'Mesurer';
 
   @override
   String get stepMeasureDesc =>
-      'Take simple body measurements: waist and thigh circumference.';
+      'Prenez des mesures corporelles simples : tour de taille et tour de cuisse.';
 
   @override
   String get stepCalculate => 'Calculer';
 
   @override
   String get stepCalculateDesc =>
-      'Visqo uses a scientifically validated formula to estimate your graisse viscérale area.';
+      'Visqo utilise une formule scientifiquement validée pour estimer votre surface de graisse viscérale.';
 
   @override
   String get stepTrack => 'Suivre';
 
   @override
   String get stepTrackDesc =>
-      'Monitor your progress over time with charts and trends.';
+      'Suivez votre progression dans le temps grâce aux graphiques et tendances.';
 
   @override
   String get scientificNote =>
-      'Based on peer-reviewed research with 80-84% accuracy compared to CT scans.';
+      'Basé sur des recherches publiées avec une précision de 80 à 84 % par rapport aux scanners.';
 
   @override
-  String get setUpProfile => 'Set Up Profile';
+  String get setUpProfile => 'Créer un profil';
 
   @override
-  String get profileSetupTitle => 'Let\'s set up your profile';
+  String get profileSetupTitle => 'Configurons votre profil';
 
   @override
   String get profileSetupSubtitle =>
-      'This information is used to calculate your graisse viscérale accurately.';
+      'Ces informations sont utilisées pour calculer précisément votre graisse viscérale.';
 
   @override
-  String get newProfileTitle => 'New Profile';
+  String get newProfileTitle => 'Nouveau profil';
 
   @override
-  String get createNewProfile => 'Create a new profile';
+  String get createNewProfile => 'Créer un nouveau profil';
 
   @override
-  String get profileName => 'Profile Name';
+  String get profileName => 'Nom du profil';
 
   @override
-  String get profileNameHint => 'e.g., John, Mom, Dad';
+  String get profileNameHint => 'ex. : Jean, Maman, Papa';
 
   @override
-  String get pleaseEnterProfileName => 'Please enter a profile name';
+  String get pleaseEnterProfileName => 'Veuillez entrer un nom de profil';
 
   @override
-  String get createProfile => 'Create Profile';
+  String get createProfile => 'Créer le profil';
 
   @override
-  String get startTracking => 'Start Suivreing';
+  String get startTracking => 'Commencer le suivi';
 
   @override
-  String get sexLabel => 'Sex';
+  String get sexLabel => 'Sexe';
 
   @override
-  String get male => 'Male';
+  String get male => 'Homme';
 
   @override
-  String get female => 'Female';
+  String get female => 'Femme';
 
   @override
-  String get dateOfBirth => 'Date of Birth';
+  String get dateOfBirth => 'Date de naissance';
 
   @override
-  String get height => 'Height';
+  String get height => 'Taille';
 
   @override
-  String get createProfileToStart => 'Create a Profile to Start';
+  String get createProfileToStart => 'Créez un profil pour commencer';
 
   @override
   String get createProfileExplanation =>
-      'To calculate your graisse viscérale, we need some basic information about you like your sex, age, and height.';
+      'Pour calculer votre graisse viscérale, nous avons besoin d\'informations de base comme votre sexe, votre âge et votre taille.';
 
   @override
-  String get todaysMeasurements => 'Today\'s Mesurerments';
+  String get todaysMeasurements => 'Mesures du jour';
 
   @override
-  String get weight => 'Weight';
+  String get weight => 'Poids';
 
   @override
-  String get enterWeight => 'Enter weight';
+  String get enterWeight => 'Entrez le poids';
 
   @override
-  String get waistCircumference => 'Waist Circumference';
+  String get waistCircumference => 'Tour de taille';
 
   @override
-  String get enterWaist => 'Enter waist';
+  String get enterWaist => 'Entrez le tour de taille';
 
   @override
-  String get thighCircumference => 'Thigh Circumference';
+  String get thighCircumference => 'Tour de cuisse';
 
   @override
-  String get enterThigh => 'Enter thigh';
+  String get enterThigh => 'Entrez le tour de cuisse';
 
   @override
-  String get calculateAndSave => 'Calculer & Save';
+  String get calculateAndSave => 'Calculer et enregistrer';
 
   @override
-  String get noPreviousMeasurements => 'No previous measurements';
+  String get noPreviousMeasurements => 'Aucune mesure précédente';
 
   @override
-  String get measured => 'Mesurerd';
+  String get measured => 'Mesuré';
 
   @override
-  String get today => 'Today';
+  String get today => 'Aujourd\'hui';
 
   @override
-  String get result => 'Result';
+  String get result => 'Résultat';
 
   @override
-  String get viewHealthInsights => 'View Health Insights';
+  String get viewHealthInsights => 'Voir les conseils santé';
 
   @override
-  String get viewProgressChart => 'View Progress Chart';
+  String get viewProgressChart => 'Voir le graphique de progression';
 
   @override
-  String get shareResult => 'Share Result';
+  String get shareResult => 'Partager le résultat';
 
   @override
-  String get visceralFatTrend => 'Visceral Fat Trend';
+  String get visceralFatTrend => 'Évolution de la graisse viscérale';
 
   @override
-  String get history => 'History';
+  String get history => 'Historique';
 
   @override
-  String get noMeasurementsYet => 'No measurements yet';
+  String get noMeasurementsYet => 'Aucune mesure enregistrée';
 
   @override
   String get startTrackingToSeeProgress =>
-      'Start tracking to see your progress';
+      'Commencez le suivi pour voir votre progression';
 
   @override
-  String get doctorsReport => 'Doctor\'s Report';
+  String get doctorsReport => 'Rapport médical';
 
   @override
   String olderMeasurements(int count) {
-    return '$count older measurements';
+    return '$count mesures antérieures';
   }
 
   @override
-  String get unlockFullProgress => 'Unlock to see your full progress';
+  String get unlockFullProgress => 'Débloquer pour voir tout l\'historique';
 
   @override
-  String get settings => 'Settings';
+  String get settings => 'Paramètres';
 
   @override
-  String get profiles => 'Profiles';
+  String get profiles => 'Profils';
 
   @override
-  String get addProfile => 'Add Profile';
+  String get addProfile => 'Ajouter un profil';
 
   @override
-  String get currentProfile => 'Current Profile';
+  String get currentProfile => 'Profil actuel';
 
   @override
-  String get age => 'Age';
+  String get age => 'Âge';
 
   @override
-  String get years => 'years';
+  String get years => 'ans';
 
   @override
   String ageYears(int age) {
-    return '$age years';
+    return '$age ans';
   }
 
   @override
-  String get deleteProfile => 'Delete Profile';
+  String get deleteProfile => 'Supprimer le profil';
 
   @override
   String deleteProfileConfirmation(String name) {
-    return 'Delete \"$name\" and all their measurements? This cannot be undone.';
+    return 'Supprimer « $name » et toutes ses mesures ? Cette action est irréversible.';
   }
 
   @override
-  String get goals => 'Goals';
+  String get goals => 'Objectifs';
 
   @override
-  String get vatGoal => 'VAT Goal';
+  String get vatGoal => 'Objectif VAT';
 
   @override
-  String get notSet => 'Not set';
+  String get notSet => 'Non défini';
 
   @override
-  String get setVatGoal => 'Set VAT Goal';
+  String get setVatGoal => 'Définir un objectif VAT';
 
   @override
   String get setVatGoalDescription =>
-      'Set a target graisse viscérale area to track on your progress chart.';
+      'Définissez une cible de graisse viscérale à suivre sur votre graphique de progression.';
 
   @override
-  String get goalHint => 'e.g., 100';
+  String get goalHint => 'ex. : 100';
 
   @override
-  String get goalTip => 'Tip: Below 100 cm² is considered healthy';
+  String get goalTip =>
+      'Conseil : en dessous de 100 cm², c\'est considéré comme sain';
 
   @override
-  String get clear => 'Clear';
+  String get clear => 'Effacer';
 
   @override
-  String get cancel => 'Cancel';
+  String get cancel => 'Annuler';
 
   @override
-  String get save => 'Save';
+  String get save => 'Enregistrer';
 
   @override
-  String get units => 'Units';
+  String get units => 'Unités';
 
   @override
-  String get metric => 'Metric';
+  String get metric => 'Métrique';
 
   @override
   String get metricUnits => 'kg, cm';
 
   @override
-  String get imperial => 'Imperial';
+  String get imperial => 'Impérial';
 
   @override
-  String get imperialUnits => 'lbs, inches';
+  String get imperialUnits => 'lbs, pouces';
 
   @override
-  String get reminders => 'Reminders';
+  String get reminders => 'Rappels';
 
   @override
-  String get measurementReminder => 'Mesurerment Reminder';
+  String get measurementReminder => 'Rappel de mesure';
 
   @override
-  String get frequency => 'Frequency';
+  String get frequency => 'Fréquence';
 
   @override
-  String get off => 'Off';
+  String get off => 'Désactivé';
 
   @override
-  String get weekly => 'Weekly';
+  String get weekly => 'Hebdomadaire';
 
   @override
-  String get monthly => 'Monthly';
+  String get monthly => 'Mensuel';
 
   @override
-  String get noRemindersScheduled => 'No reminders scheduled';
+  String get noRemindersScheduled => 'Aucun rappel programmé';
 
   @override
   String everyDayAt(String day, String time) {
-    return 'Every $day at $time';
+    return 'Chaque $day à $time';
   }
 
   @override
   String everyOrdinalAt(String ordinal, String time) {
-    return 'Every $ordinal at $time';
+    return 'Le $ordinal de chaque mois à $time';
   }
 
   @override
-  String get time => 'Time';
+  String get time => 'Heure';
 
   @override
-  String get dayOfWeek => 'Day of Week';
+  String get dayOfWeek => 'Jour de la semaine';
 
   @override
-  String get dayOfMonth => 'Day of Month';
+  String get dayOfMonth => 'Jour du mois';
 
   @override
-  String get monday => 'Monday';
+  String get monday => 'Lundi';
 
   @override
-  String get tuesday => 'Tuesday';
+  String get tuesday => 'Mardi';
 
   @override
-  String get wednesday => 'Wednesday';
+  String get wednesday => 'Mercredi';
 
   @override
-  String get thursday => 'Thursday';
+  String get thursday => 'Jeudi';
 
   @override
-  String get friday => 'Friday';
+  String get friday => 'Vendredi';
 
   @override
-  String get saturday => 'Saturday';
+  String get saturday => 'Samedi';
 
   @override
-  String get sunday => 'Sunday';
+  String get sunday => 'Dimanche';
 
   @override
-  String get appearance => 'Appearance';
+  String get appearance => 'Apparence';
 
   @override
-  String get system => 'System';
+  String get system => 'Système';
 
   @override
-  String get followSystemSettings => 'Follow system settings';
+  String get followSystemSettings => 'Suivre les paramètres système';
 
   @override
-  String get light => 'Light';
+  String get light => 'Clair';
 
   @override
-  String get alwaysLightTheme => 'Always use light theme';
+  String get alwaysLightTheme => 'Toujours utiliser le thème clair';
 
   @override
-  String get dark => 'Dark';
+  String get dark => 'Sombre';
 
   @override
-  String get alwaysDarkTheme => 'Always use dark theme';
+  String get alwaysDarkTheme => 'Toujours utiliser le thème sombre';
 
   @override
-  String get data => 'Data';
+  String get data => 'Données';
 
   @override
-  String get resetAllData => 'Reset All Data';
+  String get resetAllData => 'Réinitialiser toutes les données';
 
   @override
   String get deleteAllProfilesAndMeasurements =>
-      'Delete all profiles and measurements';
+      'Supprimer tous les profils et mesures';
 
   @override
   String get resetAllDataConfirmation =>
-      'This will delete ALL profiles and measurements. You will need to set up a new profile. This cannot be undone.';
+      'Cela supprimera TOUS les profils et mesures. Vous devrez créer un nouveau profil. Cette action est irréversible.';
 
   @override
-  String get reset => 'Reset';
+  String get reset => 'Réinitialiser';
 
   @override
-  String get delete => 'Delete';
+  String get delete => 'Supprimer';
 
   @override
-  String get developerOptions => 'Developer Options';
+  String get developerOptions => 'Options développeur';
 
   @override
-  String get premiumStatusOverride => 'Premium Status Override';
+  String get premiumStatusOverride => 'Forcer le statut Premium';
 
   @override
-  String get simulatingPremium => 'Simulating Premium';
+  String get simulatingPremium => 'Simulation Premium';
 
   @override
-  String get simulatingFree => 'Simulating Free';
+  String get simulatingFree => 'Simulation gratuite';
 
   @override
-  String get usingRealStatus => 'Using Real Status';
+  String get usingRealStatus => 'Utilisation du statut réel';
 
   @override
-  String get actual => 'actual';
+  String get actual => 'réel';
 
   @override
   String get premium => 'Premium';
 
   @override
-  String get free => 'Free';
+  String get free => 'Gratuit';
 
   @override
-  String get real => 'Real';
+  String get real => 'Réel';
 
   @override
   String get pro => 'PRO';
 
   @override
-  String get multipleProfiles => 'Multiple Profiles';
+  String get multipleProfiles => 'Profils multiples';
 
   @override
-  String get unlimitedHistory => 'Unlimited History';
+  String get unlimitedHistory => 'Historique illimité';
 
   @override
-  String get help => 'Help';
+  String get help => 'Aide';
 
   @override
-  String get aboutVisqo => 'About Visqo';
+  String get aboutVisqo => 'À propos de Visqo';
 
   @override
   String get aboutVisqoDescription =>
-      'Visqo helps you estimate your graisse viscérale using simple body measurements. Visceral fat is the fat stored around your internal organs and is linked to increased health risks. By tracking your measurements over time, you can monitor your progress toward a healthier body composition.';
+      'Visqo vous aide à estimer votre graisse viscérale à partir de mesures corporelles simples. La graisse viscérale est stockée autour de vos organes internes et est liée à des risques accrus pour la santé. En suivant vos mesures au fil du temps, vous pouvez surveiller votre progression vers une meilleure composition corporelle.';
 
   @override
-  String get howToMeasureWaist => 'How to Mesurer Waist Circumference';
+  String get howToMeasureWaist => 'Comment mesurer le tour de taille';
 
   @override
   String get instructions => 'Instructions';
 
   @override
   String get waistStep1 =>
-      'Stand upright with your feet together and arms relaxed at your sides.';
+      'Tenez-vous debout, pieds joints et bras détendus le long du corps.';
 
   @override
   String get waistStep2 =>
-      'Locate the bottom of your ribs and the top of your hip bones (iliac crest).';
+      'Repérez le bas de vos côtes et le haut de vos os iliaques (crête iliaque).';
 
   @override
   String get waistStep3 =>
-      'Place the tape measure midway between these two points, roughly at your navel level.';
+      'Placez le mètre ruban à mi-chemin entre ces deux points, environ au niveau du nombril.';
 
   @override
   String get waistStep4 =>
-      'Wrap the tape around your waist, keeping it parallel to the floor.';
+      'Enroulez le ruban autour de votre taille en le maintenant parallèle au sol.';
 
   @override
   String get waistStep5 =>
-      'Breathe out normally and take the reading without pulling the tape too tight.';
+      'Expirez normalement et relevez la mesure sans trop serrer le ruban.';
 
   @override
   String get waistTip =>
-      'Mesurer directly on skin or over light clothing for accuracy.';
+      'Mesurez directement sur la peau ou sur des vêtements légers pour plus de précision.';
 
   @override
-  String get howToMeasureThigh => 'How to Mesurer Thigh Circumference';
+  String get howToMeasureThigh => 'Comment mesurer le tour de cuisse';
 
   @override
   String get thighStep1 =>
-      'Stand upright with your weight evenly distributed on both legs.';
+      'Tenez-vous debout, le poids réparti uniformément sur les deux jambes.';
 
   @override
   String get thighStep2 =>
-      'Identify the gluteal crease (the fold where your buttock meets your thigh).';
+      'Identifiez le pli fessier (là où la fesse rejoint la cuisse).';
 
   @override
   String get thighStep3 =>
-      'Position the tape measure just below (distal to) the gluteal crease.';
+      'Placez le mètre ruban juste en dessous du pli fessier.';
 
   @override
   String get thighStep4 =>
-      'Wrap the tape horizontally around your thigh, keeping it perpendicular to the thigh axis.';
+      'Enroulez le ruban horizontalement autour de la cuisse, perpendiculairement à l\'axe de la jambe.';
 
   @override
   String get thighStep5 =>
-      'Keep your muscles relaxed and read the measurement without compressing the skin.';
+      'Gardez vos muscles détendus et relevez la mesure sans comprimer la peau.';
 
   @override
   String get thighTip =>
-      'Mesurer both thighs and use the average if they differ significantly.';
+      'Mesurez les deux cuisses et utilisez la moyenne si elles diffèrent significativement.';
 
   @override
-  String get settingGoalTitle => 'Setting a Goal';
+  String get settingGoalTitle => 'Définir un objectif';
 
   @override
-  String get settingGoalStep1 => 'Go to Settings from the calculator screen.';
+  String get settingGoalStep1 =>
+      'Accédez aux Paramètres depuis l\'écran du calculateur.';
 
   @override
   String get settingGoalStep2 =>
-      'Tap on \"Set VAT Goal\" in the Goals section.';
+      'Appuyez sur « Définir un objectif VAT » dans la section Objectifs.';
 
   @override
-  String get settingGoalStep3 => 'Enter your target VAT value and save.';
+  String get settingGoalStep3 =>
+      'Entrez votre valeur cible de VAT et enregistrez.';
 
   @override
   String get settingGoalDescription =>
-      'You can set a personal VAT goal to help track your progress toward a healthier body composition.';
+      'Vous pouvez définir un objectif VAT personnel pour suivre votre progression vers une meilleure composition corporelle.';
 
   @override
   String get goalChartDescription =>
-      'Once set, your goal will appear as a green dashed line on the progress chart, helping you visualize how close you are to your target.';
+      'Une fois défini, votre objectif apparaîtra sous forme de ligne verte pointillée sur le graphique de progression, vous aidant à visualiser votre proximité par rapport à la cible.';
 
   @override
   String get goalHealthTip =>
-      'A VAT below 100 cm² is generally considered healthy. Consult a healthcare provider for personalized advice.';
+      'Une VAT inférieure à 100 cm² est généralement considérée comme saine. Consultez un professionnel de santé pour des conseils personnalisés.';
 
   @override
-  String get trendIndicatorTitle => 'Understanding the Trend Indicator';
+  String get trendIndicatorTitle => 'Comprendre l\'indicateur de tendance';
 
   @override
   String get trendIndicatorDescription =>
-      'The trend indicator shows how your VAT has changed compared to your previous measurement.';
+      'L\'indicateur de tendance montre comment votre VAT a évolué par rapport à votre mesure précédente.';
 
   @override
-  String get trendDecreasing => 'Decreasing';
+  String get trendDecreasing => 'En baisse';
 
   @override
   String get trendDecreasingDesc =>
-      'Your VAT is lower than before. Great progress toward reducing graisse viscérale.';
+      'Votre VAT est inférieure à avant. Excellente progression vers la réduction de la graisse viscérale.';
 
   @override
-  String get trendIncreasing => 'Increasing';
+  String get trendIncreasing => 'En hausse';
 
   @override
   String get trendIncreasingDesc =>
-      'Your VAT is higher than before. Consider reviewing your diet and exercise routine.';
+      'Votre VAT est supérieure à avant. Pensez à revoir votre alimentation et votre activité physique.';
 
   @override
   String get trendStable => 'Stable';
 
   @override
   String get trendStableDesc =>
-      'Your VAT has changed less than 1 cm². Your levels are holding steady.';
+      'Votre VAT a varié de moins de 1 cm². Vos niveaux restent constants.';
 
   @override
   String get trendMagnitudeNote =>
-      'The trend indicator also displays the exact change in VAT (e.g., -5.2) so you can see the magnitude of the difference.';
+      'L\'indicateur de tendance affiche également la variation exacte de VAT (ex. : -5,2) pour vous montrer l\'ampleur du changement.';
 
   @override
-  String get calculationTitle => 'How is Visceral Fat Calculerd?';
+  String get calculationTitle =>
+      'Comment la graisse viscérale est-elle calculée ?';
 
   @override
   String get calculationDescription =>
-      'Visqo uses the Samouda Anthropometric Model to estimate tissu adipeux viscéral (VAT) area without requiring expensive imaging like CT scans or MRI.';
+      'Visqo utilise le modèle anthropométrique de Samouda pour estimer la surface de tissu adipeux viscéral (VAT) sans recourir à des examens coûteux comme le scanner ou l\'IRM.';
 
   @override
   String get calculationModelDescription =>
-      'The model uses simple body measurements combined with your age and BMI to predict VAT with high accuracy:';
+      'Le modèle utilise des mesures corporelles simples combinées à votre âge et votre IMC pour prédire la VAT avec une grande précision :';
 
   @override
-  String get formulaForMen => 'For Men';
+  String get formulaForMen => 'Pour les hommes';
 
   @override
   String get formulaMen =>
-      'VAT = 6 x Waist - 4.41 x Thigh + 1.19 x Age - 213.65';
+      'VAT = 6 x Taille - 4,41 x Cuisse + 1,19 x Âge - 213,65';
 
   @override
-  String get accuracyMen => 'Explains 80.3% of VAT variance';
+  String get accuracyMen => 'Explique 80,3 % de la variance de la VAT';
 
   @override
-  String get formulaForWomen => 'For Women';
+  String get formulaForWomen => 'Pour les femmes';
 
   @override
   String get formulaWomen =>
-      'VAT = 2.15 x Waist - 3.63 x Thigh + 1.46 x Age + 6.22 x BMI - 92.713';
+      'VAT = 2,15 x Taille - 3,63 x Cuisse + 1,46 x Âge + 6,22 x IMC - 92,713';
 
   @override
-  String get accuracyWomen => 'Explains 83.6% of VAT variance';
+  String get accuracyWomen => 'Explique 83,6 % de la variance de la VAT';
 
   @override
   String get resultUnit =>
-      'The result is expressed in cm², representing the estimated cross-sectional area of graisse viscérale tissue.';
+      'Le résultat est exprimé en cm², représentant la surface transversale estimée du tissu adipeux viscéral.';
 
   @override
-  String get understandingResultsTitle => 'Understanding Your Results';
+  String get understandingResultsTitle => 'Comprendre vos résultats';
 
   @override
   String get resultsIntro =>
-      'Your VAT result is categorized into three risk levels:';
+      'Votre résultat VAT est classé en trois niveaux de risque :';
 
   @override
-  String get riskHealthy => 'Healthy';
+  String get riskHealthy => 'Sain';
 
   @override
-  String get riskHealthyRange => 'Less than 100 cm²';
+  String get riskHealthyRange => 'Moins de 100 cm²';
 
   @override
   String get riskHealthyDesc =>
-      'Normal graisse viscérale levels associated with lower health risks.';
+      'Niveaux normaux de graisse viscérale associés à des risques moindres pour la santé.';
 
   @override
-  String get riskElevated => 'Elevated';
+  String get riskElevated => 'Élevé';
 
   @override
   String get riskElevatedRange => '100 - 130 cm²';
 
   @override
   String get riskElevatedDesc =>
-      'Moderately elevated levels. Consider lifestyle changes.';
+      'Niveaux modérément élevés. Des changements de mode de vie sont recommandés.';
 
   @override
-  String get riskHighRisk => 'High Risk';
+  String get riskHighRisk => 'Risque élevé';
 
   @override
-  String get riskHighRiskRange => 'Greater than 130 cm²';
+  String get riskHighRiskRange => 'Plus de 130 cm²';
 
   @override
   String get riskHighRiskDesc =>
-      'High graisse viscérale associated with increased metabolic health risks.';
+      'Graisse viscérale élevée associée à des risques métaboliques accrus.';
 
   @override
-  String get learnMoreHealthRisks => 'Learn More About Health Risks & Tips';
+  String get learnMoreHealthRisks =>
+      'En savoir plus sur les risques et conseils santé';
 
   @override
   String get learnMoreHealthRisksDesc =>
-      'Understand the health implications and evidence-based ways to reduce graisse viscérale.';
+      'Découvrez les implications pour la santé et les moyens fondés sur des preuves pour réduire la graisse viscérale.';
 
   @override
-  String get scientificReference => 'Scientific Reference';
+  String get scientificReference => 'Référence scientifique';
 
   @override
   String get referenceIntro =>
-      'The calculation method used in this app is based on peer-reviewed research:';
+      'La méthode de calcul utilisée dans cette application est basée sur des recherches publiées :';
 
   @override
   String get referenceAuthors =>
@@ -643,370 +648,386 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get referenceTitle =>
-      'VAT=TAAT-SAAT: innovative anthropometric model to predict tissu adipeux viscéral without resort to CT-Scan or DXA.';
+      'VAT=TAAT-SAAT: innovative anthropometric model to predict visceral adipose tissue without resort to CT-Scan or DXA.';
 
   @override
   String get referenceJournal => 'Obesity (2013), 21(1), E41-E50.';
 
   @override
-  String get healthInsights => 'Health Insights';
+  String get healthInsights => 'Conseils santé';
 
   @override
-  String get aboutVisceralFat => 'About Visceral Fat';
+  String get aboutVisceralFat => 'À propos de la graisse viscérale';
 
   @override
   String get aboutVisceralFatDescription =>
-      'Visceral fat is stored deep within the abdominal cavity around internal organs. Unlike subcutaneous fat, it plays a hormonally active role and is linked to increased health risks. Learn about the risks and evidence-based ways to reduce it.';
+      'La graisse viscérale est stockée en profondeur dans la cavité abdominale, autour des organes internes. Contrairement à la graisse sous-cutanée, elle joue un rôle hormonalement actif et est liée à des risques accrus pour la santé. Découvrez les risques et les moyens fondés sur des preuves pour la réduire.';
 
   @override
   String get healthRisksOfElevatedVat =>
-      'Health Risks of Elevated Visceral Fat';
+      'Risques liés à une graisse viscérale élevée';
 
   @override
   String get healthRisksSubtitle =>
-      'Understanding the risks can help motivate positive changes';
+      'Comprendre les risques peut vous aider à vous motiver';
 
   @override
-  String get evidenceBasedTips => 'Evidence-Based Tips';
+  String get evidenceBasedTips => 'Conseils fondés sur des preuves';
 
   @override
   String get evidenceBasedTipsSubtitle =>
-      'Simple actions to help reduce graisse viscérale';
+      'Actions simples pour aider à réduire la graisse viscérale';
 
   @override
-  String get recommendedForYou => 'Recommended for You';
+  String get recommendedForYou => 'Recommandé pour vous';
 
   @override
-  String get maintainYourHealth => 'Maintain Your Health';
+  String get maintainYourHealth => 'Préservez votre santé';
 
   @override
-  String get additionalTips => 'Additional Tips';
+  String get additionalTips => 'Conseils supplémentaires';
 
   @override
   String get disclaimer =>
-      'This information is for educational purposes only and should not replace professional medical advice. Please consult a healthcare provider for personalized guidance.';
+      'Ces informations sont à titre éducatif uniquement et ne remplacent pas un avis médical professionnel. Veuillez consulter un professionnel de santé pour des conseils personnalisés.';
 
   @override
-  String get riskCardiometabolic => 'Cardiometabolic Disease';
+  String get riskCardiometabolic => 'Maladies cardiométaboliques';
 
   @override
   String get riskCardiometabolicDesc =>
-      'Elevated graisse viscérale significantly increases the risk of developing serious cardiovascular and metabolic conditions.';
+      'Une graisse viscérale élevée augmente significativement le risque de développer des maladies cardiovasculaires et métaboliques graves.';
 
   @override
   String get riskCardiometabolicDetail1 =>
-      'Increased risk of type 2 diabetes through insulin resistance';
+      'Risque accru de diabète de type 2 par insulinorésistance';
 
   @override
   String get riskCardiometabolicDetail2 =>
-      'Higher likelihood of hypertension (high blood pressure)';
+      'Probabilité plus élevée d\'hypertension artérielle';
 
   @override
   String get riskCardiometabolicDetail3 =>
-      'Unfavorable cholesterol profile (dyslipidemia)';
+      'Profil lipidique défavorable (dyslipidémie)';
 
   @override
   String get riskCardiometabolicDetail4 =>
-      'Greater risk of coronary heart disease and heart failure';
+      'Risque accru de maladie coronarienne et d\'insuffisance cardiaque';
 
   @override
-  String get riskStrokeMortality => 'Stroke and Mortality';
+  String get riskStrokeMortality => 'AVC et mortalité';
 
   @override
   String get riskStrokeMortalityDesc =>
-      'Higher graisse viscérale levels are associated with increased stroke risk and may contribute to higher all-cause mortality.';
+      'Des niveaux élevés de graisse viscérale sont associés à un risque accru d\'AVC et peuvent contribuer à une mortalité toutes causes plus élevée.';
 
   @override
-  String get riskStrokeMortalityDetail1 => 'Elevated risk of ischemic stroke';
+  String get riskStrokeMortalityDetail1 => 'Risque élevé d\'AVC ischémique';
 
   @override
   String get riskStrokeMortalityDetail2 =>
-      'Association with higher all-cause mortality rates';
+      'Association avec des taux de mortalité toutes causes plus élevés';
 
   @override
   String get riskStrokeMortalityDetail3 =>
-      'Risk persists even at normal BMI levels';
+      'Le risque persiste même avec un IMC normal';
 
   @override
-  String get riskInflammation => 'Chronic Inflammation';
+  String get riskInflammation => 'Inflammation chronique';
 
   @override
   String get riskInflammationDesc =>
-      'Visceral fat tissue actively secretes inflammatory molecules that promote systemic inflammation throughout the body.';
+      'Le tissu adipeux viscéral sécrète activement des molécules inflammatoires qui favorisent l\'inflammation systémique dans tout le corps.';
 
   @override
   String get riskInflammationDetail1 =>
-      'Secretes inflammatory cytokines (IL-6, TNF-alpha)';
+      'Sécrète des cytokines inflammatoires (IL-6, TNF-alpha)';
 
   @override
-  String get riskInflammationDetail2 => 'Disrupts normal hormone signaling';
+  String get riskInflammationDetail2 =>
+      'Perturbe la signalisation hormonale normale';
 
   @override
   String get riskInflammationDetail3 =>
-      'Creates low-level chronic inflammation';
+      'Crée une inflammation chronique de bas grade';
 
   @override
   String get riskInflammationDetail4 =>
-      'Inflammation is a risk factor for many chronic diseases';
+      'L\'inflammation est un facteur de risque pour de nombreuses maladies chroniques';
 
   @override
-  String get riskLiver => 'Non-Alcoholic Fatty Liver Disease';
+  String get riskLiver => 'Stéatose hépatique non alcoolique';
 
   @override
   String get riskLiverDesc =>
-      'Visceral fat accumulation is strongly correlated with fat infiltration in the liver and elevated liver enzymes.';
+      'L\'accumulation de graisse viscérale est fortement corrélée à l\'infiltration graisseuse du foie et à l\'élévation des enzymes hépatiques.';
 
   @override
   String get riskLiverDetail1 =>
-      'Fat deposits in liver tissue (hepatic steatosis)';
+      'Dépôts de graisse dans le tissu hépatique (stéatose hépatique)';
 
   @override
-  String get riskLiverDetail2 => 'Elevated liver enzyme levels (ALT, AST)';
+  String get riskLiverDetail2 =>
+      'Élévation des enzymes hépatiques (ALAT, ASAT)';
 
   @override
   String get riskLiverDetail3 =>
-      'Can progress to more serious liver conditions';
+      'Peut évoluer vers des affections hépatiques plus graves';
 
   @override
-  String get riskLiverDetail4 => 'Often reversible with lifestyle changes';
+  String get riskLiverDetail4 =>
+      'Souvent réversible avec des changements de mode de vie';
 
   @override
-  String get riskMetabolicSyndrome => 'Metabolic Syndrome';
+  String get riskMetabolicSyndrome => 'Syndrome métabolique';
 
   @override
   String get riskMetabolicSyndromeDesc =>
-      'Visceral adiposity is a core driver of metabolic syndrome, a cluster of conditions that increase disease risk.';
+      'L\'adiposité viscérale est un facteur central du syndrome métabolique, un ensemble de conditions qui augmentent le risque de maladie.';
 
   @override
-  String get riskMetabolicSyndromeDetail1 => 'Elevated blood sugar levels';
+  String get riskMetabolicSyndromeDetail1 => 'Glycémie élevée';
 
   @override
-  String get riskMetabolicSyndromeDetail2 => 'High blood pressure';
+  String get riskMetabolicSyndromeDetail2 => 'Hypertension artérielle';
 
   @override
-  String get riskMetabolicSyndromeDetail3 => 'Abnormal cholesterol levels';
+  String get riskMetabolicSyndromeDetail3 => 'Taux de cholestérol anormaux';
 
   @override
   String get riskMetabolicSyndromeDetail4 =>
-      'Central obesity (excess waist fat)';
+      'Obésité centrale (excès de graisse abdominale)';
 
   @override
   String get riskMetabolicSyndromeDetail5 =>
-      'Significantly increases heart disease and diabetes risk';
+      'Augmente significativement le risque de maladies cardiaques et de diabète';
 
   @override
-  String get riskCancer => 'Cancer Associations';
+  String get riskCancer => 'Associations avec le cancer';
 
   @override
   String get riskCancerDesc =>
-      'Emerging evidence links graisse viscérale with metabolic dysregulation and higher risk for certain cancers.';
+      'Des preuves émergentes associent la graisse viscérale à une dérégulation métabolique et à un risque accru de certains cancers.';
 
   @override
   String get riskCancerDetail1 =>
-      'Altered hormone signaling may promote cancer growth';
+      'Une signalisation hormonale altérée peut favoriser la croissance cancéreuse';
 
   @override
   String get riskCancerDetail2 =>
-      'Chronic inflammation creates favorable environment for cancer';
+      'L\'inflammation chronique crée un environnement favorable au cancer';
 
   @override
-  String get riskCancerDetail3 => 'Associated with certain malignancies';
+  String get riskCancerDetail3 => 'Associée à certaines tumeurs malignes';
 
   @override
-  String get riskCancerDetail4 => 'Research ongoing to understand mechanisms';
+  String get riskCancerDetail4 =>
+      'La recherche continue pour comprendre les mécanismes';
 
   @override
-  String get tipActivity => 'Regular Physical Activity';
+  String get tipActivity => 'Activité physique régulière';
 
   @override
   String get tipActivityDesc =>
-      'Consistent aerobic exercise and strength training are among the most effective ways to reduce graisse viscérale.';
+      'L\'exercice aérobique régulier et la musculation sont parmi les moyens les plus efficaces pour réduire la graisse viscérale.';
 
   @override
   String get tipActivityAction1 =>
-      'Aim for 150+ minutes per week of moderate-intensity aerobic activity';
+      'Visez 150+ minutes par semaine d\'activité aérobique d\'intensité modérée';
 
   @override
   String get tipActivityAction2 =>
-      'Include 2 or more days per week of strength training';
+      'Incluez 2 jours ou plus par semaine de musculation';
 
   @override
   String get tipActivityAction3 =>
-      'Walking, cycling, swimming, and jogging are excellent choices';
+      'Marche, vélo, natation et jogging sont d\'excellents choix';
 
   @override
   String get tipActivityAction4 =>
-      'Strength training helps maintain lean muscle mass';
+      'La musculation aide à maintenir la masse musculaire maigre';
 
   @override
-  String get tipDiet => 'Balanced, Nutrient-Dense Diet';
+  String get tipDiet => 'Alimentation équilibrée et nutritive';
 
   @override
   String get tipDietDesc =>
-      'Focus on whole foods and limit processed foods to help reduce graisse viscérale accumulation.';
+      'Privilégiez les aliments complets et limitez les aliments transformés pour aider à réduire l\'accumulation de graisse viscérale.';
 
   @override
-  String get tipDietAction1 => 'Emphasize vegetables, fruits, and whole grains';
+  String get tipDietAction1 =>
+      'Mettez l\'accent sur les légumes, les fruits et les céréales complètes';
 
   @override
-  String get tipDietAction2 => 'Choose lean proteins (fish, poultry, legumes)';
+  String get tipDietAction2 =>
+      'Choisissez des protéines maigres (poisson, volaille, légumineuses)';
 
   @override
-  String get tipDietAction3 => 'Limit added sugars and refined carbohydrates';
+  String get tipDietAction3 =>
+      'Limitez les sucres ajoutés et les glucides raffinés';
 
   @override
-  String get tipDietAction4 => 'Reduce intake of highly processed foods';
+  String get tipDietAction4 =>
+      'Réduisez la consommation d\'aliments ultra-transformés';
 
   @override
-  String get tipDietAction5 => 'Choose healthy fats (olive oil, nuts, avocado)';
+  String get tipDietAction5 =>
+      'Optez pour des graisses saines (huile d\'olive, noix, avocat)';
 
   @override
-  String get tipWeight => 'Weight Management';
+  String get tipWeight => 'Gestion du poids';
 
   @override
   String get tipWeightDesc =>
-      'Maintaining a healthy weight through sustainable calorie control helps reduce graisse viscérale stores.';
+      'Maintenir un poids santé grâce à un contrôle calorique durable aide à réduire les réserves de graisse viscérale.';
 
   @override
   String get tipWeightAction1 =>
-      'Create a modest calorie deficit for gradual weight loss';
+      'Créez un déficit calorique modeste pour une perte de poids progressive';
 
   @override
   String get tipWeightAction2 =>
-      'Suivre waist circumference as a progress indicator';
+      'Suivez votre tour de taille comme indicateur de progression';
 
   @override
   String get tipWeightAction3 =>
-      'Monitor waist-to-height ratio (aim for < 0.5)';
+      'Surveillez le ratio taille/hauteur (visez < 0,5)';
 
   @override
   String get tipWeightAction4 =>
-      'Focus on sustainable changes, not crash diets';
+      'Concentrez-vous sur des changements durables, pas les régimes draconiens';
 
   @override
-  String get tipSedentary => 'Reduce Sedentary Time';
+  String get tipSedentary => 'Réduire la sédentarité';
 
   @override
   String get tipSedentaryDesc =>
-      'Breaking up prolonged sitting with light movement contributes to overall energy expenditure.';
+      'Interrompre la position assise prolongée par des mouvements légers contribue à la dépense énergétique globale.';
 
   @override
-  String get tipSedentaryAction1 => 'Stand up and move every 30-60 minutes';
+  String get tipSedentaryAction1 =>
+      'Levez-vous et bougez toutes les 30 à 60 minutes';
 
   @override
-  String get tipSedentaryAction2 => 'Take walking breaks during work';
+  String get tipSedentaryAction2 =>
+      'Faites des pauses marche pendant le travail';
 
   @override
-  String get tipSedentaryAction3 => 'Use a standing desk when possible';
+  String get tipSedentaryAction3 => 'Utilisez un bureau debout si possible';
 
   @override
-  String get tipSedentaryAction4 => 'Choose stairs over elevators';
+  String get tipSedentaryAction4 => 'Préférez les escaliers aux ascenseurs';
 
   @override
   String get tipSedentaryAction5 =>
-      'Even light activity helps reduce graisse viscérale';
+      'Même une activité légère aide à réduire la graisse viscérale';
 
   @override
-  String get tipSleepStress => 'Quality Sleep and Stress Management';
+  String get tipSleepStress => 'Sommeil de qualité et gestion du stress';
 
   @override
   String get tipSleepStressDesc =>
-      'Poor sleep and chronic stress raise cortisol, a hormone linked to abdominal fat accumulation.';
+      'Un mauvais sommeil et le stress chronique augmentent le cortisol, une hormone liée à l\'accumulation de graisse abdominale.';
 
   @override
   String get tipSleepStressAction1 =>
-      'Aim for 7-9 hours of quality sleep per night';
+      'Visez 7 à 9 heures de sommeil de qualité par nuit';
 
   @override
-  String get tipSleepStressAction2 => 'Maintain a consistent sleep schedule';
+  String get tipSleepStressAction2 =>
+      'Maintenez un horaire de sommeil régulier';
 
   @override
   String get tipSleepStressAction3 =>
-      'Practice stress-reducing activities (meditation, yoga)';
+      'Pratiquez des activités anti-stress (méditation, yoga)';
 
   @override
-  String get tipSleepStressAction4 => 'Limit screen time before bed';
+  String get tipSleepStressAction4 =>
+      'Limitez le temps d\'écran avant le coucher';
 
   @override
-  String get tipSleepStressAction5 => 'Address sources of chronic stress';
+  String get tipSleepStressAction5 => 'Traitez les sources de stress chronique';
 
   @override
-  String get tipAlcohol => 'Limit Alcohol Consumption';
+  String get tipAlcohol => 'Limiter la consommation d\'alcool';
 
   @override
   String get tipAlcoholDesc =>
-      'Alcohol adds calories and may promote graisse viscérale accumulation when consumed regularly in excess.';
+      'L\'alcool apporte des calories et peut favoriser l\'accumulation de graisse viscérale en cas de consommation régulière excessive.';
 
   @override
   String get tipAlcoholAction1 =>
-      'Limit to moderate consumption (1 drink/day women, 2/day men)';
+      'Limitez à une consommation modérée (1 verre/jour femmes, 2/jour hommes)';
 
   @override
-  String get tipAlcoholAction2 => 'Choose lower-calorie options when drinking';
+  String get tipAlcoholAction2 => 'Choisissez des options moins caloriques';
 
   @override
-  String get tipAlcoholAction3 => 'Avoid binge drinking episodes';
+  String get tipAlcoholAction3 =>
+      'Évitez les épisodes de consommation excessive';
 
   @override
-  String get tipAlcoholAction4 => 'Consider alcohol-free days each week';
+  String get tipAlcoholAction4 =>
+      'Envisagez des jours sans alcool chaque semaine';
 
   @override
-  String get tipSmoking => 'Smoking Cessation';
+  String get tipSmoking => 'Arrêt du tabac';
 
   @override
   String get tipSmokingDesc =>
-      'Smoking is associated with central fat accumulation and amplifies cardiometabolic risk.';
+      'Le tabagisme est associé à l\'accumulation de graisse centrale et amplifie le risque cardiométabolique.';
 
   @override
   String get tipSmokingAction1 =>
-      'Quit smoking to reduce graisse viscérale accumulation';
+      'Arrêtez de fumer pour réduire l\'accumulation de graisse viscérale';
 
   @override
   String get tipSmokingAction2 =>
-      'Seek support programs or medications if needed';
+      'Consultez des programmes d\'aide ou des médicaments si nécessaire';
 
   @override
-  String get tipSmokingAction3 => 'Benefits begin within days of quitting';
+  String get tipSmokingAction3 =>
+      'Les bénéfices commencent dès les premiers jours d\'arrêt';
 
   @override
   String get tipSmokingAction4 =>
-      'Reduces overall cardiovascular risk significantly';
+      'Réduit significativement le risque cardiovasculaire global';
 
   @override
-  String get waist => 'Waist';
+  String get waist => 'Taille';
 
   @override
-  String get proximalThigh => 'Proximal Thigh';
+  String get proximalThigh => 'Cuisse proximale';
 
   @override
-  String get lowerRib => 'Lower rib';
+  String get lowerRib => 'Côte inférieure';
 
   @override
-  String get hipBone => 'Hip bone';
+  String get hipBone => 'Os de la hanche';
 
   @override
-  String get midpoint => 'Midpoint';
+  String get midpoint => 'Point médian';
 
   @override
-  String get glutealCrease => 'Gluteal crease';
+  String get glutealCrease => 'Pli fessier';
 
   @override
-  String get justBelowCrease => 'Just below crease';
+  String get justBelowCrease => 'Juste sous le pli';
 
   @override
   String errorStartingApp(String error) {
-    return 'Error starting app: $error\n\nPlease reinstall the app.';
+    return 'Erreur au démarrage de l\'application : $error\n\nVeuillez réinstaller l\'application.';
   }
 
   @override
-  String get language => 'Language';
+  String get language => 'Langue';
 
   @override
-  String get english => 'English';
+  String get english => 'Anglais';
 
   @override
-  String get german => 'German';
+  String get german => 'Allemand';
 
   @override
-  String get french => 'French';
+  String get french => 'Français';
 }

@@ -15,270 +15,271 @@ class AppLocalizationsDe extends AppLocalizations {
   String get navCalculate => 'Berechnen';
 
   @override
-  String get navWhatIf => 'What-If';
+  String get navWhatIf => 'Was-wäre-wenn';
 
   @override
-  String get navProgress => 'Progress';
+  String get navProgress => 'Verlauf';
 
   @override
-  String get navSettings => 'Settings';
+  String get navSettings => 'Einstellungen';
 
   @override
-  String get welcomeTitle => 'Welcome to Visqo';
+  String get welcomeTitle => 'Willkommen bei Visqo';
 
   @override
-  String get welcomeSubtitle => 'Your personal viszerales Fett tracker';
+  String get welcomeSubtitle => 'Dein persönlicher Viszeralfett-Tracker';
 
   @override
-  String get getStarted => 'Get Started';
+  String get getStarted => 'Jetzt starten';
 
   @override
-  String get skipAndExplore => 'Skip and explore';
+  String get skipAndExplore => 'Überspringen und erkunden';
 
   @override
-  String get whatIsVatTitle => 'What is Visceral Fat?';
+  String get whatIsVatTitle => 'Was ist Viszeralfett?';
 
   @override
-  String get hiddenFatTitle => 'Hidden Fat';
+  String get hiddenFatTitle => 'Verstecktes Fett';
 
   @override
   String get hiddenFatDesc =>
-      'Visceral fat is stored deep inside your abdomen, surrounding vital organs like the liver, stomach, and intestines.';
+      'Viszeralfett lagert sich tief im Bauchraum ab und umgibt lebenswichtige Organe wie Leber, Magen und Darm.';
 
   @override
-  String get healthRisksTitle => 'Health Risks';
+  String get healthRisksTitle => 'Gesundheitsrisiken';
 
   @override
   String get healthRisksDesc =>
-      'High levels are linked to increased risk of heart disease, type 2 diabetes, and metabolic syndrome.';
+      'Erhöhte Werte stehen in Zusammenhang mit einem höheren Risiko für Herzerkrankungen, Typ-2-Diabetes und dem metabolischen Syndrom.';
 
   @override
-  String get notVisibleTitle => 'Not Always Visible';
+  String get notVisibleTitle => 'Nicht immer sichtbar';
 
   @override
   String get notVisibleDesc =>
-      'Unlike subcutaneous fat (under the skin), viszerales Fett can be high even in people who appear slim.';
+      'Anders als Unterhautfettgewebe kann Viszeralfett auch bei schlanken Personen erhöht sein.';
 
   @override
   String get continueButton => 'Weiter';
 
   @override
-  String get howItWorksTitle => 'How Visqo Works';
+  String get howItWorksTitle => 'So funktioniert Visqo';
 
   @override
   String get stepMeasure => 'Messen';
 
   @override
   String get stepMeasureDesc =>
-      'Take simple body measurements: waist and thigh circumference.';
+      'Nimm einfache Körpermaße: Taillen- und Oberschenkelumfang.';
 
   @override
   String get stepCalculate => 'Berechnen';
 
   @override
   String get stepCalculateDesc =>
-      'Visqo uses a scientifically validated formula to estimate your viszerales Fett area.';
+      'Visqo verwendet eine wissenschaftlich validierte Formel zur Schätzung deines Viszeralfettanteils.';
 
   @override
   String get stepTrack => 'Verfolgen';
 
   @override
   String get stepTrackDesc =>
-      'Monitor your progress over time with charts and trends.';
+      'Beobachte deinen Fortschritt über Zeit mit Diagrammen und Trendanzeigen.';
 
   @override
   String get scientificNote =>
-      'Based on peer-reviewed research with 80-84% accuracy compared to CT scans.';
+      'Basierend auf wissenschaftlich geprüfter Forschung mit 80–84 % Genauigkeit im Vergleich zu CT-Scans.';
 
   @override
-  String get setUpProfile => 'Set Up Profile';
+  String get setUpProfile => 'Profil einrichten';
 
   @override
-  String get profileSetupTitle => 'Let\'s set up your profile';
+  String get profileSetupTitle => 'Lass uns dein Profil einrichten';
 
   @override
   String get profileSetupSubtitle =>
-      'This information is used to calculate your viszerales Fett accurately.';
+      'Diese Angaben werden für eine genaue Berechnung deines Viszeralfetts benötigt.';
 
   @override
-  String get newProfileTitle => 'New Profile';
+  String get newProfileTitle => 'Neues Profil';
 
   @override
-  String get createNewProfile => 'Create a new profile';
+  String get createNewProfile => 'Neues Profil erstellen';
 
   @override
-  String get profileName => 'Profile Name';
+  String get profileName => 'Profilname';
 
   @override
-  String get profileNameHint => 'e.g., John, Mom, Dad';
+  String get profileNameHint => 'z. B. Max, Mama, Papa';
 
   @override
-  String get pleaseEnterProfileName => 'Please enter a profile name';
+  String get pleaseEnterProfileName => 'Bitte gib einen Profilnamen ein';
 
   @override
-  String get createProfile => 'Create Profile';
+  String get createProfile => 'Profil erstellen';
 
   @override
-  String get startTracking => 'Start Verfolgening';
+  String get startTracking => 'Tracking starten';
 
   @override
-  String get sexLabel => 'Sex';
+  String get sexLabel => 'Geschlecht';
 
   @override
-  String get male => 'Male';
+  String get male => 'Männlich';
 
   @override
-  String get female => 'Female';
+  String get female => 'Weiblich';
 
   @override
-  String get dateOfBirth => 'Date of Birth';
+  String get dateOfBirth => 'Geburtsdatum';
 
   @override
-  String get height => 'Height';
+  String get height => 'Körpergröße';
 
   @override
-  String get createProfileToStart => 'Create a Profile to Start';
+  String get createProfileToStart => 'Erstelle ein Profil, um zu starten';
 
   @override
   String get createProfileExplanation =>
-      'To calculate your viszerales Fett, we need some basic information about you like your sex, age, and height.';
+      'Um dein Viszeralfett zu berechnen, benötigen wir einige Angaben wie Geschlecht, Alter und Körpergröße.';
 
   @override
-  String get todaysMeasurements => 'Today\'s Messenments';
+  String get todaysMeasurements => 'Heutige Messungen';
 
   @override
-  String get weight => 'Weight';
+  String get weight => 'Gewicht';
 
   @override
-  String get enterWeight => 'Enter weight';
+  String get enterWeight => 'Gewicht eingeben';
 
   @override
-  String get waistCircumference => 'Waist Circumference';
+  String get waistCircumference => 'Taillenumfang';
 
   @override
-  String get enterWaist => 'Enter waist';
+  String get enterWaist => 'Taille eingeben';
 
   @override
-  String get thighCircumference => 'Thigh Circumference';
+  String get thighCircumference => 'Oberschenkelumfang';
 
   @override
-  String get enterThigh => 'Enter thigh';
+  String get enterThigh => 'Oberschenkel eingeben';
 
   @override
-  String get calculateAndSave => 'Berechnen & Save';
+  String get calculateAndSave => 'Berechnen & speichern';
 
   @override
-  String get noPreviousMeasurements => 'No previous measurements';
+  String get noPreviousMeasurements => 'Keine früheren Messungen';
 
   @override
-  String get measured => 'Messend';
+  String get measured => 'Gemessen';
 
   @override
-  String get today => 'Today';
+  String get today => 'Heute';
 
   @override
-  String get result => 'Result';
+  String get result => 'Ergebnis';
 
   @override
-  String get viewHealthInsights => 'View Health Insights';
+  String get viewHealthInsights => 'Gesundheitstipps ansehen';
 
   @override
-  String get viewProgressChart => 'View Progress Chart';
+  String get viewProgressChart => 'Verlaufsdiagramm ansehen';
 
   @override
-  String get shareResult => 'Share Result';
+  String get shareResult => 'Ergebnis teilen';
 
   @override
-  String get visceralFatTrend => 'Visceral Fat Trend';
+  String get visceralFatTrend => 'Viszeralfett-Trend';
 
   @override
-  String get history => 'History';
+  String get history => 'Verlauf';
 
   @override
-  String get noMeasurementsYet => 'No measurements yet';
+  String get noMeasurementsYet => 'Noch keine Messungen';
 
   @override
   String get startTrackingToSeeProgress =>
-      'Start tracking to see your progress';
+      'Starte das Tracking, um deinen Fortschritt zu sehen';
 
   @override
-  String get doctorsReport => 'Doctor\'s Report';
+  String get doctorsReport => 'Arztbericht';
 
   @override
   String olderMeasurements(int count) {
-    return '$count older measurements';
+    return '$count ältere Messungen';
   }
 
   @override
-  String get unlockFullProgress => 'Unlock to see your full progress';
+  String get unlockFullProgress =>
+      'Freischalten, um den gesamten Verlauf zu sehen';
 
   @override
-  String get settings => 'Settings';
+  String get settings => 'Einstellungen';
 
   @override
-  String get profiles => 'Profiles';
+  String get profiles => 'Profile';
 
   @override
-  String get addProfile => 'Add Profile';
+  String get addProfile => 'Profil hinzufügen';
 
   @override
-  String get currentProfile => 'Current Profile';
+  String get currentProfile => 'Aktuelles Profil';
 
   @override
-  String get age => 'Age';
+  String get age => 'Alter';
 
   @override
-  String get years => 'years';
+  String get years => 'Jahre';
 
   @override
   String ageYears(int age) {
-    return '$age years';
+    return '$age Jahre';
   }
 
   @override
-  String get deleteProfile => 'Delete Profile';
+  String get deleteProfile => 'Profil löschen';
 
   @override
   String deleteProfileConfirmation(String name) {
-    return 'Delete \"$name\" and all their measurements? This cannot be undone.';
+    return '\"$name\" und alle zugehörigen Messungen löschen? Dies kann nicht rückgängig gemacht werden.';
   }
 
   @override
-  String get goals => 'Goals';
+  String get goals => 'Ziele';
 
   @override
-  String get vatGoal => 'VAT Goal';
+  String get vatGoal => 'VAT-Ziel';
 
   @override
-  String get notSet => 'Not set';
+  String get notSet => 'Nicht festgelegt';
 
   @override
-  String get setVatGoal => 'Set VAT Goal';
+  String get setVatGoal => 'VAT-Ziel festlegen';
 
   @override
   String get setVatGoalDescription =>
-      'Set a target viszerales Fett area to track on your progress chart.';
+      'Lege einen Zielwert für das Viszeralfett fest, der im Verlaufsdiagramm angezeigt wird.';
 
   @override
-  String get goalHint => 'e.g., 100';
+  String get goalHint => 'z. B. 100';
 
   @override
-  String get goalTip => 'Tip: Below 100 cm² is considered healthy';
+  String get goalTip => 'Tipp: Unter 100 cm² gilt als gesund';
 
   @override
-  String get clear => 'Clear';
+  String get clear => 'Löschen';
 
   @override
-  String get cancel => 'Cancel';
+  String get cancel => 'Abbrechen';
 
   @override
-  String get save => 'Save';
+  String get save => 'Speichern';
 
   @override
-  String get units => 'Units';
+  String get units => 'Einheiten';
 
   @override
-  String get metric => 'Metric';
+  String get metric => 'Metrisch';
 
   @override
   String get metricUnits => 'kg, cm';
@@ -287,355 +288,355 @@ class AppLocalizationsDe extends AppLocalizations {
   String get imperial => 'Imperial';
 
   @override
-  String get imperialUnits => 'lbs, inches';
+  String get imperialUnits => 'lbs, Zoll';
 
   @override
-  String get reminders => 'Reminders';
+  String get reminders => 'Erinnerungen';
 
   @override
-  String get measurementReminder => 'Messenment Reminder';
+  String get measurementReminder => 'Messerinnerung';
 
   @override
-  String get frequency => 'Frequency';
+  String get frequency => 'Häufigkeit';
 
   @override
-  String get off => 'Off';
+  String get off => 'Aus';
 
   @override
-  String get weekly => 'Weekly';
+  String get weekly => 'Wöchentlich';
 
   @override
-  String get monthly => 'Monthly';
+  String get monthly => 'Monatlich';
 
   @override
-  String get noRemindersScheduled => 'No reminders scheduled';
+  String get noRemindersScheduled => 'Keine Erinnerungen geplant';
 
   @override
   String everyDayAt(String day, String time) {
-    return 'Every $day at $time';
+    return 'Jeden $day um $time';
   }
 
   @override
   String everyOrdinalAt(String ordinal, String time) {
-    return 'Every $ordinal at $time';
+    return 'Jeden $ordinal um $time';
   }
 
   @override
-  String get time => 'Time';
+  String get time => 'Uhrzeit';
 
   @override
-  String get dayOfWeek => 'Day of Week';
+  String get dayOfWeek => 'Wochentag';
 
   @override
-  String get dayOfMonth => 'Day of Month';
+  String get dayOfMonth => 'Tag im Monat';
 
   @override
-  String get monday => 'Monday';
+  String get monday => 'Montag';
 
   @override
-  String get tuesday => 'Tuesday';
+  String get tuesday => 'Dienstag';
 
   @override
-  String get wednesday => 'Wednesday';
+  String get wednesday => 'Mittwoch';
 
   @override
-  String get thursday => 'Thursday';
+  String get thursday => 'Donnerstag';
 
   @override
-  String get friday => 'Friday';
+  String get friday => 'Freitag';
 
   @override
-  String get saturday => 'Saturday';
+  String get saturday => 'Samstag';
 
   @override
-  String get sunday => 'Sunday';
+  String get sunday => 'Sonntag';
 
   @override
-  String get appearance => 'Appearance';
+  String get appearance => 'Erscheinungsbild';
 
   @override
   String get system => 'System';
 
   @override
-  String get followSystemSettings => 'Follow system settings';
+  String get followSystemSettings => 'Systemeinstellung verwenden';
 
   @override
-  String get light => 'Light';
+  String get light => 'Hell';
 
   @override
-  String get alwaysLightTheme => 'Always use light theme';
+  String get alwaysLightTheme => 'Immer helles Design verwenden';
 
   @override
-  String get dark => 'Dark';
+  String get dark => 'Dunkel';
 
   @override
-  String get alwaysDarkTheme => 'Always use dark theme';
+  String get alwaysDarkTheme => 'Immer dunkles Design verwenden';
 
   @override
-  String get data => 'Data';
+  String get data => 'Daten';
 
   @override
-  String get resetAllData => 'Reset All Data';
+  String get resetAllData => 'Alle Daten zurücksetzen';
 
   @override
   String get deleteAllProfilesAndMeasurements =>
-      'Delete all profiles and measurements';
+      'Alle Profile und Messungen löschen';
 
   @override
   String get resetAllDataConfirmation =>
-      'This will delete ALL profiles and measurements. You will need to set up a new profile. This cannot be undone.';
+      'Dadurch werden ALLE Profile und Messungen gelöscht. Du musst anschließend ein neues Profil anlegen. Dies kann nicht rückgängig gemacht werden.';
 
   @override
-  String get reset => 'Reset';
+  String get reset => 'Zurücksetzen';
 
   @override
-  String get delete => 'Delete';
+  String get delete => 'Löschen';
 
   @override
-  String get developerOptions => 'Developer Options';
+  String get developerOptions => 'Entwickleroptionen';
 
   @override
-  String get premiumStatusOverride => 'Premium Status Override';
+  String get premiumStatusOverride => 'Premium-Status überschreiben';
 
   @override
-  String get simulatingPremium => 'Simulating Premium';
+  String get simulatingPremium => 'Premium simuliert';
 
   @override
-  String get simulatingFree => 'Simulating Free';
+  String get simulatingFree => 'Kostenlos simuliert';
 
   @override
-  String get usingRealStatus => 'Using Real Status';
+  String get usingRealStatus => 'Echter Status';
 
   @override
-  String get actual => 'actual';
+  String get actual => 'tatsächlich';
 
   @override
   String get premium => 'Premium';
 
   @override
-  String get free => 'Free';
+  String get free => 'Kostenlos';
 
   @override
-  String get real => 'Real';
+  String get real => 'Echt';
 
   @override
   String get pro => 'PRO';
 
   @override
-  String get multipleProfiles => 'Multiple Profiles';
+  String get multipleProfiles => 'Mehrere Profile';
 
   @override
-  String get unlimitedHistory => 'Unlimited History';
+  String get unlimitedHistory => 'Unbegrenzter Verlauf';
 
   @override
-  String get help => 'Help';
+  String get help => 'Hilfe';
 
   @override
-  String get aboutVisqo => 'About Visqo';
+  String get aboutVisqo => 'Über Visqo';
 
   @override
   String get aboutVisqoDescription =>
-      'Visqo helps you estimate your viszerales Fett using simple body measurements. Visceral fat is the fat stored around your internal organs and is linked to increased health risks. By tracking your measurements over time, you can monitor your progress toward a healthier body composition.';
+      'Visqo hilft dir, dein Viszeralfett anhand einfacher Körpermaße zu schätzen. Viszeralfett umgibt die inneren Organe und ist mit erhöhten Gesundheitsrisiken verbunden. Durch regelmäßiges Tracking kannst du deinen Fortschritt zu einer gesünderen Körperzusammensetzung beobachten.';
 
   @override
-  String get howToMeasureWaist => 'How to Messen Waist Circumference';
+  String get howToMeasureWaist => 'So misst du den Taillenumfang';
 
   @override
-  String get instructions => 'Instructions';
+  String get instructions => 'Anleitung';
 
   @override
   String get waistStep1 =>
-      'Stand upright with your feet together and arms relaxed at your sides.';
+      'Stehe aufrecht mit geschlossenen Füßen und entspannten Armen.';
 
   @override
   String get waistStep2 =>
-      'Locate the bottom of your ribs and the top of your hip bones (iliac crest).';
+      'Finde die untere Rippenkante und den oberen Rand deines Hüftknochens (Beckenkamm).';
 
   @override
   String get waistStep3 =>
-      'Place the tape measure midway between these two points, roughly at your navel level.';
+      'Lege das Maßband in der Mitte zwischen diesen beiden Punkten an, etwa auf Nabelhöhe.';
 
   @override
-  String get waistStep4 =>
-      'Wrap the tape around your waist, keeping it parallel to the floor.';
+  String get waistStep4 => 'Führe das Maßband waagerecht um deine Taille.';
 
   @override
   String get waistStep5 =>
-      'Breathe out normally and take the reading without pulling the tape too tight.';
+      'Atme normal aus und lies den Wert ab, ohne das Band zu straff zu ziehen.';
 
   @override
   String get waistTip =>
-      'Messen directly on skin or over light clothing for accuracy.';
+      'Miss direkt auf der Haut oder über leichter Kleidung für genaue Ergebnisse.';
 
   @override
-  String get howToMeasureThigh => 'How to Messen Thigh Circumference';
+  String get howToMeasureThigh => 'So misst du den Oberschenkelumfang';
 
   @override
   String get thighStep1 =>
-      'Stand upright with your weight evenly distributed on both legs.';
+      'Stehe aufrecht mit gleichmäßig verteiltem Gewicht auf beiden Beinen.';
 
   @override
   String get thighStep2 =>
-      'Identify the gluteal crease (the fold where your buttock meets your thigh).';
+      'Finde die Gesäßfalte (dort, wo das Gesäß auf den Oberschenkel trifft).';
 
   @override
   String get thighStep3 =>
-      'Position the tape measure just below (distal to) the gluteal crease.';
+      'Lege das Maßband knapp unterhalb der Gesäßfalte an.';
 
   @override
   String get thighStep4 =>
-      'Wrap the tape horizontally around your thigh, keeping it perpendicular to the thigh axis.';
+      'Führe das Maßband waagerecht um den Oberschenkel, rechtwinklig zur Beinachse.';
 
   @override
   String get thighStep5 =>
-      'Keep your muscles relaxed and read the measurement without compressing the skin.';
+      'Halte die Muskeln entspannt und lies den Wert ab, ohne die Haut einzudrücken.';
 
   @override
   String get thighTip =>
-      'Messen both thighs and use the average if they differ significantly.';
+      'Miss beide Oberschenkel und nimm den Durchschnitt, falls sie deutlich unterschiedlich sind.';
 
   @override
-  String get settingGoalTitle => 'Setting a Goal';
+  String get settingGoalTitle => 'Ein Ziel festlegen';
 
   @override
-  String get settingGoalStep1 => 'Go to Settings from the calculator screen.';
+  String get settingGoalStep1 =>
+      'Öffne die Einstellungen über den Rechner-Bildschirm.';
 
   @override
   String get settingGoalStep2 =>
-      'Tap on \"Set VAT Goal\" in the Goals section.';
+      'Tippe im Bereich \'Ziele\' auf \'VAT-Ziel festlegen\'.';
 
   @override
-  String get settingGoalStep3 => 'Enter your target VAT value and save.';
+  String get settingGoalStep3 => 'Gib deinen Zielwert ein und speichere.';
 
   @override
   String get settingGoalDescription =>
-      'You can set a personal VAT goal to help track your progress toward a healthier body composition.';
+      'Du kannst ein persönliches VAT-Ziel festlegen, um deinen Fortschritt zu einer gesünderen Körperzusammensetzung zu verfolgen.';
 
   @override
   String get goalChartDescription =>
-      'Once set, your goal will appear as a green dashed line on the progress chart, helping you visualize how close you are to your target.';
+      'Nach dem Festlegen erscheint dein Ziel als grüne gestrichelte Linie im Verlaufsdiagramm, damit du siehst, wie nah du deinem Ziel bist.';
 
   @override
   String get goalHealthTip =>
-      'A VAT below 100 cm² is generally considered healthy. Consult a healthcare provider for personalized advice.';
+      'Ein VAT-Wert unter 100 cm² gilt allgemein als gesund. Für eine individuelle Beratung wende dich an deinen Arzt.';
 
   @override
-  String get trendIndicatorTitle => 'Understanding the Trend Indicator';
+  String get trendIndicatorTitle => 'Die Trendanzeige verstehen';
 
   @override
   String get trendIndicatorDescription =>
-      'The trend indicator shows how your VAT has changed compared to your previous measurement.';
+      'Die Trendanzeige zeigt, wie sich dein VAT-Wert im Vergleich zur vorherigen Messung verändert hat.';
 
   @override
-  String get trendDecreasing => 'Decreasing';
+  String get trendDecreasing => 'Sinkend';
 
   @override
   String get trendDecreasingDesc =>
-      'Your VAT is lower than before. Great progress toward reducing viszerales Fett.';
+      'Dein VAT-Wert ist niedriger als zuvor. Toller Fortschritt bei der Reduzierung des Viszeralfetts!';
 
   @override
-  String get trendIncreasing => 'Increasing';
+  String get trendIncreasing => 'Steigend';
 
   @override
   String get trendIncreasingDesc =>
-      'Your VAT is higher than before. Consider reviewing your diet and exercise routine.';
+      'Dein VAT-Wert ist höher als zuvor. Überprüfe deine Ernährung und dein Bewegungsverhalten.';
 
   @override
-  String get trendStable => 'Stable';
+  String get trendStable => 'Stabil';
 
   @override
   String get trendStableDesc =>
-      'Your VAT has changed less than 1 cm². Your levels are holding steady.';
+      'Dein VAT-Wert hat sich um weniger als 1 cm² verändert. Deine Werte bleiben konstant.';
 
   @override
   String get trendMagnitudeNote =>
-      'The trend indicator also displays the exact change in VAT (e.g., -5.2) so you can see the magnitude of the difference.';
+      'Die Trendanzeige zeigt auch die genaue Veränderung des VAT-Werts (z. B. −5,2), damit du das Ausmaß der Veränderung erkennst.';
 
   @override
-  String get calculationTitle => 'How is Visceral Fat Berechnend?';
+  String get calculationTitle => 'Wie wird das Viszeralfett berechnet?';
 
   @override
   String get calculationDescription =>
-      'Visqo uses the Samouda Anthropometric Model to estimate viszerales Fettgewebe (VAT) area without requiring expensive imaging like CT scans or MRI.';
+      'Visqo verwendet das anthropometrische Modell nach Samouda zur Schätzung der viszeralen Fettgewebsfläche (VAT) – ganz ohne teure Bildgebung wie CT oder MRT.';
 
   @override
   String get calculationModelDescription =>
-      'The model uses simple body measurements combined with your age and BMI to predict VAT with high accuracy:';
+      'Das Modell kombiniert einfache Körpermaße mit Alter und BMI, um das VAT mit hoher Genauigkeit vorherzusagen:';
 
   @override
-  String get formulaForMen => 'For Men';
+  String get formulaForMen => 'Für Männer';
 
   @override
   String get formulaMen =>
-      'VAT = 6 x Waist - 4.41 x Thigh + 1.19 x Age - 213.65';
+      'VAT = 6 × Taille − 4,41 × Oberschenkel + 1,19 × Alter − 213,65';
 
   @override
-  String get accuracyMen => 'Explains 80.3% of VAT variance';
+  String get accuracyMen => 'Erklärt 80,3 % der VAT-Varianz';
 
   @override
-  String get formulaForWomen => 'For Women';
+  String get formulaForWomen => 'Für Frauen';
 
   @override
   String get formulaWomen =>
-      'VAT = 2.15 x Waist - 3.63 x Thigh + 1.46 x Age + 6.22 x BMI - 92.713';
+      'VAT = 2,15 × Taille − 3,63 × Oberschenkel + 1,46 × Alter + 6,22 × BMI − 92,713';
 
   @override
-  String get accuracyWomen => 'Explains 83.6% of VAT variance';
+  String get accuracyWomen => 'Erklärt 83,6 % der VAT-Varianz';
 
   @override
   String get resultUnit =>
-      'The result is expressed in cm², representing the estimated cross-sectional area of viszerales Fett tissue.';
+      'Das Ergebnis wird in cm² angegeben und stellt die geschätzte Querschnittsfläche des viszeralen Fettgewebes dar.';
 
   @override
-  String get understandingResultsTitle => 'Understanding Your Results';
+  String get understandingResultsTitle => 'Deine Ergebnisse verstehen';
 
   @override
   String get resultsIntro =>
-      'Your VAT result is categorized into three risk levels:';
+      'Dein VAT-Ergebnis wird in drei Risikostufen eingeteilt:';
 
   @override
-  String get riskHealthy => 'Healthy';
+  String get riskHealthy => 'Gesund';
 
   @override
-  String get riskHealthyRange => 'Less than 100 cm²';
+  String get riskHealthyRange => 'Unter 100 cm²';
 
   @override
   String get riskHealthyDesc =>
-      'Normal viszerales Fett levels associated with lower health risks.';
+      'Normale Viszeralfettwerte mit geringerem Gesundheitsrisiko.';
 
   @override
-  String get riskElevated => 'Elevated';
+  String get riskElevated => 'Erhöht';
 
   @override
-  String get riskElevatedRange => '100 - 130 cm²';
+  String get riskElevatedRange => '100–130 cm²';
 
   @override
   String get riskElevatedDesc =>
-      'Moderately elevated levels. Consider lifestyle changes.';
+      'Moderat erhöhte Werte. Lebensstiländerungen sind empfehlenswert.';
 
   @override
-  String get riskHighRisk => 'High Risk';
+  String get riskHighRisk => 'Hohes Risiko';
 
   @override
-  String get riskHighRiskRange => 'Greater than 130 cm²';
+  String get riskHighRiskRange => 'Über 130 cm²';
 
   @override
   String get riskHighRiskDesc =>
-      'High viszerales Fett associated with increased metabolic health risks.';
+      'Hohes Viszeralfett ist mit erhöhten metabolischen Gesundheitsrisiken verbunden.';
 
   @override
-  String get learnMoreHealthRisks => 'Learn More About Health Risks & Tips';
+  String get learnMoreHealthRisks => 'Mehr über Gesundheitsrisiken & Tipps';
 
   @override
   String get learnMoreHealthRisksDesc =>
-      'Understand the health implications and evidence-based ways to reduce viszerales Fett.';
+      'Erfahre mehr über die gesundheitlichen Auswirkungen und evidenzbasierte Wege zur Reduzierung von Viszeralfett.';
 
   @override
-  String get scientificReference => 'Scientific Reference';
+  String get scientificReference => 'Wissenschaftliche Referenz';
 
   @override
   String get referenceIntro =>
-      'The calculation method used in this app is based on peer-reviewed research:';
+      'Die in dieser App verwendete Berechnungsmethode basiert auf wissenschaftlich geprüfter Forschung:';
 
   @override
   String get referenceAuthors =>
@@ -643,370 +644,382 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get referenceTitle =>
-      'VAT=TAAT-SAAT: innovative anthropometric model to predict viszerales Fettgewebe without resort to CT-Scan or DXA.';
+      'VAT=TAAT-SAAT: Ein innovatives anthropometrisches Modell zur Vorhersage des viszeralen Fettgewebes ohne CT oder DXA.';
 
   @override
-  String get referenceJournal => 'Obesity (2013), 21(1), E41-E50.';
+  String get referenceJournal => 'Obesity (2013), 21(1), E41–E50.';
 
   @override
-  String get healthInsights => 'Health Insights';
+  String get healthInsights => 'Gesundheitstipps';
 
   @override
-  String get aboutVisceralFat => 'About Visceral Fat';
+  String get aboutVisceralFat => 'Über Viszeralfett';
 
   @override
   String get aboutVisceralFatDescription =>
-      'Visceral fat is stored deep within the abdominal cavity around internal organs. Unlike subcutaneous fat, it plays a hormonally active role and is linked to increased health risks. Learn about the risks and evidence-based ways to reduce it.';
+      'Viszeralfett liegt tief in der Bauchhöhle und umgibt die inneren Organe. Im Gegensatz zum Unterhautfettgewebe ist es hormonell aktiv und mit erhöhten Gesundheitsrisiken verbunden. Erfahre mehr über die Risiken und evidenzbasierte Methoden zur Reduzierung.';
 
   @override
   String get healthRisksOfElevatedVat =>
-      'Health Risks of Elevated Visceral Fat';
+      'Gesundheitsrisiken bei erhöhtem Viszeralfett';
 
   @override
   String get healthRisksSubtitle =>
-      'Understanding the risks can help motivate positive changes';
+      'Das Verständnis der Risiken kann positive Veränderungen motivieren';
 
   @override
-  String get evidenceBasedTips => 'Evidence-Based Tips';
+  String get evidenceBasedTips => 'Evidenzbasierte Tipps';
 
   @override
   String get evidenceBasedTipsSubtitle =>
-      'Simple actions to help reduce viszerales Fett';
+      'Einfache Maßnahmen zur Reduzierung von Viszeralfett';
 
   @override
-  String get recommendedForYou => 'Recommended for You';
+  String get recommendedForYou => 'Für dich empfohlen';
 
   @override
-  String get maintainYourHealth => 'Maintain Your Health';
+  String get maintainYourHealth => 'Erhalte deine Gesundheit';
 
   @override
-  String get additionalTips => 'Additional Tips';
+  String get additionalTips => 'Weitere Tipps';
 
   @override
   String get disclaimer =>
-      'This information is for educational purposes only and should not replace professional medical advice. Please consult a healthcare provider for personalized guidance.';
+      'Diese Informationen dienen nur zu Aufklärungszwecken und ersetzen keine professionelle medizinische Beratung. Bitte wende dich für eine individuelle Beratung an deinen Arzt.';
 
   @override
-  String get riskCardiometabolic => 'Cardiometabolic Disease';
+  String get riskCardiometabolic => 'Kardiometabolische Erkrankungen';
 
   @override
   String get riskCardiometabolicDesc =>
-      'Elevated viszerales Fett significantly increases the risk of developing serious cardiovascular and metabolic conditions.';
+      'Erhöhtes Viszeralfett steigert das Risiko für schwerwiegende Herz-Kreislauf- und Stoffwechselerkrankungen erheblich.';
 
   @override
   String get riskCardiometabolicDetail1 =>
-      'Increased risk of type 2 diabetes through insulin resistance';
+      'Erhöhtes Risiko für Typ-2-Diabetes durch Insulinresistenz';
 
   @override
   String get riskCardiometabolicDetail2 =>
-      'Higher likelihood of hypertension (high blood pressure)';
+      'Höheres Risiko für Bluthochdruck (Hypertonie)';
 
   @override
   String get riskCardiometabolicDetail3 =>
-      'Unfavorable cholesterol profile (dyslipidemia)';
+      'Ungünstiges Cholesterinprofil (Dyslipidämie)';
 
   @override
   String get riskCardiometabolicDetail4 =>
-      'Greater risk of coronary heart disease and heart failure';
+      'Erhöhtes Risiko für koronare Herzkrankheit und Herzinsuffizienz';
 
   @override
-  String get riskStrokeMortality => 'Stroke and Mortality';
+  String get riskStrokeMortality => 'Schlaganfall und Sterblichkeit';
 
   @override
   String get riskStrokeMortalityDesc =>
-      'Higher viszerales Fett levels are associated with increased stroke risk and may contribute to higher all-cause mortality.';
+      'Höhere Viszeralfettwerte sind mit einem erhöhten Schlaganfallrisiko verbunden und können zu einer höheren Gesamtsterblichkeit beitragen.';
 
   @override
-  String get riskStrokeMortalityDetail1 => 'Elevated risk of ischemic stroke';
+  String get riskStrokeMortalityDetail1 =>
+      'Erhöhtes Risiko für ischämischen Schlaganfall';
 
   @override
   String get riskStrokeMortalityDetail2 =>
-      'Association with higher all-cause mortality rates';
+      'Zusammenhang mit höherer Gesamtsterblichkeit';
 
   @override
   String get riskStrokeMortalityDetail3 =>
-      'Risk persists even at normal BMI levels';
+      'Das Risiko besteht auch bei normalem BMI';
 
   @override
-  String get riskInflammation => 'Chronic Inflammation';
+  String get riskInflammation => 'Chronische Entzündung';
 
   @override
   String get riskInflammationDesc =>
-      'Visceral fat tissue actively secretes inflammatory molecules that promote systemic inflammation throughout the body.';
+      'Viszerales Fettgewebe setzt aktiv entzündungsfördernde Moleküle frei, die systemische Entzündungen im gesamten Körper fördern.';
 
   @override
   String get riskInflammationDetail1 =>
-      'Secretes inflammatory cytokines (IL-6, TNF-alpha)';
+      'Freisetzung entzündungsfördernder Zytokine (IL-6, TNF-alpha)';
 
   @override
-  String get riskInflammationDetail2 => 'Disrupts normal hormone signaling';
+  String get riskInflammationDetail2 => 'Störung der normalen Hormonregulation';
 
   @override
   String get riskInflammationDetail3 =>
-      'Creates low-level chronic inflammation';
+      'Erzeugt niedriggradige chronische Entzündung';
 
   @override
   String get riskInflammationDetail4 =>
-      'Inflammation is a risk factor for many chronic diseases';
+      'Entzündung ist ein Risikofaktor für viele chronische Erkrankungen';
 
   @override
-  String get riskLiver => 'Non-Alcoholic Fatty Liver Disease';
+  String get riskLiver => 'Nicht-alkoholische Fettleber (NAFLD)';
 
   @override
   String get riskLiverDesc =>
-      'Visceral fat accumulation is strongly correlated with fat infiltration in the liver and elevated liver enzymes.';
+      'Die Ansammlung von Viszeralfett korreliert stark mit Fetteinlagerungen in der Leber und erhöhten Leberenzymwerten.';
 
   @override
   String get riskLiverDetail1 =>
-      'Fat deposits in liver tissue (hepatic steatosis)';
+      'Fetteinlagerungen im Lebergewebe (hepatische Steatose)';
 
   @override
-  String get riskLiverDetail2 => 'Elevated liver enzyme levels (ALT, AST)';
+  String get riskLiverDetail2 => 'Erhöhte Leberenzymwerte (ALT, AST)';
 
   @override
   String get riskLiverDetail3 =>
-      'Can progress to more serious liver conditions';
+      'Kann zu schwerwiegenderen Lebererkrankungen fortschreiten';
 
   @override
-  String get riskLiverDetail4 => 'Often reversible with lifestyle changes';
+  String get riskLiverDetail4 => 'Oft durch Lebensstiländerungen reversibel';
 
   @override
-  String get riskMetabolicSyndrome => 'Metabolic Syndrome';
+  String get riskMetabolicSyndrome => 'Metabolisches Syndrom';
 
   @override
   String get riskMetabolicSyndromeDesc =>
-      'Visceral adiposity is a core driver of metabolic syndrome, a cluster of conditions that increase disease risk.';
+      'Viszerale Adipositas ist ein Haupttreiber des metabolischen Syndroms – einer Kombination von Faktoren, die das Krankheitsrisiko erhöhen.';
 
   @override
-  String get riskMetabolicSyndromeDetail1 => 'Elevated blood sugar levels';
+  String get riskMetabolicSyndromeDetail1 => 'Erhöhte Blutzuckerwerte';
 
   @override
-  String get riskMetabolicSyndromeDetail2 => 'High blood pressure';
+  String get riskMetabolicSyndromeDetail2 => 'Bluthochdruck';
 
   @override
-  String get riskMetabolicSyndromeDetail3 => 'Abnormal cholesterol levels';
+  String get riskMetabolicSyndromeDetail3 => 'Veränderte Cholesterinwerte';
 
   @override
   String get riskMetabolicSyndromeDetail4 =>
-      'Central obesity (excess waist fat)';
+      'Zentrale Adipositas (überschüssiges Bauchfett)';
 
   @override
   String get riskMetabolicSyndromeDetail5 =>
-      'Significantly increases heart disease and diabetes risk';
+      'Deutlich erhöhtes Risiko für Herzerkrankungen und Diabetes';
 
   @override
-  String get riskCancer => 'Cancer Associations';
+  String get riskCancer => 'Zusammenhang mit Krebs';
 
   @override
   String get riskCancerDesc =>
-      'Emerging evidence links viszerales Fett with metabolic dysregulation and higher risk for certain cancers.';
+      'Neue Erkenntnisse verbinden Viszeralfett mit Stoffwechselstörungen und einem erhöhten Risiko für bestimmte Krebsarten.';
 
   @override
   String get riskCancerDetail1 =>
-      'Altered hormone signaling may promote cancer growth';
+      'Veränderte Hormonsignale können das Krebswachstum fördern';
 
   @override
   String get riskCancerDetail2 =>
-      'Chronic inflammation creates favorable environment for cancer';
+      'Chronische Entzündung schafft ein krebsförderndes Umfeld';
 
   @override
-  String get riskCancerDetail3 => 'Associated with certain malignancies';
+  String get riskCancerDetail3 =>
+      'Assoziation mit bestimmten bösartigen Tumoren';
 
   @override
-  String get riskCancerDetail4 => 'Research ongoing to understand mechanisms';
+  String get riskCancerDetail4 =>
+      'Die Forschung zu den Mechanismen ist noch im Gange';
 
   @override
-  String get tipActivity => 'Regular Physical Activity';
+  String get tipActivity => 'Regelmäßige körperliche Aktivität';
 
   @override
   String get tipActivityDesc =>
-      'Consistent aerobic exercise and strength training are among the most effective ways to reduce viszerales Fett.';
+      'Regelmäßiges Ausdauer- und Krafttraining gehören zu den wirksamsten Methoden zur Reduzierung von Viszeralfett.';
 
   @override
   String get tipActivityAction1 =>
-      'Aim for 150+ minutes per week of moderate-intensity aerobic activity';
+      'Strebe mindestens 150 Minuten moderate Ausdaueraktivität pro Woche an';
 
   @override
   String get tipActivityAction2 =>
-      'Include 2 or more days per week of strength training';
+      'Integriere an mindestens 2 Tagen pro Woche Krafttraining';
 
   @override
   String get tipActivityAction3 =>
-      'Walking, cycling, swimming, and jogging are excellent choices';
+      'Gehen, Radfahren, Schwimmen und Joggen sind hervorragende Optionen';
 
   @override
   String get tipActivityAction4 =>
-      'Strength training helps maintain lean muscle mass';
+      'Krafttraining hilft, die Muskelmasse zu erhalten';
 
   @override
-  String get tipDiet => 'Balanced, Nutrient-Dense Diet';
+  String get tipDiet => 'Ausgewogene, nährstoffreiche Ernährung';
 
   @override
   String get tipDietDesc =>
-      'Focus on whole foods and limit processed foods to help reduce viszerales Fett accumulation.';
+      'Setze auf vollwertige Lebensmittel und reduziere verarbeitete Produkte, um die Ansammlung von Viszeralfett zu verringern.';
 
   @override
-  String get tipDietAction1 => 'Emphasize vegetables, fruits, and whole grains';
+  String get tipDietAction1 => 'Bevorzuge Gemüse, Obst und Vollkornprodukte';
 
   @override
-  String get tipDietAction2 => 'Choose lean proteins (fish, poultry, legumes)';
+  String get tipDietAction2 =>
+      'Wähle magere Proteinquellen (Fisch, Geflügel, Hülsenfrüchte)';
 
   @override
-  String get tipDietAction3 => 'Limit added sugars and refined carbohydrates';
+  String get tipDietAction3 =>
+      'Reduziere zugesetzten Zucker und raffinierte Kohlenhydrate';
 
   @override
-  String get tipDietAction4 => 'Reduce intake of highly processed foods';
+  String get tipDietAction4 => 'Vermeide stark verarbeitete Lebensmittel';
 
   @override
-  String get tipDietAction5 => 'Choose healthy fats (olive oil, nuts, avocado)';
+  String get tipDietAction5 =>
+      'Setze auf gesunde Fette (Olivenöl, Nüsse, Avocado)';
 
   @override
-  String get tipWeight => 'Weight Management';
+  String get tipWeight => 'Gewichtsmanagement';
 
   @override
   String get tipWeightDesc =>
-      'Maintaining a healthy weight through sustainable calorie control helps reduce viszerales Fett stores.';
+      'Ein gesundes Gewicht durch nachhaltige Kalorienkontrolle zu halten, hilft, Viszeralfettreserven zu reduzieren.';
 
   @override
   String get tipWeightAction1 =>
-      'Create a modest calorie deficit for gradual weight loss';
+      'Schaffe ein moderates Kaloriendefizit für schrittweisen Gewichtsverlust';
 
   @override
   String get tipWeightAction2 =>
-      'Verfolgen waist circumference as a progress indicator';
+      'Verfolge den Taillenumfang als Fortschrittsindikator';
 
   @override
   String get tipWeightAction3 =>
-      'Monitor waist-to-height ratio (aim for < 0.5)';
+      'Achte auf das Taille-zu-Körpergröße-Verhältnis (Ziel: unter 0,5)';
 
   @override
   String get tipWeightAction4 =>
-      'Focus on sustainable changes, not crash diets';
+      'Setze auf nachhaltige Veränderungen statt Crash-Diäten';
 
   @override
-  String get tipSedentary => 'Reduce Sedentary Time';
+  String get tipSedentary => 'Sitzzeit reduzieren';
 
   @override
   String get tipSedentaryDesc =>
-      'Breaking up prolonged sitting with light movement contributes to overall energy expenditure.';
+      'Das Unterbrechen von langem Sitzen durch leichte Bewegung trägt zum Gesamtenergieverbrauch bei.';
 
   @override
-  String get tipSedentaryAction1 => 'Stand up and move every 30-60 minutes';
+  String get tipSedentaryAction1 =>
+      'Stehe alle 30–60 Minuten auf und bewege dich';
 
   @override
-  String get tipSedentaryAction2 => 'Take walking breaks during work';
+  String get tipSedentaryAction2 => 'Mache Spaziergänge während der Arbeit';
 
   @override
-  String get tipSedentaryAction3 => 'Use a standing desk when possible';
+  String get tipSedentaryAction3 =>
+      'Nutze einen Stehschreibtisch, wenn möglich';
 
   @override
-  String get tipSedentaryAction4 => 'Choose stairs over elevators';
+  String get tipSedentaryAction4 => 'Nimm die Treppe statt den Aufzug';
 
   @override
   String get tipSedentaryAction5 =>
-      'Even light activity helps reduce viszerales Fett';
+      'Selbst leichte Aktivität hilft, Viszeralfett zu reduzieren';
 
   @override
-  String get tipSleepStress => 'Quality Sleep and Stress Management';
+  String get tipSleepStress => 'Guter Schlaf und Stressmanagement';
 
   @override
   String get tipSleepStressDesc =>
-      'Poor sleep and chronic stress raise cortisol, a hormone linked to abdominal fat accumulation.';
+      'Schlechter Schlaf und chronischer Stress erhöhen den Cortisolspiegel – ein Hormon, das mit der Ansammlung von Bauchfett in Verbindung steht.';
 
   @override
   String get tipSleepStressAction1 =>
-      'Aim for 7-9 hours of quality sleep per night';
+      'Strebe 7–9 Stunden guten Schlaf pro Nacht an';
 
   @override
-  String get tipSleepStressAction2 => 'Maintain a consistent sleep schedule';
+  String get tipSleepStressAction2 =>
+      'Halte einen regelmäßigen Schlafrhythmus ein';
 
   @override
   String get tipSleepStressAction3 =>
-      'Practice stress-reducing activities (meditation, yoga)';
+      'Praktiziere stressreduzierende Aktivitäten (Meditation, Yoga)';
 
   @override
-  String get tipSleepStressAction4 => 'Limit screen time before bed';
+  String get tipSleepStressAction4 =>
+      'Reduziere die Bildschirmzeit vor dem Schlafengehen';
 
   @override
-  String get tipSleepStressAction5 => 'Address sources of chronic stress';
+  String get tipSleepStressAction5 =>
+      'Gehe die Ursachen von chronischem Stress an';
 
   @override
-  String get tipAlcohol => 'Limit Alcohol Consumption';
+  String get tipAlcohol => 'Alkoholkonsum einschränken';
 
   @override
   String get tipAlcoholDesc =>
-      'Alcohol adds calories and may promote viszerales Fett accumulation when consumed regularly in excess.';
+      'Alkohol liefert zusätzliche Kalorien und kann bei regelmäßigem übermäßigem Konsum die Viszeralfettansammlung fördern.';
 
   @override
   String get tipAlcoholAction1 =>
-      'Limit to moderate consumption (1 drink/day women, 2/day men)';
+      'Beschränke dich auf moderaten Konsum (1 Getränk/Tag für Frauen, 2 für Männer)';
 
   @override
-  String get tipAlcoholAction2 => 'Choose lower-calorie options when drinking';
+  String get tipAlcoholAction2 => 'Wähle kalorienärmere Getränke';
 
   @override
-  String get tipAlcoholAction3 => 'Avoid binge drinking episodes';
+  String get tipAlcoholAction3 => 'Vermeide Rauschtrinken';
 
   @override
-  String get tipAlcoholAction4 => 'Consider alcohol-free days each week';
+  String get tipAlcoholAction4 => 'Plane alkoholfreie Tage pro Woche ein';
 
   @override
-  String get tipSmoking => 'Smoking Cessation';
+  String get tipSmoking => 'Mit dem Rauchen aufhören';
 
   @override
   String get tipSmokingDesc =>
-      'Smoking is associated with central fat accumulation and amplifies cardiometabolic risk.';
+      'Rauchen wird mit zentraler Fettansammlung in Verbindung gebracht und verstärkt kardiometabolische Risiken.';
 
   @override
   String get tipSmokingAction1 =>
-      'Quit smoking to reduce viszerales Fett accumulation';
+      'Höre mit dem Rauchen auf, um die Viszeralfettansammlung zu reduzieren';
 
   @override
   String get tipSmokingAction2 =>
-      'Seek support programs or medications if needed';
+      'Nutze bei Bedarf Unterstützungsprogramme oder Medikamente';
 
   @override
-  String get tipSmokingAction3 => 'Benefits begin within days of quitting';
+  String get tipSmokingAction3 =>
+      'Die gesundheitlichen Vorteile beginnen schon Tage nach dem Aufhören';
 
   @override
   String get tipSmokingAction4 =>
-      'Reduces overall cardiovascular risk significantly';
+      'Senkt das kardiovaskuläre Gesamtrisiko erheblich';
 
   @override
-  String get waist => 'Waist';
+  String get waist => 'Taille';
 
   @override
-  String get proximalThigh => 'Proximal Thigh';
+  String get proximalThigh => 'Oberer Oberschenkel';
 
   @override
-  String get lowerRib => 'Lower rib';
+  String get lowerRib => 'Untere Rippe';
 
   @override
-  String get hipBone => 'Hip bone';
+  String get hipBone => 'Hüftknochen';
 
   @override
-  String get midpoint => 'Midpoint';
+  String get midpoint => 'Mittelpunkt';
 
   @override
-  String get glutealCrease => 'Gluteal crease';
+  String get glutealCrease => 'Gesäßfalte';
 
   @override
-  String get justBelowCrease => 'Just below crease';
+  String get justBelowCrease => 'Knapp unterhalb der Falte';
 
   @override
   String errorStartingApp(String error) {
-    return 'Error starting app: $error\n\nPlease reinstall the app.';
+    return 'Fehler beim App-Start: $error\n\nBitte installiere die App neu.';
   }
 
   @override
-  String get language => 'Language';
+  String get language => 'Sprache';
 
   @override
-  String get english => 'English';
+  String get english => 'Englisch';
 
   @override
-  String get german => 'German';
+  String get german => 'Deutsch';
 
   @override
-  String get french => 'French';
+  String get french => 'Französisch';
 }
