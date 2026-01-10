@@ -142,7 +142,7 @@
       }
     }
   },
-  "everyOrdinalAt": "Le {ordinal} de chaque mois à {time}",
+  "everyOrdinalAt": "Le {ordinal} de chaque mois a {time}",
   "@everyOrdinalAt": {
     "placeholders": {
       "ordinal": {

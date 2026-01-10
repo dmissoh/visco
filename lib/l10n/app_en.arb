@@ -142,7 +142,7 @@
       }
     }
   },
-  "everyOrdinalAt": "Every {ordinal} at {time}",
+  "everyOrdinalAt": "On day {ordinal} of each month at {time}",
   "@everyOrdinalAt": {
     "placeholders": {
       "ordinal": {

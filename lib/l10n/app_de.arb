@@ -142,7 +142,7 @@
       }
     }
   },
-  "everyOrdinalAt": "Jeden {ordinal} um {time}",
+  "everyOrdinalAt": "Am {ordinal}. jedes Monats um {time}",
   "@everyOrdinalAt": {
     "placeholders": {
       "ordinal": {

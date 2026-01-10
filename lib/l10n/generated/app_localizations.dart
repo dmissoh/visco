@@ -679,7 +679,7 @@ abstract class AppLocalizations {
   /// No description provided for @everyOrdinalAt.
   ///
   /// In en, this message translates to:
-  /// **'Every {ordinal} at {time}'**
+  /// **'On day {ordinal} of each month at {time}'**
   String everyOrdinalAt(String ordinal, String time);
 
   /// No description provided for @time.

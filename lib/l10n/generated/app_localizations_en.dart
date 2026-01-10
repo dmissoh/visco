@@ -317,7 +317,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String everyOrdinalAt(String ordinal, String time) {
-    return 'Every $ordinal at $time';
+    return 'On day $ordinal of each month at $time';
   }
 
   @override

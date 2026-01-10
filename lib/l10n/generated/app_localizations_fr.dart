@@ -318,7 +318,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String everyOrdinalAt(String ordinal, String time) {
-    return 'Le $ordinal de chaque mois à $time';
+    return 'Le $ordinal de chaque mois a $time';
   }
 
   @override
