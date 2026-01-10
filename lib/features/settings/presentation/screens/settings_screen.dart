@@ -10,6 +10,7 @@ import 'package:visco/features/onboarding/providers/profile_provider.dart';
 import 'package:visco/features/premium/presentation/screens/paywall_screen.dart';
 import 'package:visco/features/premium/providers/premium_provider.dart';
 import 'package:visco/features/settings/providers/settings_provider.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -247,6 +248,13 @@ class SettingsScreen extends ConsumerWidget {
               ],
             ),
           ),
+          const SizedBox(height: AppSpacing.xl),
+          Text(
+            'Language',
+            style: AppTypography.title(color: colors.textPrimary),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          _buildLanguageSection(context, ref, colors),
           const SizedBox(height: AppSpacing.xl),
           Text(
             'Data',
@@ -501,6 +509,93 @@ class SettingsScreen extends ConsumerWidget {
           : null,
       onTap: () {
         ref.read(unitSystemProvider.notifier).setUnitSystem(value);
+      },
+    );
+  }
+
+  Widget _buildLanguageSection(BuildContext context, WidgetRef ref, AppColorScheme colors) {
+    final currentLocale = ref.watch(localeProvider);
+    final l10n = AppLocalizations.of(context)!;
+
+    return Container(
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        border: Border.all(color: colors.border),
+      ),
+      child: Column(
+        children: [
+          _buildLanguageOption(
+            context,
+            ref,
+            title: l10n.english,
+            locale: const Locale('en'),
+            currentLocale: currentLocale,
+            flag: 'EN',
+          ),
+          Divider(height: 1, color: colors.border),
+          _buildLanguageOption(
+            context,
+            ref,
+            title: l10n.german,
+            locale: const Locale('de'),
+            currentLocale: currentLocale,
+            flag: 'DE',
+          ),
+          Divider(height: 1, color: colors.border),
+          _buildLanguageOption(
+            context,
+            ref,
+            title: l10n.french,
+            locale: const Locale('fr'),
+            currentLocale: currentLocale,
+            flag: 'FR',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildLanguageOption(
+    BuildContext context,
+    WidgetRef ref, {
+    required String title,
+    required Locale locale,
+    required Locale? currentLocale,
+    required String flag,
+  }) {
+    final colors = AppColors.of(context);
+    final isSelected = currentLocale?.languageCode == locale.languageCode;
+
+    return ListTile(
+      leading: Container(
+        width: 32,
+        height: 32,
+        decoration: BoxDecoration(
+          color: isSelected ? colors.accent.withValues(alpha: 0.1) : colors.background,
+          borderRadius: BorderRadius.circular(AppRadius.sm),
+          border: Border.all(
+            color: isSelected ? colors.accent : colors.border,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            flag,
+            style: AppTypography.label(
+              color: isSelected ? colors.accent : colors.textSecondary,
+            ),
+          ),
+        ),
+      ),
+      title: Text(
+        title,
+        style: AppTypography.body(color: colors.textPrimary),
+      ),
+      trailing: isSelected
+          ? Icon(Icons.check_circle, color: colors.accent)
+          : null,
+      onTap: () {
+        ref.read(localeProvider.notifier).setLocale(locale);
       },
     );
   }

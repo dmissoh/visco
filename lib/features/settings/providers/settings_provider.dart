@@ -1,11 +1,53 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 const settingsBoxName = 'settings';
 
+// Supported locales
+const supportedLocales = [
+  Locale('en'),
+  Locale('de'),
+  Locale('fr'),
+];
+
 // Unit system enum
 enum UnitSystem { metric, imperial }
+
+// Locale provider
+final localeProvider = NotifierProvider<LocaleNotifier, Locale?>(() {
+  return LocaleNotifier();
+});
+
+class LocaleNotifier extends Notifier<Locale?> {
+  late Box _box;
+
+  @override
+  Locale? build() {
+    _box = Hive.box(settingsBoxName);
+    final localeCode = _box.get('locale') as String?;
+    if (localeCode == null) {
+      // Use system locale if available and supported, otherwise null (system default)
+      final systemLocale = PlatformDispatcher.instance.locale;
+      final matchingLocale = supportedLocales.where(
+        (l) => l.languageCode == systemLocale.languageCode
+      ).firstOrNull;
+      return matchingLocale;
+    }
+    return Locale(localeCode);
+  }
+
+  Future<void> setLocale(Locale? locale) async {
+    if (locale == null) {
+      await _box.delete('locale');
+    } else {
+      await _box.put('locale', locale.languageCode);
+    }
+    state = locale;
+  }
+}
 
 // Theme provider
 final settingsProvider = NotifierProvider<SettingsNotifier, ThemeMode>(() {

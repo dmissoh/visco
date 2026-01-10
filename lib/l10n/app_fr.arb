@@ -1,0 +1,392 @@
+{
+  "@@locale": "fr",
+  
+  "appTitle": "Visqo",
+  
+  "navCalculate": "Calculer",
+  "navWhatIf": "Simulation",
+  "navProgress": "Progres",
+  "navSettings": "Parametres",
+  
+  "welcomeTitle": "Bienvenue sur Visqo",
+  "welcomeSubtitle": "Votre tracker personnel de graisse viscerale",
+  "getStarted": "Commencer",
+  "skipAndExplore": "Passer et explorer",
+  
+  "whatIsVatTitle": "Qu'est-ce que la graisse viscerale ?",
+  "hiddenFatTitle": "Graisse cachee",
+  "hiddenFatDesc": "La graisse viscerale est stockee profondement dans votre abdomen, entourant les organes vitaux comme le foie, l'estomac et les intestins.",
+  "healthRisksTitle": "Risques pour la sante",
+  "healthRisksDesc": "Des niveaux eleves sont lies a un risque accru de maladies cardiaques, de diabete de type 2 et de syndrome metabolique.",
+  "notVisibleTitle": "Pas toujours visible",
+  "notVisibleDesc": "Contrairement a la graisse sous-cutanee (sous la peau), la graisse viscerale peut etre elevee meme chez les personnes qui semblent minces.",
+  "continueButton": "Continuer",
+  
+  "howItWorksTitle": "Comment fonctionne Visqo",
+  "stepMeasure": "Mesurer",
+  "stepMeasureDesc": "Prenez des mesures corporelles simples : tour de taille et de cuisse.",
+  "stepCalculate": "Calculer",
+  "stepCalculateDesc": "Visqo utilise une formule scientifiquement validee pour estimer votre surface de graisse viscerale.",
+  "stepTrack": "Suivre",
+  "stepTrackDesc": "Surveillez votre progres dans le temps avec des graphiques et des tendances.",
+  "scientificNote": "Base sur des recherches evaluees par des pairs avec une precision de 80-84% par rapport aux scanners CT.",
+  "setUpProfile": "Configurer le profil",
+  
+  "profileSetupTitle": "Configurons votre profil",
+  "profileSetupSubtitle": "Ces informations sont utilisees pour calculer votre graisse viscerale avec precision.",
+  "newProfileTitle": "Nouveau profil",
+  "createNewProfile": "Creer un nouveau profil",
+  "profileName": "Nom du profil",
+  "profileNameHint": "ex. Jean, Maman, Papa",
+  "pleaseEnterProfileName": "Veuillez entrer un nom de profil",
+  "createProfile": "Creer le profil",
+  "startTracking": "Commencer le suivi",
+  
+  "sexLabel": "Sexe",
+  "male": "Homme",
+  "female": "Femme",
+  "dateOfBirth": "Date de naissance",
+  "height": "Taille",
+  
+  "createProfileToStart": "Creez un profil pour commencer",
+  "createProfileExplanation": "Pour calculer votre graisse viscerale, nous avons besoin de quelques informations de base comme votre sexe, age et taille.",
+  
+  "todaysMeasurements": "Mesures du jour",
+  "weight": "Poids",
+  "enterWeight": "Entrer le poids",
+  "waistCircumference": "Tour de taille",
+  "enterWaist": "Entrer la taille",
+  "thighCircumference": "Tour de cuisse",
+  "enterThigh": "Entrer la cuisse",
+  "calculateAndSave": "Calculer et sauvegarder",
+  "noPreviousMeasurements": "Pas de mesures precedentes",
+  "measured": "Mesure",
+  "today": "Aujourd'hui",
+  
+  "result": "Resultat",
+  "viewHealthInsights": "Voir les conseils sante",
+  "viewProgressChart": "Voir le graphique de progres",
+  "shareResult": "Partager le resultat",
+  
+  "visceralFatTrend": "Tendance de la graisse viscerale",
+  "history": "Historique",
+  "noMeasurementsYet": "Pas encore de mesures",
+  "startTrackingToSeeProgress": "Commencez le suivi pour voir votre progres",
+  "doctorsReport": "Rapport medical",
+  "olderMeasurements": "{count} mesures plus anciennes",
+  "@olderMeasurements": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "unlockFullProgress": "Debloquer pour voir tout le progres",
+  
+  "settings": "Parametres",
+  "profiles": "Profils",
+  "addProfile": "Ajouter un profil",
+  "currentProfile": "Profil actuel",
+  "age": "Age",
+  "years": "ans",
+  "ageYears": "{age} ans",
+  "@ageYears": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      }
+    }
+  },
+  "deleteProfile": "Supprimer le profil",
+  "deleteProfileConfirmation": "Supprimer \"{name}\" et toutes ses mesures ? Cette action est irreversible.",
+  "@deleteProfileConfirmation": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "goals": "Objectifs",
+  "vatGoal": "Objectif VAT",
+  "notSet": "Non defini",
+  "setVatGoal": "Definir l'objectif VAT",
+  "setVatGoalDescription": "Definissez une surface de graisse viscerale cible a suivre sur votre graphique de progres.",
+  "goalHint": "ex. 100",
+  "goalTip": "Conseil : En dessous de 100 cm\u00B2 est considere comme sain",
+  "clear": "Effacer",
+  "cancel": "Annuler",
+  "save": "Sauvegarder",
+  
+  "units": "Unites",
+  "metric": "Metrique",
+  "metricUnits": "kg, cm",
+  "imperial": "Imperial",
+  "imperialUnits": "lbs, pouces",
+  
+  "reminders": "Rappels",
+  "measurementReminder": "Rappel de mesure",
+  "frequency": "Frequence",
+  "off": "Desactive",
+  "weekly": "Hebdomadaire",
+  "monthly": "Mensuel",
+  "noRemindersScheduled": "Aucun rappel programme",
+  "everyDayAt": "Chaque {day} a {time}",
+  "@everyDayAt": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "everyOrdinalAt": "Chaque {ordinal} a {time}",
+  "@everyOrdinalAt": {
+    "placeholders": {
+      "ordinal": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "time": "Heure",
+  "dayOfWeek": "Jour de la semaine",
+  "dayOfMonth": "Jour du mois",
+  "monday": "Lundi",
+  "tuesday": "Mardi",
+  "wednesday": "Mercredi",
+  "thursday": "Jeudi",
+  "friday": "Vendredi",
+  "saturday": "Samedi",
+  "sunday": "Dimanche",
+  
+  "appearance": "Apparence",
+  "system": "Systeme",
+  "followSystemSettings": "Suivre les parametres systeme",
+  "light": "Clair",
+  "alwaysLightTheme": "Toujours utiliser le theme clair",
+  "dark": "Sombre",
+  "alwaysDarkTheme": "Toujours utiliser le theme sombre",
+  
+  "data": "Donnees",
+  "resetAllData": "Reinitialiser toutes les donnees",
+  "deleteAllProfilesAndMeasurements": "Supprimer tous les profils et mesures",
+  "resetAllDataConfirmation": "Cela supprimera TOUS les profils et mesures. Vous devrez configurer un nouveau profil. Cette action est irreversible.",
+  "reset": "Reinitialiser",
+  "delete": "Supprimer",
+  
+  "developerOptions": "Options developpeur",
+  "premiumStatusOverride": "Remplacer le statut premium",
+  "simulatingPremium": "Simulation Premium",
+  "simulatingFree": "Simulation Gratuit",
+  "usingRealStatus": "Utilisation du statut reel",
+  "actual": "reel",
+  "premium": "Premium",
+  "free": "Gratuit",
+  "real": "Reel",
+  "pro": "PRO",
+  "multipleProfiles": "Profils multiples",
+  "unlimitedHistory": "Historique illimite",
+  
+  "help": "Aide",
+  "aboutVisqo": "A propos de Visqo",
+  "aboutVisqoDescription": "Visqo vous aide a estimer votre graisse viscerale a l'aide de simples mesures corporelles. La graisse viscerale est la graisse stockee autour de vos organes internes et est liee a des risques accrus pour la sante. En suivant vos mesures dans le temps, vous pouvez surveiller votre progres vers une meilleure composition corporelle.",
+  
+  "howToMeasureWaist": "Comment mesurer le tour de taille",
+  "instructions": "Instructions",
+  "waistStep1": "Tenez-vous debout, pieds joints et bras detendus le long du corps.",
+  "waistStep2": "Localisez le bas de vos cotes et le haut de vos os iliaques (crete iliaque).",
+  "waistStep3": "Placez le metre ruban a mi-chemin entre ces deux points, approximativement au niveau du nombril.",
+  "waistStep4": "Enroulez le ruban autour de votre taille en le gardant parallele au sol.",
+  "waistStep5": "Expirez normalement et prenez la mesure sans trop serrer le ruban.",
+  "waistTip": "Mesurez directement sur la peau ou sur des vetements legers pour plus de precision.",
+  
+  "howToMeasureThigh": "Comment mesurer le tour de cuisse",
+  "thighStep1": "Tenez-vous debout avec le poids reparti uniformement sur les deux jambes.",
+  "thighStep2": "Identifiez le pli fessier (le pli ou vos fesses rejoignent votre cuisse).",
+  "thighStep3": "Positionnez le metre ruban juste en dessous (distal) du pli fessier.",
+  "thighStep4": "Enroulez le ruban horizontalement autour de votre cuisse, perpendiculairement a l'axe de la cuisse.",
+  "thighStep5": "Gardez vos muscles detendus et lisez la mesure sans comprimer la peau.",
+  "thighTip": "Mesurez les deux cuisses et utilisez la moyenne si elles different significativement.",
+  
+  "settingGoalTitle": "Definir un objectif",
+  "settingGoalStep1": "Allez dans les Parametres depuis l'ecran de calcul.",
+  "settingGoalStep2": "Appuyez sur \"Definir l'objectif VAT\" dans la section Objectifs.",
+  "settingGoalStep3": "Entrez votre valeur VAT cible et sauvegardez.",
+  "settingGoalDescription": "Vous pouvez definir un objectif VAT personnel pour suivre votre progres vers une meilleure composition corporelle.",
+  "goalChartDescription": "Une fois defini, votre objectif apparaitra comme une ligne pointillee verte sur le graphique de progres, vous aidant a visualiser a quel point vous etes proche de votre cible.",
+  "goalHealthTip": "Un VAT inferieur a 100 cm\u00B2 est generalement considere comme sain. Consultez un professionnel de sante pour des conseils personnalises.",
+  
+  "trendIndicatorTitle": "Comprendre l'indicateur de tendance",
+  "trendIndicatorDescription": "L'indicateur de tendance montre comment votre VAT a change par rapport a votre mesure precedente.",
+  "trendDecreasing": "En baisse",
+  "trendDecreasingDesc": "Votre VAT est plus bas qu'avant. Excellent progres dans la reduction de la graisse viscerale.",
+  "trendIncreasing": "En hausse",
+  "trendIncreasingDesc": "Votre VAT est plus eleve qu'avant. Envisagez de revoir votre alimentation et votre routine d'exercice.",
+  "trendStable": "Stable",
+  "trendStableDesc": "Votre VAT a change de moins de 1 cm\u00B2. Vos niveaux restent stables.",
+  "trendMagnitudeNote": "L'indicateur de tendance affiche egalement le changement exact en VAT (ex. -5,2) pour que vous puissiez voir l'ampleur de la difference.",
+  
+  "calculationTitle": "Comment la graisse viscerale est-elle calculee ?",
+  "calculationDescription": "Visqo utilise le modele anthropometrique de Samouda pour estimer la surface du tissu adipeux visceral (VAT) sans necessiter d'imagerie couteuse comme les scanners CT ou l'IRM.",
+  "calculationModelDescription": "Le modele utilise des mesures corporelles simples combinees avec votre age et IMC pour predire le VAT avec une grande precision :",
+  "formulaForMen": "Pour les hommes",
+  "formulaMen": "VAT = 6 x Taille - 4,41 x Cuisse + 1,19 x Age - 213,65",
+  "accuracyMen": "Explique 80,3% de la variance du VAT",
+  "formulaForWomen": "Pour les femmes",
+  "formulaWomen": "VAT = 2,15 x Taille - 3,63 x Cuisse + 1,46 x Age + 6,22 x IMC - 92,713",
+  "accuracyWomen": "Explique 83,6% de la variance du VAT",
+  "resultUnit": "Le resultat est exprime en cm\u00B2, representant la surface transversale estimee du tissu adipeux visceral.",
+  
+  "understandingResultsTitle": "Comprendre vos resultats",
+  "resultsIntro": "Votre resultat VAT est categorise en trois niveaux de risque :",
+  "riskHealthy": "Sain",
+  "riskHealthyRange": "Moins de 100 cm\u00B2",
+  "riskHealthyDesc": "Niveaux normaux de graisse viscerale associes a des risques de sante plus faibles.",
+  "riskElevated": "Eleve",
+  "riskElevatedRange": "100 - 130 cm\u00B2",
+  "riskElevatedDesc": "Niveaux moderement eleves. Envisagez des changements de mode de vie.",
+  "riskHighRisk": "Risque eleve",
+  "riskHighRiskRange": "Plus de 130 cm\u00B2",
+  "riskHighRiskDesc": "Graisse viscerale elevee associee a des risques accrus pour la sante metabolique.",
+  "learnMoreHealthRisks": "En savoir plus sur les risques et conseils sante",
+  "learnMoreHealthRisksDesc": "Comprenez les implications pour la sante et les moyens fondes sur des preuves pour reduire la graisse viscerale.",
+  
+  "scientificReference": "Reference scientifique",
+  "referenceIntro": "La methode de calcul utilisee dans cette application est basee sur des recherches evaluees par des pairs :",
+  "referenceAuthors": "Samouda, H., Dutour, A., Chaumoitre, K., Panuel, M., Dutour, O., & Dadoun, F.",
+  "referenceTitle": "VAT=TAAT-SAAT : modele anthropometrique innovant pour predire le tissu adipeux visceral sans recourir au CT-Scan ou DXA.",
+  "referenceJournal": "Obesity (2013), 21(1), E41-E50.",
+  
+  "healthInsights": "Conseils sante",
+  "aboutVisceralFat": "A propos de la graisse viscerale",
+  "aboutVisceralFatDescription": "La graisse viscerale est stockee profondement dans la cavite abdominale autour des organes internes. Contrairement a la graisse sous-cutanee, elle joue un role hormonalement actif et est liee a des risques accrus pour la sante. Decouvrez les risques et les moyens fondes sur des preuves pour la reduire.",
+  "healthRisksOfElevatedVat": "Risques pour la sante d'une graisse viscerale elevee",
+  "healthRisksSubtitle": "Comprendre les risques peut aider a motiver des changements positifs",
+  "evidenceBasedTips": "Conseils fondes sur des preuves",
+  "evidenceBasedTipsSubtitle": "Actions simples pour aider a reduire la graisse viscerale",
+  "recommendedForYou": "Recommande pour vous",
+  "maintainYourHealth": "Maintenez votre sante",
+  "additionalTips": "Conseils supplementaires",
+  "disclaimer": "Ces informations sont a titre educatif uniquement et ne doivent pas remplacer un avis medical professionnel. Veuillez consulter un professionnel de sante pour des conseils personnalises.",
+  
+  "riskCardiometabolic": "Maladie cardiometabolique",
+  "riskCardiometabolicDesc": "Une graisse viscerale elevee augmente significativement le risque de developper des affections cardiovasculaires et metaboliques graves.",
+  "riskCardiometabolicDetail1": "Risque accru de diabete de type 2 par resistance a l'insuline",
+  "riskCardiometabolicDetail2": "Probabilite plus elevee d'hypertension arterielle",
+  "riskCardiometabolicDetail3": "Profil de cholesterol defavorable (dyslipidemie)",
+  "riskCardiometabolicDetail4": "Risque accru de maladie coronarienne et d'insuffisance cardiaque",
+  
+  "riskStrokeMortality": "AVC et mortalite",
+  "riskStrokeMortalityDesc": "Des niveaux plus eleves de graisse viscerale sont associes a un risque accru d'AVC et peuvent contribuer a une mortalite toutes causes plus elevee.",
+  "riskStrokeMortalityDetail1": "Risque eleve d'AVC ischemique",
+  "riskStrokeMortalityDetail2": "Association avec des taux de mortalite toutes causes plus eleves",
+  "riskStrokeMortalityDetail3": "Le risque persiste meme avec un IMC normal",
+  
+  "riskInflammation": "Inflammation chronique",
+  "riskInflammationDesc": "Le tissu adipeux visceral secrete activement des molecules inflammatoires qui favorisent l'inflammation systemique dans tout le corps.",
+  "riskInflammationDetail1": "Secrete des cytokines inflammatoires (IL-6, TNF-alpha)",
+  "riskInflammationDetail2": "Perturbe la signalisation hormonale normale",
+  "riskInflammationDetail3": "Cree une inflammation chronique de bas grade",
+  "riskInflammationDetail4": "L'inflammation est un facteur de risque pour de nombreuses maladies chroniques",
+  
+  "riskLiver": "Steatose hepatique non alcoolique",
+  "riskLiverDesc": "L'accumulation de graisse viscerale est fortement correlee avec l'infiltration graisseuse dans le foie et des enzymes hepatiques elevees.",
+  "riskLiverDetail1": "Depots graisseux dans le tissu hepatique (steatose hepatique)",
+  "riskLiverDetail2": "Niveaux eleves d'enzymes hepatiques (ALT, AST)",
+  "riskLiverDetail3": "Peut evoluer vers des affections hepatiques plus graves",
+  "riskLiverDetail4": "Souvent reversible avec des changements de mode de vie",
+  
+  "riskMetabolicSyndrome": "Syndrome metabolique",
+  "riskMetabolicSyndromeDesc": "L'adiposite viscerale est un facteur central du syndrome metabolique, un ensemble d'affections qui augmentent le risque de maladie.",
+  "riskMetabolicSyndromeDetail1": "Niveaux de glycemie eleves",
+  "riskMetabolicSyndromeDetail2": "Hypertension arterielle",
+  "riskMetabolicSyndromeDetail3": "Niveaux de cholesterol anormaux",
+  "riskMetabolicSyndromeDetail4": "Obesite centrale (exces de graisse abdominale)",
+  "riskMetabolicSyndromeDetail5": "Augmente significativement le risque de maladie cardiaque et de diabete",
+  
+  "riskCancer": "Associations avec le cancer",
+  "riskCancerDesc": "Des preuves emergentes lient la graisse viscerale a une dysregulation metabolique et a un risque plus eleve de certains cancers.",
+  "riskCancerDetail1": "Une signalisation hormonale alteree peut favoriser la croissance du cancer",
+  "riskCancerDetail2": "L'inflammation chronique cree un environnement favorable au cancer",
+  "riskCancerDetail3": "Associe a certaines tumeurs malignes",
+  "riskCancerDetail4": "Recherche en cours pour comprendre les mecanismes",
+  
+  "tipActivity": "Activite physique reguliere",
+  "tipActivityDesc": "L'exercice aerobique regulier et l'entrainement en force sont parmi les moyens les plus efficaces pour reduire la graisse viscerale.",
+  "tipActivityAction1": "Visez 150+ minutes par semaine d'activite aerobique d'intensite moderee",
+  "tipActivityAction2": "Incluez 2 jours ou plus par semaine d'entrainement en force",
+  "tipActivityAction3": "La marche, le velo, la natation et le jogging sont d'excellents choix",
+  "tipActivityAction4": "L'entrainement en force aide a maintenir la masse musculaire maigre",
+  
+  "tipDiet": "Alimentation equilibree et riche en nutriments",
+  "tipDietDesc": "Concentrez-vous sur les aliments complets et limitez les aliments transformes pour aider a reduire l'accumulation de graisse viscerale.",
+  "tipDietAction1": "Privilegiez les legumes, fruits et cereales completes",
+  "tipDietAction2": "Choisissez des proteines maigres (poisson, volaille, legumineuses)",
+  "tipDietAction3": "Limitez les sucres ajoutes et les glucides raffines",
+  "tipDietAction4": "Reduisez la consommation d'aliments ultra-transformes",
+  "tipDietAction5": "Choisissez des graisses saines (huile d'olive, noix, avocat)",
+  
+  "tipWeight": "Gestion du poids",
+  "tipWeightDesc": "Maintenir un poids sain grace a un controle calorique durable aide a reduire les reserves de graisse viscerale.",
+  "tipWeightAction1": "Creez un deficit calorique modeste pour une perte de poids progressive",
+  "tipWeightAction2": "Suivez le tour de taille comme indicateur de progres",
+  "tipWeightAction3": "Surveillez le ratio taille/hauteur (visez < 0,5)",
+  "tipWeightAction4": "Concentrez-vous sur des changements durables, pas sur les regimes drastiques",
+  
+  "tipSedentary": "Reduire le temps sedentaire",
+  "tipSedentaryDesc": "Interrompre la position assise prolongee avec des mouvements legers contribue a la depense energetique globale.",
+  "tipSedentaryAction1": "Levez-vous et bougez toutes les 30-60 minutes",
+  "tipSedentaryAction2": "Faites des pauses marche pendant le travail",
+  "tipSedentaryAction3": "Utilisez un bureau debout si possible",
+  "tipSedentaryAction4": "Preferez les escaliers aux ascenseurs",
+  "tipSedentaryAction5": "Meme une activite legere aide a reduire la graisse viscerale",
+  
+  "tipSleepStress": "Sommeil de qualite et gestion du stress",
+  "tipSleepStressDesc": "Un mauvais sommeil et le stress chronique augmentent le cortisol, une hormone liee a l'accumulation de graisse abdominale.",
+  "tipSleepStressAction1": "Visez 7-9 heures de sommeil de qualite par nuit",
+  "tipSleepStressAction2": "Maintenez un horaire de sommeil regulier",
+  "tipSleepStressAction3": "Pratiquez des activites anti-stress (meditation, yoga)",
+  "tipSleepStressAction4": "Limitez le temps d'ecran avant le coucher",
+  "tipSleepStressAction5": "Abordez les sources de stress chronique",
+  
+  "tipAlcohol": "Limiter la consommation d'alcool",
+  "tipAlcoholDesc": "L'alcool ajoute des calories et peut favoriser l'accumulation de graisse viscerale en cas de consommation reguliere excessive.",
+  "tipAlcoholAction1": "Limitez a une consommation moderee (1 verre/jour femmes, 2/jour hommes)",
+  "tipAlcoholAction2": "Choisissez des options moins caloriques en buvant",
+  "tipAlcoholAction3": "Evitez les episodes de consommation excessive",
+  "tipAlcoholAction4": "Envisagez des jours sans alcool chaque semaine",
+  
+  "tipSmoking": "Arret du tabac",
+  "tipSmokingDesc": "Le tabagisme est associe a l'accumulation de graisse centrale et amplifie le risque cardiometabolique.",
+  "tipSmokingAction1": "Arretez de fumer pour reduire l'accumulation de graisse viscerale",
+  "tipSmokingAction2": "Cherchez des programmes de soutien ou des medicaments si necessaire",
+  "tipSmokingAction3": "Les benefices commencent dans les jours suivant l'arret",
+  "tipSmokingAction4": "Reduit significativement le risque cardiovasculaire global",
+  
+  "waist": "Taille",
+  "proximalThigh": "Cuisse proximale",
+  "lowerRib": "Cote inferieure",
+  "hipBone": "Os iliaque",
+  "midpoint": "Point median",
+  "glutealCrease": "Pli fessier",
+  "justBelowCrease": "Juste sous le pli",
+  
+  "errorStartingApp": "Erreur au demarrage de l'app : {error}\n\nVeuillez reinstaller l'application.",
+  "@errorStartingApp": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "language": "Langue",
+  "english": "Anglais",
+  "german": "Allemand",
+  "french": "Francais"
+}

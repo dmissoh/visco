@@ -2,7 +2,7 @@ name: visco
 description: "Visceral Fat Calculator - Calculate VAT using the Samouda anthropometric model"
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: ^3.10.4
@@ -58,7 +58,7 @@ dev_dependencies:
 
 flutter_launcher_icons:
   android: true
-  ios: true
+  ios: false
   image_path: "assets/icon.png"
   adaptive_icon_background: "#FFFFFF"
   adaptive_icon_foreground: "assets/icon.png"
@@ -74,6 +74,7 @@ flutter_native_splash:
     image: "assets/icon.png"
 
 flutter:
+  generate: true
   uses-material-design: true
   assets:
     - assets/icon.png

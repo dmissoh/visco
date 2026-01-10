@@ -1,0 +1,392 @@
+{
+  "@@locale": "de",
+  
+  "appTitle": "Visqo",
+  
+  "navCalculate": "Berechnen",
+  "navWhatIf": "Was-Wenn",
+  "navProgress": "Fortschritt",
+  "navSettings": "Einstellungen",
+  
+  "welcomeTitle": "Willkommen bei Visqo",
+  "welcomeSubtitle": "Dein persoenlicher Viszeralfett-Tracker",
+  "getStarted": "Loslegen",
+  "skipAndExplore": "Ueberspringen und erkunden",
+  
+  "whatIsVatTitle": "Was ist Viszeralfett?",
+  "hiddenFatTitle": "Verstecktes Fett",
+  "hiddenFatDesc": "Viszeralfett wird tief im Bauchraum gespeichert und umgibt lebenswichtige Organe wie Leber, Magen und Darm.",
+  "healthRisksTitle": "Gesundheitsrisiken",
+  "healthRisksDesc": "Hohe Werte sind mit einem erhoehten Risiko fuer Herzerkrankungen, Typ-2-Diabetes und metabolischem Syndrom verbunden.",
+  "notVisibleTitle": "Nicht immer sichtbar",
+  "notVisibleDesc": "Im Gegensatz zum Unterhautfett kann Viszeralfett auch bei schlank wirkenden Menschen hoch sein.",
+  "continueButton": "Weiter",
+  
+  "howItWorksTitle": "So funktioniert Visqo",
+  "stepMeasure": "Messen",
+  "stepMeasureDesc": "Nimm einfache Koerpermasse: Taillen- und Oberschenkelumfang.",
+  "stepCalculate": "Berechnen",
+  "stepCalculateDesc": "Visqo verwendet eine wissenschaftlich validierte Formel zur Schaetzung deiner Viszeralfettflaeche.",
+  "stepTrack": "Verfolgen",
+  "stepTrackDesc": "Ueberwache deinen Fortschritt ueber die Zeit mit Diagrammen und Trends.",
+  "scientificNote": "Basierend auf begutachteter Forschung mit 80-84% Genauigkeit im Vergleich zu CT-Scans.",
+  "setUpProfile": "Profil einrichten",
+  
+  "profileSetupTitle": "Lass uns dein Profil einrichten",
+  "profileSetupSubtitle": "Diese Informationen werden verwendet, um dein Viszeralfett genau zu berechnen.",
+  "newProfileTitle": "Neues Profil",
+  "createNewProfile": "Neues Profil erstellen",
+  "profileName": "Profilname",
+  "profileNameHint": "z.B. Max, Mama, Papa",
+  "pleaseEnterProfileName": "Bitte gib einen Profilnamen ein",
+  "createProfile": "Profil erstellen",
+  "startTracking": "Tracking starten",
+  
+  "sexLabel": "Geschlecht",
+  "male": "Maennlich",
+  "female": "Weiblich",
+  "dateOfBirth": "Geburtsdatum",
+  "height": "Groesse",
+  
+  "createProfileToStart": "Erstelle ein Profil zum Starten",
+  "createProfileExplanation": "Um dein Viszeralfett zu berechnen, benoetigen wir einige grundlegende Informationen wie dein Geschlecht, Alter und deine Groesse.",
+  
+  "todaysMeasurements": "Heutige Messungen",
+  "weight": "Gewicht",
+  "enterWeight": "Gewicht eingeben",
+  "waistCircumference": "Taillenumfang",
+  "enterWaist": "Taille eingeben",
+  "thighCircumference": "Oberschenkelumfang",
+  "enterThigh": "Oberschenkel eingeben",
+  "calculateAndSave": "Berechnen & Speichern",
+  "noPreviousMeasurements": "Keine frueheren Messungen",
+  "measured": "Gemessen",
+  "today": "Heute",
+  
+  "result": "Ergebnis",
+  "viewHealthInsights": "Gesundheitsinfos anzeigen",
+  "viewProgressChart": "Fortschrittsdiagramm anzeigen",
+  "shareResult": "Ergebnis teilen",
+  
+  "visceralFatTrend": "Viszeralfett-Trend",
+  "history": "Verlauf",
+  "noMeasurementsYet": "Noch keine Messungen",
+  "startTrackingToSeeProgress": "Starte das Tracking, um deinen Fortschritt zu sehen",
+  "doctorsReport": "Arztbericht",
+  "olderMeasurements": "{count} aeltere Messungen",
+  "@olderMeasurements": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "unlockFullProgress": "Freischalten, um den gesamten Fortschritt zu sehen",
+  
+  "settings": "Einstellungen",
+  "profiles": "Profile",
+  "addProfile": "Profil hinzufuegen",
+  "currentProfile": "Aktuelles Profil",
+  "age": "Alter",
+  "years": "Jahre",
+  "ageYears": "{age} Jahre",
+  "@ageYears": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      }
+    }
+  },
+  "deleteProfile": "Profil loeschen",
+  "deleteProfileConfirmation": "\"{name}\" und alle zugehoerigen Messungen loeschen? Dies kann nicht rueckgaengig gemacht werden.",
+  "@deleteProfileConfirmation": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "goals": "Ziele",
+  "vatGoal": "VAT-Ziel",
+  "notSet": "Nicht festgelegt",
+  "setVatGoal": "VAT-Ziel festlegen",
+  "setVatGoalDescription": "Lege ein Ziel fuer die Viszeralfettflaeche fest, das in deinem Fortschrittsdiagramm angezeigt wird.",
+  "goalHint": "z.B. 100",
+  "goalTip": "Tipp: Unter 100 cm\u00B2 gilt als gesund",
+  "clear": "Loeschen",
+  "cancel": "Abbrechen",
+  "save": "Speichern",
+  
+  "units": "Einheiten",
+  "metric": "Metrisch",
+  "metricUnits": "kg, cm",
+  "imperial": "Imperial",
+  "imperialUnits": "lbs, Zoll",
+  
+  "reminders": "Erinnerungen",
+  "measurementReminder": "Messerinnerung",
+  "frequency": "Haeufigkeit",
+  "off": "Aus",
+  "weekly": "Woechentlich",
+  "monthly": "Monatlich",
+  "noRemindersScheduled": "Keine Erinnerungen geplant",
+  "everyDayAt": "Jeden {day} um {time}",
+  "@everyDayAt": {
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "everyOrdinalAt": "Jeden {ordinal} um {time}",
+  "@everyOrdinalAt": {
+    "placeholders": {
+      "ordinal": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "time": "Uhrzeit",
+  "dayOfWeek": "Wochentag",
+  "dayOfMonth": "Tag des Monats",
+  "monday": "Montag",
+  "tuesday": "Dienstag",
+  "wednesday": "Mittwoch",
+  "thursday": "Donnerstag",
+  "friday": "Freitag",
+  "saturday": "Samstag",
+  "sunday": "Sonntag",
+  
+  "appearance": "Erscheinungsbild",
+  "system": "System",
+  "followSystemSettings": "Systemeinstellungen folgen",
+  "light": "Hell",
+  "alwaysLightTheme": "Immer helles Design verwenden",
+  "dark": "Dunkel",
+  "alwaysDarkTheme": "Immer dunkles Design verwenden",
+  
+  "data": "Daten",
+  "resetAllData": "Alle Daten zuruecksetzen",
+  "deleteAllProfilesAndMeasurements": "Alle Profile und Messungen loeschen",
+  "resetAllDataConfirmation": "Dies loescht ALLE Profile und Messungen. Du musst ein neues Profil einrichten. Dies kann nicht rueckgaengig gemacht werden.",
+  "reset": "Zuruecksetzen",
+  "delete": "Loeschen",
+  
+  "developerOptions": "Entwickleroptionen",
+  "premiumStatusOverride": "Premium-Status ueberschreiben",
+  "simulatingPremium": "Premium simulieren",
+  "simulatingFree": "Kostenlos simulieren",
+  "usingRealStatus": "Echten Status verwenden",
+  "actual": "tatsaechlich",
+  "premium": "Premium",
+  "free": "Kostenlos",
+  "real": "Echt",
+  "pro": "PRO",
+  "multipleProfiles": "Mehrere Profile",
+  "unlimitedHistory": "Unbegrenzter Verlauf",
+  
+  "help": "Hilfe",
+  "aboutVisqo": "Ueber Visqo",
+  "aboutVisqoDescription": "Visqo hilft dir, dein Viszeralfett mit einfachen Koerpermessungen zu schaetzen. Viszeralfett ist das Fett, das um deine inneren Organe gespeichert ist und mit erhoehten Gesundheitsrisiken verbunden ist. Durch die Verfolgung deiner Messungen ueber die Zeit kannst du deinen Fortschritt zu einer gesunderen Koerperzusammensetzung ueberwachen.",
+  
+  "howToMeasureWaist": "Wie man den Taillenumfang misst",
+  "instructions": "Anleitung",
+  "waistStep1": "Stehe aufrecht mit zusammenstehenden Fuessen und entspannten Armen an der Seite.",
+  "waistStep2": "Finde die Unterkante deiner Rippen und die Oberkante deiner Hueftknochen (Beckenkamm).",
+  "waistStep3": "Lege das Massband in der Mitte zwischen diesen beiden Punkten an, etwa auf Nabelhoe.",
+  "waistStep4": "Wickle das Band um deine Taille und halte es parallel zum Boden.",
+  "waistStep5": "Atme normal aus und lies den Wert ab, ohne das Band zu fest zu ziehen.",
+  "waistTip": "Miss direkt auf der Haut oder ueber leichter Kleidung fuer genaue Ergebnisse.",
+  
+  "howToMeasureThigh": "Wie man den Oberschenkelumfang misst",
+  "thighStep1": "Stehe aufrecht mit gleichmaessig auf beide Beine verteiltem Gewicht.",
+  "thighStep2": "Identifiziere die Gesaessfalte (die Falte, wo dein Gesaess auf den Oberschenkel trifft).",
+  "thighStep3": "Positioniere das Massband knapp unterhalb (distal) der Gesaessfalte.",
+  "thighStep4": "Wickle das Band horizontal um deinen Oberschenkel, senkrecht zur Oberschenkelachse.",
+  "thighStep5": "Halte deine Muskeln entspannt und lies die Messung ab, ohne die Haut zusammenzudruecken.",
+  "thighTip": "Miss beide Oberschenkel und verwende den Durchschnitt, wenn sie deutlich unterschiedlich sind.",
+  
+  "settingGoalTitle": "Ein Ziel setzen",
+  "settingGoalStep1": "Gehe zu den Einstellungen vom Rechner-Bildschirm aus.",
+  "settingGoalStep2": "Tippe auf \"VAT-Ziel festlegen\" im Bereich Ziele.",
+  "settingGoalStep3": "Gib deinen Ziel-VAT-Wert ein und speichere.",
+  "settingGoalDescription": "Du kannst ein persoenliches VAT-Ziel setzen, um deinen Fortschritt zu einer gesunderen Koerperzusammensetzung zu verfolgen.",
+  "goalChartDescription": "Nach dem Festlegen erscheint dein Ziel als gruene gestrichelte Linie im Fortschrittsdiagramm, damit du sehen kannst, wie nah du deinem Ziel bist.",
+  "goalHealthTip": "Ein VAT unter 100 cm\u00B2 gilt allgemein als gesund. Konsultiere einen Arzt fuer eine persoenliche Beratung.",
+  
+  "trendIndicatorTitle": "Den Trendindikator verstehen",
+  "trendIndicatorDescription": "Der Trendindikator zeigt, wie sich dein VAT im Vergleich zu deiner vorherigen Messung veraendert hat.",
+  "trendDecreasing": "Sinkend",
+  "trendDecreasingDesc": "Dein VAT ist niedriger als zuvor. Toller Fortschritt bei der Reduzierung des Viszeralfetts.",
+  "trendIncreasing": "Steigend",
+  "trendIncreasingDesc": "Dein VAT ist hoeher als zuvor. Ueberdenke deine Ernaehrung und dein Bewegungsprogramm.",
+  "trendStable": "Stabil",
+  "trendStableDesc": "Dein VAT hat sich um weniger als 1 cm\u00B2 veraendert. Deine Werte bleiben stabil.",
+  "trendMagnitudeNote": "Der Trendindikator zeigt auch die genaue VAT-Aenderung (z.B. -5,2), damit du das Ausmass des Unterschieds sehen kannst.",
+  
+  "calculationTitle": "Wie wird Viszeralfett berechnet?",
+  "calculationDescription": "Visqo verwendet das anthropometrische Samouda-Modell zur Schaetzung der Viszeralfettflaeche (VAT), ohne teure Bildgebung wie CT-Scans oder MRT zu benoetigen.",
+  "calculationModelDescription": "Das Modell verwendet einfache Koerpermasse in Kombination mit deinem Alter und BMI, um VAT mit hoher Genauigkeit vorherzusagen:",
+  "formulaForMen": "Fuer Maenner",
+  "formulaMen": "VAT = 6 x Taille - 4,41 x Oberschenkel + 1,19 x Alter - 213,65",
+  "accuracyMen": "Erklaert 80,3% der VAT-Varianz",
+  "formulaForWomen": "Fuer Frauen",
+  "formulaWomen": "VAT = 2,15 x Taille - 3,63 x Oberschenkel + 1,46 x Alter + 6,22 x BMI - 92,713",
+  "accuracyWomen": "Erklaert 83,6% der VAT-Varianz",
+  "resultUnit": "Das Ergebnis wird in cm\u00B2 angegeben und repraesentiert die geschaetzte Querschnittsflaeche des Viszeralfettgewebes.",
+  
+  "understandingResultsTitle": "Deine Ergebnisse verstehen",
+  "resultsIntro": "Dein VAT-Ergebnis wird in drei Risikostufen eingeteilt:",
+  "riskHealthy": "Gesund",
+  "riskHealthyRange": "Weniger als 100 cm\u00B2",
+  "riskHealthyDesc": "Normale Viszeralfettwerte mit niedrigeren Gesundheitsrisiken.",
+  "riskElevated": "Erhoeht",
+  "riskElevatedRange": "100 - 130 cm\u00B2",
+  "riskElevatedDesc": "Maessig erhoehte Werte. Lebensstilaenderungen erwaegen.",
+  "riskHighRisk": "Hohes Risiko",
+  "riskHighRiskRange": "Mehr als 130 cm\u00B2",
+  "riskHighRiskDesc": "Hohes Viszeralfett verbunden mit erhoehten metabolischen Gesundheitsrisiken.",
+  "learnMoreHealthRisks": "Mehr ueber Gesundheitsrisiken & Tipps erfahren",
+  "learnMoreHealthRisksDesc": "Verstehe die gesundheitlichen Auswirkungen und evidenzbasierte Wege zur Reduzierung von Viszeralfett.",
+  
+  "scientificReference": "Wissenschaftliche Referenz",
+  "referenceIntro": "Die in dieser App verwendete Berechnungsmethode basiert auf begutachteter Forschung:",
+  "referenceAuthors": "Samouda, H., Dutour, A., Chaumoitre, K., Panuel, M., Dutour, O., & Dadoun, F.",
+  "referenceTitle": "VAT=TAAT-SAAT: innovatives anthropometrisches Modell zur Vorhersage von viszeralem Fettgewebe ohne CT-Scan oder DXA.",
+  "referenceJournal": "Obesity (2013), 21(1), E41-E50.",
+  
+  "healthInsights": "Gesundheitsinfos",
+  "aboutVisceralFat": "Ueber Viszeralfett",
+  "aboutVisceralFatDescription": "Viszeralfett wird tief in der Bauchhoehle um die inneren Organe gespeichert. Im Gegensatz zu Unterhautfett spielt es eine hormonell aktive Rolle und ist mit erhoehten Gesundheitsrisiken verbunden. Erfahre mehr ueber die Risiken und evidenzbasierte Wege zur Reduzierung.",
+  "healthRisksOfElevatedVat": "Gesundheitsrisiken bei erhoehtem Viszeralfett",
+  "healthRisksSubtitle": "Das Verstehen der Risiken kann positive Veraenderungen motivieren",
+  "evidenceBasedTips": "Evidenzbasierte Tipps",
+  "evidenceBasedTipsSubtitle": "Einfache Massnahmen zur Reduzierung von Viszeralfett",
+  "recommendedForYou": "Fuer dich empfohlen",
+  "maintainYourHealth": "Erhalte deine Gesundheit",
+  "additionalTips": "Zusaetzliche Tipps",
+  "disclaimer": "Diese Informationen dienen nur zu Bildungszwecken und sollten keine professionelle medizinische Beratung ersetzen. Bitte konsultiere einen Arzt fuer eine persoenliche Beratung.",
+  
+  "riskCardiometabolic": "Kardiometabolische Erkrankung",
+  "riskCardiometabolicDesc": "Erhoehtes Viszeralfett steigert das Risiko fuer schwere Herz-Kreislauf- und Stoffwechselerkrankungen erheblich.",
+  "riskCardiometabolicDetail1": "Erhoehtes Risiko fuer Typ-2-Diabetes durch Insulinresistenz",
+  "riskCardiometabolicDetail2": "Hoehere Wahrscheinlichkeit fuer Bluthochdruck",
+  "riskCardiometabolicDetail3": "Unguenstiges Cholesterinprofil (Dyslipidaemie)",
+  "riskCardiometabolicDetail4": "Groesseres Risiko fuer koronare Herzkrankheit und Herzinsuffizienz",
+  
+  "riskStrokeMortality": "Schlaganfall und Sterblichkeit",
+  "riskStrokeMortalityDesc": "Hoeheres Viszeralfett ist mit erhoehtem Schlaganfallrisiko verbunden und kann zu hoeherer Gesamtsterblichkeit beitragen.",
+  "riskStrokeMortalityDetail1": "Erhoehtes Risiko fuer ischaemischen Schlaganfall",
+  "riskStrokeMortalityDetail2": "Zusammenhang mit hoeherer Gesamtsterblichkeit",
+  "riskStrokeMortalityDetail3": "Risiko besteht auch bei normalem BMI",
+  
+  "riskInflammation": "Chronische Entzuendung",
+  "riskInflammationDesc": "Viszerales Fettgewebe sondert aktiv entzuendungsfoerdernde Molekuele ab, die systemische Entzuendungen im ganzen Koerper foerdern.",
+  "riskInflammationDetail1": "Sondert entzuendliche Zytokine ab (IL-6, TNF-alpha)",
+  "riskInflammationDetail2": "Stoert normale Hormonsignale",
+  "riskInflammationDetail3": "Erzeugt chronische niedriggradige Entzuendung",
+  "riskInflammationDetail4": "Entzuendung ist Risikofaktor fuer viele chronische Krankheiten",
+  
+  "riskLiver": "Nicht-alkoholische Fettleber",
+  "riskLiverDesc": "Viszeralfettansammlung korreliert stark mit Fetteinlagerung in der Leber und erhoehten Leberenzymen.",
+  "riskLiverDetail1": "Fettablagerungen im Lebergewebe (hepatische Steatose)",
+  "riskLiverDetail2": "Erhoehte Leberenzymwerte (ALT, AST)",
+  "riskLiverDetail3": "Kann zu schwerwiegenderen Lebererkrankungen fortschreiten",
+  "riskLiverDetail4": "Oft reversibel durch Lebensstilaenderungen",
+  
+  "riskMetabolicSyndrome": "Metabolisches Syndrom",
+  "riskMetabolicSyndromeDesc": "Viszerale Adipositas ist ein Haupttreiber des metabolischen Syndroms, einer Ansammlung von Erkrankungen, die das Krankheitsrisiko erhoehen.",
+  "riskMetabolicSyndromeDetail1": "Erhoehte Blutzuckerwerte",
+  "riskMetabolicSyndromeDetail2": "Hoher Blutdruck",
+  "riskMetabolicSyndromeDetail3": "Abnormale Cholesterinwerte",
+  "riskMetabolicSyndromeDetail4": "Zentrale Adipositas (ueberschuessiges Bauchfett)",
+  "riskMetabolicSyndromeDetail5": "Erhoeht das Risiko fuer Herzerkrankungen und Diabetes erheblich",
+  
+  "riskCancer": "Krebszusammenhaenge",
+  "riskCancerDesc": "Neue Erkenntnisse verbinden Viszeralfett mit metabolischer Dysregulation und erhoehtem Risiko fuer bestimmte Krebsarten.",
+  "riskCancerDetail1": "Veraenderte Hormonsignale koennen Krebswachstum foerdern",
+  "riskCancerDetail2": "Chronische Entzuendung schafft guenstige Umgebung fuer Krebs",
+  "riskCancerDetail3": "Mit bestimmten boesartigen Tumoren verbunden",
+  "riskCancerDetail4": "Forschung zum Verstaendnis der Mechanismen laeuft",
+  
+  "tipActivity": "Regelmaessige koerperliche Aktivitaet",
+  "tipActivityDesc": "Konsequentes Ausdauertraining und Krafttraining gehoeren zu den effektivsten Wegen, Viszeralfett zu reduzieren.",
+  "tipActivityAction1": "Strebe 150+ Minuten pro Woche maessig intensive Ausdaueraktivitaet an",
+  "tipActivityAction2": "Integriere 2 oder mehr Tage pro Woche Krafttraining",
+  "tipActivityAction3": "Gehen, Radfahren, Schwimmen und Joggen sind ausgezeichnete Optionen",
+  "tipActivityAction4": "Krafttraining hilft, Muskelmasse zu erhalten",
+  
+  "tipDiet": "Ausgewogene, naehrstoffreiche Ernaehrung",
+  "tipDietDesc": "Konzentriere dich auf vollwertige Lebensmittel und reduziere verarbeitete Lebensmittel, um Viszeralfettansammlung zu verringern.",
+  "tipDietAction1": "Betone Gemuese, Obst und Vollkornprodukte",
+  "tipDietAction2": "Waehle magere Proteine (Fisch, Gefluegel, Huelsenfruechte)",
+  "tipDietAction3": "Begrenze zugesetzten Zucker und raffinierte Kohlenhydrate",
+  "tipDietAction4": "Reduziere den Verzehr stark verarbeiteter Lebensmittel",
+  "tipDietAction5": "Waehle gesunde Fette (Olivenoel, Nuesse, Avocado)",
+  
+  "tipWeight": "Gewichtsmanagement",
+  "tipWeightDesc": "Ein gesundes Gewicht durch nachhaltige Kalorienkontrolle zu halten, hilft, Viszeralfettspeicher zu reduzieren.",
+  "tipWeightAction1": "Schaffe ein moderates Kaloriendefizit fuer schrittweisen Gewichtsverlust",
+  "tipWeightAction2": "Verfolge den Taillenumfang als Fortschrittsindikator",
+  "tipWeightAction3": "Ueberwache das Taille-zu-Groesse-Verhaeltnis (Ziel: < 0,5)",
+  "tipWeightAction4": "Konzentriere dich auf nachhaltige Aenderungen, nicht auf Crash-Diaeten",
+  
+  "tipSedentary": "Sitzzeit reduzieren",
+  "tipSedentaryDesc": "Langes Sitzen mit leichter Bewegung zu unterbrechen, traegt zum Gesamtenergieverbrauch bei.",
+  "tipSedentaryAction1": "Stehe alle 30-60 Minuten auf und bewege dich",
+  "tipSedentaryAction2": "Mache Spaziergangpausen waehrend der Arbeit",
+  "tipSedentaryAction3": "Nutze wenn moeglich einen Stehschreibtisch",
+  "tipSedentaryAction4": "Waehle Treppen statt Aufzuege",
+  "tipSedentaryAction5": "Selbst leichte Aktivitaet hilft, Viszeralfett zu reduzieren",
+  
+  "tipSleepStress": "Qualitaetsschlaf und Stressbewaeltigung",
+  "tipSleepStressDesc": "Schlechter Schlaf und chronischer Stress erhoehen Cortisol, ein Hormon, das mit Bauchfettansammlung verbunden ist.",
+  "tipSleepStressAction1": "Strebe 7-9 Stunden Qualitaetsschlaf pro Nacht an",
+  "tipSleepStressAction2": "Halte einen konstanten Schlafrhythmus ein",
+  "tipSleepStressAction3": "Praktiziere stressreduzierende Aktivitaeten (Meditation, Yoga)",
+  "tipSleepStressAction4": "Begrenze Bildschirmzeit vor dem Schlafengehen",
+  "tipSleepStressAction5": "Gehe die Quellen chronischen Stresses an",
+  
+  "tipAlcohol": "Alkoholkonsum begrenzen",
+  "tipAlcoholDesc": "Alkohol fuegt Kalorien hinzu und kann bei regelmaessigem uebermassigem Konsum Viszeralfettansammlung foerdern.",
+  "tipAlcoholAction1": "Begrenze auf maessigen Konsum (1 Getraenk/Tag Frauen, 2/Tag Maenner)",
+  "tipAlcoholAction2": "Waehle kalorienaeremere Optionen beim Trinken",
+  "tipAlcoholAction3": "Vermeide Episoden von Rauschtrinken",
+  "tipAlcoholAction4": "Erwaege alkoholfreie Tage jede Woche",
+  
+  "tipSmoking": "Rauchentwohnung",
+  "tipSmokingDesc": "Rauchen ist mit zentraler Fettansammlung verbunden und verstaerkt das kardiometabolische Risiko.",
+  "tipSmokingAction1": "Hoere auf zu rauchen, um Viszeralfettansammlung zu reduzieren",
+  "tipSmokingAction2": "Suche bei Bedarf Unterstuetzungsprogramme oder Medikamente",
+  "tipSmokingAction3": "Vorteile beginnen innerhalb von Tagen nach dem Aufhoeren",
+  "tipSmokingAction4": "Reduziert das kardiovaskulaere Gesamtrisiko erheblich",
+  
+  "waist": "Taille",
+  "proximalThigh": "Proximaler Oberschenkel",
+  "lowerRib": "Untere Rippe",
+  "hipBone": "Hueftknochen",
+  "midpoint": "Mittelpunkt",
+  "glutealCrease": "Gesaessfalte",
+  "justBelowCrease": "Knapp unter der Falte",
+  
+  "errorStartingApp": "Fehler beim Starten der App: {error}\n\nBitte installiere die App neu.",
+  "@errorStartingApp": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "language": "Sprache",
+  "english": "Englisch",
+  "german": "Deutsch",
+  "french": "Franzoesisch"
+}

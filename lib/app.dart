@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:visco/core/router/app_router.dart';
 import 'package:visco/core/theme/app_theme.dart';
 import 'package:visco/features/settings/providers/settings_provider.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class ViscoApp extends ConsumerWidget {
   const ViscoApp({super.key});
@@ -12,6 +13,7 @@ class ViscoApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
     final themeMode = ref.watch(settingsProvider);
+    final locale = ref.watch(localeProvider);
 
     return MaterialApp.router(
       title: 'Visqo',
@@ -20,11 +22,10 @@ class ViscoApp extends ConsumerWidget {
       darkTheme: AppTheme.dark,
       themeMode: themeMode,
       routerConfig: router,
-      locale: const Locale('en', 'GB'),
-      supportedLocales: const [
-        Locale('en', 'GB'),
-      ],
+      locale: locale,
+      supportedLocales: supportedLocales,
       localizationsDelegates: const [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
