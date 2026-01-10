@@ -29,6 +29,14 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
 
   bool get _canCalculate => _weight != null && _waist != null && _thigh != null;
 
+  String _getInitials(String name) {
+    final parts = name.trim().split(' ');
+    if (parts.length >= 2) {
+      return '${parts.first[0]}${parts.last[0]}'.toUpperCase();
+    }
+    return name.isNotEmpty ? name[0].toUpperCase() : '?';
+  }
+
   Future<void> _calculate() async {
     if (!_canCalculate) return;
 
@@ -132,7 +140,33 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(profile.name),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            GestureDetector(
+              onTap: () => context.push('/settings'),
+              child: CircleAvatar(
+                radius: 16,
+                backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                child: Text(
+                  _getInitials(profile.name),
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(width: 8),
+            Flexible(
+              child: Text(
+                profile.name,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.help_outline_rounded),

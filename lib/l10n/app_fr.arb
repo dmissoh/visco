@@ -3,6 +3,7 @@
   
   "appTitle": "Visqo",
   
+  "navHome": "Accueil",
   "navCalculate": "Calculer",
   "navWhatIf": "Simulation",
   "navProgress": "Progression",

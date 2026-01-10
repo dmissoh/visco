@@ -12,6 +12,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get appTitle => 'Visqo';
 
   @override
+  String get navHome => 'Start';
+
+  @override
   String get navCalculate => 'Berechnen';
 
   @override

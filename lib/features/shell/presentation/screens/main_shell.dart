@@ -11,7 +11,7 @@ import 'package:visco/l10n/generated/app_localizations.dart';
 /// Provider for the current tab index
 final currentTabProvider = StateProvider<int>((ref) => 0);
 
-/// Main shell with bottom navigation bar and fade transitions
+/// Main shell with bottom navigation bar, central FAB, and fade transitions
 class MainShell extends ConsumerStatefulWidget {
   const MainShell({super.key});
 
@@ -20,12 +20,25 @@ class MainShell extends ConsumerStatefulWidget {
 }
 
 class _MainShellState extends ConsumerState<MainShell> {
+  // Screens order: Home (Calculator) | Progress | What-If | Settings
+  // FAB in center triggers Calculator screen
   static const _screens = [
     CalculatorScreen(),
-    WhatIfCalculatorScreen(),
     HistoryScreen(),
+    WhatIfCalculatorScreen(),
     SettingsScreen(),
   ];
+
+  void _onNavItemTapped(int index) {
+    HapticFeedback.lightImpact();
+    ref.read(currentTabProvider.notifier).state = index;
+  }
+
+  void _onFabPressed() {
+    HapticFeedback.mediumImpact();
+    // Navigate to Calculator screen (index 0)
+    ref.read(currentTabProvider.notifier).state = 0;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,36 +59,113 @@ class _MainShellState extends ConsumerState<MainShell> {
           );
         }),
       ),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: currentIndex,
-        onDestinationSelected: (index) {
-          HapticFeedback.lightImpact();
-          ref.read(currentTabProvider.notifier).state = index;
-        },
-        backgroundColor: colors.surface,
-        indicatorColor: colors.accent.withValues(alpha: 0.15),
-        destinations: [
-          NavigationDestination(
-            icon: Icon(Icons.calculate_outlined, color: colors.textSecondary),
-            selectedIcon: Icon(Icons.calculate, color: colors.accent),
-            label: l10n.navCalculate,
+      floatingActionButton: FloatingActionButton(
+        onPressed: _onFabPressed,
+        elevation: 4,
+        backgroundColor: colors.accent,
+        foregroundColor: Colors.white,
+        child: const Icon(Icons.add, size: 28),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 8,
+        color: colors.surface,
+        elevation: 8,
+        child: SizedBox(
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              // Home (Calculator)
+              _NavBarItem(
+                icon: Icons.home_outlined,
+                selectedIcon: Icons.home,
+                label: l10n.navHome,
+                isSelected: currentIndex == 0,
+                onTap: () => _onNavItemTapped(0),
+                colors: colors,
+              ),
+              // Progress
+              _NavBarItem(
+                icon: Icons.bar_chart_outlined,
+                selectedIcon: Icons.bar_chart,
+                label: l10n.navProgress,
+                isSelected: currentIndex == 1,
+                onTap: () => _onNavItemTapped(1),
+                colors: colors,
+              ),
+              // Space for FAB
+              const SizedBox(width: 56),
+              // What-If
+              _NavBarItem(
+                icon: Icons.science_outlined,
+                selectedIcon: Icons.science,
+                label: l10n.navWhatIf,
+                isSelected: currentIndex == 2,
+                onTap: () => _onNavItemTapped(2),
+                colors: colors,
+              ),
+              // Settings
+              _NavBarItem(
+                icon: Icons.settings_outlined,
+                selectedIcon: Icons.settings,
+                label: l10n.navSettings,
+                isSelected: currentIndex == 3,
+                onTap: () => _onNavItemTapped(3),
+                colors: colors,
+              ),
+            ],
           ),
-          NavigationDestination(
-            icon: Icon(Icons.science_outlined, color: colors.textSecondary),
-            selectedIcon: Icon(Icons.science, color: colors.accent),
-            label: l10n.navWhatIf,
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.bar_chart_outlined, color: colors.textSecondary),
-            selectedIcon: Icon(Icons.bar_chart, color: colors.accent),
-            label: l10n.navProgress,
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.settings_outlined, color: colors.textSecondary),
-            selectedIcon: Icon(Icons.settings, color: colors.accent),
-            label: l10n.navSettings,
-          ),
-        ],
+        ),
+      ),
+    );
+  }
+}
+
+class _NavBarItem extends StatelessWidget {
+  final IconData icon;
+  final IconData selectedIcon;
+  final String label;
+  final bool isSelected;
+  final VoidCallback onTap;
+  final AppColorScheme colors;
+
+  const _NavBarItem({
+    required this.icon,
+    required this.selectedIcon,
+    required this.label,
+    required this.isSelected,
+    required this.onTap,
+    required this.colors,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              isSelected ? selectedIcon : icon,
+              color: isSelected ? colors.accent : colors.textSecondary,
+              size: 24,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                color: isSelected ? colors.accent : colors.textSecondary,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

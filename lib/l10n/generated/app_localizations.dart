@@ -106,6 +106,12 @@ abstract class AppLocalizations {
   /// **'Visqo'**
   String get appTitle;
 
+  /// No description provided for @navHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get navHome;
+
   /// No description provided for @navCalculate.
   ///
   /// In en, this message translates to:
