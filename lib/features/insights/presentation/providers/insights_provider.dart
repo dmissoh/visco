@@ -87,6 +87,7 @@ PersonalizedInsights _generateInsights({
     priorityTips: priorityTips,
     allTips: allTips,
     isImproving: isImproving,
+    hasMeasurement: true,
   );
 }
 
