@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/services/notification_service.dart';
 import 'package:visco/core/theme/app_colors.dart';
@@ -12,11 +16,74 @@ import 'package:visco/features/premium/providers/premium_provider.dart';
 import 'package:visco/features/settings/providers/settings_provider.dart';
 import 'package:visco/l10n/generated/app_localizations.dart';
 
-class SettingsScreen extends ConsumerWidget {
+class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends ConsumerState<SettingsScreen> {
+  Future<void> _pickProfileImage(UserProfile profile) async {
+    final l10n = AppLocalizations.of(context)!;
+    final colors = AppColors.of(context);
+    
+    final source = await showModalBottomSheet<ImageSource?>(
+      context: context,
+      builder: (context) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.camera_alt),
+              title: Text(l10n.takePhoto),
+              onTap: () => Navigator.pop(context, ImageSource.camera),
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo_library),
+              title: Text(l10n.chooseFromGallery),
+              onTap: () => Navigator.pop(context, ImageSource.gallery),
+            ),
+            if (profile.profileImagePath != null)
+              ListTile(
+                leading: Icon(Icons.delete, color: colors.danger),
+                title: Text(l10n.removePhoto, style: TextStyle(color: colors.danger)),
+                onTap: () {
+                  Navigator.pop(context);
+                  ref.read(profileNotifierProvider.notifier).updateProfileImage(null);
+                },
+              ),
+          ],
+        ),
+      ),
+    );
+
+    if (source == null) return;
+
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(
+      source: source,
+      maxWidth: 512,
+      maxHeight: 512,
+      imageQuality: 85,
+    );
+
+    if (pickedFile == null) return;
+
+    // Save to app documents directory
+    final appDir = await getApplicationDocumentsDirectory();
+    final fileName = 'profile_${profile.id}.jpg';
+    final savedPath = '${appDir.path}/$fileName';
+
+    // Copy file to app directory
+    await File(pickedFile.path).copy(savedPath);
+
+    // Update profile with new image path
+    await ref.read(profileNotifierProvider.notifier).updateProfileImage(savedPath);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final colors = AppColors.of(context);
     final currentTheme = ref.watch(settingsProvider);
@@ -973,13 +1040,43 @@ class SettingsScreen extends ConsumerWidget {
   }) {
     final l10n = AppLocalizations.of(context)!;
     return ListTile(
-      leading: CircleAvatar(
-        backgroundColor: isActive ? colors.accent : colors.border,
-        child: Text(
-          profile.name.isNotEmpty ? profile.name[0].toUpperCase() : '?',
-          style: AppTypography.body(
-            color: isActive ? Colors.white : colors.textSecondary,
-          ),
+      leading: GestureDetector(
+        onTap: isActive ? () => _pickProfileImage(profile) : null,
+        child: Stack(
+          children: [
+            CircleAvatar(
+              backgroundColor: isActive ? colors.accent : colors.border,
+              backgroundImage: profile.profileImagePath != null
+                  ? FileImage(File(profile.profileImagePath!))
+                  : null,
+              child: profile.profileImagePath == null
+                  ? Text(
+                      profile.name.isNotEmpty ? profile.name[0].toUpperCase() : '?',
+                      style: AppTypography.body(
+                        color: isActive ? Colors.white : colors.textSecondary,
+                      ),
+                    )
+                  : null,
+            ),
+            if (isActive)
+              Positioned(
+                right: 0,
+                bottom: 0,
+                child: Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    color: colors.accent,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: colors.surface, width: 1.5),
+                  ),
+                  child: const Icon(
+                    Icons.camera_alt,
+                    size: 10,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+          ],
         ),
       ),
       title: Text(

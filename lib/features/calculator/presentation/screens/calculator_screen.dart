@@ -3,9 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
@@ -39,68 +37,6 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
       return '${parts.first[0]}${parts.last[0]}'.toUpperCase();
     }
     return name.isNotEmpty ? name[0].toUpperCase() : '?';
-  }
-
-  Future<void> _pickProfileImage() async {
-    final l10n = AppLocalizations.of(context)!;
-    final colors = AppColors.of(context);
-    
-    final source = await showModalBottomSheet<ImageSource>(
-      context: context,
-      builder: (context) => SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              leading: const Icon(Icons.camera_alt),
-              title: Text(l10n.takePhoto),
-              onTap: () => Navigator.pop(context, ImageSource.camera),
-            ),
-            ListTile(
-              leading: const Icon(Icons.photo_library),
-              title: Text(l10n.chooseFromGallery),
-              onTap: () => Navigator.pop(context, ImageSource.gallery),
-            ),
-            if (ref.read(profileNotifierProvider)?.profileImagePath != null)
-              ListTile(
-                leading: Icon(Icons.delete, color: colors.danger),
-                title: Text(l10n.removePhoto, style: TextStyle(color: colors.danger)),
-                onTap: () => Navigator.pop(context, null),
-              ),
-          ],
-        ),
-      ),
-    );
-
-    if (source == null && ref.read(profileNotifierProvider)?.profileImagePath != null) {
-      // Remove photo
-      await ref.read(profileNotifierProvider.notifier).updateProfileImage(null);
-      return;
-    }
-
-    if (source == null) return;
-
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(
-      source: source,
-      maxWidth: 512,
-      maxHeight: 512,
-      imageQuality: 85,
-    );
-
-    if (pickedFile == null) return;
-
-    // Save to app documents directory
-    final appDir = await getApplicationDocumentsDirectory();
-    final profileId = ref.read(profileNotifierProvider)?.id ?? 'unknown';
-    final fileName = 'profile_$profileId.jpg';
-    final savedPath = '${appDir.path}/$fileName';
-
-    // Copy file to app directory
-    await File(pickedFile.path).copy(savedPath);
-
-    // Update profile with new image path
-    await ref.read(profileNotifierProvider.notifier).updateProfileImage(savedPath);
   }
 
   Future<void> _calculate() async {
@@ -210,7 +146,7 @@ class _CalculatorScreenState extends ConsumerState<CalculatorScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             GestureDetector(
-              onTap: _pickProfileImage,
+              onTap: () => context.push('/settings'),
               child: CircleAvatar(
                 radius: 16,
                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
