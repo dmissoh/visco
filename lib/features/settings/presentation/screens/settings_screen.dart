@@ -24,6 +24,11 @@ class SettingsScreen extends ConsumerStatefulWidget {
 }
 
 class _SettingsScreenState extends ConsumerState<SettingsScreen> {
+  bool _profileImageExists(String? path) {
+    if (path == null) return false;
+    return File(path).existsSync();
+  }
+
   Future<void> _pickProfileImage(UserProfile profile) async {
     final l10n = AppLocalizations.of(context)!;
     final colors = AppColors.of(context);
@@ -1046,10 +1051,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           children: [
             CircleAvatar(
               backgroundColor: isActive ? colors.accent : colors.border,
-              backgroundImage: profile.profileImagePath != null
+              backgroundImage: _profileImageExists(profile.profileImagePath)
                   ? FileImage(File(profile.profileImagePath!))
                   : null,
-              child: profile.profileImagePath == null
+              child: !_profileImageExists(profile.profileImagePath)
                   ? Text(
                       profile.name.isNotEmpty ? profile.name[0].toUpperCase() : '?',
                       style: AppTypography.body(

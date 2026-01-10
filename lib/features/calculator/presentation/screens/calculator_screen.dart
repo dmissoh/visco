@@ -24,6 +24,11 @@ class CalculatorScreen extends ConsumerWidget {
     return name.isNotEmpty ? name[0].toUpperCase() : '?';
   }
 
+  bool _profileImageExists(String? path) {
+    if (path == null) return false;
+    return File(path).existsSync();
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
@@ -95,10 +100,10 @@ class CalculatorScreen extends ConsumerWidget {
               child: CircleAvatar(
                 radius: 16,
                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-                backgroundImage: profile.profileImagePath != null
+                backgroundImage: _profileImageExists(profile.profileImagePath)
                     ? FileImage(File(profile.profileImagePath!))
                     : null,
-                child: profile.profileImagePath == null
+                child: !_profileImageExists(profile.profileImagePath)
                     ? Text(
                         _getInitials(profile.name),
                         style: TextStyle(
