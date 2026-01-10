@@ -3,6 +3,7 @@ import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/insights/domain/models/health_tip.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class HealthTipCard extends StatefulWidget {
   final HealthTip tip;
@@ -75,7 +76,7 @@ class _HealthTipCardState extends State<HealthTipCard> {
                 ),
                 if (_isExpanded) ...[
                   const SizedBox(height: AppSpacing.md),
-                  _buildActionItems(colors, categoryColor),
+                  _buildActionItems(context, colors, categoryColor),
                   const SizedBox(height: AppSpacing.sm),
                   _buildSource(colors),
                 ],
@@ -140,7 +141,8 @@ class _HealthTipCardState extends State<HealthTipCard> {
     );
   }
 
-  Widget _buildActionItems(AppColorScheme colors, Color categoryColor) {
+  Widget _buildActionItems(BuildContext context, AppColorScheme colors, Color categoryColor) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
@@ -162,7 +164,7 @@ class _HealthTipCardState extends State<HealthTipCard> {
               ),
               const SizedBox(width: 4),
               Text(
-                'Action Items',
+                l10n.actionItems,
                 style: AppTypography.label(color: categoryColor),
               ),
             ],

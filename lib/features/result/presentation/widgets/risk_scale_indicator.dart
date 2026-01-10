@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class RiskScaleIndicator extends StatelessWidget {
   final double vatValue;
@@ -119,28 +120,38 @@ class RiskScaleIndicator extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppSpacing.sm),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildLabel(context, 'Healthy', '< 100'),
-              _buildLabel(context, 'Elevated', '100-130'),
-              _buildLabel(context, 'Obesity', '\u2265 130'),
-            ],
+          Builder(
+            builder: (context) {
+              final l10n = AppLocalizations.of(context)!;
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildLabel(context, l10n.riskScaleHealthy, '< 100'),
+                  _buildLabel(context, l10n.riskScaleElevated, '100-130'),
+                  _buildLabel(context, l10n.riskScaleObesity, '\u2265 130'),
+                ],
+              );
+            },
           ),
           const SizedBox(height: AppSpacing.md),
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppSpacing.sm,
-              vertical: AppSpacing.xs,
-            ),
-            decoration: BoxDecoration(
-              color: colors.accent.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(AppRadius.sm),
-            ),
-            child: Text(
-              'You: ${vatValue.toStringAsFixed(2)} cm\u00B2',
-              style: AppTypography.label(color: colors.accent),
-            ),
+          Builder(
+            builder: (context) {
+              final l10n = AppLocalizations.of(context)!;
+              return Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.sm,
+                  vertical: AppSpacing.xs,
+                ),
+                decoration: BoxDecoration(
+                  color: colors.accent.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(AppRadius.sm),
+                ),
+                child: Text(
+                  l10n.yourVatValue(vatValue.toStringAsFixed(2)),
+                  style: AppTypography.label(color: colors.accent),
+                ),
+              );
+            },
           ),
         ],
       ),

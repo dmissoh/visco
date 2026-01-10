@@ -1022,4 +1022,133 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get french => 'Französisch';
+
+  @override
+  String get howToMeasureWaistShort => 'Taillenumfang messen';
+
+  @override
+  String get howToMeasureThighShort => 'Oberschenkelumfang messen';
+
+  @override
+  String get guideWaistStep1 => 'Entspannt stehen, Füße zusammen';
+
+  @override
+  String get guideWaistStep2 => 'Maßband horizontal auf Nabelhöhe anlegen';
+
+  @override
+  String get guideWaistStep3 =>
+      'Maßband anliegend, aber nicht einschnürend halten';
+
+  @override
+  String get guideWaistStep4 => 'Nach normalem Ausatmen messen';
+
+  @override
+  String get guideThighStep1 => 'Gerade stehen, Füße schulterbreit auseinander';
+
+  @override
+  String get guideThighStep2 =>
+      'Am proximalen Oberschenkel messen (direkt unter der Gesäßfalte)';
+
+  @override
+  String get guideThighStep3 => 'Maßband horizontal um den Oberschenkel legen';
+
+  @override
+  String get guideThighStep4 =>
+      'Maßband anliegend, aber nicht eindrückend halten';
+
+  @override
+  String get gotIt => 'Verstanden';
+
+  @override
+  String get healthTrajectory => 'Gesundheitsverlauf';
+
+  @override
+  String get directionDecreasing => 'abnehmend';
+
+  @override
+  String get directionIncreasing => 'zunehmend';
+
+  @override
+  String goalEtaMessage(String eta) {
+    return 'Bei diesem Tempo erreichst du dein Ziel in ca. $eta';
+  }
+
+  @override
+  String get unlockProjection => 'Freischalten für 12-Monats-Prognose';
+
+  @override
+  String get noDataToDisplay => 'Keine Daten vorhanden';
+
+  @override
+  String minValue(int value, String unit) {
+    return 'Min. $value $unit';
+  }
+
+  @override
+  String maxValue(int value, String unit) {
+    return 'Max. $value $unit';
+  }
+
+  @override
+  String yourVisceralFatIs(String level) {
+    return 'Dein Viszeralfett ist $level';
+  }
+
+  @override
+  String get yourVisceralFatIsPrefix => 'Dein Viszeralfett ist ';
+
+  @override
+  String get actionItems => 'Handlungsempfehlungen';
+
+  @override
+  String get riskHigh => 'Hohes Risiko';
+
+  @override
+  String get riskElevatedRisk => 'Erhöhtes Risiko';
+
+  @override
+  String get riskModerate => 'Moderates Risiko';
+
+  @override
+  String get bmiUnderweight => 'Untergewicht';
+
+  @override
+  String get bmiNormal => 'Normalgewicht';
+
+  @override
+  String get bmiOverweight => 'Übergewicht';
+
+  @override
+  String get bmiObese => 'Adipositas';
+
+  @override
+  String get bodyMassIndex => 'Body-Mass-Index';
+
+  @override
+  String get visceralObesity => 'Viszerale Adipositas';
+
+  @override
+  String get visceralFatArea => 'Viszeralfett-Fläche';
+
+  @override
+  String get measurementsUsed => 'Verwendete Messwerte';
+
+  @override
+  String heightWithUnit(String unit) {
+    return 'Größe ($unit)';
+  }
+
+  @override
+  String get riskScaleHealthy => 'Gesund';
+
+  @override
+  String get riskScaleElevated => 'Erhöht';
+
+  @override
+  String get riskScaleObesity => 'Adipositas';
+
+  @override
+  String yourVatValue(String value) {
+    return 'Du: $value cm²';
+  }
 }

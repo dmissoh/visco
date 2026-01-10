@@ -3,6 +3,7 @@ import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/insights/domain/models/health_risk.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class HealthRiskCard extends StatefulWidget {
   final HealthRisk risk;
@@ -49,14 +50,15 @@ class _HealthRiskCardState extends State<HealthRiskCard> {
     }
   }
 
-  String _getSeverityLabel() {
+  String _getSeverityLabel(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     switch (widget.risk.severity) {
       case RiskSeverity.veryHigh:
-        return 'High Risk';
+        return l10n.riskHigh;
       case RiskSeverity.high:
-        return 'Elevated Risk';
+        return l10n.riskElevatedRisk;
       case RiskSeverity.moderate:
-        return 'Moderate Risk';
+        return l10n.riskModerate;
     }
   }
 
@@ -83,7 +85,7 @@ class _HealthRiskCardState extends State<HealthRiskCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildHeader(colors, severityColor),
+                _buildHeader(context, colors, severityColor),
                 const SizedBox(height: AppSpacing.sm),
                 Text(
                   widget.risk.description,
@@ -105,7 +107,7 @@ class _HealthRiskCardState extends State<HealthRiskCard> {
     );
   }
 
-  Widget _buildHeader(AppColorScheme colors, Color severityColor) {
+  Widget _buildHeader(BuildContext context, AppColorScheme colors, Color severityColor) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -131,7 +133,7 @@ class _HealthRiskCardState extends State<HealthRiskCard> {
                 style: AppTypography.title(color: colors.textPrimary),
               ),
               const SizedBox(height: 2),
-              _buildSeverityBadge(colors, severityColor),
+              _buildSeverityBadge(context, colors, severityColor),
             ],
           ),
         ),
@@ -139,7 +141,7 @@ class _HealthRiskCardState extends State<HealthRiskCard> {
     );
   }
 
-  Widget _buildSeverityBadge(AppColorScheme colors, Color severityColor) {
+  Widget _buildSeverityBadge(BuildContext context, AppColorScheme colors, Color severityColor) {
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.sm,
@@ -162,7 +164,7 @@ class _HealthRiskCardState extends State<HealthRiskCard> {
           ),
           const SizedBox(width: 4),
           Text(
-            _getSeverityLabel(),
+            _getSeverityLabel(context),
             style: AppTypography.label(color: severityColor),
           ),
         ],

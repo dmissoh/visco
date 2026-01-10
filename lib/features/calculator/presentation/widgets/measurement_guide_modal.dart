@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class MeasurementGuideModal extends StatelessWidget {
   final String measurementType;
@@ -14,6 +15,7 @@ class MeasurementGuideModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final isWaist = measurementType == 'waist';
 
     return Container(
@@ -35,7 +37,7 @@ class MeasurementGuideModal extends StatelessWidget {
                   const SizedBox(width: 40),
                   Expanded(
                     child: Text(
-                      isWaist ? 'How to Measure Waist' : 'How to Measure Thigh',
+                      isWaist ? l10n.howToMeasureWaistShort : l10n.howToMeasureThighShort,
                       style: AppTypography.title(color: colors.textPrimary),
                       textAlign: TextAlign.center,
                     ),
@@ -66,24 +68,22 @@ class MeasurementGuideModal extends StatelessWidget {
               ),
               const SizedBox(height: AppSpacing.lg),
               if (isWaist) ...[
-                _buildStep(context, '1', 'Stand relaxed, feet together'),
-                _buildStep(context, '2',
-                    'Wrap tape horizontally at navel (belly button) level'),
-                _buildStep(context, '3', 'Keep tape snug but not tight'),
-                _buildStep(context, '4', 'Measure at end of normal exhale'),
+                _buildStep(context, '1', l10n.guideWaistStep1),
+                _buildStep(context, '2', l10n.guideWaistStep2),
+                _buildStep(context, '3', l10n.guideWaistStep3),
+                _buildStep(context, '4', l10n.guideWaistStep4),
               ] else ...[
-                _buildStep(context, '1', 'Stand straight with feet shoulder-width apart'),
-                _buildStep(context, '2',
-                    'Measure at the proximal thigh (just below the gluteal fold)'),
-                _buildStep(context, '3', 'Wrap tape around the thigh horizontally'),
-                _buildStep(context, '4', 'Keep tape snug but not compressing'),
+                _buildStep(context, '1', l10n.guideThighStep1),
+                _buildStep(context, '2', l10n.guideThighStep2),
+                _buildStep(context, '3', l10n.guideThighStep3),
+                _buildStep(context, '4', l10n.guideThighStep4),
               ],
               const SizedBox(height: AppSpacing.xl),
               SizedBox(
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('Got it'),
+                  child: Text(l10n.gotIt),
                 ),
               ),
             ],

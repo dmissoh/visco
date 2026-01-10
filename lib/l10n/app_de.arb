@@ -388,5 +388,103 @@
   "language": "Sprache",
   "english": "Englisch",
   "german": "Deutsch",
-  "french": "Französisch"
+  "french": "Französisch",
+  
+  "howToMeasureWaistShort": "Taillenumfang messen",
+  "howToMeasureThighShort": "Oberschenkelumfang messen",
+  "guideWaistStep1": "Entspannt stehen, Füße zusammen",
+  "guideWaistStep2": "Maßband horizontal auf Nabelhöhe anlegen",
+  "guideWaistStep3": "Maßband anliegend, aber nicht einschnürend halten",
+  "guideWaistStep4": "Nach normalem Ausatmen messen",
+  "guideThighStep1": "Gerade stehen, Füße schulterbreit auseinander",
+  "guideThighStep2": "Am proximalen Oberschenkel messen (direkt unter der Gesäßfalte)",
+  "guideThighStep3": "Maßband horizontal um den Oberschenkel legen",
+  "guideThighStep4": "Maßband anliegend, aber nicht eindrückend halten",
+  "gotIt": "Verstanden",
+  
+  "healthTrajectory": "Gesundheitsverlauf",
+  "directionDecreasing": "abnehmend",
+  "directionIncreasing": "zunehmend",
+  "goalEtaMessage": "Bei diesem Tempo erreichst du dein Ziel in ca. {eta}",
+  "@goalEtaMessage": {
+    "placeholders": {
+      "eta": {
+        "type": "String"
+      }
+    }
+  },
+  "unlockProjection": "Freischalten für 12-Monats-Prognose",
+  
+  "noDataToDisplay": "Keine Daten vorhanden",
+  
+  "minValue": "Min. {value} {unit}",
+  "@minValue": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "maxValue": "Max. {value} {unit}",
+  "@maxValue": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "yourVisceralFatIs": "Dein Viszeralfett ist {level}",
+  "@yourVisceralFatIs": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "yourVisceralFatIsPrefix": "Dein Viszeralfett ist ",
+  
+  "actionItems": "Handlungsempfehlungen",
+  
+  "riskHigh": "Hohes Risiko",
+  "riskElevatedRisk": "Erhöhtes Risiko",
+  "riskModerate": "Moderates Risiko",
+  
+  "bmiUnderweight": "Untergewicht",
+  "bmiNormal": "Normalgewicht",
+  "bmiOverweight": "Übergewicht",
+  "bmiObese": "Adipositas",
+  "bodyMassIndex": "Body-Mass-Index",
+  
+  "visceralObesity": "Viszerale Adipositas",
+  "visceralFatArea": "Viszeralfett-Fläche",
+  
+  "measurementsUsed": "Verwendete Messwerte",
+  
+  "heightWithUnit": "Größe ({unit})",
+  "@heightWithUnit": {
+    "placeholders": {
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "riskScaleHealthy": "Gesund",
+  "riskScaleElevated": "Erhöht",
+  "riskScaleObesity": "Adipositas",
+  "yourVatValue": "Du: {value} cm²",
+  "@yourVatValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  }
 }

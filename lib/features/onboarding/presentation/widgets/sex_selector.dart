@@ -3,6 +3,7 @@ import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/onboarding/domain/models/user_profile.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class SexSelector extends StatelessWidget {
   final Sex selectedSex;
@@ -17,12 +18,13 @@ class SexSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Sex',
+          l10n.sexLabel,
           style: AppTypography.caption(color: colors.textSecondary),
         ),
         const SizedBox(height: AppSpacing.sm),
@@ -36,7 +38,7 @@ class SexSelector extends StatelessWidget {
             children: [
               Expanded(
                 child: _SexOption(
-                  label: 'Male',
+                  label: l10n.male,
                   isSelected: selectedSex == Sex.male,
                   onTap: () => onChanged(Sex.male),
                   isFirst: true,
@@ -49,7 +51,7 @@ class SexSelector extends StatelessWidget {
               ),
               Expanded(
                 child: _SexOption(
-                  label: 'Female',
+                  label: l10n.female,
                   isSelected: selectedSex == Sex.female,
                   onTap: () => onChanged(Sex.female),
                   isFirst: false,

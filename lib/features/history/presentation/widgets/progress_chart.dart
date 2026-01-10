@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/features/calculator/domain/models/measurement.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class ProgressChart extends StatelessWidget {
   final List<Measurement> measurements;
@@ -17,11 +18,12 @@ class ProgressChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     if (measurements.isEmpty) {
       return Center(
         child: Text(
-          'No data to display',
+          l10n.noDataToDisplay,
           style: TextStyle(color: colors.textSecondary),
         ),
       );

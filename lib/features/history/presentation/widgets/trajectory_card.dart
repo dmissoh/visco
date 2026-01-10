@@ -10,6 +10,7 @@ import 'package:visco/features/onboarding/providers/profile_provider.dart';
 import 'package:visco/features/premium/presentation/screens/paywall_screen.dart';
 import 'package:visco/features/premium/providers/premium_provider.dart';
 import 'package:visco/features/settings/providers/settings_provider.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 /// Provider for trajectory calculations
 final trajectoryProvider = Provider<HealthTrajectory?>((ref) {
@@ -31,6 +32,7 @@ class TrajectoryCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final trajectory = ref.watch(trajectoryProvider);
     final isPremium = ref.watch(isPremiumProvider);
     final measurements = ref.watch(measurementsProvider);
@@ -64,7 +66,7 @@ class TrajectoryCard extends ConsumerWidget {
               ),
               const SizedBox(width: AppSpacing.sm),
               Text(
-                'Health Trajectory',
+                l10n.healthTrajectory,
                 style: AppTypography.title(color: colors.textPrimary),
               ),
               const Spacer(),
@@ -79,7 +81,7 @@ class TrajectoryCard extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
-                    'PRO',
+                    l10n.pro,
                     style: AppTypography.label(color: Colors.white)
                         .copyWith(fontSize: 10),
                   ),
@@ -88,7 +90,7 @@ class TrajectoryCard extends ConsumerWidget {
           ),
           const SizedBox(height: AppSpacing.md),
           // Summary text
-          _buildSummaryText(trajectory, colors),
+          _buildSummaryText(context, trajectory, colors),
           const SizedBox(height: AppSpacing.md),
           // Chart or locked preview
           if (isPremium)
@@ -98,23 +100,24 @@ class TrajectoryCard extends ConsumerWidget {
           // Goal ETA
           if (isPremium && trajectory.monthsToGoal != null) ...[
             const SizedBox(height: AppSpacing.md),
-            _buildGoalEta(trajectory, colors),
+            _buildGoalEta(context, trajectory, colors),
           ],
         ],
       ),
     );
   }
 
-  Widget _buildSummaryText(HealthTrajectory trajectory, AppColorScheme colors) {
+  Widget _buildSummaryText(BuildContext context, HealthTrajectory trajectory, AppColorScheme colors) {
+    final l10n = AppLocalizations.of(context)!;
     final changeText = trajectory.monthlyChange.abs().toStringAsFixed(1);
-    final direction = trajectory.monthlyChange < 0 ? 'decreasing' : 'increasing';
+    final direction = trajectory.monthlyChange < 0 ? l10n.directionDecreasing : l10n.directionIncreasing;
     final trendColor = trajectory.isImproving ? colors.success : colors.warning;
 
     return RichText(
       text: TextSpan(
         style: AppTypography.body(color: colors.textSecondary),
         children: [
-          const TextSpan(text: 'Your visceral fat is '),
+          TextSpan(text: l10n.yourVisceralFatIsPrefix),
           TextSpan(
             text: direction,
             style: TextStyle(
@@ -122,7 +125,7 @@ class TrajectoryCard extends ConsumerWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-          TextSpan(text: ' by ~$changeText cm\u00B2/month'),
+          TextSpan(text: ' ~$changeText cm\u00B2/month'),
         ],
       ),
     );
@@ -294,29 +297,35 @@ class TrajectoryCard extends ConsumerWidget {
             ),
             // Lock overlay
             Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.lock_outline,
-                    color: colors.textSecondary,
-                    size: 32,
-                  ),
-                  const SizedBox(height: AppSpacing.sm),
-                  Text(
-                    'Unlock to see your 12-month projection',
-                    style: AppTypography.caption(color: colors.textSecondary),
-                  ),
-                ],
-              ),
+              child: Builder(
+              builder: (context) {
+                final l10n = AppLocalizations.of(context)!;
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.lock_outline,
+                      color: colors.textSecondary,
+                      size: 32,
+                    ),
+                    const SizedBox(height: AppSpacing.sm),
+                    Text(
+                      l10n.unlockProjection,
+                      style: AppTypography.caption(color: colors.textSecondary),
+                    ),
+                  ],
+                );
+              },
             ),
+          ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildGoalEta(HealthTrajectory trajectory, AppColorScheme colors) {
+  Widget _buildGoalEta(BuildContext context, HealthTrajectory trajectory, AppColorScheme colors) {
+    final l10n = AppLocalizations.of(context)!;
     final months = trajectory.monthsToGoal!;
     final years = months ~/ 12;
     final remainingMonths = months % 12;
@@ -347,7 +356,7 @@ class TrajectoryCard extends ConsumerWidget {
           const SizedBox(width: AppSpacing.sm),
           Expanded(
             child: Text(
-              'At this rate, you\'ll reach your goal in ~$etaText',
+              l10n.goalEtaMessage(etaText),
               style: AppTypography.caption(color: colors.success),
             ),
           ),

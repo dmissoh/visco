@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 enum BmiCategory {
   underweight,
@@ -28,6 +29,7 @@ class BmiResultCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     final categoryColor = switch (category) {
       BmiCategory.underweight => colors.warning,
@@ -37,10 +39,10 @@ class BmiResultCard extends StatelessWidget {
     };
 
     final categoryLabel = switch (category) {
-      BmiCategory.underweight => 'Underweight',
-      BmiCategory.normal => 'Normal',
-      BmiCategory.overweight => 'Overweight',
-      BmiCategory.obese => 'Obese',
+      BmiCategory.underweight => l10n.bmiUnderweight,
+      BmiCategory.normal => l10n.bmiNormal,
+      BmiCategory.overweight => l10n.bmiOverweight,
+      BmiCategory.obese => l10n.bmiObese,
     };
 
     return Container(
@@ -59,7 +61,7 @@ class BmiResultCard extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.xs),
           Text(
-            'Body Mass Index',
+            l10n.bodyMassIndex,
             style: AppTypography.caption(color: colors.textSecondary),
             textAlign: TextAlign.center,
           ),

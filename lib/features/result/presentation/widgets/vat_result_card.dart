@@ -4,6 +4,7 @@ import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/calculator/domain/models/measurement.dart';
 import 'package:visco/features/calculator/providers/measurement_provider.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 import 'package:visco/shared/widgets/trend_indicator.dart';
 
 class VatResultCard extends StatelessWidget {
@@ -19,6 +20,7 @@ class VatResultCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     final riskColor = switch (measurement.riskCategory) {
       RiskCategory.healthy => colors.success,
@@ -27,9 +29,9 @@ class VatResultCard extends StatelessWidget {
     };
 
     final riskLabel = switch (measurement.riskCategory) {
-      RiskCategory.healthy => 'Healthy',
-      RiskCategory.elevated => 'Elevated',
-      RiskCategory.obesity => 'Visceral Obesity',
+      RiskCategory.healthy => l10n.riskHealthy,
+      RiskCategory.elevated => l10n.riskElevated,
+      RiskCategory.obesity => l10n.visceralObesity,
     };
 
     return Container(
@@ -63,7 +65,7 @@ class VatResultCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Visceral Fat Area',
+                l10n.visceralFatArea,
                 style: AppTypography.caption(color: colors.textSecondary),
               ),
               if (trend != null && trend!.direction != TrendDirection.unknown) ...[

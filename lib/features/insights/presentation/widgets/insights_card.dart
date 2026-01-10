@@ -6,6 +6,7 @@ import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/calculator/domain/models/measurement.dart';
 import 'package:visco/features/insights/presentation/providers/insights_provider.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class InsightsCard extends ConsumerWidget {
   const InsightsCard({super.key});
@@ -32,20 +33,22 @@ class InsightsCard extends ConsumerWidget {
     }
   }
 
-  String _getRiskLabel(RiskCategory category) {
+  String _getRiskLabel(BuildContext context, RiskCategory category) {
+    final l10n = AppLocalizations.of(context)!;
     switch (category) {
       case RiskCategory.healthy:
-        return 'Healthy';
+        return l10n.riskHealthy;
       case RiskCategory.elevated:
-        return 'Elevated';
+        return l10n.riskElevated;
       case RiskCategory.obesity:
-        return 'High Risk';
+        return l10n.riskHighRisk;
     }
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final insights = ref.watch(insightsProvider);
 
     // Don't show if no measurement available
@@ -93,7 +96,7 @@ class InsightsCard extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Health Insights',
+                    l10n.healthInsights,
                     style: AppTypography.title(color: colors.textPrimary),
                   ),
                   const SizedBox(height: 2),
@@ -106,7 +109,7 @@ class InsightsCard extends ConsumerWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        'Your visceral fat is ${_getRiskLabel(insights.riskCategory).toLowerCase()}',
+                        l10n.yourVisceralFatIs(_getRiskLabel(context, insights.riskCategory).toLowerCase()),
                         style: AppTypography.caption(color: colors.textSecondary),
                       ),
                     ],

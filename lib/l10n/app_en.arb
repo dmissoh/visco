@@ -388,5 +388,103 @@
   "language": "Language",
   "english": "English",
   "german": "German",
-  "french": "French"
+  "french": "French",
+  
+  "howToMeasureWaistShort": "How to Measure Waist",
+  "howToMeasureThighShort": "How to Measure Thigh",
+  "guideWaistStep1": "Stand relaxed, feet together",
+  "guideWaistStep2": "Wrap tape horizontally at navel (belly button) level",
+  "guideWaistStep3": "Keep tape snug but not tight",
+  "guideWaistStep4": "Measure at end of normal exhale",
+  "guideThighStep1": "Stand straight with feet shoulder-width apart",
+  "guideThighStep2": "Measure at the proximal thigh (just below the gluteal fold)",
+  "guideThighStep3": "Wrap tape around the thigh horizontally",
+  "guideThighStep4": "Keep tape snug but not compressing",
+  "gotIt": "Got it",
+  
+  "healthTrajectory": "Health Trajectory",
+  "directionDecreasing": "decreasing",
+  "directionIncreasing": "increasing",
+  "goalEtaMessage": "At this rate, you'll reach your goal in ~{eta}",
+  "@goalEtaMessage": {
+    "placeholders": {
+      "eta": {
+        "type": "String"
+      }
+    }
+  },
+  "unlockProjection": "Unlock to see your 12-month projection",
+  
+  "noDataToDisplay": "No data to display",
+  
+  "minValue": "Min {value} {unit}",
+  "@minValue": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "maxValue": "Max {value} {unit}",
+  "@maxValue": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "yourVisceralFatIs": "Your visceral fat is {level}",
+  "@yourVisceralFatIs": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "yourVisceralFatIsPrefix": "Your visceral fat is ",
+  
+  "actionItems": "Action Items",
+  
+  "riskHigh": "High Risk",
+  "riskElevatedRisk": "Elevated Risk",
+  "riskModerate": "Moderate Risk",
+  
+  "bmiUnderweight": "Underweight",
+  "bmiNormal": "Normal",
+  "bmiOverweight": "Overweight",
+  "bmiObese": "Obese",
+  "bodyMassIndex": "Body Mass Index",
+  
+  "visceralObesity": "Visceral Obesity",
+  "visceralFatArea": "Visceral Fat Area",
+  
+  "measurementsUsed": "Measurements Used",
+  
+  "heightWithUnit": "Height ({unit})",
+  "@heightWithUnit": {
+    "placeholders": {
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "riskScaleHealthy": "Healthy",
+  "riskScaleElevated": "Elevated",
+  "riskScaleObesity": "Obesity",
+  "yourVatValue": "You: {value} cm\u00B2",
+  "@yourVatValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  }
 }

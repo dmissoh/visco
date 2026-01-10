@@ -1030,4 +1030,135 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get french => 'Français';
+
+  @override
+  String get howToMeasureWaistShort => 'Mesurer le tour de taille';
+
+  @override
+  String get howToMeasureThighShort => 'Mesurer le tour de cuisse';
+
+  @override
+  String get guideWaistStep1 => 'Tenez-vous détendu, pieds joints';
+
+  @override
+  String get guideWaistStep2 =>
+      'Placez le ruban horizontalement au niveau du nombril';
+
+  @override
+  String get guideWaistStep3 => 'Gardez le ruban ajusté mais pas serré';
+
+  @override
+  String get guideWaistStep4 => 'Mesurez en fin d\'expiration normale';
+
+  @override
+  String get guideThighStep1 =>
+      'Tenez-vous droit, pieds écartés à la largeur des épaules';
+
+  @override
+  String get guideThighStep2 =>
+      'Mesurez à la cuisse proximale (juste sous le pli fessier)';
+
+  @override
+  String get guideThighStep3 =>
+      'Enroulez le ruban horizontalement autour de la cuisse';
+
+  @override
+  String get guideThighStep4 => 'Gardez le ruban ajusté mais sans comprimer';
+
+  @override
+  String get gotIt => 'Compris';
+
+  @override
+  String get healthTrajectory => 'Trajectoire santé';
+
+  @override
+  String get directionDecreasing => 'en baisse';
+
+  @override
+  String get directionIncreasing => 'en hausse';
+
+  @override
+  String goalEtaMessage(String eta) {
+    return 'À ce rythme, vous atteindrez votre objectif dans ~$eta';
+  }
+
+  @override
+  String get unlockProjection =>
+      'Débloquer pour voir votre projection sur 12 mois';
+
+  @override
+  String get noDataToDisplay => 'Aucune donnée à afficher';
+
+  @override
+  String minValue(int value, String unit) {
+    return 'Min $value $unit';
+  }
+
+  @override
+  String maxValue(int value, String unit) {
+    return 'Max $value $unit';
+  }
+
+  @override
+  String yourVisceralFatIs(String level) {
+    return 'Votre graisse viscérale est $level';
+  }
+
+  @override
+  String get yourVisceralFatIsPrefix => 'Votre graisse viscérale est ';
+
+  @override
+  String get actionItems => 'Actions recommandées';
+
+  @override
+  String get riskHigh => 'Risque élevé';
+
+  @override
+  String get riskElevatedRisk => 'Risque accru';
+
+  @override
+  String get riskModerate => 'Risque modéré';
+
+  @override
+  String get bmiUnderweight => 'Insuffisance pondérale';
+
+  @override
+  String get bmiNormal => 'Normal';
+
+  @override
+  String get bmiOverweight => 'Surpoids';
+
+  @override
+  String get bmiObese => 'Obésité';
+
+  @override
+  String get bodyMassIndex => 'Indice de masse corporelle';
+
+  @override
+  String get visceralObesity => 'Obésité viscérale';
+
+  @override
+  String get visceralFatArea => 'Surface de graisse viscérale';
+
+  @override
+  String get measurementsUsed => 'Mesures utilisées';
+
+  @override
+  String heightWithUnit(String unit) {
+    return 'Taille ($unit)';
+  }
+
+  @override
+  String get riskScaleHealthy => 'Sain';
+
+  @override
+  String get riskScaleElevated => 'Élevé';
+
+  @override
+  String get riskScaleObesity => 'Obésité';
+
+  @override
+  String yourVatValue(String value) {
+    return 'Vous : $value cm²';
+  }
 }

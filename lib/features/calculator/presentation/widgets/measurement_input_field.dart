@@ -4,6 +4,7 @@ import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/settings/providers/settings_provider.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 enum MeasurementType { weight, length }
 
@@ -83,17 +84,18 @@ class _MeasurementInputFieldState extends State<MeasurementInputField> {
     super.dispose();
   }
 
-  String? _validate(double? value) {
+  String? _validate(BuildContext context, double? value) {
     if (value == null) return null;
     
+    final l10n = AppLocalizations.of(context)!;
     final minVal = _displayMinValue;
     final maxVal = _displayMaxValue;
     
     if (minVal != null && value < minVal) {
-      return 'Min ${minVal.toInt()} $_displayUnit';
+      return l10n.minValue(minVal.toInt(), _displayUnit);
     }
     if (maxVal != null && value > maxVal) {
-      return 'Max ${maxVal.toInt()} $_displayUnit';
+      return l10n.maxValue(maxVal.toInt(), _displayUnit);
     }
     return null;
   }
@@ -133,7 +135,7 @@ class _MeasurementInputFieldState extends State<MeasurementInputField> {
           ],
           onChanged: (value) {
             final parsed = double.tryParse(value);
-            final error = _validate(parsed);
+            final error = _validate(context, parsed);
             setState(() => _errorText = error);
             // Convert to metric and pass valid values to parent
             if (error == null && parsed != null) {

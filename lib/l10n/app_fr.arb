@@ -388,5 +388,103 @@
   "language": "Langue",
   "english": "Anglais",
   "german": "Allemand",
-  "french": "Français"
+  "french": "Français",
+  
+  "howToMeasureWaistShort": "Mesurer le tour de taille",
+  "howToMeasureThighShort": "Mesurer le tour de cuisse",
+  "guideWaistStep1": "Tenez-vous détendu, pieds joints",
+  "guideWaistStep2": "Placez le ruban horizontalement au niveau du nombril",
+  "guideWaistStep3": "Gardez le ruban ajusté mais pas serré",
+  "guideWaistStep4": "Mesurez en fin d'expiration normale",
+  "guideThighStep1": "Tenez-vous droit, pieds écartés à la largeur des épaules",
+  "guideThighStep2": "Mesurez à la cuisse proximale (juste sous le pli fessier)",
+  "guideThighStep3": "Enroulez le ruban horizontalement autour de la cuisse",
+  "guideThighStep4": "Gardez le ruban ajusté mais sans comprimer",
+  "gotIt": "Compris",
+  
+  "healthTrajectory": "Trajectoire santé",
+  "directionDecreasing": "en baisse",
+  "directionIncreasing": "en hausse",
+  "goalEtaMessage": "À ce rythme, vous atteindrez votre objectif dans ~{eta}",
+  "@goalEtaMessage": {
+    "placeholders": {
+      "eta": {
+        "type": "String"
+      }
+    }
+  },
+  "unlockProjection": "Débloquer pour voir votre projection sur 12 mois",
+  
+  "noDataToDisplay": "Aucune donnée à afficher",
+  
+  "minValue": "Min {value} {unit}",
+  "@minValue": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "maxValue": "Max {value} {unit}",
+  "@maxValue": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "yourVisceralFatIs": "Votre graisse viscérale est {level}",
+  "@yourVisceralFatIs": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "yourVisceralFatIsPrefix": "Votre graisse viscérale est ",
+  
+  "actionItems": "Actions recommandées",
+  
+  "riskHigh": "Risque élevé",
+  "riskElevatedRisk": "Risque accru",
+  "riskModerate": "Risque modéré",
+  
+  "bmiUnderweight": "Insuffisance pondérale",
+  "bmiNormal": "Normal",
+  "bmiOverweight": "Surpoids",
+  "bmiObese": "Obésité",
+  "bodyMassIndex": "Indice de masse corporelle",
+  
+  "visceralObesity": "Obésité viscérale",
+  "visceralFatArea": "Surface de graisse viscérale",
+  
+  "measurementsUsed": "Mesures utilisées",
+  
+  "heightWithUnit": "Taille ({unit})",
+  "@heightWithUnit": {
+    "placeholders": {
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "riskScaleHealthy": "Sain",
+  "riskScaleElevated": "Élevé",
+  "riskScaleObesity": "Obésité",
+  "yourVatValue": "Vous : {value} cm²",
+  "@yourVatValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  }
 }

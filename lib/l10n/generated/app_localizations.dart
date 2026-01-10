@@ -1887,6 +1887,234 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'French'**
   String get french;
+
+  /// No description provided for @howToMeasureWaistShort.
+  ///
+  /// In en, this message translates to:
+  /// **'How to Measure Waist'**
+  String get howToMeasureWaistShort;
+
+  /// No description provided for @howToMeasureThighShort.
+  ///
+  /// In en, this message translates to:
+  /// **'How to Measure Thigh'**
+  String get howToMeasureThighShort;
+
+  /// No description provided for @guideWaistStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Stand relaxed, feet together'**
+  String get guideWaistStep1;
+
+  /// No description provided for @guideWaistStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrap tape horizontally at navel (belly button) level'**
+  String get guideWaistStep2;
+
+  /// No description provided for @guideWaistStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep tape snug but not tight'**
+  String get guideWaistStep3;
+
+  /// No description provided for @guideWaistStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Measure at end of normal exhale'**
+  String get guideWaistStep4;
+
+  /// No description provided for @guideThighStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Stand straight with feet shoulder-width apart'**
+  String get guideThighStep1;
+
+  /// No description provided for @guideThighStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Measure at the proximal thigh (just below the gluteal fold)'**
+  String get guideThighStep2;
+
+  /// No description provided for @guideThighStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrap tape around the thigh horizontally'**
+  String get guideThighStep3;
+
+  /// No description provided for @guideThighStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep tape snug but not compressing'**
+  String get guideThighStep4;
+
+  /// No description provided for @gotIt.
+  ///
+  /// In en, this message translates to:
+  /// **'Got it'**
+  String get gotIt;
+
+  /// No description provided for @healthTrajectory.
+  ///
+  /// In en, this message translates to:
+  /// **'Health Trajectory'**
+  String get healthTrajectory;
+
+  /// No description provided for @directionDecreasing.
+  ///
+  /// In en, this message translates to:
+  /// **'decreasing'**
+  String get directionDecreasing;
+
+  /// No description provided for @directionIncreasing.
+  ///
+  /// In en, this message translates to:
+  /// **'increasing'**
+  String get directionIncreasing;
+
+  /// No description provided for @goalEtaMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'At this rate, you\'ll reach your goal in ~{eta}'**
+  String goalEtaMessage(String eta);
+
+  /// No description provided for @unlockProjection.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock to see your 12-month projection'**
+  String get unlockProjection;
+
+  /// No description provided for @noDataToDisplay.
+  ///
+  /// In en, this message translates to:
+  /// **'No data to display'**
+  String get noDataToDisplay;
+
+  /// No description provided for @minValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Min {value} {unit}'**
+  String minValue(int value, String unit);
+
+  /// No description provided for @maxValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Max {value} {unit}'**
+  String maxValue(int value, String unit);
+
+  /// No description provided for @yourVisceralFatIs.
+  ///
+  /// In en, this message translates to:
+  /// **'Your visceral fat is {level}'**
+  String yourVisceralFatIs(String level);
+
+  /// No description provided for @yourVisceralFatIsPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Your visceral fat is '**
+  String get yourVisceralFatIsPrefix;
+
+  /// No description provided for @actionItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Action Items'**
+  String get actionItems;
+
+  /// No description provided for @riskHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'High Risk'**
+  String get riskHigh;
+
+  /// No description provided for @riskElevatedRisk.
+  ///
+  /// In en, this message translates to:
+  /// **'Elevated Risk'**
+  String get riskElevatedRisk;
+
+  /// No description provided for @riskModerate.
+  ///
+  /// In en, this message translates to:
+  /// **'Moderate Risk'**
+  String get riskModerate;
+
+  /// No description provided for @bmiUnderweight.
+  ///
+  /// In en, this message translates to:
+  /// **'Underweight'**
+  String get bmiUnderweight;
+
+  /// No description provided for @bmiNormal.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal'**
+  String get bmiNormal;
+
+  /// No description provided for @bmiOverweight.
+  ///
+  /// In en, this message translates to:
+  /// **'Overweight'**
+  String get bmiOverweight;
+
+  /// No description provided for @bmiObese.
+  ///
+  /// In en, this message translates to:
+  /// **'Obese'**
+  String get bmiObese;
+
+  /// No description provided for @bodyMassIndex.
+  ///
+  /// In en, this message translates to:
+  /// **'Body Mass Index'**
+  String get bodyMassIndex;
+
+  /// No description provided for @visceralObesity.
+  ///
+  /// In en, this message translates to:
+  /// **'Visceral Obesity'**
+  String get visceralObesity;
+
+  /// No description provided for @visceralFatArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Visceral Fat Area'**
+  String get visceralFatArea;
+
+  /// No description provided for @measurementsUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Measurements Used'**
+  String get measurementsUsed;
+
+  /// No description provided for @heightWithUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'Height ({unit})'**
+  String heightWithUnit(String unit);
+
+  /// No description provided for @riskScaleHealthy.
+  ///
+  /// In en, this message translates to:
+  /// **'Healthy'**
+  String get riskScaleHealthy;
+
+  /// No description provided for @riskScaleElevated.
+  ///
+  /// In en, this message translates to:
+  /// **'Elevated'**
+  String get riskScaleElevated;
+
+  /// No description provided for @riskScaleObesity.
+  ///
+  /// In en, this message translates to:
+  /// **'Obesity'**
+  String get riskScaleObesity;
+
+  /// No description provided for @yourVatValue.
+  ///
+  /// In en, this message translates to:
+  /// **'You: {value} cm²'**
+  String yourVatValue(String value);
 }
 
 class _AppLocalizationsDelegate
