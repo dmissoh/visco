@@ -486,5 +486,74 @@
         "type": "String"
       }
     }
-  }
+  },
+  
+  "vatSummaryHealthyTitle": "Your Visceral Fat is Healthy",
+  "vatSummaryHealthyDescImproving": "Great progress! Your visceral fat is in a healthy range and continuing to improve. Keep up your healthy habits.",
+  "vatSummaryHealthyDesc": "Your visceral fat is in a healthy range. Maintain your current lifestyle to keep it that way.",
+  "vatSummaryElevatedTitle": "Your Visceral Fat is Elevated",
+  "vatSummaryElevatedDescImproving": "You're making progress! While your visceral fat is still elevated, the trend is improving. Keep following the tips below.",
+  "vatSummaryElevatedDesc": "Your visceral fat is moderately elevated, which may increase health risks. Consider the evidence-based tips below to help reduce it.",
+  "vatSummaryHighTitle": "Your Visceral Fat is High",
+  "vatSummaryHighDescImproving": "You're on the right track! Your visceral fat is high but improving. Continue with your efforts and consult a healthcare provider for personalized guidance.",
+  "vatSummaryHighDesc": "Your visceral fat level indicates increased health risks. We recommend reviewing the information below and consulting with a healthcare provider.",
+  "vatSummaryNoMeasurementTitle": "No Measurement Available",
+  "vatSummaryNoMeasurementDesc": "Complete a VAT measurement to see personalized health insights.",
+  
+  "improving": "Improving",
+  
+  "whatIfCalculator": "What-If Calculator",
+  "createProfileFirst": "Create a Profile First",
+  "whatIfNeedsProfile": "The What-If calculator needs your profile information to simulate results. Please create a profile first.",
+  "simulateInstructions": "Simulate different scenarios to plan your goals. Results are not saved.",
+  "enterMeasurements": "Enter Measurements",
+  "targetWeight": "Weight",
+  "enterTargetWeight": "Enter target weight",
+  "targetWaist": "Waist Circumference",
+  "enterTargetWaist": "Enter target waist",
+  "targetThigh": "Thigh Circumference",
+  "enterTargetThigh": "Enter target thigh",
+  "simulate": "Simulate",
+  "simulatedResult": "Simulated Result",
+  "wouldAchieveGoal": "This would achieve your goal!",
+  "aboveGoal": "{value} cm\u00B2 above goal",
+  "@aboveGoal": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "yourGoalValue": "Your goal: {value} cm\u00B2",
+  "@yourGoalValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "whatIfTip": "Try adjusting weight or waist to see how it affects your VAT",
+  
+  "waistWithValue": "Waist: {value} cm",
+  "@waistWithValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "categoryCardiometabolic": "Cardiometabolic",
+  "categoryStrokeMortality": "Stroke & Mortality",
+  "categoryInflammation": "Inflammation",
+  "categoryLiverDisease": "Liver Disease",
+  "categoryMetabolicSyndrome": "Metabolic Syndrome",
+  "categoryCancer": "Cancer",
+  "categoryPhysicalActivity": "Physical Activity",
+  "categoryDiet": "Diet",
+  "categoryWeightManagement": "Weight Management",
+  "categoryLifestyle": "Lifestyle",
+  "categorySleepStress": "Sleep & Stress",
+  "categoryAlcohol": "Alcohol",
+  "categorySmoking": "Smoking"
 }

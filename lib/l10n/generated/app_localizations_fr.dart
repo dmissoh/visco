@@ -1161,4 +1161,149 @@ class AppLocalizationsFr extends AppLocalizations {
   String yourVatValue(String value) {
     return 'Vous : $value cm²';
   }
+
+  @override
+  String get vatSummaryHealthyTitle => 'Votre graisse viscerale est saine';
+
+  @override
+  String get vatSummaryHealthyDescImproving =>
+      'Excellente progression ! Votre graisse viscerale est dans une plage saine et continue de s\'ameliorer. Continuez vos bonnes habitudes.';
+
+  @override
+  String get vatSummaryHealthyDesc =>
+      'Votre graisse viscerale est dans une plage saine. Maintenez votre mode de vie actuel pour la garder ainsi.';
+
+  @override
+  String get vatSummaryElevatedTitle => 'Votre graisse viscerale est elevee';
+
+  @override
+  String get vatSummaryElevatedDescImproving =>
+      'Vous progressez ! Bien que votre graisse viscerale soit encore elevee, la tendance s\'ameliore. Continuez a suivre les conseils ci-dessous.';
+
+  @override
+  String get vatSummaryElevatedDesc =>
+      'Votre graisse viscerale est moderement elevee, ce qui peut augmenter les risques pour la sante. Consultez les conseils fondes sur des preuves ci-dessous pour la reduire.';
+
+  @override
+  String get vatSummaryHighTitle => 'Votre graisse viscerale est elevee';
+
+  @override
+  String get vatSummaryHighDescImproving =>
+      'Vous etes sur la bonne voie ! Votre graisse viscerale est elevee mais s\'ameliore. Poursuivez vos efforts et consultez un professionnel de sante pour des conseils personnalises.';
+
+  @override
+  String get vatSummaryHighDesc =>
+      'Votre niveau de graisse viscerale indique des risques accrus pour la sante. Nous vous recommandons de consulter les informations ci-dessous et de consulter un professionnel de sante.';
+
+  @override
+  String get vatSummaryNoMeasurementTitle => 'Aucune mesure disponible';
+
+  @override
+  String get vatSummaryNoMeasurementDesc =>
+      'Effectuez une mesure VAT pour voir des conseils de sante personnalises.';
+
+  @override
+  String get improving => 'En amelioration';
+
+  @override
+  String get whatIfCalculator => 'Calculateur hypothetique';
+
+  @override
+  String get createProfileFirst => 'Creez d\'abord un profil';
+
+  @override
+  String get whatIfNeedsProfile =>
+      'Le calculateur hypothetique necessite vos informations de profil pour simuler les resultats. Veuillez d\'abord creer un profil.';
+
+  @override
+  String get simulateInstructions =>
+      'Simulez differents scenarios pour planifier vos objectifs. Les resultats ne sont pas enregistres.';
+
+  @override
+  String get enterMeasurements => 'Entrez les mesures';
+
+  @override
+  String get targetWeight => 'Poids';
+
+  @override
+  String get enterTargetWeight => 'Entrez le poids cible';
+
+  @override
+  String get targetWaist => 'Tour de taille';
+
+  @override
+  String get enterTargetWaist => 'Entrez le tour de taille cible';
+
+  @override
+  String get targetThigh => 'Tour de cuisse';
+
+  @override
+  String get enterTargetThigh => 'Entrez le tour de cuisse cible';
+
+  @override
+  String get simulate => 'Simuler';
+
+  @override
+  String get simulatedResult => 'Resultat simule';
+
+  @override
+  String get wouldAchieveGoal => 'Cela atteindrait votre objectif !';
+
+  @override
+  String aboveGoal(String value) {
+    return '$value cm² au-dessus de l\'objectif';
+  }
+
+  @override
+  String yourGoalValue(String value) {
+    return 'Votre objectif : $value cm²';
+  }
+
+  @override
+  String get whatIfTip =>
+      'Ajustez le poids ou le tour de taille pour voir comment cela affecte votre VAT';
+
+  @override
+  String waistWithValue(String value) {
+    return 'Taille : $value cm';
+  }
+
+  @override
+  String get categoryCardiometabolic => 'Cardiometabolique';
+
+  @override
+  String get categoryStrokeMortality => 'AVC et mortalite';
+
+  @override
+  String get categoryInflammation => 'Inflammation';
+
+  @override
+  String get categoryLiverDisease => 'Maladie hepatique';
+
+  @override
+  String get categoryMetabolicSyndrome => 'Syndrome metabolique';
+
+  @override
+  String get categoryCancer => 'Cancer';
+
+  @override
+  String get categoryPhysicalActivity => 'Activite physique';
+
+  @override
+  String get categoryDiet => 'Alimentation';
+
+  @override
+  String get categoryWeightManagement => 'Gestion du poids';
+
+  @override
+  String get categoryLifestyle => 'Mode de vie';
+
+  @override
+  String get categorySleepStress => 'Sommeil et stress';
+
+  @override
+  String get categoryAlcohol => 'Alcool';
+
+  @override
+  String get categorySmoking => 'Tabac';
 }

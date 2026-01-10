@@ -47,9 +47,124 @@ class _HealthTipCardState extends State<HealthTipCard> {
     }
   }
 
+  String _getLocalizedTitle(AppLocalizations l10n) {
+    switch (widget.tip.category) {
+      case TipCategory.activity:
+        return l10n.tipActivity;
+      case TipCategory.diet:
+        return l10n.tipDiet;
+      case TipCategory.weightManagement:
+        return l10n.tipWeight;
+      case TipCategory.lifestyle:
+        return l10n.tipSedentary;
+      case TipCategory.sleepStress:
+        return l10n.tipSleepStress;
+      case TipCategory.alcohol:
+        return l10n.tipAlcohol;
+      case TipCategory.smoking:
+        return l10n.tipSmoking;
+    }
+  }
+
+  String _getLocalizedDescription(AppLocalizations l10n) {
+    switch (widget.tip.category) {
+      case TipCategory.activity:
+        return l10n.tipActivityDesc;
+      case TipCategory.diet:
+        return l10n.tipDietDesc;
+      case TipCategory.weightManagement:
+        return l10n.tipWeightDesc;
+      case TipCategory.lifestyle:
+        return l10n.tipSedentaryDesc;
+      case TipCategory.sleepStress:
+        return l10n.tipSleepStressDesc;
+      case TipCategory.alcohol:
+        return l10n.tipAlcoholDesc;
+      case TipCategory.smoking:
+        return l10n.tipSmokingDesc;
+    }
+  }
+
+  List<String> _getLocalizedActionItems(AppLocalizations l10n) {
+    switch (widget.tip.category) {
+      case TipCategory.activity:
+        return [
+          l10n.tipActivityAction1,
+          l10n.tipActivityAction2,
+          l10n.tipActivityAction3,
+          l10n.tipActivityAction4,
+        ];
+      case TipCategory.diet:
+        return [
+          l10n.tipDietAction1,
+          l10n.tipDietAction2,
+          l10n.tipDietAction3,
+          l10n.tipDietAction4,
+          l10n.tipDietAction5,
+        ];
+      case TipCategory.weightManagement:
+        return [
+          l10n.tipWeightAction1,
+          l10n.tipWeightAction2,
+          l10n.tipWeightAction3,
+          l10n.tipWeightAction4,
+        ];
+      case TipCategory.lifestyle:
+        return [
+          l10n.tipSedentaryAction1,
+          l10n.tipSedentaryAction2,
+          l10n.tipSedentaryAction3,
+          l10n.tipSedentaryAction4,
+          l10n.tipSedentaryAction5,
+        ];
+      case TipCategory.sleepStress:
+        return [
+          l10n.tipSleepStressAction1,
+          l10n.tipSleepStressAction2,
+          l10n.tipSleepStressAction3,
+          l10n.tipSleepStressAction4,
+          l10n.tipSleepStressAction5,
+        ];
+      case TipCategory.alcohol:
+        return [
+          l10n.tipAlcoholAction1,
+          l10n.tipAlcoholAction2,
+          l10n.tipAlcoholAction3,
+          l10n.tipAlcoholAction4,
+        ];
+      case TipCategory.smoking:
+        return [
+          l10n.tipSmokingAction1,
+          l10n.tipSmokingAction2,
+          l10n.tipSmokingAction3,
+          l10n.tipSmokingAction4,
+        ];
+    }
+  }
+
+  String _getLocalizedCategoryLabel(AppLocalizations l10n) {
+    switch (widget.tip.category) {
+      case TipCategory.activity:
+        return l10n.categoryPhysicalActivity;
+      case TipCategory.diet:
+        return l10n.categoryDiet;
+      case TipCategory.weightManagement:
+        return l10n.categoryWeightManagement;
+      case TipCategory.lifestyle:
+        return l10n.categoryLifestyle;
+      case TipCategory.sleepStress:
+        return l10n.categorySleepStress;
+      case TipCategory.alcohol:
+        return l10n.categoryAlcohol;
+      case TipCategory.smoking:
+        return l10n.categorySmoking;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final categoryColor = _getCategoryColor(colors);
 
     return Container(
@@ -68,15 +183,15 @@ class _HealthTipCardState extends State<HealthTipCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildHeader(colors, categoryColor),
+                _buildHeader(colors, categoryColor, l10n),
                 const SizedBox(height: AppSpacing.sm),
                 Text(
-                  widget.tip.description,
+                  _getLocalizedDescription(l10n),
                   style: AppTypography.body(color: colors.textPrimary),
                 ),
                 if (_isExpanded) ...[
                   const SizedBox(height: AppSpacing.md),
-                  _buildActionItems(context, colors, categoryColor),
+                  _buildActionItems(context, colors, categoryColor, l10n),
                   const SizedBox(height: AppSpacing.sm),
                   _buildSource(colors),
                 ],
@@ -90,7 +205,7 @@ class _HealthTipCardState extends State<HealthTipCard> {
     );
   }
 
-  Widget _buildHeader(AppColorScheme colors, Color categoryColor) {
+  Widget _buildHeader(AppColorScheme colors, Color categoryColor, AppLocalizations l10n) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -112,11 +227,11 @@ class _HealthTipCardState extends State<HealthTipCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.tip.title,
+                _getLocalizedTitle(l10n),
                 style: AppTypography.title(color: colors.textPrimary),
               ),
               const SizedBox(height: 2),
-              _buildCategoryBadge(colors, categoryColor),
+              _buildCategoryBadge(colors, categoryColor, l10n),
             ],
           ),
         ),
@@ -124,7 +239,7 @@ class _HealthTipCardState extends State<HealthTipCard> {
     );
   }
 
-  Widget _buildCategoryBadge(AppColorScheme colors, Color categoryColor) {
+  Widget _buildCategoryBadge(AppColorScheme colors, Color categoryColor, AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.sm,
@@ -135,14 +250,14 @@ class _HealthTipCardState extends State<HealthTipCard> {
         borderRadius: BorderRadius.circular(AppRadius.full),
       ),
       child: Text(
-        widget.tip.categoryLabel,
+        _getLocalizedCategoryLabel(l10n),
         style: AppTypography.label(color: categoryColor),
       ),
     );
   }
 
-  Widget _buildActionItems(BuildContext context, AppColorScheme colors, Color categoryColor) {
-    final l10n = AppLocalizations.of(context)!;
+  Widget _buildActionItems(BuildContext context, AppColorScheme colors, Color categoryColor, AppLocalizations l10n) {
+    final actionItems = _getLocalizedActionItems(l10n);
     return Container(
       padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
@@ -170,7 +285,7 @@ class _HealthTipCardState extends State<HealthTipCard> {
             ],
           ),
           const SizedBox(height: AppSpacing.sm),
-          ...widget.tip.actionItems.map((item) {
+          ...actionItems.map((item) {
             return Padding(
               padding: const EdgeInsets.only(bottom: AppSpacing.xs),
               child: Row(

@@ -4,6 +4,7 @@ import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/calculator/domain/models/measurement.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class MeasurementListItem extends StatelessWidget {
   final Measurement measurement;
@@ -18,6 +19,7 @@ class MeasurementListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final dateFormat = DateFormat('dd/MM/yyyy');
 
     final riskColor = switch (measurement.riskCategory) {
@@ -70,7 +72,7 @@ class MeasurementListItem extends StatelessWidget {
                   ),
                   const SizedBox(height: AppSpacing.xs),
                   Text(
-                    'Waist: ${measurement.waistCm.toStringAsFixed(1)} cm',
+                    l10n.waistWithValue(measurement.waistCm.toStringAsFixed(1)),
                     style: AppTypography.caption(color: colors.textSecondary),
                   ),
                 ],

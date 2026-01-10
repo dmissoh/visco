@@ -1151,4 +1151,149 @@ class AppLocalizationsDe extends AppLocalizations {
   String yourVatValue(String value) {
     return 'Du: $value cm²';
   }
+
+  @override
+  String get vatSummaryHealthyTitle => 'Dein Viszeralfett ist gesund';
+
+  @override
+  String get vatSummaryHealthyDescImproving =>
+      'Toller Fortschritt! Dein Viszeralfett liegt im gesunden Bereich und verbessert sich weiter. Behalte deine gesunden Gewohnheiten bei.';
+
+  @override
+  String get vatSummaryHealthyDesc =>
+      'Dein Viszeralfett liegt im gesunden Bereich. Halte deinen aktuellen Lebensstil bei, um es so zu halten.';
+
+  @override
+  String get vatSummaryElevatedTitle => 'Dein Viszeralfett ist erhöht';
+
+  @override
+  String get vatSummaryElevatedDescImproving =>
+      'Du machst Fortschritte! Obwohl dein Viszeralfett noch erhöht ist, verbessert sich der Trend. Befolge weiterhin die Tipps unten.';
+
+  @override
+  String get vatSummaryElevatedDesc =>
+      'Dein Viszeralfett ist moderat erhöht, was Gesundheitsrisiken erhöhen kann. Beachte die evidenzbasierten Tipps unten, um es zu reduzieren.';
+
+  @override
+  String get vatSummaryHighTitle => 'Dein Viszeralfett ist hoch';
+
+  @override
+  String get vatSummaryHighDescImproving =>
+      'Du bist auf dem richtigen Weg! Dein Viszeralfett ist hoch, aber es verbessert sich. Setze deine Bemühungen fort und konsultiere einen Arzt für individuelle Beratung.';
+
+  @override
+  String get vatSummaryHighDesc =>
+      'Dein Viszeralfettwert deutet auf erhöhte Gesundheitsrisiken hin. Wir empfehlen, die Informationen unten zu lesen und einen Arzt zu konsultieren.';
+
+  @override
+  String get vatSummaryNoMeasurementTitle => 'Keine Messung vorhanden';
+
+  @override
+  String get vatSummaryNoMeasurementDesc =>
+      'Führe eine VAT-Messung durch, um personalisierte Gesundheitstipps zu erhalten.';
+
+  @override
+  String get improving => 'Verbesserung';
+
+  @override
+  String get whatIfCalculator => 'Was-wäre-wenn-Rechner';
+
+  @override
+  String get createProfileFirst => 'Erstelle zuerst ein Profil';
+
+  @override
+  String get whatIfNeedsProfile =>
+      'Der Was-wäre-wenn-Rechner benötigt deine Profilinformationen, um Ergebnisse zu simulieren. Bitte erstelle zuerst ein Profil.';
+
+  @override
+  String get simulateInstructions =>
+      'Simuliere verschiedene Szenarien, um deine Ziele zu planen. Ergebnisse werden nicht gespeichert.';
+
+  @override
+  String get enterMeasurements => 'Messwerte eingeben';
+
+  @override
+  String get targetWeight => 'Gewicht';
+
+  @override
+  String get enterTargetWeight => 'Zielgewicht eingeben';
+
+  @override
+  String get targetWaist => 'Taillenumfang';
+
+  @override
+  String get enterTargetWaist => 'Zieltaille eingeben';
+
+  @override
+  String get targetThigh => 'Oberschenkelumfang';
+
+  @override
+  String get enterTargetThigh => 'Zieloberschenkel eingeben';
+
+  @override
+  String get simulate => 'Simulieren';
+
+  @override
+  String get simulatedResult => 'Simuliertes Ergebnis';
+
+  @override
+  String get wouldAchieveGoal => 'Das würde dein Ziel erreichen!';
+
+  @override
+  String aboveGoal(String value) {
+    return '$value cm² über dem Ziel';
+  }
+
+  @override
+  String yourGoalValue(String value) {
+    return 'Dein Ziel: $value cm²';
+  }
+
+  @override
+  String get whatIfTip =>
+      'Ändere Gewicht oder Taille, um zu sehen, wie es dein VAT beeinflusst';
+
+  @override
+  String waistWithValue(String value) {
+    return 'Taille: $value cm';
+  }
+
+  @override
+  String get categoryCardiometabolic => 'Kardiometabolisch';
+
+  @override
+  String get categoryStrokeMortality => 'Schlaganfall & Sterblichkeit';
+
+  @override
+  String get categoryInflammation => 'Entzündung';
+
+  @override
+  String get categoryLiverDisease => 'Lebererkrankung';
+
+  @override
+  String get categoryMetabolicSyndrome => 'Metabolisches Syndrom';
+
+  @override
+  String get categoryCancer => 'Krebs';
+
+  @override
+  String get categoryPhysicalActivity => 'Körperliche Aktivität';
+
+  @override
+  String get categoryDiet => 'Ernährung';
+
+  @override
+  String get categoryWeightManagement => 'Gewichtsmanagement';
+
+  @override
+  String get categoryLifestyle => 'Lebensstil';
+
+  @override
+  String get categorySleepStress => 'Schlaf & Stress';
+
+  @override
+  String get categoryAlcohol => 'Alkohol';
+
+  @override
+  String get categorySmoking => 'Rauchen';
 }

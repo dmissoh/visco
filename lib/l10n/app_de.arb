@@ -486,5 +486,74 @@
         "type": "String"
       }
     }
-  }
+  },
+  
+  "vatSummaryHealthyTitle": "Dein Viszeralfett ist gesund",
+  "vatSummaryHealthyDescImproving": "Toller Fortschritt! Dein Viszeralfett liegt im gesunden Bereich und verbessert sich weiter. Behalte deine gesunden Gewohnheiten bei.",
+  "vatSummaryHealthyDesc": "Dein Viszeralfett liegt im gesunden Bereich. Halte deinen aktuellen Lebensstil bei, um es so zu halten.",
+  "vatSummaryElevatedTitle": "Dein Viszeralfett ist erhöht",
+  "vatSummaryElevatedDescImproving": "Du machst Fortschritte! Obwohl dein Viszeralfett noch erhöht ist, verbessert sich der Trend. Befolge weiterhin die Tipps unten.",
+  "vatSummaryElevatedDesc": "Dein Viszeralfett ist moderat erhöht, was Gesundheitsrisiken erhöhen kann. Beachte die evidenzbasierten Tipps unten, um es zu reduzieren.",
+  "vatSummaryHighTitle": "Dein Viszeralfett ist hoch",
+  "vatSummaryHighDescImproving": "Du bist auf dem richtigen Weg! Dein Viszeralfett ist hoch, aber es verbessert sich. Setze deine Bemühungen fort und konsultiere einen Arzt für individuelle Beratung.",
+  "vatSummaryHighDesc": "Dein Viszeralfettwert deutet auf erhöhte Gesundheitsrisiken hin. Wir empfehlen, die Informationen unten zu lesen und einen Arzt zu konsultieren.",
+  "vatSummaryNoMeasurementTitle": "Keine Messung vorhanden",
+  "vatSummaryNoMeasurementDesc": "Führe eine VAT-Messung durch, um personalisierte Gesundheitstipps zu erhalten.",
+  
+  "improving": "Verbesserung",
+  
+  "whatIfCalculator": "Was-wäre-wenn-Rechner",
+  "createProfileFirst": "Erstelle zuerst ein Profil",
+  "whatIfNeedsProfile": "Der Was-wäre-wenn-Rechner benötigt deine Profilinformationen, um Ergebnisse zu simulieren. Bitte erstelle zuerst ein Profil.",
+  "simulateInstructions": "Simuliere verschiedene Szenarien, um deine Ziele zu planen. Ergebnisse werden nicht gespeichert.",
+  "enterMeasurements": "Messwerte eingeben",
+  "targetWeight": "Gewicht",
+  "enterTargetWeight": "Zielgewicht eingeben",
+  "targetWaist": "Taillenumfang",
+  "enterTargetWaist": "Zieltaille eingeben",
+  "targetThigh": "Oberschenkelumfang",
+  "enterTargetThigh": "Zieloberschenkel eingeben",
+  "simulate": "Simulieren",
+  "simulatedResult": "Simuliertes Ergebnis",
+  "wouldAchieveGoal": "Das würde dein Ziel erreichen!",
+  "aboveGoal": "{value} cm² über dem Ziel",
+  "@aboveGoal": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "yourGoalValue": "Dein Ziel: {value} cm²",
+  "@yourGoalValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "whatIfTip": "Ändere Gewicht oder Taille, um zu sehen, wie es dein VAT beeinflusst",
+  
+  "waistWithValue": "Taille: {value} cm",
+  "@waistWithValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "categoryCardiometabolic": "Kardiometabolisch",
+  "categoryStrokeMortality": "Schlaganfall & Sterblichkeit",
+  "categoryInflammation": "Entzündung",
+  "categoryLiverDisease": "Lebererkrankung",
+  "categoryMetabolicSyndrome": "Metabolisches Syndrom",
+  "categoryCancer": "Krebs",
+  "categoryPhysicalActivity": "Körperliche Aktivität",
+  "categoryDiet": "Ernährung",
+  "categoryWeightManagement": "Gewichtsmanagement",
+  "categoryLifestyle": "Lebensstil",
+  "categorySleepStress": "Schlaf & Stress",
+  "categoryAlcohol": "Alkohol",
+  "categorySmoking": "Rauchen"
 }

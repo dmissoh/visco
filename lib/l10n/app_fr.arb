@@ -486,5 +486,74 @@
         "type": "String"
       }
     }
-  }
+  },
+  
+  "vatSummaryHealthyTitle": "Votre graisse viscerale est saine",
+  "vatSummaryHealthyDescImproving": "Excellente progression ! Votre graisse viscerale est dans une plage saine et continue de s'ameliorer. Continuez vos bonnes habitudes.",
+  "vatSummaryHealthyDesc": "Votre graisse viscerale est dans une plage saine. Maintenez votre mode de vie actuel pour la garder ainsi.",
+  "vatSummaryElevatedTitle": "Votre graisse viscerale est elevee",
+  "vatSummaryElevatedDescImproving": "Vous progressez ! Bien que votre graisse viscerale soit encore elevee, la tendance s'ameliore. Continuez a suivre les conseils ci-dessous.",
+  "vatSummaryElevatedDesc": "Votre graisse viscerale est moderement elevee, ce qui peut augmenter les risques pour la sante. Consultez les conseils fondes sur des preuves ci-dessous pour la reduire.",
+  "vatSummaryHighTitle": "Votre graisse viscerale est elevee",
+  "vatSummaryHighDescImproving": "Vous etes sur la bonne voie ! Votre graisse viscerale est elevee mais s'ameliore. Poursuivez vos efforts et consultez un professionnel de sante pour des conseils personnalises.",
+  "vatSummaryHighDesc": "Votre niveau de graisse viscerale indique des risques accrus pour la sante. Nous vous recommandons de consulter les informations ci-dessous et de consulter un professionnel de sante.",
+  "vatSummaryNoMeasurementTitle": "Aucune mesure disponible",
+  "vatSummaryNoMeasurementDesc": "Effectuez une mesure VAT pour voir des conseils de sante personnalises.",
+  
+  "improving": "En amelioration",
+  
+  "whatIfCalculator": "Calculateur hypothetique",
+  "createProfileFirst": "Creez d'abord un profil",
+  "whatIfNeedsProfile": "Le calculateur hypothetique necessite vos informations de profil pour simuler les resultats. Veuillez d'abord creer un profil.",
+  "simulateInstructions": "Simulez differents scenarios pour planifier vos objectifs. Les resultats ne sont pas enregistres.",
+  "enterMeasurements": "Entrez les mesures",
+  "targetWeight": "Poids",
+  "enterTargetWeight": "Entrez le poids cible",
+  "targetWaist": "Tour de taille",
+  "enterTargetWaist": "Entrez le tour de taille cible",
+  "targetThigh": "Tour de cuisse",
+  "enterTargetThigh": "Entrez le tour de cuisse cible",
+  "simulate": "Simuler",
+  "simulatedResult": "Resultat simule",
+  "wouldAchieveGoal": "Cela atteindrait votre objectif !",
+  "aboveGoal": "{value} cm² au-dessus de l'objectif",
+  "@aboveGoal": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "yourGoalValue": "Votre objectif : {value} cm²",
+  "@yourGoalValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "whatIfTip": "Ajustez le poids ou le tour de taille pour voir comment cela affecte votre VAT",
+  
+  "waistWithValue": "Taille : {value} cm",
+  "@waistWithValue": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "categoryCardiometabolic": "Cardiometabolique",
+  "categoryStrokeMortality": "AVC et mortalite",
+  "categoryInflammation": "Inflammation",
+  "categoryLiverDisease": "Maladie hepatique",
+  "categoryMetabolicSyndrome": "Syndrome metabolique",
+  "categoryCancer": "Cancer",
+  "categoryPhysicalActivity": "Activite physique",
+  "categoryDiet": "Alimentation",
+  "categoryWeightManagement": "Gestion du poids",
+  "categoryLifestyle": "Mode de vie",
+  "categorySleepStress": "Sommeil et stress",
+  "categoryAlcohol": "Alcool",
+  "categorySmoking": "Tabac"
 }

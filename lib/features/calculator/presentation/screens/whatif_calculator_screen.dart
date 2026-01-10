@@ -11,6 +11,7 @@ import 'package:visco/features/calculator/presentation/widgets/measurement_input
 import 'package:visco/features/onboarding/providers/profile_provider.dart';
 import 'package:visco/features/result/presentation/widgets/risk_scale_indicator.dart';
 import 'package:visco/features/settings/providers/settings_provider.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 /// A "What-If" calculator that lets users simulate VAT without saving
 /// Great for goal planning - "What if I lose 5kg?" or "What waist do I need for healthy VAT?"
@@ -65,6 +66,7 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final profile = ref.watch(profileNotifierProvider);
     final unitSystem = ref.watch(unitSystemProvider);
     final goalValue = profile != null
@@ -75,7 +77,7 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
     if (profile == null) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('What-If Calculator'),
+          title: Text(l10n.whatIfCalculator),
         ),
         body: SafeArea(
           child: Padding(
@@ -90,13 +92,13 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
                 ),
                 const SizedBox(height: AppSpacing.lg),
                 Text(
-                  'Create a Profile First',
+                  l10n.createProfileFirst,
                   style: AppTypography.headline(color: colors.textPrimary),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: AppSpacing.md),
                 Text(
-                  'The What-If calculator needs your profile information (sex, age, height) to simulate visceral fat calculations.',
+                  l10n.whatIfNeedsProfile,
                   style: AppTypography.body(color: colors.textSecondary),
                   textAlign: TextAlign.center,
                 ),
@@ -106,7 +108,7 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
                   height: 56,
                   child: ElevatedButton(
                     onPressed: () => context.push('/new-profile'),
-                    child: const Text('Create Profile'),
+                    child: Text(l10n.createProfile),
                   ),
                 ),
               ],
@@ -118,7 +120,7 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('What-If Calculator'),
+        title: Text(l10n.whatIfCalculator),
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -146,7 +148,7 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
                     const SizedBox(width: AppSpacing.md),
                     Expanded(
                       child: Text(
-                        'Simulate different scenarios to plan your goals. Results are not saved.',
+                        l10n.simulateInstructions,
                         style: AppTypography.caption(color: colors.textSecondary),
                       ),
                     ),
@@ -156,15 +158,15 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
               const SizedBox(height: AppSpacing.xl),
 
               Text(
-                'Enter Measurements',
+                l10n.enterMeasurements,
                 style: AppTypography.title(color: colors.textPrimary),
               ),
               const SizedBox(height: AppSpacing.md),
 
               MeasurementInputField(
-                label: 'Weight',
+                label: l10n.targetWeight,
                 unit: 'kg',
-                hint: 'Enter target weight',
+                hint: l10n.enterTargetWeight,
                 minValue: 30,
                 maxValue: 300,
                 measurementType: MeasurementType.weight,
@@ -179,9 +181,9 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
               const SizedBox(height: AppSpacing.lg),
 
               MeasurementInputField(
-                label: 'Waist Circumference',
+                label: l10n.targetWaist,
                 unit: 'cm',
-                hint: 'Enter target waist',
+                hint: l10n.enterTargetWaist,
                 minValue: 50,
                 maxValue: 200,
                 measurementType: MeasurementType.length,
@@ -198,9 +200,9 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
               const SizedBox(height: AppSpacing.lg),
 
               MeasurementInputField(
-                label: 'Thigh Circumference',
+                label: l10n.targetThigh,
                 unit: 'cm',
-                hint: 'Enter target thigh',
+                hint: l10n.enterTargetThigh,
                 minValue: 30,
                 maxValue: 100,
                 measurementType: MeasurementType.length,
@@ -220,7 +222,7 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
                 height: 56,
                 child: ElevatedButton(
                   onPressed: _canCalculate ? _calculate : null,
-                  child: const Text('Simulate'),
+                  child: Text(l10n.simulate),
                 ),
               ),
 
@@ -234,7 +236,7 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
                 RiskScaleIndicator(vatValue: _result!.vatCm2),
                 const SizedBox(height: AppSpacing.lg),
                 
-                _buildResultCard(colors, goalValue),
+                _buildResultCard(context, colors, goalValue),
               ],
             ],
           ),
@@ -244,7 +246,8 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
     );
   }
 
-  Widget _buildResultCard(AppColorScheme colors, double? goalValue) {
+  Widget _buildResultCard(BuildContext context, AppColorScheme colors, double? goalValue) {
+    final l10n = AppLocalizations.of(context)!;
     final riskCategory = Measurement.calculateRiskCategory(_result!.vatCm2);
     final riskColor = switch (riskCategory) {
       RiskCategory.healthy => colors.success,
@@ -252,9 +255,9 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
       RiskCategory.obesity => colors.danger,
     };
     final riskLabel = switch (riskCategory) {
-      RiskCategory.healthy => 'Healthy',
-      RiskCategory.elevated => 'Elevated',
-      RiskCategory.obesity => 'High Risk',
+      RiskCategory.healthy => l10n.riskScaleHealthy,
+      RiskCategory.elevated => l10n.riskScaleElevated,
+      RiskCategory.obesity => l10n.riskHigh,
     };
 
     // Calculate difference from goal if set
@@ -271,7 +274,7 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
       child: Column(
         children: [
           Text(
-            'Simulated Result',
+            l10n.simulatedResult,
             style: AppTypography.caption(color: colors.textSecondary),
           ),
           const SizedBox(height: AppSpacing.md),
@@ -314,7 +317,7 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
                     .copyWith(fontWeight: FontWeight.w600),
               ),
               Text(
-                ' (${_getBmiCategory(_result!.bmi)})',
+                ' (${_getBmiCategory(context, _result!.bmi)})',
                 style: AppTypography.caption(color: colors.textSecondary),
               ),
             ],
@@ -339,7 +342,7 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
                     Icon(Icons.check_circle, color: colors.success, size: 20),
                     const SizedBox(width: AppSpacing.sm),
                     Text(
-                      'This would achieve your goal!',
+                      l10n.wouldAchieveGoal,
                       style: AppTypography.body(color: colors.success),
                     ),
                   ],
@@ -355,12 +358,12 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
                 child: Column(
                   children: [
                     Text(
-                      '${goalDiff!.toStringAsFixed(1)} cm\u00B2 above goal',
+                      l10n.aboveGoal(goalDiff!.toStringAsFixed(1)),
                       style: AppTypography.body(color: colors.warning),
                     ),
                     const SizedBox(height: AppSpacing.xs),
                     Text(
-                      'Your goal: ${goalValue.toStringAsFixed(0)} cm\u00B2',
+                      l10n.yourGoalValue(goalValue.toStringAsFixed(0)),
                       style: AppTypography.caption(color: colors.textSecondary),
                     ),
                   ],
@@ -371,7 +374,7 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
           // Tip
           const SizedBox(height: AppSpacing.lg),
           Text(
-            'Try adjusting weight or waist to see how it affects your VAT',
+            l10n.whatIfTip,
             style: AppTypography.caption(color: colors.textTertiary),
             textAlign: TextAlign.center,
           ),
@@ -380,10 +383,11 @@ class _WhatIfCalculatorScreenState extends ConsumerState<WhatIfCalculatorScreen>
     );
   }
 
-  String _getBmiCategory(double bmi) {
-    if (bmi < 18.5) return 'Underweight';
-    if (bmi < 25) return 'Normal';
-    if (bmi < 30) return 'Overweight';
-    return 'Obese';
+  String _getBmiCategory(BuildContext context, double bmi) {
+    final l10n = AppLocalizations.of(context)!;
+    if (bmi < 18.5) return l10n.bmiUnderweight;
+    if (bmi < 25) return l10n.bmiNormal;
+    if (bmi < 30) return l10n.bmiOverweight;
+    return l10n.bmiObese;
   }
 }

@@ -9,22 +9,20 @@ import 'package:visco/features/insights/domain/models/health_tip.dart';
 class PersonalizedInsights {
   final RiskCategory riskCategory;
   final double vatValue;
-  final String summaryTitle;
-  final String summaryDescription;
   final List<HealthRisk> risks;
   final List<HealthTip> priorityTips;
   final List<HealthTip> allTips;
   final bool isImproving;
+  final bool hasMeasurement;
 
   const PersonalizedInsights({
     required this.riskCategory,
     required this.vatValue,
-    required this.summaryTitle,
-    required this.summaryDescription,
     required this.risks,
     required this.priorityTips,
     required this.allTips,
     required this.isImproving,
+    this.hasMeasurement = true,
   });
 
   /// Creates default insights when no measurement is available.
@@ -32,12 +30,11 @@ class PersonalizedInsights {
     return PersonalizedInsights(
       riskCategory: RiskCategory.healthy,
       vatValue: 0,
-      summaryTitle: 'No Measurement Available',
-      summaryDescription: 'Complete a VAT measurement to see personalized health insights.',
       risks: InsightsData.risks,
       priorityTips: InsightsData.priorityTips,
       allTips: InsightsData.tips,
       isImproving: false,
+      hasMeasurement: false,
     );
   }
 }
@@ -75,9 +72,6 @@ PersonalizedInsights _generateInsights({
   final riskCategory = measurement.riskCategory;
   final vatValue = measurement.vatCm2;
 
-  // Generate personalized summary based on risk level
-  final (summaryTitle, summaryDescription) = _getSummary(riskCategory, isImproving);
-
   // Sort risks by severity (most severe first)
   final sortedRisks = List<HealthRisk>.from(InsightsData.risks)
     ..sort((a, b) => b.severity.index.compareTo(a.severity.index));
@@ -89,39 +83,11 @@ PersonalizedInsights _generateInsights({
   return PersonalizedInsights(
     riskCategory: riskCategory,
     vatValue: vatValue,
-    summaryTitle: summaryTitle,
-    summaryDescription: summaryDescription,
     risks: sortedRisks,
     priorityTips: priorityTips,
     allTips: allTips,
     isImproving: isImproving,
   );
-}
-
-(String, String) _getSummary(RiskCategory category, bool isImproving) {
-  switch (category) {
-    case RiskCategory.healthy:
-      return (
-        'Your Visceral Fat is Healthy',
-        isImproving
-            ? 'Great progress! Your visceral fat is in a healthy range and continuing to improve. Keep up your healthy habits.'
-            : 'Your visceral fat is in a healthy range. Maintain your current lifestyle to keep it that way.',
-      );
-    case RiskCategory.elevated:
-      return (
-        'Your Visceral Fat is Elevated',
-        isImproving
-            ? 'You\'re making progress! While your visceral fat is still elevated, the trend is improving. Keep following the tips below.'
-            : 'Your visceral fat is moderately elevated, which may increase health risks. Consider the evidence-based tips below to help reduce it.',
-      );
-    case RiskCategory.obesity:
-      return (
-        'Your Visceral Fat is High',
-        isImproving
-            ? 'You\'re on the right track! Your visceral fat is high but improving. Continue with your efforts and consult a healthcare provider for personalized guidance.'
-            : 'Your visceral fat level indicates increased health risks. We recommend reviewing the information below and consulting with a healthcare provider.',
-      );
-  }
 }
 
 List<HealthTip> _getPriorityTips(RiskCategory category) {

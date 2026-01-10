@@ -3,6 +3,7 @@ import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/calculator/domain/models/measurement.dart';
+import 'package:visco/l10n/generated/app_localizations.dart';
 
 class RiskSummaryHeader extends StatelessWidget {
   final RiskCategory riskCategory;
@@ -45,6 +46,7 @@ class RiskSummaryHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final backgroundColor = _getBackgroundColor(colors);
 
     return Container(
@@ -114,7 +116,7 @@ class RiskSummaryHeader extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 2),
                                 Text(
-                                  'Improving',
+                                  l10n.improving,
                                   style: AppTypography.label(color: Colors.white),
                                 ),
                               ],

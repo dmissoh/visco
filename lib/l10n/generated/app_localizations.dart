@@ -2115,6 +2115,264 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You: {value} cm²'**
   String yourVatValue(String value);
+
+  /// No description provided for @vatSummaryHealthyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Visceral Fat is Healthy'**
+  String get vatSummaryHealthyTitle;
+
+  /// No description provided for @vatSummaryHealthyDescImproving.
+  ///
+  /// In en, this message translates to:
+  /// **'Great progress! Your visceral fat is in a healthy range and continuing to improve. Keep up your healthy habits.'**
+  String get vatSummaryHealthyDescImproving;
+
+  /// No description provided for @vatSummaryHealthyDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Your visceral fat is in a healthy range. Maintain your current lifestyle to keep it that way.'**
+  String get vatSummaryHealthyDesc;
+
+  /// No description provided for @vatSummaryElevatedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Visceral Fat is Elevated'**
+  String get vatSummaryElevatedTitle;
+
+  /// No description provided for @vatSummaryElevatedDescImproving.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re making progress! While your visceral fat is still elevated, the trend is improving. Keep following the tips below.'**
+  String get vatSummaryElevatedDescImproving;
+
+  /// No description provided for @vatSummaryElevatedDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Your visceral fat is moderately elevated, which may increase health risks. Consider the evidence-based tips below to help reduce it.'**
+  String get vatSummaryElevatedDesc;
+
+  /// No description provided for @vatSummaryHighTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Visceral Fat is High'**
+  String get vatSummaryHighTitle;
+
+  /// No description provided for @vatSummaryHighDescImproving.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re on the right track! Your visceral fat is high but improving. Continue with your efforts and consult a healthcare provider for personalized guidance.'**
+  String get vatSummaryHighDescImproving;
+
+  /// No description provided for @vatSummaryHighDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Your visceral fat level indicates increased health risks. We recommend reviewing the information below and consulting with a healthcare provider.'**
+  String get vatSummaryHighDesc;
+
+  /// No description provided for @vatSummaryNoMeasurementTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No Measurement Available'**
+  String get vatSummaryNoMeasurementTitle;
+
+  /// No description provided for @vatSummaryNoMeasurementDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete a VAT measurement to see personalized health insights.'**
+  String get vatSummaryNoMeasurementDesc;
+
+  /// No description provided for @improving.
+  ///
+  /// In en, this message translates to:
+  /// **'Improving'**
+  String get improving;
+
+  /// No description provided for @whatIfCalculator.
+  ///
+  /// In en, this message translates to:
+  /// **'What-If Calculator'**
+  String get whatIfCalculator;
+
+  /// No description provided for @createProfileFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a Profile First'**
+  String get createProfileFirst;
+
+  /// No description provided for @whatIfNeedsProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'The What-If calculator needs your profile information to simulate results. Please create a profile first.'**
+  String get whatIfNeedsProfile;
+
+  /// No description provided for @simulateInstructions.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulate different scenarios to plan your goals. Results are not saved.'**
+  String get simulateInstructions;
+
+  /// No description provided for @enterMeasurements.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Measurements'**
+  String get enterMeasurements;
+
+  /// No description provided for @targetWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight'**
+  String get targetWeight;
+
+  /// No description provided for @enterTargetWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter target weight'**
+  String get enterTargetWeight;
+
+  /// No description provided for @targetWaist.
+  ///
+  /// In en, this message translates to:
+  /// **'Waist Circumference'**
+  String get targetWaist;
+
+  /// No description provided for @enterTargetWaist.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter target waist'**
+  String get enterTargetWaist;
+
+  /// No description provided for @targetThigh.
+  ///
+  /// In en, this message translates to:
+  /// **'Thigh Circumference'**
+  String get targetThigh;
+
+  /// No description provided for @enterTargetThigh.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter target thigh'**
+  String get enterTargetThigh;
+
+  /// No description provided for @simulate.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulate'**
+  String get simulate;
+
+  /// No description provided for @simulatedResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulated Result'**
+  String get simulatedResult;
+
+  /// No description provided for @wouldAchieveGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'This would achieve your goal!'**
+  String get wouldAchieveGoal;
+
+  /// No description provided for @aboveGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'{value} cm² above goal'**
+  String aboveGoal(String value);
+
+  /// No description provided for @yourGoalValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Your goal: {value} cm²'**
+  String yourGoalValue(String value);
+
+  /// No description provided for @whatIfTip.
+  ///
+  /// In en, this message translates to:
+  /// **'Try adjusting weight or waist to see how it affects your VAT'**
+  String get whatIfTip;
+
+  /// No description provided for @waistWithValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Waist: {value} cm'**
+  String waistWithValue(String value);
+
+  /// No description provided for @categoryCardiometabolic.
+  ///
+  /// In en, this message translates to:
+  /// **'Cardiometabolic'**
+  String get categoryCardiometabolic;
+
+  /// No description provided for @categoryStrokeMortality.
+  ///
+  /// In en, this message translates to:
+  /// **'Stroke & Mortality'**
+  String get categoryStrokeMortality;
+
+  /// No description provided for @categoryInflammation.
+  ///
+  /// In en, this message translates to:
+  /// **'Inflammation'**
+  String get categoryInflammation;
+
+  /// No description provided for @categoryLiverDisease.
+  ///
+  /// In en, this message translates to:
+  /// **'Liver Disease'**
+  String get categoryLiverDisease;
+
+  /// No description provided for @categoryMetabolicSyndrome.
+  ///
+  /// In en, this message translates to:
+  /// **'Metabolic Syndrome'**
+  String get categoryMetabolicSyndrome;
+
+  /// No description provided for @categoryCancer.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancer'**
+  String get categoryCancer;
+
+  /// No description provided for @categoryPhysicalActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Physical Activity'**
+  String get categoryPhysicalActivity;
+
+  /// No description provided for @categoryDiet.
+  ///
+  /// In en, this message translates to:
+  /// **'Diet'**
+  String get categoryDiet;
+
+  /// No description provided for @categoryWeightManagement.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight Management'**
+  String get categoryWeightManagement;
+
+  /// No description provided for @categoryLifestyle.
+  ///
+  /// In en, this message translates to:
+  /// **'Lifestyle'**
+  String get categoryLifestyle;
+
+  /// No description provided for @categorySleepStress.
+  ///
+  /// In en, this message translates to:
+  /// **'Sleep & Stress'**
+  String get categorySleepStress;
+
+  /// No description provided for @categoryAlcohol.
+  ///
+  /// In en, this message translates to:
+  /// **'Alcohol'**
+  String get categoryAlcohol;
+
+  /// No description provided for @categorySmoking.
+  ///
+  /// In en, this message translates to:
+  /// **'Smoking'**
+  String get categorySmoking;
 }
 
 class _AppLocalizationsDelegate

@@ -62,9 +62,108 @@ class _HealthRiskCardState extends State<HealthRiskCard> {
     }
   }
 
+  String _getLocalizedTitle(AppLocalizations l10n) {
+    switch (widget.risk.category) {
+      case HealthRiskCategory.cardiometabolic:
+        return l10n.riskCardiometabolic;
+      case HealthRiskCategory.strokeMortality:
+        return l10n.riskStrokeMortality;
+      case HealthRiskCategory.inflammation:
+        return l10n.riskInflammation;
+      case HealthRiskCategory.liverDisease:
+        return l10n.riskLiver;
+      case HealthRiskCategory.metabolicSyndrome:
+        return l10n.riskMetabolicSyndrome;
+      case HealthRiskCategory.cancer:
+        return l10n.riskCancer;
+    }
+  }
+
+  String _getLocalizedDescription(AppLocalizations l10n) {
+    switch (widget.risk.category) {
+      case HealthRiskCategory.cardiometabolic:
+        return l10n.riskCardiometabolicDesc;
+      case HealthRiskCategory.strokeMortality:
+        return l10n.riskStrokeMortalityDesc;
+      case HealthRiskCategory.inflammation:
+        return l10n.riskInflammationDesc;
+      case HealthRiskCategory.liverDisease:
+        return l10n.riskLiverDesc;
+      case HealthRiskCategory.metabolicSyndrome:
+        return l10n.riskMetabolicSyndromeDesc;
+      case HealthRiskCategory.cancer:
+        return l10n.riskCancerDesc;
+    }
+  }
+
+  List<String> _getLocalizedDetails(AppLocalizations l10n) {
+    switch (widget.risk.category) {
+      case HealthRiskCategory.cardiometabolic:
+        return [
+          l10n.riskCardiometabolicDetail1,
+          l10n.riskCardiometabolicDetail2,
+          l10n.riskCardiometabolicDetail3,
+          l10n.riskCardiometabolicDetail4,
+        ];
+      case HealthRiskCategory.strokeMortality:
+        return [
+          l10n.riskStrokeMortalityDetail1,
+          l10n.riskStrokeMortalityDetail2,
+          l10n.riskStrokeMortalityDetail3,
+        ];
+      case HealthRiskCategory.inflammation:
+        return [
+          l10n.riskInflammationDetail1,
+          l10n.riskInflammationDetail2,
+          l10n.riskInflammationDetail3,
+          l10n.riskInflammationDetail4,
+        ];
+      case HealthRiskCategory.liverDisease:
+        return [
+          l10n.riskLiverDetail1,
+          l10n.riskLiverDetail2,
+          l10n.riskLiverDetail3,
+          l10n.riskLiverDetail4,
+        ];
+      case HealthRiskCategory.metabolicSyndrome:
+        return [
+          l10n.riskMetabolicSyndromeDetail1,
+          l10n.riskMetabolicSyndromeDetail2,
+          l10n.riskMetabolicSyndromeDetail3,
+          l10n.riskMetabolicSyndromeDetail4,
+          l10n.riskMetabolicSyndromeDetail5,
+        ];
+      case HealthRiskCategory.cancer:
+        return [
+          l10n.riskCancerDetail1,
+          l10n.riskCancerDetail2,
+          l10n.riskCancerDetail3,
+          l10n.riskCancerDetail4,
+        ];
+    }
+  }
+
+  String _getLocalizedCategoryLabel(AppLocalizations l10n) {
+    switch (widget.risk.category) {
+      case HealthRiskCategory.cardiometabolic:
+        return l10n.categoryCardiometabolic;
+      case HealthRiskCategory.strokeMortality:
+        return l10n.categoryStrokeMortality;
+      case HealthRiskCategory.inflammation:
+        return l10n.categoryInflammation;
+      case HealthRiskCategory.liverDisease:
+        return l10n.categoryLiverDisease;
+      case HealthRiskCategory.metabolicSyndrome:
+        return l10n.categoryMetabolicSyndrome;
+      case HealthRiskCategory.cancer:
+        return l10n.categoryCancer;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final severityColor = _getSeverityColor(colors);
 
     return Container(
@@ -85,15 +184,15 @@ class _HealthRiskCardState extends State<HealthRiskCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildHeader(context, colors, severityColor),
+                _buildHeader(context, colors, severityColor, l10n),
                 const SizedBox(height: AppSpacing.sm),
                 Text(
-                  widget.risk.description,
+                  _getLocalizedDescription(l10n),
                   style: AppTypography.body(color: colors.textPrimary),
                 ),
                 if (_isExpanded) ...[
                   const SizedBox(height: AppSpacing.md),
-                  _buildDetails(colors),
+                  _buildDetails(colors, l10n),
                   const SizedBox(height: AppSpacing.sm),
                   _buildSources(colors),
                 ],
@@ -107,7 +206,7 @@ class _HealthRiskCardState extends State<HealthRiskCard> {
     );
   }
 
-  Widget _buildHeader(BuildContext context, AppColorScheme colors, Color severityColor) {
+  Widget _buildHeader(BuildContext context, AppColorScheme colors, Color severityColor, AppLocalizations l10n) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -129,7 +228,7 @@ class _HealthRiskCardState extends State<HealthRiskCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.risk.title,
+                _getLocalizedTitle(l10n),
                 style: AppTypography.title(color: colors.textPrimary),
               ),
               const SizedBox(height: 2),
@@ -172,7 +271,8 @@ class _HealthRiskCardState extends State<HealthRiskCard> {
     );
   }
 
-  Widget _buildDetails(AppColorScheme colors) {
+  Widget _buildDetails(AppColorScheme colors, AppLocalizations l10n) {
+    final details = _getLocalizedDetails(l10n);
     return Container(
       padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
@@ -181,7 +281,7 @@ class _HealthRiskCardState extends State<HealthRiskCard> {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: widget.risk.details.map((detail) {
+        children: details.map((detail) {
           return Padding(
             padding: const EdgeInsets.only(bottom: AppSpacing.xs),
             child: Row(

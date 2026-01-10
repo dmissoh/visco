@@ -56,8 +56,8 @@ class InsightsScreen extends ConsumerWidget {
               RiskSummaryHeader(
                 riskCategory: insights.riskCategory,
                 vatValue: insights.vatValue,
-                title: insights.summaryTitle,
-                description: insights.summaryDescription,
+                title: _getSummaryTitle(l10n, insights.riskCategory, insights.hasMeasurement),
+                description: _getSummaryDescription(l10n, insights.riskCategory, insights.isImproving, insights.hasMeasurement),
                 isImproving: insights.isImproving,
               ),
 
@@ -300,5 +300,33 @@ class InsightsScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  String _getSummaryTitle(AppLocalizations l10n, RiskCategory category, bool hasMeasurement) {
+    if (!hasMeasurement) {
+      return l10n.vatSummaryNoMeasurementTitle;
+    }
+    switch (category) {
+      case RiskCategory.healthy:
+        return l10n.vatSummaryHealthyTitle;
+      case RiskCategory.elevated:
+        return l10n.vatSummaryElevatedTitle;
+      case RiskCategory.obesity:
+        return l10n.vatSummaryHighTitle;
+    }
+  }
+
+  String _getSummaryDescription(AppLocalizations l10n, RiskCategory category, bool isImproving, bool hasMeasurement) {
+    if (!hasMeasurement) {
+      return l10n.vatSummaryNoMeasurementDesc;
+    }
+    switch (category) {
+      case RiskCategory.healthy:
+        return isImproving ? l10n.vatSummaryHealthyDescImproving : l10n.vatSummaryHealthyDesc;
+      case RiskCategory.elevated:
+        return isImproving ? l10n.vatSummaryElevatedDescImproving : l10n.vatSummaryElevatedDesc;
+      case RiskCategory.obesity:
+        return isImproving ? l10n.vatSummaryHighDescImproving : l10n.vatSummaryHighDesc;
+    }
   }
 }

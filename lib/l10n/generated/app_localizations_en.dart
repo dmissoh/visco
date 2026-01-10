@@ -1137,4 +1137,149 @@ class AppLocalizationsEn extends AppLocalizations {
   String yourVatValue(String value) {
     return 'You: $value cm²';
   }
+
+  @override
+  String get vatSummaryHealthyTitle => 'Your Visceral Fat is Healthy';
+
+  @override
+  String get vatSummaryHealthyDescImproving =>
+      'Great progress! Your visceral fat is in a healthy range and continuing to improve. Keep up your healthy habits.';
+
+  @override
+  String get vatSummaryHealthyDesc =>
+      'Your visceral fat is in a healthy range. Maintain your current lifestyle to keep it that way.';
+
+  @override
+  String get vatSummaryElevatedTitle => 'Your Visceral Fat is Elevated';
+
+  @override
+  String get vatSummaryElevatedDescImproving =>
+      'You\'re making progress! While your visceral fat is still elevated, the trend is improving. Keep following the tips below.';
+
+  @override
+  String get vatSummaryElevatedDesc =>
+      'Your visceral fat is moderately elevated, which may increase health risks. Consider the evidence-based tips below to help reduce it.';
+
+  @override
+  String get vatSummaryHighTitle => 'Your Visceral Fat is High';
+
+  @override
+  String get vatSummaryHighDescImproving =>
+      'You\'re on the right track! Your visceral fat is high but improving. Continue with your efforts and consult a healthcare provider for personalized guidance.';
+
+  @override
+  String get vatSummaryHighDesc =>
+      'Your visceral fat level indicates increased health risks. We recommend reviewing the information below and consulting with a healthcare provider.';
+
+  @override
+  String get vatSummaryNoMeasurementTitle => 'No Measurement Available';
+
+  @override
+  String get vatSummaryNoMeasurementDesc =>
+      'Complete a VAT measurement to see personalized health insights.';
+
+  @override
+  String get improving => 'Improving';
+
+  @override
+  String get whatIfCalculator => 'What-If Calculator';
+
+  @override
+  String get createProfileFirst => 'Create a Profile First';
+
+  @override
+  String get whatIfNeedsProfile =>
+      'The What-If calculator needs your profile information to simulate results. Please create a profile first.';
+
+  @override
+  String get simulateInstructions =>
+      'Simulate different scenarios to plan your goals. Results are not saved.';
+
+  @override
+  String get enterMeasurements => 'Enter Measurements';
+
+  @override
+  String get targetWeight => 'Weight';
+
+  @override
+  String get enterTargetWeight => 'Enter target weight';
+
+  @override
+  String get targetWaist => 'Waist Circumference';
+
+  @override
+  String get enterTargetWaist => 'Enter target waist';
+
+  @override
+  String get targetThigh => 'Thigh Circumference';
+
+  @override
+  String get enterTargetThigh => 'Enter target thigh';
+
+  @override
+  String get simulate => 'Simulate';
+
+  @override
+  String get simulatedResult => 'Simulated Result';
+
+  @override
+  String get wouldAchieveGoal => 'This would achieve your goal!';
+
+  @override
+  String aboveGoal(String value) {
+    return '$value cm² above goal';
+  }
+
+  @override
+  String yourGoalValue(String value) {
+    return 'Your goal: $value cm²';
+  }
+
+  @override
+  String get whatIfTip =>
+      'Try adjusting weight or waist to see how it affects your VAT';
+
+  @override
+  String waistWithValue(String value) {
+    return 'Waist: $value cm';
+  }
+
+  @override
+  String get categoryCardiometabolic => 'Cardiometabolic';
+
+  @override
+  String get categoryStrokeMortality => 'Stroke & Mortality';
+
+  @override
+  String get categoryInflammation => 'Inflammation';
+
+  @override
+  String get categoryLiverDisease => 'Liver Disease';
+
+  @override
+  String get categoryMetabolicSyndrome => 'Metabolic Syndrome';
+
+  @override
+  String get categoryCancer => 'Cancer';
+
+  @override
+  String get categoryPhysicalActivity => 'Physical Activity';
+
+  @override
+  String get categoryDiet => 'Diet';
+
+  @override
+  String get categoryWeightManagement => 'Weight Management';
+
+  @override
+  String get categoryLifestyle => 'Lifestyle';
+
+  @override
+  String get categorySleepStress => 'Sleep & Stress';
+
+  @override
+  String get categoryAlcohol => 'Alcohol';
+
+  @override
+  String get categorySmoking => 'Smoking';
 }
