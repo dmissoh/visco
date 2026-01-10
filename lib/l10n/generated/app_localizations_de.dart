@@ -1308,4 +1308,17 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get removePhoto => 'Foto entfernen';
+
+  @override
+  String get newMeasurement => 'Neue Messung';
+
+  @override
+  String get tapToAddMeasurement =>
+      'Tippe auf +, um deine erste Messung hinzuzufugen';
+
+  @override
+  String get latestMeasurement => 'Letzte Messung';
+
+  @override
+  String get measurementSaved => 'Messung gespeichert';
 }

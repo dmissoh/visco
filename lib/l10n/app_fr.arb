@@ -560,5 +560,10 @@
   
   "takePhoto": "Prendre une photo",
   "chooseFromGallery": "Choisir dans la galerie",
-  "removePhoto": "Supprimer la photo"
+  "removePhoto": "Supprimer la photo",
+  
+  "newMeasurement": "Nouvelle mesure",
+  "tapToAddMeasurement": "Appuyez sur + pour ajouter votre premiere mesure",
+  "latestMeasurement": "Derniere mesure",
+  "measurementSaved": "Mesure enregistree"
 }

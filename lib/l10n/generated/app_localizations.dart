@@ -2397,6 +2397,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remove Photo'**
   String get removePhoto;
+
+  /// No description provided for @newMeasurement.
+  ///
+  /// In en, this message translates to:
+  /// **'New Measurement'**
+  String get newMeasurement;
+
+  /// No description provided for @tapToAddMeasurement.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap + to add your first measurement'**
+  String get tapToAddMeasurement;
+
+  /// No description provided for @latestMeasurement.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest Measurement'**
+  String get latestMeasurement;
+
+  /// No description provided for @measurementSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Measurement saved'**
+  String get measurementSaved;
 }
 
 class _AppLocalizationsDelegate

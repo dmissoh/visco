@@ -1318,4 +1318,17 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get removePhoto => 'Supprimer la photo';
+
+  @override
+  String get newMeasurement => 'Nouvelle mesure';
+
+  @override
+  String get tapToAddMeasurement =>
+      'Appuyez sur + pour ajouter votre premiere mesure';
+
+  @override
+  String get latestMeasurement => 'Derniere mesure';
+
+  @override
+  String get measurementSaved => 'Mesure enregistree';
 }

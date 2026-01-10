@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/features/calculator/presentation/screens/calculator_screen.dart';
 import 'package:visco/features/calculator/presentation/screens/whatif_calculator_screen.dart';
+import 'package:visco/features/calculator/presentation/widgets/quick_measurement_modal.dart';
 import 'package:visco/features/history/presentation/screens/history_screen.dart';
 import 'package:visco/features/settings/presentation/screens/settings_screen.dart';
 import 'package:visco/l10n/generated/app_localizations.dart';
@@ -34,10 +35,10 @@ class _MainShellState extends ConsumerState<MainShell> {
     ref.read(currentTabProvider.notifier).state = index;
   }
 
-  void _onFabPressed() {
+  Future<void> _onFabPressed() async {
     HapticFeedback.mediumImpact();
-    // Navigate to Calculator screen (index 0)
-    ref.read(currentTabProvider.notifier).state = 0;
+    // Show quick measurement entry modal
+    await QuickMeasurementModal.show(context);
   }
 
   @override

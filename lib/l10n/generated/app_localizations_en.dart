@@ -1294,4 +1294,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get removePhoto => 'Remove Photo';
+
+  @override
+  String get newMeasurement => 'New Measurement';
+
+  @override
+  String get tapToAddMeasurement => 'Tap + to add your first measurement';
+
+  @override
+  String get latestMeasurement => 'Latest Measurement';
+
+  @override
+  String get measurementSaved => 'Measurement saved';
 }
