@@ -60,13 +60,16 @@ class _MainShellState extends ConsumerState<MainShell> {
           );
         }),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _onFabPressed,
-        elevation: 4,
-        backgroundColor: colors.accent,
-        foregroundColor: Colors.white,
-        child: const Icon(Icons.add, size: 28),
-      ),
+      floatingActionButton: (currentIndex == 2 || currentIndex == 3)
+          ? null // Hide on What-If and Settings
+          : FloatingActionButton(
+              onPressed: _onFabPressed,
+              elevation: 4,
+              backgroundColor: colors.accent,
+              foregroundColor: Colors.white,
+              shape: const CircleBorder(),
+              child: const Icon(Icons.add, size: 28),
+            ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
