@@ -31,6 +31,32 @@ flutter pub get
 flutter run
 ```
 
+## Useful Commands
+
+### Running on Device
+
+```bash
+# Run in debug mode on a specific device
+flutter run -d "Dimitris iPhone" --debug
+
+# Build and install release version
+flutter build ios --release
+flutter install --release
+
+# Install on a specific device
+flutter install -d "Dimitris iPhone"
+```
+
+### Development Build with Dev Options
+
+```bash
+# Build with developer options enabled (shows dev menu in Settings)
+flutter build ios --release --dart-define=ENABLE_DEV_OPTIONS=true
+
+# Then install
+flutter install -d "Dimitris iPhone"
+```
+
 ## Publishing to TestFlight
 
 ### Prerequisites
