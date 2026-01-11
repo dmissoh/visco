@@ -141,11 +141,13 @@ class CalculatorScreen extends ConsumerWidget {
   }
 
   Widget _buildEmptyState(BuildContext context, AppColorScheme colors, AppLocalizations l10n) {
-    return Padding(
-      padding: const EdgeInsets.all(AppSpacing.lg),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(AppSpacing.lg),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
           Icon(
             Icons.add_circle_outline,
             size: 80,
@@ -163,7 +165,8 @@ class CalculatorScreen extends ConsumerWidget {
             style: AppTypography.body(color: colors.textSecondary),
             textAlign: TextAlign.center,
           ),
-        ],
+          ],
+        ),
       ),
     );
   }

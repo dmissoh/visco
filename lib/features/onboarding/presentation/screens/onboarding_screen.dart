@@ -63,10 +63,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             heightCm: _heightCm,
           );
 
-      // Mark onboarding as completed
-      await markOnboardingCompleted(ref);
-
+      // Mark onboarding as completed (check mounted before using ref)
       if (mounted) {
+        await markOnboardingCompleted(ref);
         context.go('/');
       }
     } finally {
