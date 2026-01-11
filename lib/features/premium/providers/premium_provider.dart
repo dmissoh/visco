@@ -1,12 +1,11 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:visco/core/services/revenuecat_service.dart';
 
-/// Check if we're in a testable build (debug or profile mode, or test flag set)
-/// Use: flutter run --dart-define=ENABLE_DEV_OPTIONS=true
+/// Check if dev options are explicitly enabled via build flag
+/// Use: flutter build ios --dart-define=ENABLE_DEV_OPTIONS=true
 const bool _enableDevOptions = bool.fromEnvironment('ENABLE_DEV_OPTIONS', defaultValue: false);
-bool get isDevOptionsEnabled => kDebugMode || kProfileMode || _enableDevOptions;
+bool get isDevOptionsEnabled => _enableDevOptions;
 
 /// LAUNCH FLAG: Set to true to make all features free for initial launch
 /// When ready to enable freemium, set this to false
