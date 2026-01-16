@@ -687,7 +687,47 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get disclaimer =>
-      'This information is for educational purposes only and should not replace professional medical advice. Please consult a healthcare provider for personalized guidance.';
+      'This information is for educational purposes only and does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider before making any health-related decisions. Do not disregard professional medical advice or delay seeking it because of information provided by this app.';
+
+  @override
+  String get medicalDisclaimerShort =>
+      'For informational purposes only. Consult your doctor before making health decisions.';
+
+  @override
+  String get calculationMethodTitle => 'Calculation Method';
+
+  @override
+  String get calculationMethodDescription =>
+      'This app uses a scientifically validated anthropometric model to estimate visceral adipose tissue (VAT) area.';
+
+  @override
+  String get viewScientificSource => 'View Scientific Source';
+
+  @override
+  String get scientificSourceUrl =>
+      'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3618381/';
+
+  @override
+  String get calculatorSourceInfo =>
+      'Luxembourg Institute of Health - Visceral Fat Calculator';
+
+  @override
+  String get calculatorSourceUrl =>
+      'https://www.lih.lu/en/visceral-fat-calculator/';
+
+  @override
+  String get aboutTheMethod => 'About the Method';
+
+  @override
+  String get methodDescription =>
+      'The VAT estimation uses the Samouda anthropometric model, validated against CT scans with 80-84% accuracy. This method was developed at the Luxembourg Institute of Health.';
+
+  @override
+  String get fullCitation =>
+      'Samouda H, et al. (2013). VAT=TAAT-SAAT: innovative anthropometric model to predict visceral adipose tissue without resort to CT-Scan or DXA. Obesity, 21(1), E41-50.';
+
+  @override
+  String get pmcReference => 'PMC3618381';
 
   @override
   String get riskCardiometabolic => 'Cardiometabolic Disease';

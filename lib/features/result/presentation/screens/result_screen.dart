@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
@@ -97,10 +98,122 @@ class ResultScreen extends ConsumerWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: AppSpacing.xl),
+              // Scientific Source Citation
+              _buildScientificSourceCard(context, colors, l10n),
+              const SizedBox(height: AppSpacing.md),
+              // Medical Disclaimer
+              _buildMedicalDisclaimer(context, colors, l10n),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildScientificSourceCard(BuildContext context, AppColorScheme colors, AppLocalizations l10n) {
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        border: Border.all(color: colors.border),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(
+                Icons.science_outlined,
+                size: 20,
+                color: colors.accent,
+              ),
+              const SizedBox(width: AppSpacing.sm),
+              Text(
+                l10n.calculationMethodTitle,
+                style: AppTypography.title(color: colors.textPrimary),
+              ),
+            ],
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          Text(
+            l10n.methodDescription,
+            style: AppTypography.caption(color: colors.textSecondary),
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          Container(
+            padding: const EdgeInsets.all(AppSpacing.sm),
+            decoration: BoxDecoration(
+              color: colors.background,
+              borderRadius: BorderRadius.circular(AppRadius.sm),
+            ),
+            child: Text(
+              l10n.fullCitation,
+              style: AppTypography.caption(color: colors.textSecondary).copyWith(
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          InkWell(
+            onTap: () => _launchUrl(l10n.scientificSourceUrl),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.open_in_new,
+                  size: 16,
+                  color: colors.accent,
+                ),
+                const SizedBox(width: 4),
+                Expanded(
+                  child: Text(
+                    l10n.viewScientificSource,
+                    style: AppTypography.caption(color: colors.accent).copyWith(
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMedicalDisclaimer(BuildContext context, AppColorScheme colors, AppLocalizations l10n) {
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: colors.warning.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        border: Border.all(color: colors.warning.withValues(alpha: 0.3)),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(
+            Icons.medical_information_outlined,
+            size: 20,
+            color: colors.warning,
+          ),
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: Text(
+              l10n.medicalDisclaimerShort,
+              style: AppTypography.caption(color: colors.textPrimary),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 }

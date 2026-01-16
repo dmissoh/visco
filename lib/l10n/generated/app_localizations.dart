@@ -1333,8 +1333,74 @@ abstract class AppLocalizations {
   /// No description provided for @disclaimer.
   ///
   /// In en, this message translates to:
-  /// **'This information is for educational purposes only and should not replace professional medical advice. Please consult a healthcare provider for personalized guidance.'**
+  /// **'This information is for educational purposes only and does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider before making any health-related decisions. Do not disregard professional medical advice or delay seeking it because of information provided by this app.'**
   String get disclaimer;
+
+  /// No description provided for @medicalDisclaimerShort.
+  ///
+  /// In en, this message translates to:
+  /// **'For informational purposes only. Consult your doctor before making health decisions.'**
+  String get medicalDisclaimerShort;
+
+  /// No description provided for @calculationMethodTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculation Method'**
+  String get calculationMethodTitle;
+
+  /// No description provided for @calculationMethodDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'This app uses a scientifically validated anthropometric model to estimate visceral adipose tissue (VAT) area.'**
+  String get calculationMethodDescription;
+
+  /// No description provided for @viewScientificSource.
+  ///
+  /// In en, this message translates to:
+  /// **'View Scientific Source'**
+  String get viewScientificSource;
+
+  /// No description provided for @scientificSourceUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3618381/'**
+  String get scientificSourceUrl;
+
+  /// No description provided for @calculatorSourceInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Luxembourg Institute of Health - Visceral Fat Calculator'**
+  String get calculatorSourceInfo;
+
+  /// No description provided for @calculatorSourceUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'https://www.lih.lu/en/visceral-fat-calculator/'**
+  String get calculatorSourceUrl;
+
+  /// No description provided for @aboutTheMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'About the Method'**
+  String get aboutTheMethod;
+
+  /// No description provided for @methodDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'The VAT estimation uses the Samouda anthropometric model, validated against CT scans with 80-84% accuracy. This method was developed at the Luxembourg Institute of Health.'**
+  String get methodDescription;
+
+  /// No description provided for @fullCitation.
+  ///
+  /// In en, this message translates to:
+  /// **'Samouda H, et al. (2013). VAT=TAAT-SAAT: innovative anthropometric model to predict visceral adipose tissue without resort to CT-Scan or DXA. Obesity, 21(1), E41-50.'**
+  String get fullCitation;
+
+  /// No description provided for @pmcReference.
+  ///
+  /// In en, this message translates to:
+  /// **'PMC3618381'**
+  String get pmcReference;
 
   /// No description provided for @riskCardiometabolic.
   ///

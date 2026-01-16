@@ -1,6 +1,30 @@
-# Visco
+# Visqo
 
 A Flutter app for estimating visceral adipose tissue (VAT) using the Samouda anthropometric model.
+
+## App Store Description
+
+**Copy this description when submitting to the App Store:**
+
+---
+
+Visqo helps you estimate your visceral fat area using simple body measurements. Track your progress over time and understand your results with our easy-to-use calculator.
+
+**Features:**
+- Calculate visceral fat from waist and thigh measurements
+- Track your progress with visual charts
+- Understand your results with clear risk categories
+- Step-by-step measurement guides
+
+**Scientific Method:**
+Visqo uses the Samouda anthropometric model, a scientifically validated method for estimating visceral adipose tissue without expensive imaging. This method was developed at the Luxembourg Institute of Health and validated against CT scans with 80-84% accuracy.
+
+Reference: Samouda H, et al. (2013). "VAT=TAAT-SAAT: innovative anthropometric model to predict visceral adipose tissue without resort to CT-Scan or DXA." Obesity, 21(1), E41-50.
+
+**IMPORTANT MEDICAL DISCLAIMER:**
+This app is for informational and educational purposes only. It does not provide medical advice, diagnosis, or treatment. The visceral fat estimates provided are based on statistical models and may not reflect your actual visceral fat levels. Always consult a qualified healthcare provider before making any health-related decisions. Do not disregard professional medical advice or delay seeking it because of information provided by this app. If you have concerns about your health, please contact your doctor.
+
+---
 
 ## Features
 

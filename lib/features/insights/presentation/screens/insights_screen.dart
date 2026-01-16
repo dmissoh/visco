@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:visco/core/constants/app_constants.dart';
 import 'package:visco/core/theme/app_colors.dart';
 import 'package:visco/core/theme/app_typography.dart';
 import 'package:visco/features/calculator/domain/models/measurement.dart';
 import 'package:visco/features/insights/domain/data/insights_data.dart';
 import 'package:visco/features/insights/presentation/providers/insights_provider.dart';
-import 'package:visco/features/insights/presentation/widgets/health_risk_card.dart';
 import 'package:visco/features/insights/presentation/widgets/health_tip_card.dart';
 import 'package:visco/features/insights/presentation/widgets/risk_summary_header.dart';
 import 'package:visco/l10n/generated/app_localizations.dart';
@@ -63,17 +63,8 @@ class InsightsScreen extends ConsumerWidget {
 
               const SizedBox(height: AppSpacing.xl),
 
-              // Health Risks Section
-              _buildSectionHeader(
-                context,
-                title: l10n.healthRisksOfElevatedVat,
-                subtitle: l10n.healthRisksSubtitle,
-              ),
-              const SizedBox(height: AppSpacing.md),
-              ...insights.risks.map((risk) => Padding(
-                    padding: const EdgeInsets.only(bottom: AppSpacing.md),
-                    child: HealthRiskCard(risk: risk),
-                  )),
+              // Scientific Source Citation (prominently displayed)
+              _buildScientificSourceCard(context, colors, l10n),
 
               const SizedBox(height: AppSpacing.xl),
 
@@ -145,17 +136,8 @@ class InsightsScreen extends ConsumerWidget {
 
               const SizedBox(height: AppSpacing.xl),
 
-              // Health Risks Section
-              _buildSectionHeader(
-                context,
-                title: l10n.healthRisksOfElevatedVat,
-                subtitle: l10n.healthRisksSubtitle,
-              ),
-              const SizedBox(height: AppSpacing.md),
-              ...InsightsData.risks.map((risk) => Padding(
-                    padding: const EdgeInsets.only(bottom: AppSpacing.md),
-                    child: HealthRiskCard(risk: risk),
-                  )),
+              // Scientific Source Citation (prominently displayed)
+              _buildScientificSourceCard(context, colors, l10n),
 
               const SizedBox(height: AppSpacing.xl),
 
@@ -272,34 +254,142 @@ class InsightsScreen extends ConsumerWidget {
     );
   }
 
+  Widget _buildScientificSourceCard(BuildContext context, AppColorScheme colors, AppLocalizations l10n) {
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: colors.accent.withValues(alpha: 0.05),
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        border: Border.all(color: colors.accent.withValues(alpha: 0.2)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(
+                Icons.science_outlined,
+                size: 20,
+                color: colors.accent,
+              ),
+              const SizedBox(width: AppSpacing.sm),
+              Text(
+                l10n.calculationMethodTitle,
+                style: AppTypography.title(color: colors.textPrimary),
+              ),
+            ],
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          Text(
+            l10n.methodDescription,
+            style: AppTypography.body(color: colors.textSecondary),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          Container(
+            padding: const EdgeInsets.all(AppSpacing.sm),
+            decoration: BoxDecoration(
+              color: colors.surface,
+              borderRadius: BorderRadius.circular(AppRadius.sm),
+              border: Border.all(color: colors.border),
+            ),
+            child: Text(
+              l10n.fullCitation,
+              style: AppTypography.caption(color: colors.textSecondary).copyWith(
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          InkWell(
+            onTap: () => _launchUrl(l10n.scientificSourceUrl),
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.md,
+                vertical: AppSpacing.sm,
+              ),
+              decoration: BoxDecoration(
+                color: colors.accent,
+                borderRadius: BorderRadius.circular(AppRadius.sm),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.open_in_new,
+                    size: 16,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(width: AppSpacing.sm),
+                  Text(
+                    l10n.viewScientificSource,
+                    style: AppTypography.label(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          InkWell(
+            onTap: () => _launchUrl(l10n.calculatorSourceUrl),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.link,
+                  size: 14,
+                  color: colors.accent,
+                ),
+                const SizedBox(width: 4),
+                Expanded(
+                  child: Text(
+                    l10n.calculatorSourceInfo,
+                    style: AppTypography.caption(color: colors.accent).copyWith(
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildDisclaimer(BuildContext context, AppLocalizations l10n) {
     final colors = AppColors.of(context);
 
     return Container(
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: colors.surface,
+        color: colors.warning.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(AppRadius.md),
-        border: Border.all(color: colors.border),
+        border: Border.all(color: colors.warning.withValues(alpha: 0.3)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(
-            Icons.info_outline,
+            Icons.medical_information_outlined,
             size: 20,
-            color: colors.textSecondary,
+            color: colors.warning,
           ),
           const SizedBox(width: AppSpacing.sm),
           Expanded(
             child: Text(
               l10n.disclaimer,
-              style: AppTypography.caption(color: colors.textSecondary),
+              style: AppTypography.caption(color: colors.textPrimary),
             ),
           ),
         ],
       ),
     );
+  }
+
+  Future<void> _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 
   String _getSummaryTitle(AppLocalizations l10n, RiskCategory category, bool hasMeasurement) {

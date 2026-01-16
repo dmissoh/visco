@@ -688,7 +688,47 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get disclaimer =>
-      'Diese Informationen dienen nur zu Aufklärungszwecken und ersetzen keine professionelle medizinische Beratung. Bitte wende dich für eine individuelle Beratung an deinen Arzt.';
+      'Diese Informationen dienen ausschliesslich zu Bildungszwecken und stellen keine medizinische Beratung, Diagnose oder Behandlung dar. Konsultiere immer einen qualifizierten Arzt, bevor du gesundheitsbezogene Entscheidungen triffst. Ignoriere niemals professionellen medizinischen Rat oder verzogere dessen Einholung aufgrund von Informationen aus dieser App.';
+
+  @override
+  String get medicalDisclaimerShort =>
+      'Nur zu Informationszwecken. Konsultiere deinen Arzt vor Gesundheitsentscheidungen.';
+
+  @override
+  String get calculationMethodTitle => 'Berechnungsmethode';
+
+  @override
+  String get calculationMethodDescription =>
+      'Diese App verwendet ein wissenschaftlich validiertes anthropometrisches Modell zur Schatzung der viszeralen Fettgewebsflache (VAT).';
+
+  @override
+  String get viewScientificSource => 'Wissenschaftliche Quelle ansehen';
+
+  @override
+  String get scientificSourceUrl =>
+      'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3618381/';
+
+  @override
+  String get calculatorSourceInfo =>
+      'Luxembourg Institute of Health - Viszeralfett-Rechner';
+
+  @override
+  String get calculatorSourceUrl =>
+      'https://www.lih.lu/en/visceral-fat-calculator/';
+
+  @override
+  String get aboutTheMethod => 'Uber die Methode';
+
+  @override
+  String get methodDescription =>
+      'Die VAT-Schatzung verwendet das anthropometrische Modell nach Samouda, das mit einer Genauigkeit von 80-84% gegen CT-Scans validiert wurde. Diese Methode wurde am Luxembourg Institute of Health entwickelt.';
+
+  @override
+  String get fullCitation =>
+      'Samouda H, et al. (2013). VAT=TAAT-SAAT: innovative anthropometric model to predict visceral adipose tissue without resort to CT-Scan or DXA. Obesity, 21(1), E41-50.';
+
+  @override
+  String get pmcReference => 'PMC3618381';
 
   @override
   String get riskCardiometabolic => 'Kardiometabolische Erkrankungen';

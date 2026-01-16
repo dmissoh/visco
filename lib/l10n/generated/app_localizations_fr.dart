@@ -692,7 +692,47 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get disclaimer =>
-      'Ces informations sont à titre éducatif uniquement et ne remplacent pas un avis médical professionnel. Veuillez consulter un professionnel de santé pour des conseils personnalisés.';
+      'Ces informations sont fournies a titre educatif uniquement et ne constituent pas un avis medical, un diagnostic ou un traitement. Consultez toujours un professionnel de sante qualifie avant de prendre des decisions relatives a votre sante. Ne negligez pas les conseils medicaux professionnels et ne retardez pas leur obtention en raison des informations fournies par cette application.';
+
+  @override
+  String get medicalDisclaimerShort =>
+      'A titre informatif uniquement. Consultez votre medecin avant de prendre des decisions de sante.';
+
+  @override
+  String get calculationMethodTitle => 'Methode de calcul';
+
+  @override
+  String get calculationMethodDescription =>
+      'Cette application utilise un modele anthropometrique scientifiquement valide pour estimer la surface de tissu adipeux visceral (VAT).';
+
+  @override
+  String get viewScientificSource => 'Voir la source scientifique';
+
+  @override
+  String get scientificSourceUrl =>
+      'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3618381/';
+
+  @override
+  String get calculatorSourceInfo =>
+      'Luxembourg Institute of Health - Calculateur de graisse viscerale';
+
+  @override
+  String get calculatorSourceUrl =>
+      'https://www.lih.lu/en/visceral-fat-calculator/';
+
+  @override
+  String get aboutTheMethod => 'A propos de la methode';
+
+  @override
+  String get methodDescription =>
+      'L\'estimation VAT utilise le modele anthropometrique de Samouda, valide par rapport aux scanners avec une precision de 80-84%. Cette methode a ete developpee au Luxembourg Institute of Health.';
+
+  @override
+  String get fullCitation =>
+      'Samouda H, et al. (2013). VAT=TAAT-SAAT: innovative anthropometric model to predict visceral adipose tissue without resort to CT-Scan or DXA. Obesity, 21(1), E41-50.';
+
+  @override
+  String get pmcReference => 'PMC3618381';
 
   @override
   String get riskCardiometabolic => 'Maladies cardiométaboliques';

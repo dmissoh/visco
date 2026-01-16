@@ -273,7 +273,21 @@
   "recommendedForYou": "Für dich empfohlen",
   "maintainYourHealth": "Erhalte deine Gesundheit",
   "additionalTips": "Weitere Tipps",
-  "disclaimer": "Diese Informationen dienen nur zu Aufklärungszwecken und ersetzen keine professionelle medizinische Beratung. Bitte wende dich für eine individuelle Beratung an deinen Arzt.",
+  "disclaimer": "Diese Informationen dienen ausschliesslich zu Bildungszwecken und stellen keine medizinische Beratung, Diagnose oder Behandlung dar. Konsultiere immer einen qualifizierten Arzt, bevor du gesundheitsbezogene Entscheidungen triffst. Ignoriere niemals professionellen medizinischen Rat oder verzogere dessen Einholung aufgrund von Informationen aus dieser App.",
+  
+  "medicalDisclaimerShort": "Nur zu Informationszwecken. Konsultiere deinen Arzt vor Gesundheitsentscheidungen.",
+  
+  "calculationMethodTitle": "Berechnungsmethode",
+  "calculationMethodDescription": "Diese App verwendet ein wissenschaftlich validiertes anthropometrisches Modell zur Schatzung der viszeralen Fettgewebsflache (VAT).",
+  "viewScientificSource": "Wissenschaftliche Quelle ansehen",
+  "scientificSourceUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3618381/",
+  "calculatorSourceInfo": "Luxembourg Institute of Health - Viszeralfett-Rechner",
+  "calculatorSourceUrl": "https://www.lih.lu/en/visceral-fat-calculator/",
+  
+  "aboutTheMethod": "Uber die Methode",
+  "methodDescription": "Die VAT-Schatzung verwendet das anthropometrische Modell nach Samouda, das mit einer Genauigkeit von 80-84% gegen CT-Scans validiert wurde. Diese Methode wurde am Luxembourg Institute of Health entwickelt.",
+  "fullCitation": "Samouda H, et al. (2013). VAT=TAAT-SAAT: innovative anthropometric model to predict visceral adipose tissue without resort to CT-Scan or DXA. Obesity, 21(1), E41-50.",
+  "pmcReference": "PMC3618381",
   
   "riskCardiometabolic": "Kardiometabolische Erkrankungen",
   "riskCardiometabolicDesc": "Erhöhtes Viszeralfett steigert das Risiko für schwerwiegende Herz-Kreislauf- und Stoffwechselerkrankungen erheblich.",
